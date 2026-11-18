@@ -10,7 +10,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181828';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611182127';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -125,7 +125,7 @@ const ISO_DIR = new THREE.Vector3(42, 29, 53).normalize();
 // screen with a small margin, for any aspect (portrait phones need a much longer distance than desktops)
 function isoFitDist(dir = ISO_DIR, target = orbitP.target, freeFrac = 1) {
   const F = dir.clone().negate(), Rv = new THREE.Vector3().crossVectors(F, new THREE.Vector3(0, 1, 0)).normalize(), U = new THREE.Vector3().crossVectors(Rv, F);
-  const tanV = Math.tan(THREE.MathUtils.degToRad(45 / 2)) * (matchMedia('(max-width: 820px), (max-height: 500px)').matches ? 0.8 : 0.9); // phones: top bar + HUD strip
+  const tanV = Math.tan(THREE.MathUtils.degToRad(45 / 2)) * (matchMedia('(max-width: 759px), (max-height: 500px)').matches ? 0.8 : 0.9); // phones: top bar + HUD strip
   const tanH = Math.tan(THREE.MathUtils.degToRad(45 / 2)) * (innerWidth / innerHeight) * 0.94 * freeFrac, q = new THREE.Vector3();
   let d = 10;
   // portrait: fit the structures (canopies + cabinets), not the whole soil patch, so the farm is not tiny on phones
@@ -140,7 +140,7 @@ function isoFitDist(dir = ISO_DIR, target = orbitP.target, freeFrac = 1) {
 // camera sideways so the farm is centred there (phones: the top bar does not cover the sides)
 function isoHomePose() {
   const side = document.querySelector('#side')?.getBoundingClientRect();
-  const left = side && innerWidth > 820 && innerHeight > 500 ? Math.min(innerWidth * 0.45, side.right + 8) : 0;
+  const left = side && innerWidth > 759 && innerHeight > 500 ? Math.min(innerWidth * 0.45, side.right + 8) : 0;
   const free = (innerWidth - left) / innerWidth;
   const target = new THREE.Vector3(C.x, 1, C.z), d = isoFitDist(ISO_DIR, target, free);
   const F = ISO_DIR.clone().negate(), Rv = new THREE.Vector3().crossVectors(F, new THREE.Vector3(0, 1, 0)).normalize();
@@ -194,8 +194,8 @@ const ITEMS = [
   { id: 'cabinet', grp: 'field', color: '#cfd3cc', desc: 'desc.cabinet', live: 'water', match: (n) => n === 'Field control cabinet' },
   { id: 'drip', grp: 'field', color: '#5fb6e8', desc: 'desc.drip', live: 'water', match: (n) => n === 'Drip irrigation' },
   { id: 'cabbage', grp: 'field', color: '#8fcf6a', desc: 'desc.cabbage', live: 'growth', match: (n) => n === 'Cabbage heads' || n === 'Cabbage leaves' },
+  { id: 'farmdroid', grp: 'machines', color: '#3d9e1e', desc: 'desc.farmdroid', match: (n) => n.startsWith('FarmDroid / ') },
   { id: 'film', grp: 'winter', color: '#c9dbe6', desc: 'desc.film', match: () => false }, // objs = lib/winter.js film
-  { id: 'farmdroid', grp: 'field', color: '#3d9e1e', desc: 'desc.farmdroid', match: (n) => n.startsWith('FarmDroid / ') },
 ];
 const itemById = Object.fromEntries(ITEMS.map((it) => [it.id, it]));
 for (const it of ITEMS) it.objs = [...byName.entries()].filter(([n]) => it.match(n)).flatMap(([, os]) => os);
@@ -218,7 +218,7 @@ function labelAnchor(it) {
     case 'jbox': return top(nb('Canopy 1 / junction boxes'), 0.5);
     case 'drip': { const b = nb('Drip irrigation'); return new THREE.Vector3(b.max.x - 3.4, b.max.y + 0.3, b.min.z + 8); } // inter-row x ~ +5
     case 'cabbage': { const b = boxOf(it.objs); return new THREE.Vector3(b.min.x + 3.6, b.max.y + 0.5, b.min.z + 9); } // inter-row x ~ -5
-    case 'farmdroid': return top(boxOf(it.objs), 0.35);
+    case 'farmdroid': return top(boxOf(it.objs), 1.4); // lifted, with a leader line down to the robot
     default: return top(boxOf(it.objs), 0.3);
   }
 }
@@ -233,7 +233,7 @@ for (const it of ITEMS) {
 }
 
 // ---------------- shared state + module context ----------------
-const smallMQ = matchMedia('(max-width: 820px), (max-height: 500px)');
+const smallMQ = matchMedia('(max-width: 759px), (max-height: 500px)');
 const sideMQ = matchMedia('(max-height: 500px) and (orientation: landscape)');
 const state = {
   hour: 12, sun: 0, dayOfSeason: 60, water: 0, speed: 600,
@@ -426,6 +426,7 @@ const walk = { yaw: 0, pitch: -0.04, keys: new Set(), x: -5, z: 4.5, joy: { x: 0
 let touchSeen = matchMedia('(pointer: coarse)').matches;
 document.body.classList.toggle('touch', touchSeen);
 let labelsDirty = true;
+let hintDone = false; // the navigation hint fades out after the first drag and stays hidden
 function setHint() {
   const k = mode === 'walk' ? 'walk' : mode === 'top' ? 'top' : 'iso';
   $('#hint').innerHTML = t('hint.' + k + (touchSeen ? 'Touch' : ''));
@@ -443,19 +444,41 @@ function setMode(m) {
   persp.fov = m === 'walk' ? 70 : 45; persp.updateProjectionMatrix();
   document.body.classList.toggle('walk', m === 'walk'); walk.joy.x = walk.joy.y = 0; labelsDirty = true;
   setHint();
-  if (touchSeen) { const h = $('#hint'); h.classList.remove('fade'); clearTimeout(setMode.t); setMode.t = setTimeout(() => h.classList.add('fade'), 5000); }
+  if (touchSeen && !hintDone) { const h = $('#hint'); h.classList.remove('fade'); clearTimeout(setMode.t); setMode.t = setTimeout(() => h.classList.add('fade'), 5000); }
 }
-$('#modes').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; setMode(b.dataset.mode); if (smallMQ.matches && $('#drawer').classList.contains('open')) setDrawer(false); });
+$('#modes').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; if (b.dataset.mode === 'iso' && mode === 'iso') flyHome(); else setMode(b.dataset.mode); if (smallMQ.matches && $('#drawer').classList.contains('open')) setDrawer(false); });
 
 const ease = (k) => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
+// screen insets covered by UI (desktop side panel / info panel, phone bottom sheet), in px
+function uiInsets() {
+  let l = 0, r = 0, b = 0; const p = $('#panel'), open = p.classList.contains('open');
+  if (!smallMQ.matches) { l = $('#side').getBoundingClientRect().right + 8; if (open) r = innerWidth - p.getBoundingClientRect().left + 8; }
+  else if (sideMQ.matches) { if ($('#drawer').classList.contains('open')) l = $('#drawer').getBoundingClientRect().right + 8; if (open) r = innerWidth - p.getBoundingClientRect().left + 8; }
+  else { const d = $('#drawer'); if (open) b = p.offsetHeight; else if (d.classList.contains('open')) b = d.offsetHeight; }
+  return { l: Math.min(l, innerWidth * 0.45), r: Math.min(r, innerWidth * 0.45), b: Math.min(b, innerHeight * 0.7) };
+}
+// camera target that puts world point `p` at the centre of the free screen area, seen from direction `dir` at `dist`
+function centredTarget(p, dir, dist) {
+  const { l, r, b } = uiInsets(), F = dir.clone().negate(), Rv = new THREE.Vector3().crossVectors(F, new THREE.Vector3(0, 1, 0)).normalize(), U = new THREE.Vector3().crossVectors(Rv, F);
+  const halfH = dist * Math.tan(THREE.MathUtils.degToRad(persp.fov / 2)), halfW = halfH * persp.aspect;
+  return p.clone().addScaledVector(Rv, -((l - r) / innerWidth) * halfW).addScaledVector(U, -(b / innerHeight) * halfH);
+}
 function flyTo(target, dist, zoom) {
   camTouched = true;
   if (mode === 'top') tween = { k: 0, d: 0.7, from: orbitO.target.clone(), to: target.clone().setY(0), z0: ortho.zoom, z1: zoom, top: true };
   else if (mode === 'iso') {
     const dir = persp.position.clone().sub(orbitP.target).normalize();
     if (dir.y < 0.35) { dir.y = 0.35; dir.normalize(); }
-    tween = { k: 0, d: 0.8, from: orbitP.target.clone(), to: target.clone(), p0: persp.position.clone(), p1: target.clone().addScaledVector(dir, dist) };
+    const tg = centredTarget(target, dir, dist);
+    tween = { k: 0, d: 0.8, from: orbitP.target.clone(), to: tg, p0: persp.position.clone(), p1: tg.clone().addScaledVector(dir, dist) };
   }
+}
+// back to the start view (overview, whole farm framed next to the panels)
+function flyHome() {
+  if (mode !== 'iso') setMode('iso');
+  const p = isoHomePose();
+  tween = { k: 0, d: 0.9, from: orbitP.target.clone(), to: p.target, p0: persp.position.clone(), p1: p.pos };
+  camTouched = false;
 }
 function stepTween(dt) {
   if (!tween) return; tween.k = Math.min(1, tween.k + dt / tween.d); const k = ease(tween.k);
@@ -559,16 +582,20 @@ function renderList() {
 $('#objects').addEventListener('click', (e) => { const li = e.target.closest('li.item'); if (li && !li.classList.contains('off')) select(itemById[li.dataset.id], true); });
 $('#objects').addEventListener('keydown', (e) => { const li = e.target.closest('li.item'); if (li && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); li.click(); } });
 
+// compact HUD (key rows only): info panel open on desktop, screens under 800 px tall, geological section on
+function syncHudCompact() {
+  document.body.classList.toggle('hudcompact', !smallMQ.matches && (document.body.classList.contains('panelopen') || innerHeight < 800 || !!state.show.underground));
+}
 // ---------------- small screens: drawer + bottom sheets ----------------
 function syncSheets() {
   const d = $('#drawer').classList.contains('open'), p = $('#panel').classList.contains('open');
   document.body.classList.toggle('drawer', d); document.body.classList.toggle('sheet', smallMQ.matches && (d || p));
   // desktop: an open info / report panel and the HUD share the right edge, so the HUD shrinks to its key rows
-  document.body.classList.toggle('panelopen', p && !smallMQ.matches);
+  document.body.classList.toggle('panelopen', p && !smallMQ.matches); syncHudCompact();
   const hud = $('#hud'); if (hud && !smallMQ.matches) document.documentElement.style.setProperty('--hudh', hud.offsetHeight + 'px');
 }
 function setDrawer(open) {
-  $('#drawer').classList.toggle('open', open); $('#menuBtn').setAttribute('aria-expanded', open);
+  $('#drawer').classList.toggle('open', open); if (!open) $('#drawer').classList.remove('full'); $('#menuBtn').setAttribute('aria-expanded', open);
   if (open && $('#panel').classList.contains('open') && !sideMQ.matches) select(null);
   syncSheets();
 }
@@ -578,12 +605,16 @@ function sheetDrag(sheet, handleSel, close) {
   let s = null;
   sheet.addEventListener('pointerdown', (e) => {
     if (!smallMQ.matches || sideMQ.matches || e.target.closest('button, a, input') || !e.target.closest(handleSel)) return;
-    s = { id: e.pointerId, y: e.clientY, dy: 0, t: performance.now() }; sheet.classList.add('drag'); sheet.setPointerCapture(e.pointerId);
+    s = { id: e.pointerId, y: e.clientY, dy: 0, raw: 0, t: performance.now() }; sheet.classList.add('drag'); sheet.setPointerCapture(e.pointerId);
   });
-  sheet.addEventListener('pointermove', (e) => { if (!s || e.pointerId !== s.id) return; s.dy = Math.max(0, e.clientY - s.y); sheet.style.transform = `translateY(${s.dy}px)`; });
+  sheet.addEventListener('pointermove', (e) => { if (!s || e.pointerId !== s.id) return; s.raw = e.clientY - s.y; s.dy = Math.max(0, s.raw); sheet.style.transform = `translateY(${s.dy}px)`; });
   const end = (e) => {
     if (!s || e.pointerId !== s.id) return; sheet.classList.remove('drag'); sheet.style.transform = '';
-    const fast = s.dy / Math.max(1, performance.now() - s.t) > 0.5; if (s.dy > 90 || (fast && s.dy > 30)) close(); s = null;
+    const fast = s.dy / Math.max(1, performance.now() - s.t) > 0.5, tap = Math.abs(s.raw) < 6 && performance.now() - s.t < 350;
+    if (sheet.id === 'drawer' && (s.raw < -40 || (tap && !sheet.classList.contains('full')))) sheet.classList.add('full');
+    else if (sheet.id === 'drawer' && sheet.classList.contains('full') && (s.dy > 60 || tap)) sheet.classList.remove('full');
+    else if (s.dy > 90 || (fast && s.dy > 30)) close();
+    s = null;
   };
   sheet.addEventListener('pointerup', end); sheet.addEventListener('pointercancel', end);
 }
@@ -603,12 +634,29 @@ function selBoxes() {
   });
   for (let i = selected.groups.length; i < selHelpers.length; i++) selHelpers[i].visible = false;
 }
-const fmt = (v, d = 1) => (v == null || !isFinite(v) ? t('hud.na') : Number(v).toFixed(d).replace('.', document.documentElement.lang === 'en' ? '.' : ','));
+// numbers in the UI language (PL: 1 107,5 · EN: 1,107.5); formatters cached per language + decimals
+const NF = new Map();
+const fmt = (v, d = 1) => {
+  if (v == null || !Number.isFinite(+v)) return t('hud.na');
+  const k = document.documentElement.lang + d;
+  if (!NF.has(k)) NF.set(k, new Intl.NumberFormat(document.documentElement.lang === 'en' ? 'en-GB' : 'pl-PL', { minimumFractionDigits: d, maximumFractionDigits: d }));
+  return NF.get(k).format(+v);
+};
 function liveHtml(it) {
   if (it.live === 'power') { const i = info.power; return i ? `${fmt(i.kW)} ${t('unit.kw')} · ${fmt(i.kWhToday)} ${t('unit.kwh')}` : null; }
   if (it.live === 'water') { const i = info.water; return i ? `${fmt(i.lpm)} ${t('unit.lpm')} · ${fmt(i.litresToday, 0)} ${t('unit.l')}` : null; }
   if (it.live === 'growth') { const i = info.growth; return i ? `${esc(stageName(i.stage))} · Ø ${fmt(i.headDiameterCm, 0)} ${t('unit.cm')}` : null; }
   return null;
+}
+// size readout: one tank for the tanks, the outline of the whole group for items spread over the site
+const GROUP_ITEMS = new Set(['pv', 'jbox', 'drip', 'cabbage', 'inverters']);
+let oneTank = null;
+function sizeHtml(it, sz) {
+  if (it.id === 'tanks') {
+    if (!oneTank) { const b = clusterBoxes(nodes('Canopy 2 / molded water tanks'))[0], h = nb('Canopy 2 / molded water tanks'); oneTank = b ? { x: b.max.x - b.min.x, z: b.max.z - b.min.z, y: h.max.y - h.min.y } : null; }
+    if (oneTank) return `<div class="prop"><b>${esc(t('prop.sizeOne'))}</b>${fmt(oneTank.x)} × ${fmt(oneTank.z)} m, h ${fmt(oneTank.y)} m</div>`;
+  }
+  return `<div class="prop"><b>${esc(t(GROUP_ITEMS.has(it.id) ? 'prop.sizeGroup' : 'prop.size'))}</b>${fmt(sz.x)} × ${fmt(sz.z)} m, h ${fmt(sz.y)} m</div>`;
 }
 function renderPanel() {
   const it = selected, panel = $('#panel'); if (!it) return;
@@ -618,10 +666,11 @@ function renderPanel() {
     <div class="top"><div><div class="eyebrow">${esc(t('grp.' + it.grp))}</div><h3>${esc(t('obj.' + it.id))}</h3></div><button type="button" class="close" id="pclose">${esc(t('close'))}</button></div>
     <p>${esc(t(it.desc))}</p>
     ${live != null ? `<div class="prop"><b>${esc(liveLabel)}</b><span id="plive">${live}</span></div>` : ''}
-    <div class="prop"><b>${esc(t('prop.size'))}</b>${fmt(sz.x)} × ${fmt(sz.z)} m, h ${fmt(sz.y)} m</div>
+    ${sizeHtml(it, sz)}
     <p class="est">${esc(t('est'))}</p>`;
   $('#pclose').onclick = () => select(null);
 }
+function closePanel() { const p = $('#panel'); if (p.dataset.kind === 'item' || selected) select(null); else { p.classList.remove('open', 'wide'); p.dataset.kind = ''; syncSheets(); } }
 function select(it, fly = false) {
   selected = it || null; const panel = $('#panel');
   Object.entries(labelEls).forEach(([id, el]) => el.classList.toggle('on', !!it && id === it.id));
@@ -643,8 +692,9 @@ function select(it, fly = false) {
 // ---------------- picking (GPU id buffer: exact, and cheap on the 1.1 M-vertex triangle soup) ----------------
 const pickRT = new THREE.WebGLRenderTarget(1, 1);
 const pickBuf = new Uint8Array(4);
-const pickMats = ITEMS.map((it, i) => new THREE.MeshBasicMaterial({ color: new THREE.Color().setRGB((i + 1) * 20 / 255, 0, 0, THREE.LinearSRGBColorSpace), toneMapped: false, side: THREE.DoubleSide }));
-const occluder = new THREE.MeshBasicMaterial({ color: 0x000000, toneMapped: false, side: THREE.DoubleSide });
+const pickMats = ITEMS.map((it, i) => new THREE.MeshBasicMaterial({ color: new THREE.Color().setRGB((i + 1) * 20 / 255, 0, 0, THREE.LinearSRGBColorSpace), toneMapped: false, fog: false, side: THREE.DoubleSide }));
+const occluder = new THREE.MeshBasicMaterial({ color: 0x000000, toneMapped: false, fog: false, side: THREE.DoubleSide }); // fog off: it would blend into the ID colour
+{ const pm = pickMats[ITEMS.indexOf(itemById.cabbage)], fn = mods.growth?.patchPickMaterial; if (typeof fn === 'function') try { fn(pm); } catch (e) { console.warn('growth.patchPickMaterial', e); } }
 function pickAt(x, y) {
   const c = cam, bg = scene.background, au = renderer.shadowMap.autoUpdate, nu = renderer.shadowMap.needsUpdate, mask = c.layers.mask, saved = [];
   const list = pickMeshes.filter((m) => m.visible && m.material); // growth.js hides the original merged wheel meshes
@@ -668,7 +718,7 @@ function labelAt(x, y) {
   if (!labelsG.visible) return null;
   const pad = touchSeen ? 10 : 2; let best = null, bd = Infinity;
   for (const [id, el] of Object.entries(labelEls)) {
-    const r = el.getBoundingClientRect(); if (!r.width || el.style.display === 'none') continue;
+    const r = el.getBoundingClientRect(); if (!r.width || el.style.display === 'none' || el.style.visibility === 'hidden') continue;
     if (x < r.left - pad || x > r.right + pad || y < r.top - pad || y > r.bottom + pad) continue;
     const d = Math.hypot(x - (r.left + r.right) / 2, y - (r.top + r.bottom) / 2); if (d < bd) { bd = d; best = id; }
   }
@@ -696,6 +746,7 @@ const tip = $('#tip'); let hoverT = 0;
 renderer.domElement.addEventListener('pointermove', (e) => {
   if (down && e.pointerId === down.id) {
     down.moved = Math.max(down.moved, Math.hypot(e.clientX - down.x, e.clientY - down.y));
+    if (down.moved > 12 && !hintDone) { hintDone = true; $('#hint').classList.add('fade'); }
     if (mode === 'walk' && !down.multi) { const sens = down.touch ? 0.006 : 0.004; walk.yaw = down.yaw - (e.clientX - down.x) * sens; walk.pitch = clamp(down.pitch - (e.clientY - down.y) * sens, -1.3, 1.3); }
   }
   if (e.pointerType === 'touch') return;
@@ -708,10 +759,13 @@ renderer.domElement.addEventListener('wheel', () => { camTouched = true; }, { pa
 renderer.domElement.addEventListener('pointerleave', () => (tip.style.opacity = 0));
 addEventListener('keydown', (e) => {
   if (!e.target.matches?.('input[type=text], input[type=search], textarea, select')) walk.keys.add(e.code);
+  const typing = e.target.matches?.('input[type=text], input[type=search], textarea, select');
   if (e.key === 'Escape') {
+    if (document.querySelector('.loc-root')) return; // the location picker handles its own Escape
     if ($('#drawer').classList.contains('open')) { setDrawer(false); $('#menuBtn').focus(); }
-    else if (selected) select(null);
-  }
+    else if ($('#panel').classList.contains('open')) closePanel();
+    else flyHome();
+  } else if ((e.key === 'h' || e.key === 'H') && !typing && !e.metaKey && !e.ctrlKey && !e.altKey && mode !== 'walk') flyHome();
 });
 addEventListener('keyup', (e) => walk.keys.delete(e.code));
 addEventListener('blur', () => walk.keys.clear());
@@ -761,7 +815,7 @@ $('#irr').addEventListener('click', (e) => {
   $$('#irr button').forEach((x) => x.classList.toggle('on', x === b));
 });
 // summer: 5-7 and 19-21; winter (greenhouse): 10-11 only
-const irrSchedule = (h) => (state.season === 'winter' ? h >= 10 && h < 11 : (h >= 5 && h < 7) || (h >= 19 && h < 21));
+const irrSchedule = (h) => (state.season === 'winter' ? h >= 10 && h < 11 : (h >= 6 && h < 7) || (h >= 20 && h < 20.5));
 function syncSeason() {
   $$('#seasons button').forEach((b) => { const on = b.dataset.season === state.season; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
   const h = $('#irrHint'); h.dataset.i18n = state.season === 'winter' ? 'irr.autoHintWinter' : 'irr.autoHint'; h.textContent = t(h.dataset.i18n);
@@ -787,7 +841,7 @@ function xrayMaterials() {
   return set;
 }
 function setXray(on) {
-  if (on === XRAY.on) return; XRAY.on = on;
+  if (on === XRAY.on) return; XRAY.on = on; state.xray = on; // power.js / sky.js read it
   setBatchesActive(!on);
   if (on) {
     for (const m of xrayMaterials()) {
@@ -917,15 +971,15 @@ function hudTemplate() {
   $('#hud').innerHTML = `<h2><span>${esc(t('hud.title'))}</span><span class="clk" id="hClock"></span></h2>
     <dl>
       <dt class="mob-only" style="display:none"></dt>
-      <dt class="tm"><i style="background:var(--accent)"></i>${esc(t('hud.time'))}</dt><dd class="tm" id="hTime"></dd>
-      <dt class="full"><i style="background:#f6d77a"></i>${esc(t('hud.sun'))}</dt><dd class="full" id="hSun"></dd>
+      <dt class="tm mobonly"><i style="background:var(--accent)"></i>${esc(t('hud.time'))}</dt><dd class="tm mobonly" id="hTime"></dd>
+      <dt class="full" title="${esc(t('hud.sunTitle'))}"><i style="background:#f6d77a"></i>${esc(t('hud.sun'))}</dt><dd class="full" id="hSun" title="${esc(t('hud.sunTitle'))}"></dd>
       <div class="bar"><b id="hSunBar" style="background:#f6d77a"></b></div>
-      <dt><i style="background:var(--power)"></i>${esc(t('hud.pv'))}</dt><dd id="hKW"></dd>
+      <dt><i style="background:var(--power)"></i>${esc(t('hud.pv'))}<small class="concept full">${esc(t('hud.pvNote'))}</small></dt><dd id="hKW"></dd>
       <dt class="full"><i style="background:var(--power)"></i>${esc(t('hud.energy'))}</dt><dd class="full" id="hKWh"></dd>
       <dt><i style="background:var(--water)"></i>${esc(t('hud.water'))}</dt><dd id="hLpm"></dd>
       <dt class="full"><i style="background:var(--water)"></i>${esc(t('hud.litres'))}</dt><dd class="full" id="hL"></dd>
       <dt class="full wint"><i style="background:#9ec9ea"></i>${esc(t('hud.outside'))}</dt><dd class="full wint" id="hOut"></dd>
-      <dt class="wint inrow"><i style="background:#f0a35e"></i>${esc(t('hud.inside'))}</dt><dd class="wint inrow" id="hIn"></dd>
+      <dt class="wint inrow"><i style="background:#f0a35e"></i>${esc(t('hud.inside'))}<small class="concept full">${esc(t('season.concept'))}</small></dt><dd class="wint inrow" id="hIn"></dd>
       <dt class="full rainrow"><i style="background:#7fb3e6"></i>${esc(t('hud.rain'))}</dt><dd class="full rainrow" id="hRain"></dd>
       <dt class="full rainrow"><i style="background:#3d9be9"></i>${esc(t('hud.tank'))}</dt><dd class="full rainrow" id="hTank"></dd>
       <dt class="full rainrow"><i style="background:#3d9be9"></i>${esc(t('hud.flow'))}</dt><dd class="full rainrow" id="hTankFlow"></dd>
@@ -943,18 +997,18 @@ function hudTemplate() {
 function updateHud() {
   readInfo();
   const sk = info.sky, pw = info.power, wa = info.water, gr = info.growth;
-  const alt = sk && isFinite(sk.sunAltDeg) ? sk.sunAltDeg : fallbackSky ? fbAlt : null;
+  const alt = sk && isFinite(sk.sunAltDeg) ? sk.sunAltDeg : !mods.sky ? fbAlt : null;
   $('#hClock').textContent = hhmm(state.hour);
   $('#hTime').textContent = hhmm(state.hour);
-  $('#hSun').textContent = alt == null ? t('hud.na') : alt <= 0 ? t('hud.night') : fmt(alt, 0) + '°';
+  $('#hSun').textContent = alt == null ? t('hud.na') : alt <= 0 ? t('hud.night') : `${fmt(alt, 0)}° · ${fmt(clamp(state.sun, 0, 1) * 100, 0)} %`;
   $('#hSunBar').style.transform = `scaleX(${clamp(state.sun, 0, 1)})`;
   $('#hKW').innerHTML = pw ? `${fmt(pw.kW)}<small>${t('unit.kw')}</small>` : t('hud.na');
   $('#hKWh').innerHTML = pw ? `${fmt(pw.kWhToday)}<small>${t('unit.kwh')}</small>` : t('hud.na');
   $('#hLpm').innerHTML = wa ? `${fmt(wa.lpm)}<small>${t('unit.lpm')}</small>` : t('hud.na');
   $('#hL').innerHTML = wa ? `${fmt(wa.litresToday, 0)}<small>${t('unit.l')}</small>` : t('hud.na');
-  $('#hCrop').innerHTML = gr ? `${esc(stageName(gr.stage))}${isFinite(gr.headDiameterCm) && gr.headDiameterCm > 0 ? `<small>Ø ${fmt(gr.headDiameterCm, 0)} ${t('unit.cm')}</small>` : ''}` : `${Math.round(state.dayOfSeason)}%`;
+  $('#hCrop').innerHTML = gr ? `<span class="stL">${esc(stageName(gr.stage))}</span><span class="stS">${esc(gr.stage ? t('stageShort.' + gr.stage) : '')}</span>${isFinite(gr.headDiameterCm) && gr.headDiameterCm > 0 ? `<small>Ø ${fmt(gr.headDiameterCm, 0)} ${t('unit.cm')}</small>` : ''}` : `${Math.round(state.dayOfSeason)}%`;
   $('#hCropBar').style.transform = `scaleX(${clamp(state.dayOfSeason, 0, 100) / 100})`;
-  const wi = info.winter, inWinter = !!wi && (state.season === 'winter' || state.winter > 0);
+  const wi = info.winter, inWinter = !!wi && state.winter > 0; // greenhouse rows only while the (concept) film is up
   const realT = state.realClimate && Number.isFinite(state.tempOutsideC);
   const hud = $('#hud'); hud.classList.toggle('winter', inWinter || realT); hud.classList.toggle('noin', !inWinter);
   if (inWinter || realT) {
@@ -967,16 +1021,18 @@ function updateHud() {
     $('#hTank').innerHTML = `${fmt((ri.tankLevel || 0) * 100, 0)}<small>%</small> · ${fmt((ri.tankLitres || 0) / 1000)}<small>m³</small>`;
     $('#hTankFlow').innerHTML = `+${fmt(ri.inflowLpm)} / −${fmt(ri.outflowLpm)}<small>${t('unit.lpm')}</small>`;
     $('#hTankBar').style.transform = `scaleX(${clamp(ri.tankLevel || 0, 0, 1)})`;
-    $('#vRain').textContent = ri.rainMmH > 0.05 ? `${fmt(ri.rainMmH)} ${t('unit.mmh')}` : t('irr.off');
+    const rv = ri.rainMmH > 0.05 ? `${fmt(ri.rainMmH)} ${t('unit.mmh')}` : t('status.off'), vR = $('#vRain');
+    vR.textContent = sim.rain === 'auto' ? t('status.auto', { v: rv }) : ri.rainMmH > 0.05 ? rv : t('irr.off'); vR.classList.toggle('muted', sim.rain === 'auto');
   }
-  renderYears(); syncAttr(); syncMapView();
+  renderYears(); syncAttr(); syncMapView(); syncHudCompact(); syncShowRow();
   if (!smallMQ.matches) document.documentElement.style.setProperty('--hudh', hud.offsetHeight + 'px'); // info panel stops above the HUD
   if (info.geo) { const g = info.geo; $('#mapStatus').textContent = g.loading ? t('map.loading') : g.error || ''; }
   { const n = siteName(); if ($('#locName').textContent !== n) renderLoc(); }
   syncLegend();
   winterWalls = wi && wi.filmDeployed > 0.5 && Array.isArray(mods.winter?.colliders) ? mods.winter.colliders : null;
-  const on = state.water > 0.01;
-  $('#vIrr').textContent = on ? t('irr.on') : t('irr.off');
+  const on = state.water > 0.01, vIrr = $('#vIrr');
+  vIrr.textContent = sim.irrigation === 'auto' ? t('status.auto', { v: t(on ? 'status.on' : 'status.off') }) : t(on ? 'irr.on' : 'irr.off');
+  vIrr.classList.toggle('muted', sim.irrigation === 'auto');
   if (selected) { const l = liveHtml(selected), el = $('#plive'); if (el && l != null) el.innerHTML = l; }
 }
 
@@ -992,7 +1048,7 @@ function updateHud() {
 }
 const L2 = () => (document.documentElement.lang === 'en' ? 'en' : 'pl');
 const lbl = (o) => (o ? (L2() === 'en' ? o.label_en || o.label_pl : o.label_pl || o.label_en) || o.label || '' : '');
-const num = (v, d = 1) => (v == null || !Number.isFinite(+v) ? t('hud.na') : Number(v).toFixed(d).replace('.', L2() === 'en' ? '.' : ','));
+const num = fmt;
 
 // ---------------- camera limits for the map / the geological section ----------------
 const ORBIT_BASE = { maxDistance: orbitP.maxDistance, maxPolarAngle: orbitP.maxPolarAngle };
@@ -1006,7 +1062,9 @@ function syncOrbitLimits() {
 // fog: sky.js sets a near fog every frame (90..360 m); zoomed out over the real map it is pushed out to the map's
 // recommended range, so the photo ground stays visible to the horizon
 function mapFog() {
-  if (!geoOn || !scene.fog || cam !== persp || mode === 'walk') return;
+  if (!scene.fog || mode === 'walk') return;
+  scene.fog.near = Math.max(scene.fog.near, 160); scene.fog.far = Math.max(scene.fog.far, 950); // lighter haze outside walk mode
+  if (!geoOn || cam !== persp) return;
   const d = persp.position.distanceTo(orbitP.target), k = clamp((d - 120) / 480, 0, 1);
   if (k <= 0) return;
   const near = geoRec?.fogNear || 1400, far = geoRec?.fogFar || 7000;
@@ -1039,6 +1097,7 @@ function renderLayers() {
   const g = mods.geo; if (!g || !Array.isArray(g.layers)) return;
   const cur = info.geo?.layer ?? 'none';
   selLayer.innerHTML = g.layers.map((l) => `<option value="${esc(l.id)}"${l.id === cur ? ' selected' : ''}>${esc(lbl(l))}</option>`).join('');
+  rOpacity.disabled = (selLayer.value || cur) === 'none';
 }
 function syncOpacity() { fillRange(rOpacity); $('#vOpacity').textContent = Math.round(rOpacity.value * 100) + '%'; }
 if (mods.geo) {
@@ -1046,6 +1105,7 @@ if (mods.geo) {
   selLayer.addEventListener('change', () => {
     const l = mods.geo.layers.find((v) => v.id === selLayer.value);
     if (l && Number.isFinite(l.opacity) && l.opacity > 0) { rOpacity.value = l.opacity; callMod('geo', 'setOpacity', l.opacity); syncOpacity(); }
+    rOpacity.disabled = selLayer.value === 'none';
     Promise.resolve(callMod('geo', 'setLayer', selLayer.value)).catch((e) => console.warn('geo.setLayer', e));
   });
   rOpacity.addEventListener('input', () => { callMod('geo', 'setOpacity', +rOpacity.value); syncOpacity(); });
@@ -1150,7 +1210,7 @@ const panelKind = () => ($('#panel').classList.contains('open') ? $('#panel').da
 function openPanel(kind) {
   select(null);
   const p = $('#panel'); p.dataset.kind = kind; p.classList.add('wide');
-  if (kind === 'report') renderReport(); else renderClimate();
+  if (kind === 'report') renderReport(); else if (kind === 'climate') renderClimate(); else renderGeology();
   p.classList.add('open'); p.scrollTop = 0; syncSheets();
   if (smallMQ.matches) setDrawer(false);
 }
@@ -1179,7 +1239,7 @@ function renderReport() {
   if (ti && !ti.loading) {
     const row = (k, v) => `<tr><td>${esc(t(k))}</td><td>${v}</td></tr>`;
     html += `<h4>${esc(t('report.terrain'))}</h4><table class="rep">
-      ${row('report.elev', `${num(ti.elevationM)} m`)}${row('report.slope', `${num(ti.slopePct)} %`)}${Number.isFinite(ti.aspectDeg) ? row('report.aspect', `${num(ti.aspectDeg, 0)}°`) : ''}
+      ${row('report.elev', `${num(ti.elevationM)} m`)}${row('report.slope', `${num(ti.slopePct)} %`)}${Number.isFinite(ti.aspectDeg) ? row('report.aspect', `${num(ti.aspectDeg, 0)}° (${['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'][Math.round((((ti.aspectDeg % 360) + 360) % 360) / 22.5) % 16]})`) : ''}
       ${row('report.relief', `${num(ti.reliefM)} m`)}${row('report.pad', `${num(ti.padLevelM)} m`)}
       ${row('report.cut', `${num(ti.cutM3, 0)} m³`)}${row('report.fill', `${num(ti.fillM3, 0)} m³`)}
       <tr><td>${esc(t('report.src'))}</td><td><span class="s">${esc(ti.source || '')}</span></td></tr></table>`;
@@ -1201,6 +1261,15 @@ function renderReport() {
   html += `<p class="est">${esc(t('est'))}</p>`;
   const top = p.scrollTop; p.innerHTML = html; p.scrollTop = top; bindClose();
 }
+// least-squares warming trend of the annual means since 1991, per decade
+function recentTrend() {
+  const a = mods.climate?.data?.annual; if (!a || !a.years || !a.tmean) return t('hud.na');
+  const xs = [], ys = []; a.years.forEach((y, i) => { if (y >= 1991 && Number.isFinite(a.tmean[i])) { xs.push(y); ys.push(a.tmean[i]); } });
+  if (xs.length < 10) return t('hud.na');
+  const mx = xs.reduce((p, v) => p + v, 0) / xs.length, my = ys.reduce((p, v) => p + v, 0) / ys.length;
+  let sxy = 0, sxx = 0; xs.forEach((x, i) => { sxy += (x - mx) * (ys[i] - my); sxx += (x - mx) ** 2; });
+  const v = (sxy / sxx) * 10; return (v > 0 ? '+' : '') + fmt(v);
+}
 function renderClimate() {
   const p = $('#panel'); if (p.dataset.kind !== 'climate') return;
   const c = mods.climate, ci = c ? callMod('climate', 'info', L2()) : null;
@@ -1211,8 +1280,9 @@ function renderClimate() {
     <dt>${esc(t('climate.annual'))}${ci?.annualMeanPeriod ? ` (${esc(ci.annualMeanPeriod)})` : ''}</dt><dd>${num(ci?.annualMean)} °C</dd>
     <dt>${esc(t('climate.base'))}</dt><dd>${num(ci?.baselineMean)} °C</dd>
     <dt>${esc(t('climate.warming'))}</dt><dd>${ci?.warmingVsBaseline != null ? sgn(ci.warmingVsBaseline) : t('hud.na')} °C</dd>
-    <dt>${esc(t('climate.trend'))}</dt><dd>${ci?.trendPerDecade != null ? sgn(ci.trendPerDecade) : t('hud.na')} ${esc(t('unit.perDecade'))}</dd>
-    <dt>${esc(t('climate.ghi'))}</dt><dd>${num(ci?.typicalDayKWhm2, 2)} ${esc(t('unit.kwhm2'))}</dd>
+    <dt>${esc(t('climate.trend'))}</dt><dd>${ci?.trendPerDecade != null ? esc(t('climate.trendPeriod', { v: sgn(ci.trendPerDecade), p: String(ci.trendPeriod || '').replace('-', '–'), r: recentTrend() })) : t('hud.na')}</dd>
+    <dt>${esc(t('climate.ghiDay', { d: t(state.winter > 0.5 ? 'climate.dayWinter' : 'climate.daySummer') }))}</dt><dd>${num(ci?.typicalDayKWhm2, 2)} ${esc(t('unit.kwhm2'))}</dd>
+    ${ci?.clearSkyIndex != null ? `<dt>${esc(t('climate.csi'))}</dt><dd>${num(ci.clearSkyIndex, 2)}</dd>` : ''}
     <dt>${esc(t('climate.now'))}</dt><dd>${num(ci?.tempOutsideC)} °C</dd>
   </dl><div id="climCharts"></div><p class="est">${esc(t('climate.caveat'))}</p><p class="est">${esc(ci?.source || '')}</p>`;
   p.innerHTML = html; bindClose();
@@ -1252,9 +1322,25 @@ $('#underViews').addEventListener('click', (e) => {
 });
 $('#tUnder').addEventListener('change', (e) => {
   state.show.underground = e.target.checked; $('#underCtl').hidden = !e.target.checked;
-  callMod('underground', 'setVisible', e.target.checked); syncOrbitLimits(); ctx.invalidateShadows();
-  if (e.target.checked) { renderUnderViews(); const v = callMod('underground', 'info')?.camera?.views?.oblique; if (v) flyPose(new THREE.Vector3(...v.pos), new THREE.Vector3(...v.target), 1.2); }
+  callMod('underground', 'setVisible', e.target.checked); syncOrbitLimits(); ctx.invalidateShadows(); syncHudCompact(); syncShowRow();
+  if (e.target.checked) {
+    renderUnderViews(); const v = callMod('underground', 'info')?.camera?.views?.oblique;
+    if (smallMQ.matches) openPanel('geology');
+    if (v) flyPose(new THREE.Vector3(...v.pos), new THREE.Vector3(...v.target), 1.2);
+  } else if (panelKind() === 'geology') closePanel();
 });
+$('#bUnderLegend').addEventListener('click', () => openPanel('geology'));
+// «Warstwy geologiczne»: legend of the section (colour, depth, age, aquifer), water table, well, scale breaks
+function renderGeology() {
+  const p = $('#panel'); if (p.dataset.kind !== 'geology') return;
+  const u = mods.underground ? callMod('underground', 'info') : null, en = L2() === 'en';
+  let html = panelHead(t('sec.data'), t('under.legend'), `${siteName()} · ${fmtCoord(state.site)}`);
+  html += `<ul class="glayers">${(u?.layers || []).map((l) => `<li><i style="background:${esc(l.color || '#888')}"></i><div><b>${esc(en ? l.nameEn || l.namePl : l.namePl || l.nameEn)}</b><span>${fmt(l.topM, 1)}–${fmt(l.baseM, l.baseM >= 100 ? 0 : 1)} m · ${esc(en ? l.ageEn || '' : l.agePl || l.ageEn || '')}${l.aquifer ? ` · ${esc(t('under.aquifer'))}` : ''}</span></div></li>`).join('')}</ul>`;
+  if (u?.water) html += `<div class="prop"><b>${esc(t('under.water'))}</b>${fmt(u.water.tableM)} m${Array.isArray(u.water.rangeM) ? ` (${fmt(u.water.rangeM[0])}–${fmt(u.water.rangeM[1])} m)` : ''}</div>`;
+  if (u?.well) html += `<div class="prop"><b>${esc(t('under.well'))}</b>${fmt(u.well.depthM, 0)} m</div>`;
+  html += `<p class="est">${esc(t('under.scaleNote'))}</p><p class="est">${esc(u?.attribution || '')}${u?.confidence ? ` · ${esc(u.confidence)}` : ''}</p>`;
+  p.innerHTML = html; bindClose();
+}
 $('#underScale').addEventListener('click', (e) => {
   const b = e.target.closest('button[data-scale]'); if (!b) return; state.undergroundScale = b.dataset.scale;
   $$('#underScale button').forEach((x) => x.classList.toggle('on', x === b)); ctx.invalidateShadows();
@@ -1271,24 +1357,90 @@ $('#rainMode').addEventListener('click', (e) => { const b = e.target.closest('bu
 rRain.addEventListener('input', () => { sim.rainLevel = +rRain.value; fillRange(rRain); });
 if (!mods.rain) $('#rainCtl').style.display = 'none';
 syncRainUi();
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  state.speed = 60; $$('#speeds button').forEach((x) => x.classList.toggle('on', x.dataset.s === '60'));
+  state.show.rays = false; $('#tRays').checked = false; callMod('sky', 'setRaysVisible', false);
+}
 $('#tClimate').addEventListener('change', (e) => { state.realClimate = e.target.checked; });
 if (!mods.climate) $('#lClimate').style.display = 'none';
 $('#tRays').addEventListener('change', (e) => { state.show.rays = e.target.checked; callMod('sky', 'setRaysVisible', e.target.checked); });
 if (!mods.sky?.setRaysVisible) $('#lRays').style.display = 'none';
 
 // ---------------- data attribution (always visible) ----------------
+const ATTR_EN = [['Ortofotomapa', 'Orthophoto'], ['(aktualna)', '(current)'], ['aktualna', 'current'], ['Szczegółowa Mapa Geologiczna Polski', 'Detailed Geological Map of Poland'],
+  ['Mapa hydrogeologiczna Polski', 'Hydrogeological Map of Poland'], ['Dane geologiczne', 'Geological data'], ['Główne Zbiorniki Wód Podziemnych', 'Major groundwater reservoirs'], ['Źródło', 'Source']];
+const ATTR_URL = [[/GUGiK|geoportal/i, 'https://www.geoportal.gov.pl/'], [/PIG-PIB|pgi\.gov/i, 'https://www.pgi.gov.pl/'], [/IMGW/i, 'https://www.imgw.pl/'], [/Sentinel|Copernicus/i, 'https://www.copernicus.eu/'], [/GDOŚ|Natura/i, 'https://geoserwis.gdos.gov.pl/']];
+let attrSig = '';
 function syncAttr() {
-  const parts = [];
-  const add = (s) => { s = String(s || '').trim(); if (s && !parts.includes(s)) parts.push(s); };
-  if (geoOn) add(info.geo?.attribution);
-  if (mods.climate) add(info.climate?.source);
+  const parts = [], seen = new Set(), en = L2() === 'en';
+  const add = (text, url) => {
+    text = String(text || '').trim(); if (!text || seen.has(text)) return; seen.add(text);
+    if (en) for (const [a, b] of ATTR_EN) text = text.split(a).join(b);
+    parts.push({ text, url: url || ATTR_URL.find(([re]) => re.test(text))?.[1] || '' });
+  };
+  if (geoOn) { const al = info.geo?.attributions; if (Array.isArray(al) && al.length) al.forEach((a) => add(a.text, a.url)); else add(info.geo?.attribution); }
+  if (mods.climate) {
+    add(t('attr.meteo'), 'https://open-meteo.com/');
+    String(info.climate?.source || '').split('·').map((x) => x.trim()).filter((x) => x && !/Open-Meteo/i.test(x)).forEach((x) => add(x));
+  }
   if (state.show.underground) add(info.underground?.attribution);
-  const srcs = new Set(); for (const f of Object.values(info.sitedata?.fields || {})) if (f?.source && f.value != null && !/^lib\//.test(f.source)) srcs.add(f.source);
-  [...srcs].slice(0, 8).forEach(add);
-  const el = $('#attr'), txt = parts.length ? `${t('attr.label')}: ${parts.join(' · ')}` : '';
-  if (el.textContent !== txt) { el.textContent = txt; el.title = txt; }
+  for (const f of Object.values(info.sitedata?.fields || {})) if (f?.source && f.value != null && !/^lib\//.test(f.source) && seen.size < 14) add(f.source, f.link);
+  const sig = L2() + parts.map((x) => x.text + x.url).join('|'); if (sig === attrSig) return; attrSig = sig;
+  const el = $('#attr');
+  el.innerHTML = parts.length ? `${esc(t('attr.label'))}: ${parts.map((x) => (/^https:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.text)}</a>` : esc(x.text))).join(' · ')}` : '';
+  el.title = parts.map((x) => x.text).join(' · ');
 }
-$('#attr').addEventListener('click', () => $('#attr').classList.toggle('open'));
+$('#attr').addEventListener('click', (e) => { if (!e.target.closest('a')) $('#attr').classList.toggle('open'); });
+
+// ---------------- «Pokaż» quick toggles: x-ray, winter (concept), underground, map ----------------
+function syncShowRow() {
+  const st = { xray: XRAY.on, winter: state.season === 'winter', under: !!state.show.underground, map: mapFar() };
+  $$('#showRow button').forEach((b) => { const on = !!st[b.dataset.show]; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+}
+$('#showRow').addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-show]'); if (!b) return;
+  const k = b.dataset.show;
+  if (k === 'xray') setXray(!XRAY.on);
+  else if (k === 'winter') { state.season = state.season === 'winter' ? 'summer' : 'winter'; syncSeason(); }
+  else if (k === 'under') { const c = $('#tUnder'); c.checked = !c.checked; c.dispatchEvent(new Event('change')); }
+  else if (k === 'map') $('#bMapView').click();
+  syncShowRow();
+});
+if (!mods.underground) $('#showRow button[data-show="under"]').style.display = 'none';
+if (!mods.geo) $('#showRow button[data-show="map"]').style.display = 'none';
+$('#bHome').addEventListener('click', () => flyHome());
+
+// ---------------- hooks for lib/tour.js (intro, preset scenes, share link) ----------------
+// scene = { mode, hour, season, speed, playing, layers: { power, water, labels, xray, rays, shadows, underground, map,
+//           rain }, camera: { pos: [x,y,z], target: [x,y,z] }, site: { lat, lon, rotDeg, name } }
+function getScene() {
+  const c = cam === persp ? { pos: persp.position.toArray().map((v) => +v.toFixed(2)), target: orbitP.target.toArray().map((v) => +v.toFixed(2)) } : null;
+  return {
+    mode, hour: +state.hour.toFixed(2), season: state.season, speed: state.speed, playing: sim.playing,
+    layers: { power: state.show.power, water: state.show.water, labels: state.show.labels, xray: XRAY.on, rays: state.show.rays !== false,
+      shadows: renderer.shadowMap.enabled, underground: !!state.show.underground, map: geoOn, rain: sim.rain },
+    camera: c, site: { lat: state.site.lat, lon: state.site.lon, rotDeg: state.site.rotDeg, name: state.site.name || '' },
+  };
+}
+const setTog = (sel, v) => { const c = $(sel); if (c && !c.disabled && c.checked !== !!v) { c.checked = !!v; c.dispatchEvent(new Event('change')); } };
+function applyScene(sc = {}) {
+  if (sc.site && Number.isFinite(+sc.site.lat) && Number.isFinite(+sc.site.lon) && (Math.abs(sc.site.lat - state.site.lat) > 1e-6 || Math.abs(sc.site.lon - state.site.lon) > 1e-6)) {
+    const site = { lat: +sc.site.lat, lon: +sc.site.lon, rotDeg: Number.isFinite(+sc.site.rotDeg) ? +sc.site.rotDeg : state.site.rotDeg, name: sc.site.name || '', source: 'scene' };
+    lastSiteAt = Date.now(); setSiteUrl(site); applySite(site);
+  }
+  if (sc.season === 'summer' || sc.season === 'winter') { state.season = sc.season; syncSeason(); }
+  if (Number.isFinite(+sc.hour)) { state.hour = ((+sc.hour % 24) + 24) % 24; syncClock(); }
+  if (Number.isFinite(+sc.speed)) { state.speed = +sc.speed; $$('#speeds button').forEach((x) => x.classList.toggle('on', +x.dataset.s === state.speed)); }
+  if (typeof sc.playing === 'boolean') { sim.playing = sc.playing; syncPlay(); }
+  const L = sc.layers || {};
+  if ('power' in L) setTog('#tPower', L.power); if ('water' in L) setTog('#tWater', L.water); if ('labels' in L) setTog('#tLabels', L.labels);
+  if ('rays' in L) setTog('#tRays', L.rays); if ('shadows' in L) setTog('#tShadow', L.shadows); if ('map' in L) setTog('#tGround', L.map);
+  if ('underground' in L) setTog('#tUnder', L.underground); if ('xray' in L) setXray(!!L.xray);
+  if (L.rain === 'auto' || L.rain === 'on' || L.rain === 'off') { sim.rain = L.rain; syncRainUi(); }
+  if (sc.mode && ['iso', 'top', 'walk'].includes(sc.mode) && sc.mode !== mode) setMode(sc.mode);
+  if (sc.camera?.pos && sc.camera?.target) flyPose(new THREE.Vector3(...sc.camera.pos), new THREE.Vector3(...sc.camera.target), sc.camera.duration ?? 1.2);
+  syncShowRow();
+}
 
 // ---------------- language switch: re-render dynamic text ----------------
 function relabel() {
@@ -1298,6 +1450,8 @@ function relabel() {
   if (selected) renderPanel();
   if (panelKind() === 'report') renderReport();
   if (panelKind() === 'climate') renderClimate();
+  if (panelKind() === 'geology') renderGeology();
+  syncShowRow();
   labelsDirty = true;
 }
 onLang(relabel);
@@ -1311,6 +1465,26 @@ function renderLabels() {
   if (!labelsDirty && cam === lastCam && lastCamM.equals(cam.matrixWorld) && lastProjM.equals(cam.projectionMatrix)) return;
   labelsDirty = false; lastCam = cam; lastCamM.copy(cam.matrixWorld); lastProjM.copy(cam.projectionMatrix);
   labelRenderer.render(scene, cam);
+  declutterLabels();
+}
+// labels that overlap on screen: keep the selected one and then the nearest to the camera, hide the others
+const _lp = new THREE.Vector3();
+function declutterLabels() {
+  const list = [];
+  for (const it of ITEMS) {
+    const el = labelEls[it.id]; if (!el || !it.label || !it.label.visible) continue;
+    el.style.visibility = '';
+    if (el.style.display === 'none') continue;
+    it.label.getWorldPosition(_lp);
+    list.push({ el, d: it === selected ? -1 : (cam.isOrthographicCamera ? 0 : cam.position.distanceToSquared(_lp)) });
+  }
+  list.sort((a, b) => a.d - b.d);
+  const kept = [];
+  for (const o of list) {
+    const r = o.el.getBoundingClientRect();
+    if (kept.some((k) => r.left < k.right + 3 && r.right > k.left - 3 && r.top < k.bottom + 2 && r.bottom > k.top - 2)) o.el.style.visibility = 'hidden';
+    else kept.push(r);
+  }
 }
 // slow-GPU probe: median frame time of frames 10-40 above 40 ms on the high tier -> drop bloom, pixel ratio, shadows
 const probe = { n: 0, dts: [], done: QUALITY.low || QUALITY.forced };
@@ -1325,7 +1499,8 @@ function goLow(fps) {
   renderer.setPixelRatio(pixelRatio()); renderer.setSize(innerWidth, innerHeight);
   if (composer) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(innerWidth, innerHeight); }
   if ($('#tShadow').checked) applyShadows(false); hideShadowToggle();
-  notice(`${esc(t('slow.notice', { fps }))} <a href="?q=high" style="color:var(--accent)">${esc(t('slow.full'))}</a>`);
+  const u = new URL(location.href); u.searchParams.set('q', 'high'); // keep site / season parameters, change only q
+  notice(`${esc(t('slow.notice', { fps }))} <a href="${esc(u.pathname + u.search)}" style="color:var(--accent)">${esc(t('slow.full'))}</a>`);
 }
 function probeFrame(raw) {
   if (probe.done) return;
@@ -1335,6 +1510,9 @@ function probeFrame(raw) {
 }
 let hudT = 0, uiT = 0, frameN = 0, lastFilmOn = null;
 const robotLabelAt = node('FarmDroid / GNSS antenna');
+// short leader line from the FarmDroid label down to the robot's GNSS antenna (in the label group: hidden with it)
+const leader = new THREE.Line(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3)), new THREE.LineBasicMaterial({ color: 0xd9ad57, transparent: true, opacity: 0.85, depthTest: false, fog: false }));
+leader.renderOrder = 11; leader.frustumCulled = false; labelsG.add(leader);
 const _v = new THREE.Vector3();
 function frame() {
   const raw = clock.getDelta(), dt = Math.min(0.05, raw), now = performance.now();
@@ -1355,7 +1533,10 @@ function frame() {
   }
   // simulation modules: sky -> power -> water -> growth -> winter
   if (mods.sky) callMod('sky', 'update', dt, state);
-  if (fallbackSky) fallbackSkyUpdate();
+  if (!mods.sky) { // sky.js missing or disabled after an error: the fallback sun takes over
+    if (fbSun.parent !== scene) scene.add(fbHemi, fbSun, fbSun.target);
+    fallbackSkyUpdate();
+  }
   callMod('power', 'update', dt, state);
   callMod('water', 'update', dt, state);
   callMod('growth', 'update', dt, state);
@@ -1375,7 +1556,7 @@ function frame() {
   callMod('climate', 'update', dt, state);
   callMod('sitedata', 'update', dt, state);
   mapFog();
-  { const far = cam === persp && mode !== 'walk' && persp.position.distanceTo(orbitP.target) > 260; const v = state.show.labels && !far; if (labelsG.visible !== v) { labelsG.visible = v; labelsDirty = true; } }
+  { const far = cam === persp && mode !== 'walk' && persp.position.distanceTo(orbitP.target) > 260; const v = state.show.labels && !far && !state.show.underground; if (labelsG.visible !== v) { labelsG.visible = v; labelsDirty = true; } }
   // camera
   stepTween(dt);
   if (mode === 'walk') stepWalk(dt); else if (mode === 'iso') orbitP.update(); else orbitO.update();
@@ -1383,8 +1564,11 @@ function frame() {
   if (++frameN % 10 === 0) {
     refreshRobot();
     if (robotLabelAt && itemById.farmdroid.label) {
-      robotLabelAt.getWorldPosition(_v); _v.y += 0.35;
-      if (_v.distanceToSquared(itemById.farmdroid.label.position) > 1e-4) { itemById.farmdroid.label.position.copy(_v); labelsDirty = true; }
+      robotLabelAt.getWorldPosition(_v); _v.y += 1.4;
+      if (_v.distanceToSquared(itemById.farmdroid.label.position) > 1e-4) {
+        itemById.farmdroid.label.position.copy(_v); labelsDirty = true;
+        const a = leader.geometry.attributes.position; a.setXYZ(0, _v.x, _v.y - 1.32, _v.z); a.setXYZ(1, _v.x, _v.y - 0.12, _v.z); a.needsUpdate = true; leader.geometry.computeBoundingSphere();
+      }
     }
   }
   if (selected && (selected.id === 'farmdroid' || selected.id === 'cabbage' || selected.id === 'film')) selBoxes();
@@ -1420,4 +1604,4 @@ else if (mods.geo) Promise.resolve(mods.geo.ready).catch(() => {}).then(() => { 
 frame();
 requestAnimationFrame(() => boot?.done());
 if (QUALITY.software && !QUALITY.forced) notice(esc(t('slow.notice', { fps: '<10' })), 15000);
-window.__witkowo = { applySite, openPanel, libs, colliders, setXray, flyToFlow, state, sim, mods, ctx, info, setMode, select, ITEMS, walk, persp, orbitP, ortho, pickAt, QUALITY, get mode() { return mode; }, get cam() { return cam; } };
+window.__witkowo = { applyScene, getScene, flyHome, applySite, openPanel, libs, colliders, setXray, flyToFlow, state, sim, mods, ctx, info, setMode, select, ITEMS, walk, persp, orbitP, ortho, pickAt, QUALITY, get mode() { return mode; }, get cam() { return cam; } };

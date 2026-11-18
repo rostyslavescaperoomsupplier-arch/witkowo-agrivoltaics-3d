@@ -68,7 +68,7 @@ const views = {
   top: [[6, 18, 10], [0, 0, -10]],
   robot: null,
 };
-let mod = null, follow = false;
+let mod = null, follow = false, gltfRoot = null;
 document.querySelectorAll('button[data-v]').forEach((b) => b.onclick = () => view(b.dataset.v));
 function view(name) {
   follow = name === 'robot';
@@ -76,7 +76,7 @@ function view(name) {
 }
 
 new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).load('../model/witkowo.glb', (gltf) => {
-  const root = gltf.scene;
+  const root = gltf.scene; gltfRoot = root;
   root.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
   scene.add(root);
   const t0 = performance.now();
@@ -107,7 +107,27 @@ function frame() {
 }
 frame();
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
-window.qa = { step(n, dt) { for (let i = 0; i < n; i++) mod.update(dt, state); }, state, view, sync, set(k, v) { $(k).value = v; sync(); }, get mod() { return mod; }, camera, controls };
+// pick-material test: render only the crops with a patched MeshBasicMaterial (like main's GPU picking) and
+// count covered pixels; compare with an unpatched one (full-size geometry).
+const pickRT = new THREE.WebGLRenderTarget(320, 200);
+const pickBuf = new Uint8Array(320 * 200 * 4);
+const pickPatched = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+const pickPlain = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+let pickReady = false;
+function pickCoverage(patched) {
+  if (!pickReady) { mod.patchPickMaterial(pickPatched); pickReady = true; }
+  const crops = []; gltfRoot.traverse((o) => { if (o.isMesh && o.geometry.attributes.aGrow) crops.push(o); });
+  const saved = crops.map((m) => m.material), vis = [];
+  gltfRoot.traverse((o) => { if (o.isMesh && !o.geometry.attributes.aGrow) { vis.push([o, o.visible]); o.visible = false; } });
+  const bg = scene.background; scene.background = null;
+  crops.forEach((m) => (m.material = patched ? pickPatched : pickPlain));
+  renderer.setRenderTarget(pickRT); renderer.setClearColor(0, 0); renderer.clear(); renderer.render(scene, camera);
+  renderer.readRenderTargetPixels(pickRT, 0, 0, 320, 200, pickBuf); renderer.setRenderTarget(null);
+  crops.forEach((m, i) => (m.material = saved[i])); vis.forEach(([o, v]) => (o.visible = v)); scene.background = bg;
+  let n = 0; for (let i = 3; i < pickBuf.length; i += 4) if (pickBuf[i]) n++;
+  return n;
+}
+window.qa = { pickCoverage, step(n, dt) { for (let i = 0; i < n; i++) mod.update(dt, state); }, state, view, sync, set(k, v) { $(k).value = v; sync(); }, get mod() { return mod; }, camera, controls };
 </script>
 </body>
 </html>

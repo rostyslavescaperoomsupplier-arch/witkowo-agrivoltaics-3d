@@ -115,7 +115,7 @@ window.__setSite = async (key) => {
   root.position.y = 0;
   await geo.setSite(s, { terrain }); fillYears();
 };
-window.__geo = geo; window.__geoMod = geoMod;
+window.__geo = geo; window.__geoMod = geoMod; window.__renderer = renderer;
 const $ = id => document.getElementById(id);
 for (const l of geo.layers) $('layer').insertAdjacentHTML('beforeend', `<option value="${l.id}">${l.label_en}</option>`);
 $('site').onchange = e => window.__setSite(e.target.value);

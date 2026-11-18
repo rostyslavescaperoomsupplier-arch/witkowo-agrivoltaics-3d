@@ -107,8 +107,10 @@ document.querySelectorAll('[data-lang]').forEach(b => b.onclick = () => { docume
 document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => setView(b.dataset.v));
 window.__site = async (k) => {
   if (k === 'generic') {
-    sdRep = { geology: { value: 'Gliny zwałowe, piaski i żwiry lodowcowe', unit: '', source: 'PIG-PIB SMGP (stub)', confidence: 'medium' },
-      hydro: { gupwDepth: { value: '5-15', unit: 'm', source: 'PIG-PIB MHP (stub)', confidence: 'low' }, thickness: { value: 12, unit: 'm' } } };
+    sdRep = { fields: {
+      'geo.lithology': { value: Q.get('nogeo') ? null : 'Gliny zwałowe, piaski i żwiry lodowcowe', label_pl: 'Utwory powierzchniowe (SMGP 1:50 000)', source: 'PIG-PIB SMGP (stub)', confidence: 'high' },
+      'hydro.waterTable': { value: 4.2, label_pl: 'Zwierciadło wody gruntowej', source: 'PIG-PIB MWP (stub)', confidence: 'medium' },
+      'hydro.aquiferTop': { value: 12, label_pl: 'Strop warstwy wodonośnej', source: 'PIG-PIB MWP (stub)', confidence: 'medium' } } };
     await ug.setSite({ lat: 52.05, lon: 20.60, rotDeg: 0, name: 'Mazowsze (test)' });
   } else await ug.setSite(null);
   document.querySelectorAll('[data-site]').forEach(x => x.classList.toggle('on', x.dataset.site === k));
