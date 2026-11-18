@@ -105,7 +105,7 @@ Module owners:
   object "Плёнка теплицы", walk colliders from winter.colliders, irrigation auto schedule in winter 10:00–11:00 only.
 Module order each frame: sky -> power -> water -> growth -> winter.
 
-## REAL MAP + DATA OVERLAY — added 2026-11-18 (LOCAL ONLY, do not commit/push)
+## REAL MAP + DATA OVERLAY — added 2026-11-18 (user 2026-11-18 later: push after every agent — supersedes LOCAL ONLY)
 User: overlay the farm on the real map with all collected data (satellite, geology, water, climate).
 Research data lands in `reference/geo/{satellite,geology,water,climate}/` (README.md in each; agents still
 writing some of them). Builders read them, never edit them. Copy what the site needs into `data/geo/`
@@ -130,7 +130,7 @@ New modules / owners:
   Open-Meteo CC BY 4.0, GUGiK/Geoportal, PIG-PIB, Copernicus). Module order: sky, power, water, growth,
   winter, geo, underground, climate. Attribution line always visible when a real-map layer is on.
 
-## RAIN + TANK WATER LEVEL — added 2026-11-18 (LOCAL ONLY)
+## RAIN + TANK WATER LEVEL — added 2026-11-18 (push allowed, see above)
 User: "добавь дождь, уровень воды в баках и т.п."
 - `lib/rain.js` (agent RAIN, new): rain, runoff from the roof into the 18 `molded water tanks` (they are water-
   filled ballast), visible water level inside each tank, puddles / wet look, rain->snow handled by winter.js
@@ -141,7 +141,7 @@ User: "добавь дождь, уровень воды в баках и т.п."
   Model: roof catchment = PV + roof area of the 3 canopies, gutters to the tanks; irrigation draws from tanks
   (state.irrigationLpm) when level > 5%; overflow above 100% shown as spill.
 
-## ANY LOCATION IN POLAND — added 2026-11-18 (LOCAL ONLY)
+## ANY LOCATION IN POLAND — added 2026-11-18 (push allowed, see above)
 User: "place the farm at ANY point in Poland, taking geology, elevation differences etc. into account".
 Site object (main owns): `state.site = { lat, lon, rotDeg, name, source }`; default = Witkowo from
 data/geo/site.json. URL: `?lat=..&lon=..&rot=..`. When it changes, main calls `await mod.setSite?.(site)` on every

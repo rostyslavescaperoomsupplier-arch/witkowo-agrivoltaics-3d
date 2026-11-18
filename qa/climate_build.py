@@ -169,15 +169,16 @@ data = {
     'gridpoint': key.get('era5_gridpoint'),
     'sources': [
         {'id': 'era5', 'name': 'ERA5 reanalysis (Copernicus Climate Change Service / ECMWF) via Open-Meteo Historical Weather API',
-         'attribution': 'Open-Meteo.com (CC BY 4.0), ERA5: Copernicus Climate Change Service',
          'license': 'CC BY 4.0', 'url': 'https://open-meteo.com/en/docs/historical-weather-api'},
-        {'id': 'imgw', 'name': 'IMGW-PIB public data (synop Szczecin 12205 + climate stations)',
-         'attribution': 'Źródło: IMGW-PIB', 'url': 'https://danepubliczne.imgw.pl/'},
+        {'id': 'imgw', 'name': 'IMGW-PIB public data (synop Szczecin 12205 + climate stations)', 'url': 'https://danepubliczne.imgw.pl/'},
     ],
-    'attribution': {
-        'pl': 'Dane: ERA5 / Copernicus Climate Change Service via Open-Meteo.com (CC BY 4.0); Źródło: IMGW-PIB',
-        'en': 'Data: ERA5 / Copernicus Climate Change Service via Open-Meteo.com (CC BY 4.0); Source: IMGW-PIB (Źródło: IMGW-PIB)',
-    },
+    # exact wording required (Copernicus licence; Open-Meteo CC BY 4.0; IMGW-PIB regulamin par. 5 ust. 3-4)
+    'attribution': [
+        {'text': 'Contains modified Copernicus Climate Change Service information %d' % dt.date.today().year, 'url': 'https://cds.climate.copernicus.eu/'},
+        {'text': 'Weather data by Open-Meteo.com (CC BY 4.0)', 'url': 'https://open-meteo.com/'},
+        {'text': 'Źródłem pochodzenia danych jest Instytut Meteorologii i Gospodarki Wodnej – Państwowy Instytut Badawczy', 'url': 'https://danepubliczne.imgw.pl/'},
+        {'text': 'Dane Instytutu Meteorologii i Gospodarki Wodnej – Państwowego Instytutu Badawczego zostały przetworzone', 'url': 'https://danepubliczne.imgw.pl/'},
+    ],
     'baseline': {'period': '1961-1990', 'tmean': r(base)},
     'trend': {
         'perDecade': r(slope * 10, 3), 'period': f'{years[0]}-{years[-1]}', 'intercept': r(icpt, 4),
