@@ -1,0 +1,65 @@
+
+NSP    Kod stacji
+POST   Nazwa stacji
+ROK    Rok
+MC     Miesi¹c
+TMAX   Absolutna maksymalna temperatura powietrza [°C]
+WTMAX  Status pomiaru TMAX
+TMXS   Œrednia maksymalna temperatura powietrza [°C]
+WTMXS  Status pomiaru TMXS
+TMIN   Absolutna minimalna temperatura powietrza [°C]
+WTMIN  Status pomiaru TMIN
+TMNS   Œrednia minimalna temperatura powietrza [°C]
+WWTMNS Status pomiaru TMNS
+STM    Œrednia miesiêczna temperatura powietrza [°C]
+WSTM   Status pomiaru STM
+TMNG   Minimalna temperatura powietrza przy gruncie [°C]
+WTMNG  Status pomiaru TMNG                        
+SUMM   Miesiêczna suma opadów [mm]
+WSUMM  Status pomiaru SUMM
+OPMX   Maksymalna dobowa suma opadów w miesi¹cu [mm]
+WOPMX  Status pomiaru OPMX
+DN1    Pierwszy dzieñ wyst¹pienia opadu maksymalnego
+DN2    Ostatni dzieñ wyst¹pienia opadu maksymalnego
+SUUS   Miesiêczna suma us³onecznienia  [godziny]
+WSUUS  Status pomiaru SUUS
+PKSN   Maksymalna wysokoœæ pokrywy œnie¿nej [cm]
+WPKSN  Status pomiaru PKSN
+PSDN   Liczba dni z pokryw¹ œnie¿n¹
+WPSDN  Status pomiaru PSDN
+DESD   Liczba dni z opadem deszczu
+WDESD  Status pomiaru DESD
+SNID   Liczba dni z opadem œniegu
+WSNID  Status pomiaru SNID
+DSND   Liczba dni z opadem deszczu ze œniegiem
+WDSND  Status pomiaru DSND
+GRDD   Liczba dni z gradem
+WGRDD  Status pomiaru GRDD
+MGLD   Liczba dni z mg³¹
+WMGLD  Status pomiaru MGLD
+ZAMD   Liczba dni z zamgleniem
+WZAMD  Status pomiaru ZAMD
+SADD   Liczba dni z sadzi¹
+WSADD  Status pomiaru SADD
+GOLD   Liczba dni z go³oledzi¹
+WGOLD  Status pomiaru GOLD
+ZAND   Liczba dni z zamieci¹ œnie¿n¹ nisk¹
+WZAND  Status pomiaru ZAND
+ZAWD   Liczba dni z zamieci¹ œnie¿n¹ wysok¹
+WZAWD  Status pomiaru ZAWD
+ZMED   Liczba dni ze zmêtnieniem opalizuj¹cym
+WZMED  Status pomiaru ZMED
+W10D   Liczba dni z wiatrem >= 10m/s
+WW10D  Status pomiaru W10D
+W15D   Liczba dni z wiatrem >15m/s
+WW15D  Status pomiaru W15D
+BURD   Liczba dni z burz¹
+WBURD  Status pomiaru BURD
+ROSD   Liczba dni z ros¹
+WROSD  Status pomiaru ROSD
+SZRD   Liczba dni ze szronem
+WSZRD  Status pomiaru SZRD
+
+Status "8" brak pomiaru
+Status "9" brak zjawiska
+Dla agregacji typu "Liczba dni z" status "9" oznacza brak pomiaru zjawisk na stacji.

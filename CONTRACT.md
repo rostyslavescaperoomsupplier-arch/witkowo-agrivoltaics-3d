@@ -63,7 +63,7 @@ Order each frame: sky.update -> power.update -> water.update -> growth.update. `
 growth `{ stage: 'seedling'|'vegetative'|'heading'|'harvest', headDiameterCm }`, sky `{ sunAltDeg }`.
 
 Style: dark UI like the escape-room viewer (accent amber #d9ad57, panel rgba(17,19,23,.9)). No emoji, no stock
-icon sets; tiny inline SVG only. UI languages: RU (default), PL, EN via `lib/i18n.js` `t(key)`.
+icon sets; tiny inline SVG only. UI languages: PL (default) + EN via `lib/i18n.js` `t(key)`. NO Russian anywhere in the UI (user, 2026-11-18).
 Performance: target 60 fps on a laptop iGPU; scene already has ~1.1 M vertices — prefer InstancedMesh /
 Points / shader tricks over many objects; no per-frame allocations.
 
@@ -84,3 +84,22 @@ New `reference/Rebuild_in_Blender.py` + `reference/README_RU.txt` (see "ВЕРС
   (heads x -8.6..8.6, z -28.5..-0.8; drip lines x -8.39..8.39, z -30..0). Count plants/lines from the GLB.
 - FarmDroid moved to the entrance in front of the beds: x 3.5..6.5, z 1.0..4.0 (faces -z, tool discs at z ~1.1).
 - Electrical rack / inverters / wiring / Field control cabinet: unchanged.
+
+## WINTER MODE (greenhouse) — added 2026-11-18
+User: "режим зима — между столбами натягивается плёнка и это становится теплицей".
+New state fields (main.js owns them):
+- `state.season`: 'summer' | 'winter' (UI toggle Лето / Зима).
+- `state.winter`: 0..1 transition, eased by main over ~4 s real time (0 = summer, 1 = full winter). Modules
+  animate from this value, never jump.
+Module owners:
+- `lib/winter.js` (agent WINTER, new): greenhouse film + snow + temperature. Film stretched between the
+  column lines x = -10, 0, 10: vertical side walls on x = -10 and x = 10 (outer), roof film spanning the two bays
+  (x -10..0 and 0..10) under/around the PV rows, end walls at z ~ +0.3 and z ~ -30.3 with a door opening in front
+  of each bay. Film unrolls with state.winter. Snow on the ground OUTSIDE the greenhouse and on the roof/PV,
+  snowflakes outside only. info(): { outsideC, insideC, filmDeployed 0..1, snowCm }. Exposes `film` (Object3D)
+  and `colliders` ([{x0,z0,x1,z1}] wall boxes with door gaps) for main's walk collision and selection.
+- `lib/sky.js`: winter sun = 21 Dec (sunrise ~8:20, sunset ~15:40, noon alt ~13 deg), blended by state.winter;
+  colder palette.
+- `main.js` / `index.html` / `lib/i18n.js` (CORE): season toggle, easing state.winter, HUD temps from winter.info(),
+  object "Плёнка теплицы", walk colliders from winter.colliders, irrigation auto schedule in winter 10:00–11:00 only.
+Module order each frame: sky -> power -> water -> growth -> winter.

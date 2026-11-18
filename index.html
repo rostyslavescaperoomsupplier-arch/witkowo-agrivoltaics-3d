@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="pl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b0c0f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="format-detection" content="telephone=no">
-<meta name="description" content="3D-реконструкция агровольтаической фермы в Witkowo: навесы с солнечными панелями над капустой, полив и робот FarmDroid.">
-<title>Witkowo — агровольтаика 3D</title>
+<meta name="description" content="Rekonstrukcja 3D farmy agrowoltaicznej w Witkowie: wiaty z panelami słonecznymi nad kapustą, nawadnianie, robot FarmDroid i tryb zimowy ze szklarnią.">
+<title>Witkowo — agrowoltaika 3D</title>
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <style>
@@ -34,7 +34,7 @@
   .seg button { all: unset; text-align: center; padding: 6px 0; border-radius: 5px; cursor: pointer; color: var(--muted); font-weight: 500; transition: background .15s, color .15s; font-variant-numeric: tabular-nums; }
   .seg button:hover { color: var(--text); }
   .seg button.on { background: var(--accent-dim); color: var(--accent); }
-  .langs { display: inline-grid; grid-template-columns: repeat(3, auto); gap: 1px; padding: 1px; background: #0d0f12; border: 1px solid var(--line); border-radius: 6px; flex: none; }
+  .langs { display: inline-grid; grid-template-columns: repeat(2, auto); gap: 1px; padding: 1px; background: #0d0f12; border: 1px solid var(--line); border-radius: 6px; flex: none; }
   .langs button { all: unset; cursor: pointer; padding: 2px 6px; border-radius: 4px; font-size: 11px; font-weight: 600; letter-spacing: 0.06em; color: var(--muted); }
   .langs button:hover { color: var(--text); }
   .langs button.on { background: var(--accent-dim); color: var(--accent); }
@@ -65,6 +65,20 @@
   .ibtn { all: unset; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 28px; border-radius: 7px; border: 1px solid var(--line2); color: var(--accent); flex: none; }
   .ibtn:hover { border-color: var(--accent); }
   .ibtn.on { background: var(--accent-dim); border-color: rgba(217, 173, 87, 0.5); }
+  .seg.two { grid-template-columns: repeat(2, 1fr); }
+  li.item.off { color: #5d616a; cursor: default; }
+  li.item.off:hover { background: none; color: #5d616a; }
+  li.item .sub2 { margin-left: auto; font-size: 11px; color: #5d616a; }
+  #hud .wint { display: none; }
+  #hud.winter .wint { display: flex; }
+  #hud.winter dd.wint { display: block; }
+  .tog .fly { cursor: pointer; text-decoration: underline dotted rgba(217, 173, 87, 0.5); text-underline-offset: 3px; }
+  .tog .fly:hover { color: var(--accent); }
+  #hud .legend { display: none; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); gap: 3px; flex-direction: column; }
+  #hud.flows .legend { display: flex; }
+  #hud .legend span { display: flex; align-items: center; gap: 7px; color: #cfcbc2; }
+  #hud .legend i { width: 14px; height: 3px; border-radius: 2px; flex: none; }
+  #hud .legend span.off { display: none; }
   /* objects list */
   ul { list-style: none; margin: 0; padding: 0; }
   li.item { display: flex; align-items: center; gap: 8px; padding: 5px 8px; margin: 0 -8px; border-radius: 6px; cursor: pointer; color: #cfcbc2; }
@@ -89,7 +103,7 @@
   .close { all: unset; cursor: pointer; color: var(--muted); font-size: 11px; padding: 3px 8px; border: 1px solid var(--line2); border-radius: 6px; flex: none; }
   .close:hover { color: var(--text); }
   /* HUD */
-  #hud { right: 14px; bottom: 14px; width: 272px; padding: 12px 14px; z-index: 9; }
+  #hud { right: 14px; bottom: 14px; width: max-content; min-width: 272px; max-width: 380px; padding: 12px 14px; z-index: 9; }
   #hud h2 { display: flex; justify-content: space-between; margin-bottom: 6px; }
   #hud h2 .clk { color: var(--accent); font-size: 13px; letter-spacing: 0; font-variant-numeric: tabular-nums; }
   #hud dl { margin: 0; display: grid; grid-template-columns: 1fr auto; gap: 3px 10px; }
@@ -178,8 +192,12 @@
     /* HUD: compact strip under the top bar */
     #hud { top: calc(var(--sat) + var(--bar) + 14px); bottom: auto; left: calc(var(--sal) + 8px); right: calc(var(--sar) + 8px); width: auto; padding: 6px 10px; }
     #hud h2, #hud .full, #hud .bar { display: none; }
-    #hud dl { grid-template-columns: repeat(4, auto); grid-auto-flow: column; grid-template-rows: auto auto; gap: 0 10px; justify-content: space-between; }
+    #hud dl { grid-template-columns: none; grid-auto-columns: auto; grid-auto-flow: column; grid-template-rows: auto auto; gap: 0 10px; justify-content: space-between; }
     #hud dt { font-size: 11px; }
+    #hud.winter dt.full, #hud.winter dd.full, #hud.winter .crop { display: none; } /* winter strip: time, PV, water, greenhouse temp */
+    #hud dd { max-width: 30vw; overflow: hidden; text-overflow: ellipsis; }
+    #hCrop small { display: none; }
+    #hud .legend, #hud.flows .legend { display: none; }
     #hud dd { text-align: left; font-size: 13px; }
     body.sheet #hud { opacity: 0; pointer-events: none; }
     #hint { bottom: calc(var(--sab) + 12px); max-width: calc(100% - 24px); min-width: 0; font-size: 11px; transition: opacity .4s; }
@@ -220,18 +238,22 @@
 <aside id="side" class="panel">
   <header>
     <div class="hrow"><span class="eyebrow" data-i18n="app.eyebrow">ZUT · Witkowo</span>
-      <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="ru">RU</button><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div></div>
-    <h1><span class="long" data-i18n="app.title">Агровольтаика Witkowo</span><span class="short">Witkowo</span></h1>
+      <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div></div>
+    <h1><span class="long" data-i18n="app.title">Agrowoltaika Witkowo</span><span class="short">Witkowo</span></h1>
   </header>
-  <section class="viewsec"><h2 data-i18n="sec.view">Вид</h2>
-    <div class="seg" id="modes" role="group"><button type="button" data-mode="iso" class="on" aria-pressed="true" data-i18n="mode.iso">Обзор</button><button type="button" data-mode="top" aria-pressed="false" data-i18n="mode.top">План</button><button type="button" data-mode="walk" aria-pressed="false" data-i18n="mode.walk">Прогулка</button></div>
+  <section class="viewsec"><h2 data-i18n="sec.view">Widok</h2>
+    <div class="seg" id="modes" role="group"><button type="button" data-mode="iso" class="on" aria-pressed="true" data-i18n="mode.iso">Przegląd</button><button type="button" data-mode="top" aria-pressed="false" data-i18n="mode.top">Plan</button><button type="button" data-mode="walk" aria-pressed="false" data-i18n="mode.walk">Spacer</button></div>
   </section>
-  <button id="menuBtn" type="button" data-i18n-aria="menu" aria-label="Меню" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
+  <button id="menuBtn" type="button" data-i18n-aria="menu" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
   <div id="drawer">
     <div class="grab" aria-hidden="true"></div>
-    <section><h2 data-i18n="sec.sim">Симуляция</h2>
+    <section><h2 data-i18n="sec.sim">Symulacja</h2>
       <div class="ctl">
-        <div class="lab"><span data-i18n="sim.clock">Время суток</span><span class="val" id="vClock">12:00</span></div>
+        <div class="lab"><span data-i18n="sim.season">Pora roku</span></div>
+        <div class="seg two" id="seasons" role="group" data-i18n-aria="sim.season"><button type="button" data-season="summer" class="on" aria-pressed="true" data-i18n="season.summer">Lato</button><button type="button" data-season="winter" aria-pressed="false" data-i18n="season.winter">Zima</button></div>
+      </div>
+      <div class="ctl">
+        <div class="lab"><span data-i18n="sim.clock">Pora dnia</span><span class="val" id="vClock">12:00</span></div>
         <input type="range" id="rClock" min="0" max="24" step="0.01" value="12" data-i18n-aria="sim.clock">
         <div class="row">
           <button type="button" class="ibtn on" id="bPlay" data-i18n-aria="sim.pause" aria-pressed="true"></button>
@@ -239,27 +261,28 @@
         </div>
       </div>
       <div class="ctl">
-        <div class="lab"><span data-i18n="sim.growth">Рост капусты</span><span class="val" id="vGrowth">0</span></div>
+        <div class="lab"><span data-i18n="sim.growth">Wzrost kapusty</span><span class="val" id="vGrowth">0</span></div>
         <input type="range" id="rGrowth" min="0" max="100" step="0.1" value="60" data-i18n-aria="sim.growth">
-        <label class="tog"><span data-i18n="sim.autoSeason">Авто-сезон</span><input type="checkbox" id="tSeason"><span class="sw"></span></label>
+        <label class="tog"><span data-i18n="sim.autoSeason">Auto-sezon</span><input type="checkbox" id="tSeason"><span class="sw"></span></label>
       </div>
       <div class="ctl">
-        <div class="lab"><span data-i18n="sim.irrigation">Полив</span><span class="val" id="vIrr"></span></div>
-        <div class="seg" id="irr" role="group" data-i18n-aria="sim.irrigation"><button type="button" data-irr="auto" class="on" data-i18n="irr.auto">Авто</button><button type="button" data-irr="on" data-i18n="irr.on">Вкл</button><button type="button" data-irr="off" data-i18n="irr.off">Выкл</button></div>
-        <div class="sub" data-i18n="irr.autoHint"></div>
+        <div class="lab"><span data-i18n="sim.irrigation">Nawadnianie</span><span class="val" id="vIrr"></span></div>
+        <div class="seg" id="irr" role="group" data-i18n-aria="sim.irrigation"><button type="button" data-irr="auto" class="on" data-i18n="irr.auto">Auto</button><button type="button" data-irr="on" data-i18n="irr.on">Wł.</button><button type="button" data-irr="off" data-i18n="irr.off">Wył.</button></div>
+        <div class="sub" id="irrHint" data-i18n="irr.autoHint">Auto: 5:00–7:00 i 19:00–21:00</div>
       </div>
     </section>
-    <section><h2 data-i18n="sec.layers">Слои</h2>
-      <label class="tog"><span class="lk"><i style="background:var(--power)"></i><span data-i18n="layer.power">Поток энергии</span></span><input type="checkbox" id="tPower" checked><span class="sw"></span></label>
-      <label class="tog"><span class="lk"><i style="background:var(--water)"></i><span data-i18n="layer.water">Поток воды</span></span><input type="checkbox" id="tWater" checked><span class="sw"></span></label>
-      <label class="tog"><span class="lk"><i style="background:var(--accent)"></i><span data-i18n="layer.labels">Подписи</span></span><input type="checkbox" id="tLabels"><span class="sw"></span></label>
-      <label class="tog" id="lShadow"><span class="lk"><i style="background:#555a63"></i><span data-i18n="layer.shadows" id="sShadow">Тени от солнца</span></span><input type="checkbox" id="tShadow"><span class="sw"></span></label>
+    <section><h2 data-i18n="sec.layers">Warstwy</h2>
+      <label class="tog"><span class="lk"><i style="background:var(--power)"></i><span class="fly" data-fly="power" role="button" tabindex="0" data-i18n-title="layer.flyHint" data-i18n="layer.power">Przepływ energii</span></span><input type="checkbox" id="tPower" checked><span class="sw"></span></label>
+      <label class="tog"><span class="lk"><i style="background:var(--water)"></i><span class="fly" data-fly="water" role="button" tabindex="0" data-i18n-title="layer.flyHint" data-i18n="layer.water">Przepływ wody</span></span><input type="checkbox" id="tWater" checked><span class="sw"></span></label>
+      <label class="tog"><span class="lk"><i style="background:#8f939c"></i><span data-i18n="layer.flows">Przepływy (rentgen)</span></span><input type="checkbox" id="tFlows"><span class="sw"></span></label>
+      <label class="tog"><span class="lk"><i style="background:var(--accent)"></i><span data-i18n="layer.labels">Etykiety</span></span><input type="checkbox" id="tLabels"><span class="sw"></span></label>
+      <label class="tog" id="lShadow"><span class="lk"><i style="background:#555a63"></i><span data-i18n="layer.shadows" id="sShadow">Cienie od słońca</span></span><input type="checkbox" id="tShadow"><span class="sw"></span></label>
     </section>
-    <section class="langsec"><h2 data-i18n="lang">Язык</h2>
-      <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="ru">RU</button><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div>
+    <section class="langsec"><h2 data-i18n="lang">Język</h2>
+      <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div>
     </section>
-    <section><h2 data-i18n="sec.objects">Объекты</h2><ul id="objects"></ul></section>
-    <div class="foot" data-i18n="app.footer">Реконструкция по фото, размеры оценочные</div>
+    <section><h2 data-i18n="sec.objects">Obiekty</h2><ul id="objects"></ul></section>
+    <div class="foot" data-i18n="app.footer">Rekonstrukcja ze zdjęć, wymiary szacunkowe</div>
   </div>
 </aside>
 <aside id="hud" class="panel" aria-live="off"></aside>
@@ -268,7 +291,7 @@
 <div id="joy" aria-hidden="true"><div class="knob"></div></div>
 <div id="hint" class="panel"></div>
 <div id="err" class="panel"></div>
-<div id="boot" role="status" aria-live="polite"><div class="card"><div class="ring" aria-hidden="true"></div><h2>Загрузка 3D-модели&hellip;</h2><div class="msg"></div><div class="act"></div></div></div>
+<div id="boot" role="status" aria-live="polite"><div class="card"><div class="ring" aria-hidden="true"></div><h2>Ładowanie modelu 3D&hellip;</h2><div class="msg"></div><div class="act"></div></div></div>
 <script>
 // Bootstrap (classic script, runs even if ES modules / the CDN fail): writes the import map (primary CDN or the
 // backup chosen after a failure), loads main.js, keeps a loading card up until the first frame and turns a failed
@@ -277,13 +300,12 @@
   var KEY = 'q3dCdn:' + location.pathname, V = '0.170.0';
   var CDN = { jsdelivr: 'https://cdn.jsdelivr.net/npm/three@' + V + '/', unpkg: 'https://unpkg.com/three@' + V + '/' };
   function ss(k, v) { try { if (v === undefined) return sessionStorage.getItem(k); if (v === null) sessionStorage.removeItem(k); else sessionStorage.setItem(k, v); } catch (e) {} return null; }
-  var lang = 'ru'; try { lang = localStorage.getItem('witkowo3d:lang') || 'ru'; } catch (e) {}
+  var lang = 'pl'; try { lang = localStorage.getItem('witkowo3d:lang') || 'pl'; } catch (e) {}
   var L = {
-    ru: { load: 'Загрузка 3D-модели…', slow: 'Ещё загружается…', slowMsg: 'Соединение или сервер 3D-библиотеки работают медленно.', retry: 'Повторить', backup: 'Резервный сервер', main: 'Основной сервер', fail: 'Не удалось загрузить 3D', old: 'Браузер слишком старый для 3D. Обновите его (Chrome, Edge, Firefox или Safari 16.4+).', check: 'Проверка соединения…', file: 'Файл 3D-просмотрщика не загрузился (', fileEnd: '). Проверьте соединение и повторите.', cdn: 'Сервер 3D-библиотеки недоступен. Проверьте соединение и повторите.' },
     pl: { load: 'Ładowanie modelu 3D…', slow: 'Nadal się ładuje…', slowMsg: 'Połączenie lub serwer biblioteki 3D działa wolno.', retry: 'Ponów', backup: 'Serwer zapasowy', main: 'Serwer główny', fail: 'Nie udało się wczytać 3D', old: 'Przeglądarka jest za stara na 3D. Zaktualizuj ją (Chrome, Edge, Firefox lub Safari 16.4+).', check: 'Sprawdzanie połączenia…', file: 'Plik przeglądarki 3D nie wczytał się (', fileEnd: '). Sprawdź połączenie i ponów.', cdn: 'Serwer biblioteki 3D jest niedostępny. Sprawdź połączenie i ponów.' },
     en: { load: 'Loading 3D model…', slow: 'Still loading…', slowMsg: 'The connection or the 3D library server is slow.', retry: 'Retry', backup: 'Use backup server', main: 'Use main server', fail: 'The 3D view could not load', old: 'This browser is too old for the 3D view. Please update it (Chrome, Edge, Firefox or Safari 16.4+).', check: 'Checking the connection…', file: 'A file of the 3D viewer failed to load (', fileEnd: '). Check your connection and retry.', cdn: 'The 3D library server cannot be reached. Check your connection and retry.' },
   };
-  L = L[lang] || L.ru;
+  L = L[lang] || L.pl;
   var cdn = ss(KEY) === 'unpkg' ? 'unpkg' : 'jsdelivr';
   function base() { return CDN[cdn]; }
   var map = document.createElement('script'); map.type = 'importmap';
@@ -323,7 +345,7 @@
       fetch(url, { cache: 'no-store', mode: 'cors' }).then(function (r) { clearTimeout(t); ok(r.ok); }, function () { clearTimeout(t); ok(false); });
     });
   }
-  import('./main.js?v=202611181551').catch(function (e) {
+  import('./main.js?v=202611181638').catch(function (e) {
     var m = (e && e.message) || String(e);
     if (m === 'WebGL unavailable') { boot.started = true; clearTimeout(slow); el.remove(); return; }
     console.error(e);

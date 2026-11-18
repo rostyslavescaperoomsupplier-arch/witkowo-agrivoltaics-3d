@@ -10,7 +10,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181551';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181638';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -104,8 +104,11 @@ scene.add(ground, groundIn);
 // ---------------- cameras + controls ----------------
 const persp = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.2, 3000);
 const ortho = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.5, 200);
-const narrow = () => Math.max(1, 1.05 / (innerWidth / innerHeight)); // portrait: widen so the whole plan fits
-function fitOrtho() { const a = innerWidth / innerHeight, s = SIZE * 0.6 * narrow(); ortho.left = -s * a; ortho.right = s * a; ortho.top = s; ortho.bottom = -s; ortho.updateProjectionMatrix(); }
+// plan: the whole site (36 x 42 m) plus a small margin fits both the height and the width of the screen
+function fitOrtho() {
+  const a = innerWidth / innerHeight, s = Math.max((SITE.z1 - SITE.z0) / 2 + 3, ((SITE.x1 - SITE.x0) / 2 + 1.5) / a);
+  ortho.left = -s * a; ortho.right = s * a; ortho.top = s; ortho.bottom = -s; ortho.updateProjectionMatrix();
+}
 fitOrtho();
 const orbitP = new OrbitControls(persp, renderer.domElement); orbitP.enableDamping = true; orbitP.maxPolarAngle = 1.5; orbitP.minDistance = 2.5; orbitP.maxDistance = 260;
 const orbitO = new OrbitControls(ortho, renderer.domElement); orbitO.enableRotate = false; orbitO.screenSpacePanning = true; orbitO.enableDamping = true; orbitO.minZoom = 0.5; orbitO.maxZoom = 12;
@@ -115,7 +118,32 @@ orbitP.touches = { ONE: THREE.TOUCH.ROTATE, TWO: THREE.TOUCH.DOLLY_PAN };
 ortho.position.set(C.x, 60, C.z + 0.01); orbitO.target.copy(C); ortho.lookAt(C);
 // same direction as the reference overview render (reference/Witkowo_overview.png)
 const ISO_DIR = new THREE.Vector3(42, 29, 53).normalize();
-const isoHome = () => { orbitP.target.set(C.x, 1, C.z); persp.position.copy(orbitP.target).addScaledVector(ISO_DIR, 62 * Math.min(1.7, narrow())); };
+// overview: pull back just far enough that every corner of the site box (x -18..18, z -36..6, y 0..5) is on
+// screen with a small margin, for any aspect (portrait phones need a much longer distance than desktops)
+function isoFitDist(dir = ISO_DIR, target = orbitP.target, freeFrac = 1) {
+  const F = dir.clone().negate(), Rv = new THREE.Vector3().crossVectors(F, new THREE.Vector3(0, 1, 0)).normalize(), U = new THREE.Vector3().crossVectors(Rv, F);
+  const tanV = Math.tan(THREE.MathUtils.degToRad(45 / 2)) * (matchMedia('(max-width: 820px), (max-height: 500px)').matches ? 0.8 : 0.9); // phones: top bar + HUD strip
+  const tanH = Math.tan(THREE.MathUtils.degToRad(45 / 2)) * (innerWidth / innerHeight) * 0.94 * freeFrac, q = new THREE.Vector3();
+  let d = 10;
+  for (const x of [SITE.x0, SITE.x1]) for (const z of [SITE.z0, SITE.z1]) for (const y of [0, 5]) {
+    q.set(x, y, z).sub(target); const fz = q.dot(F);
+    d = Math.max(d, Math.abs(q.dot(Rv)) / tanH - fz, Math.abs(q.dot(U)) / tanV - fz);
+  }
+  return d;
+}
+// desktop: the side panel covers the left ~300 px, so fit the site into the free area right of it and shift the
+// camera sideways so the farm is centred there (phones: the top bar does not cover the sides)
+function isoHomePose() {
+  const side = document.querySelector('#side')?.getBoundingClientRect();
+  const left = side && innerWidth > 820 && innerHeight > 500 ? Math.min(innerWidth * 0.45, side.right + 8) : 0;
+  const free = (innerWidth - left) / innerWidth;
+  const target = new THREE.Vector3(C.x, 1, C.z), d = isoFitDist(ISO_DIR, target, free);
+  const F = ISO_DIR.clone().negate(), Rv = new THREE.Vector3().crossVectors(F, new THREE.Vector3(0, 1, 0)).normalize();
+  const halfW = d * Math.tan(THREE.MathUtils.degToRad(45 / 2)) * (innerWidth / innerHeight);
+  target.addScaledVector(Rv, -(left / innerWidth) * halfW); // screen centre moves right by left/2 px
+  return { target, pos: target.clone().addScaledVector(ISO_DIR, d) };
+}
+const isoHome = () => { const p = isoHomePose(); orbitP.target.copy(p.target); persp.position.copy(p.pos); };
 isoHome();
 
 // bloom on the high tier only; the low tier renders straight to the canvas
@@ -161,6 +189,7 @@ const ITEMS = [
   { id: 'cabinet', grp: 'field', color: '#cfd3cc', desc: 'desc.cabinet', live: 'water', match: (n) => n === 'Field control cabinet' },
   { id: 'drip', grp: 'field', color: '#5fb6e8', desc: 'desc.drip', live: 'water', match: (n) => n === 'Drip irrigation' },
   { id: 'cabbage', grp: 'field', color: '#8fcf6a', desc: 'desc.cabbage', live: 'growth', match: (n) => n === 'Cabbage heads' || n === 'Cabbage leaves' },
+  { id: 'film', grp: 'winter', color: '#c9dbe6', desc: 'desc.film', match: () => false }, // objs = lib/winter.js film
   { id: 'farmdroid', grp: 'field', color: '#3d9e1e', desc: 'desc.farmdroid', match: (n) => n.startsWith('FarmDroid / ') },
 ];
 const itemById = Object.fromEntries(ITEMS.map((it) => [it.id, it]));
@@ -191,7 +220,7 @@ function labelAnchor(it) {
 const labelsG = new THREE.Group(); scene.add(labelsG);
 const labelEls = {};
 for (const it of ITEMS) {
-  if (!it.objs.length) { console.warn('No nodes for', it.id); continue; }
+  if (!it.objs.length) { if (it.id !== 'film') console.warn('No nodes for', it.id); continue; }
   const el = document.createElement('div'); el.className = 'label';
   el.addEventListener('click', (e) => { e.stopPropagation(); select(it, true); });
   const lab = new CSS2DObject(el); lab.position.copy(labelAnchor(it)); labelsG.add(lab);
@@ -203,9 +232,12 @@ const smallMQ = matchMedia('(max-width: 820px), (max-height: 500px)');
 const sideMQ = matchMedia('(max-height: 500px) and (orientation: landscape)');
 const state = {
   hour: 12, sun: 0, dayOfSeason: 60, water: 0, speed: 600,
+  // winter mode (greenhouse film): season is the UI choice, winter eases 0..1 over ~4 s of real time
+  season: new URLSearchParams(location.search).get('season') === 'winter' ? 'winter' : 'summer', winter: 0,
   quality: QUALITY.low ? 'low' : 'high',
   show: { power: true, water: true, labels: !smallMQ.matches },
 };
+state.winter = state.season === 'winter' ? 1 : 0; // ?season=winter starts in full winter
 const sim = { playing: true, irrigation: 'auto', autoSeason: false };
 let cam = persp;
 const ctx = {
@@ -213,7 +245,7 @@ const ctx = {
   // extras beyond the contract (optional for modules): all objects with a name, bloom pass (null on low tier), state
   nodes, bloom: bloomPass || null, state,
 };
-const MOD_ORDER = ['sky', 'power', 'water', 'growth'];
+const MOD_ORDER = ['sky', 'power', 'water', 'growth', 'winter'];
 const mods = {};
 const modErr = (name, where, e) => console.warn(`[${name}] ${where} failed, module disabled:`, e);
 boot?.progress?.(t('boot.modules'));
@@ -247,8 +279,21 @@ function callMod(n, fn, ...args) {
     robot.traverse((o) => { if (o.isMesh) ownerOf.set(o, fd); });
   }
 }
+// greenhouse film from lib/winter.js: listed / labelled while winter > 0.5. It is left out of picking, so a click
+// goes through the film to the canopy, crops or robot behind it (the film is selected from the list or its label).
+const filmObj = mods.winter?.film?.isObject3D ? mods.winter.film : null;
+const filmMeshes = new Set();
+if (filmObj) {
+  const fi = itemById.film; fi.objs = [filmObj]; fi.groups = [[filmObj]];
+  filmObj.traverse((o) => { if (o.isMesh) filmMeshes.add(o); });
+  const el = document.createElement('div'); el.className = 'label';
+  el.addEventListener('click', (e) => { e.stopPropagation(); select(fi, true); });
+  const lab = new CSS2DObject(el); lab.position.set(0, 5.6, 0.4); lab.visible = false; labelsG.add(lab);
+  fi.label = lab; labelEls.film = el;
+}
+const filmOn = () => state.winter > 0.5;
 // pick list: every model mesh, including meshes the modules added under root (unknown ones only occlude)
-pickMeshes.length = 0; root.traverse((o) => { if (o.isMesh) { pickMeshes.push(o); o.layers.enable(PICK_LAYER); } });
+pickMeshes.length = 0; root.traverse((o) => { if (o.isMesh && !filmMeshes.has(o)) { pickMeshes.push(o); o.layers.enable(PICK_LAYER); } });
 callMod('power', 'setVisible', state.show.power);
 callMod('water', 'setVisible', state.show.water);
 
@@ -267,7 +312,7 @@ function fallbackSkyUpdate() {
 }
 
 // ---------------- modes ----------------
-let mode = 'iso', isoPose = null, tween = null;
+let mode = 'iso', isoPose = null, tween = null, camTouched = false;
 const EYE = 1.7, R_WALK = 0.3;
 const walk = { yaw: 0, pitch: -0.04, keys: new Set(), x: -5, z: 4.5, joy: { x: 0, y: 0 } };
 let touchSeen = matchMedia('(pointer: coarse)').matches;
@@ -292,10 +337,11 @@ function setMode(m) {
   setHint();
   if (touchSeen) { const h = $('#hint'); h.classList.remove('fade'); clearTimeout(setMode.t); setMode.t = setTimeout(() => h.classList.add('fade'), 5000); }
 }
-$('#modes').addEventListener('click', (e) => { const b = e.target.closest('button'); if (b) setMode(b.dataset.mode); });
+$('#modes').addEventListener('click', (e) => { const b = e.target.closest('button'); if (!b) return; setMode(b.dataset.mode); if (smallMQ.matches && $('#drawer').classList.contains('open')) setDrawer(false); });
 
 const ease = (k) => (k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2);
 function flyTo(target, dist, zoom) {
+  camTouched = true;
   if (mode === 'top') tween = { k: 0, d: 0.7, from: orbitO.target.clone(), to: target.clone().setY(0), z0: ortho.zoom, z1: zoom, top: true };
   else if (mode === 'iso') {
     const dir = persp.position.clone().sub(orbitP.target).normalize();
@@ -344,9 +390,12 @@ for (const n of ['Electrical rack', 'Field control cabinet']) { const b = nb(n);
 const robotCol = { x0: 0, z0: 0, x1: 0, z1: 0 }; colliders.push(robotCol);
 function refreshRobot() { const b = boxOf(itemById.farmdroid.objs); if (b.isEmpty()) return; robotCol.x0 = b.min.x; robotCol.z0 = b.min.z; robotCol.x1 = b.max.x; robotCol.z1 = b.max.z; }
 refreshRobot();
+let winterWalls = null; // lib/winter.js colliders while info().filmDeployed > 0.5 (set in the HUD tick)
 function blocked(x, z, r = R_WALK) {
   if (x < SITE.x0 + r || x > SITE.x1 - r || z < SITE.z0 + r || z > SITE.z1 - r) return true;
   for (const c of colliders) if (x > c.x0 - r && x < c.x1 + r && z > c.z0 - r && z < c.z1 + r) return true;
+  // greenhouse walls (with door gaps) once the film is up
+  if (winterWalls) for (const c of winterWalls) if (x > c.x0 - r && x < c.x1 + r && z > c.z0 - r && z < c.z1 + r) return true;
   return false;
 }
 function freeNear(x, z) {
@@ -361,6 +410,7 @@ function tryMove(dx, dz) {
   if (!blocked(x + dx, z + dz)) { walk.x += dx; walk.z += dz; return true; }
   if (dx && !blocked(x + dx, z)) { walk.x += dx; return true; } // slide along the obstacle
   if (dz && !blocked(x, z + dz)) { walk.z += dz; return true; }
+  if (blocked(x, z)) { walk.x += dx; walk.z += dz; return true; } // started inside an obstacle (robot drove in, walls went up): let the walker out
   return false;
 }
 function stepWalk(dt) {
@@ -392,12 +442,13 @@ function renderList() {
   for (const it of ITEMS) {
     if (!it.objs.length) continue;
     if (it.grp !== grp) { grp = it.grp; html += `<li class="grp">${esc(t('grp.' + grp))}</li>`; }
-    html += `<li class="item${selected === it ? ' on' : ''}" data-id="${it.id}" tabindex="0" role="button"><span class="dot" style="background:${it.color}"></span>${esc(t('obj.' + it.id))}</li>`;
+    const off = it.id === 'film' && !filmOn();
+    html += `<li class="item${selected === it ? ' on' : ''}${off ? ' off' : ''}" data-id="${it.id}" tabindex="${off ? -1 : 0}" role="button"${off ? ' aria-disabled="true"' : ''}><span class="dot" style="background:${it.color}"></span>${esc(t('obj.' + it.id))}${off ? `<span class="sub2">${esc(t('film.off'))}</span>` : ''}</li>`;
   }
   $('#objects').innerHTML = html;
   for (const it of ITEMS) if (labelEls[it.id]) labelEls[it.id].textContent = t('obj.' + it.id);
 }
-$('#objects').addEventListener('click', (e) => { const li = e.target.closest('li.item'); if (li) select(itemById[li.dataset.id], true); });
+$('#objects').addEventListener('click', (e) => { const li = e.target.closest('li.item'); if (li && !li.classList.contains('off')) select(itemById[li.dataset.id], true); });
 $('#objects').addEventListener('keydown', (e) => { const li = e.target.closest('li.item'); if (li && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); li.click(); } });
 
 // ---------------- small screens: drawer + bottom sheets ----------------
@@ -465,7 +516,7 @@ function select(it, fly = false) {
   Object.entries(labelEls).forEach(([id, el]) => el.classList.toggle('on', !!it && id === it.id));
   $$('#objects li.item').forEach((li) => li.classList.toggle('on', !!it && li.dataset.id === it.id));
   if (!it) { selHelpers.forEach((h) => (h.visible = false)); panel.classList.remove('open'); syncSheets(); return; }
-  if (smallMQ.matches && !sideMQ.matches) setDrawer(false);
+  if (smallMQ.matches) setDrawer(false); // landscape phones too: drawer + panel together would hide the scene
   selBoxes(); renderPanel(); panel.classList.add('open'); panel.scrollTop = 0; syncSheets();
   if (fly) {
     const b = boxOf(it.objs), c = b.getCenter(new THREE.Vector3()), sz = b.getSize(new THREE.Vector3()), big = Math.max(sz.x, sz.z, sz.y);
@@ -519,7 +570,7 @@ renderer.domElement.addEventListener('pointerdown', (e) => {
   if (activePtrs.size > 1) { if (down) down.multi = true; return; }
   down = { id: e.pointerId, x: e.clientX, y: e.clientY, yaw: walk.yaw, pitch: walk.pitch, touch: e.pointerType === 'touch', moved: 0 };
   if (mode === 'walk') renderer.domElement.setPointerCapture(e.pointerId);
-  tween = null;
+  tween = null; camTouched = true;
 });
 const endPtr = (e) => {
   activePtrs.delete(e.pointerId);
@@ -541,6 +592,7 @@ renderer.domElement.addEventListener('pointermove', (e) => {
   if (it) { tip.textContent = t('obj.' + it.id); tip.style.left = e.clientX + 14 + 'px'; tip.style.top = e.clientY + 12 + 'px'; tip.style.opacity = 1; }
   else tip.style.opacity = 0;
 });
+renderer.domElement.addEventListener('wheel', () => { camTouched = true; }, { passive: true });
 renderer.domElement.addEventListener('pointerleave', () => (tip.style.opacity = 0));
 addEventListener('keydown', (e) => {
   if (!e.target.matches?.('input[type=text], input[type=search], textarea, select')) walk.keys.add(e.code);
@@ -596,11 +648,75 @@ $('#irr').addEventListener('click', (e) => {
   const b = e.target.closest('button[data-irr]'); if (!b) return; sim.irrigation = b.dataset.irr;
   $$('#irr button').forEach((x) => x.classList.toggle('on', x === b));
 });
-const irrSchedule = (h) => (h >= 5 && h < 7) || (h >= 19 && h < 21);
-$('#tPower').addEventListener('change', (e) => { state.show.power = e.target.checked; callMod('power', 'setVisible', state.show.power); });
-$('#tWater').addEventListener('change', (e) => { state.show.water = e.target.checked; callMod('water', 'setVisible', state.show.water); });
+// summer: 5-7 and 19-21; winter (greenhouse): 10-11 only
+const irrSchedule = (h) => (state.season === 'winter' ? h >= 10 && h < 11 : (h >= 5 && h < 7) || (h >= 19 && h < 21));
+function syncSeason() {
+  $$('#seasons button').forEach((b) => { const on = b.dataset.season === state.season; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+  const h = $('#irrHint'); h.dataset.i18n = state.season === 'winter' ? 'irr.autoHintWinter' : 'irr.autoHint'; h.textContent = t(h.dataset.i18n);
+}
+$('#seasons').addEventListener('click', (e) => { const b = e.target.closest('button[data-season]'); if (!b) return; state.season = b.dataset.season; syncSeason(); });
+syncSeason();
+$('#tPower').addEventListener('change', (e) => { state.show.power = e.target.checked; callMod('power', 'setVisible', state.show.power); syncLegend(); });
+$('#tWater').addEventListener('change', (e) => { state.show.water = e.target.checked; callMod('water', 'setVisible', state.show.water); syncLegend(); });
 $('#tLabels').checked = state.show.labels; labelsG.visible = state.show.labels;
 $('#tLabels').addEventListener('change', (e) => { state.show.labels = labelsG.visible = e.target.checked; labelsDirty = true; });
+
+// ---------------- flows: x-ray focus, legend, camera presets ----------------
+// X-ray: every model material (root + greenhouse film; the power / water overlays live in their own groups on the
+// scene) is greyed, dimmed and made translucent in place, so shader patches (growth.js vertex scaling) keep working
+// and nothing recompiles. The original values are stored and written back when the toggle goes off.
+const XRAY = { on: false, saved: new Map() };
+const _grey = new THREE.Color();
+function xrayMaterials() {
+  const set = new Set();
+  const add = (o) => o.traverse((m) => { if (m.isMesh || m.isLine || m.isPoints) [].concat(m.material || []).forEach((mm) => set.add(mm)); });
+  add(root); if (filmObj) add(filmObj);
+  for (const g of [mods.power?.group, mods.water?.group]) if (g) g.traverse((m) => [].concat(m.material || []).forEach((mm) => set.delete(mm)));
+  return set;
+}
+function setXray(on) {
+  if (on === XRAY.on) return; XRAY.on = on;
+  if (on) {
+    for (const m of xrayMaterials()) {
+      XRAY.saved.set(m, { color: m.color?.clone(), emissive: m.emissive?.clone(), ei: m.emissiveIntensity, opacity: m.opacity, transparent: m.transparent, depthWrite: m.depthWrite });
+      if (m.color) { const l = m.color.r * 0.3 + m.color.g * 0.59 + m.color.b * 0.11; m.color.copy(_grey.setScalar(0.12 + l * 0.35)); }
+      if (m.emissive) m.emissive.setScalar(0);
+      m.opacity = Math.min(m.opacity, 0.22); m.transparent = true; m.depthWrite = false;
+    }
+  } else {
+    for (const [m, v] of XRAY.saved) {
+      if (v.color) m.color.copy(v.color); if (v.emissive) m.emissive.copy(v.emissive);
+      m.emissiveIntensity = v.ei; m.opacity = v.opacity; m.transparent = v.transparent; m.depthWrite = v.depthWrite;
+    }
+    XRAY.saved.clear();
+  }
+  $('#tFlows').checked = on; syncLegend();
+}
+function syncLegend() {
+  const hud = $('#hud'); if (!hud) return;
+  hud.classList.toggle('flows', state.show.power || state.show.water);
+  $('#lgDC')?.classList.toggle('off', !state.show.power); $('#lgAC')?.classList.toggle('off', !state.show.power);
+  $('#lgW')?.classList.toggle('off', !state.show.water);
+}
+$('#tFlows').addEventListener('change', (e) => setXray(e.target.checked));
+// camera presets that show each network best (overview mode)
+const FLOW_VIEWS = {
+  power: { target: new THREE.Vector3(-8, 2.6, -5), pos: new THREE.Vector3(-23, 11, 13) },  // inverter corner, front left
+  water: { target: new THREE.Vector3(1, 0, -13), pos: new THREE.Vector3(2, 30, 9) },       // high above the beds
+};
+function flyToFlow(k) {
+  const v = FLOW_VIEWS[k]; if (!v) return;
+  const box = k === 'power' ? $('#tPower') : $('#tWater');
+  if (!box.checked) { box.checked = true; box.dispatchEvent(new Event('change')); }
+  if (mode !== 'iso') setMode('iso');
+  camTouched = true;
+  tween = { k: 0, d: 1.0, from: orbitP.target.clone(), to: v.target.clone(), p0: persp.position.clone(), p1: v.pos.clone() };
+  if (smallMQ.matches) setDrawer(false);
+}
+$$('.tog .fly').forEach((el) => {
+  el.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); flyToFlow(el.dataset.fly); });
+  el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flyToFlow(el.dataset.fly); } });
+});
 
 // ---------------- sun shadows (high tier; off and hidden on the low tier) ----------------
 function sunLights() { const out = []; scene.traverse((o) => { if (o.isDirectionalLight && o.visible) out.push(o); }); return out; }
@@ -624,7 +740,7 @@ else { $('#tShadow').checked = true; applyShadows(true); }
 
 // ---------------- HUD ----------------
 const stageName = (s) => (s ? t('stage.' + s) : t('hud.na'));
-const info = { sky: null, power: null, water: null, growth: null };
+const info = { sky: null, power: null, water: null, growth: null, winter: null };
 function readInfo() { for (const n of MOD_ORDER) info[n] = mods[n] && typeof mods[n].info === 'function' ? callMod(n, 'info') ?? null : null; }
 function hudTemplate() {
   $('#hud').innerHTML = `<h2><span>${esc(t('hud.title'))}</span><span class="clk" id="hClock"></span></h2>
@@ -637,9 +753,16 @@ function hudTemplate() {
       <dt class="full"><i style="background:var(--power)"></i>${esc(t('hud.energy'))}</dt><dd class="full" id="hKWh"></dd>
       <dt><i style="background:var(--water)"></i>${esc(t('hud.water'))}</dt><dd id="hLpm"></dd>
       <dt class="full"><i style="background:var(--water)"></i>${esc(t('hud.litres'))}</dt><dd class="full" id="hL"></dd>
-      <dt><i style="background:var(--leaf)"></i>${esc(t('hud.crop'))}</dt><dd id="hCrop"></dd>
+      <dt class="full wint"><i style="background:#9ec9ea"></i>${esc(t('hud.outside'))}</dt><dd class="full wint" id="hOut"></dd>
+      <dt class="wint"><i style="background:#f0a35e"></i>${esc(t('hud.inside'))}</dt><dd class="wint" id="hIn"></dd>
+      <dt class="crop"><i style="background:var(--leaf)"></i>${esc(t('hud.crop'))}</dt><dd class="crop" id="hCrop"></dd>
       <div class="bar"><b id="hCropBar" style="background:var(--leaf)"></b></div>
-    </dl>`;
+    </dl>
+    <div class="legend" aria-label="${esc(t('legend.title'))}">
+      <span id="lgDC"><i style="background:#ffb43a"></i>${esc(t('legend.dc'))}</span>
+      <span id="lgAC"><i style="background:#4fd8f0"></i>${esc(t('legend.ac'))}</span>
+      <span id="lgW"><i style="background:#3d9be9"></i>${esc(t('legend.water'))}</span>
+    </div>`;
   $('#hud .mob-only').remove();
 }
 function updateHud() {
@@ -656,6 +779,14 @@ function updateHud() {
   $('#hL').innerHTML = wa ? `${fmt(wa.litresToday, 0)}<small>${t('unit.l')}</small>` : t('hud.na');
   $('#hCrop').innerHTML = gr ? `${esc(stageName(gr.stage))}${isFinite(gr.headDiameterCm) && gr.headDiameterCm > 0 ? `<small>Ø ${fmt(gr.headDiameterCm, 0)} ${t('unit.cm')}</small>` : ''}` : `${Math.round(state.dayOfSeason)}%`;
   $('#hCropBar').style.transform = `scaleX(${clamp(state.dayOfSeason, 0, 100) / 100})`;
+  const wi = info.winter, showT = !!wi && (state.season === 'winter' || state.winter > 0);
+  $('#hud').classList.toggle('winter', showT);
+  if (showT) {
+    $('#hOut').innerHTML = `${fmt(wi.outsideC)}<small>${t('unit.c')}</small>`;
+    $('#hIn').innerHTML = `${fmt(wi.insideC)}<small>${t('unit.c')}</small>`;
+  }
+  syncLegend();
+  winterWalls = wi && wi.filmDeployed > 0.5 && Array.isArray(mods.winter?.colliders) ? mods.winter.colliders : null;
   const on = state.water > 0.01;
   $('#vIrr').textContent = on ? t('irr.on') : t('irr.off');
   if (selected) { const l = liveHtml(selected), el = $('#plive'); if (el && l != null) el.innerHTML = l; }
@@ -663,7 +794,7 @@ function updateHud() {
 
 // ---------------- language switch: re-render dynamic text ----------------
 function relabel() {
-  renderList(); hudTemplate(); updateHud(); syncPlay(); setHint();
+  renderList(); hudTemplate(); updateHud(); syncPlay(); setHint(); syncSeason();
   if (selected) renderPanel();
   labelsDirty = true;
 }
@@ -700,7 +831,7 @@ function probeFrame(raw) {
   if (++probe.n > 10) probe.dts.push(raw);
   if (probe.dts.length >= 30) { probe.done = true; const med = probe.dts.sort((a, b) => a - b)[15] * 1000; if (med > 40) goLow(Math.round(1000 / med)); }
 }
-let hudT = 0, uiT = 0, frameN = 0;
+let hudT = 0, uiT = 0, frameN = 0, lastFilmOn = null;
 const robotLabelAt = node('FarmDroid / GNSS antenna');
 const _v = new THREE.Vector3();
 function frame() {
@@ -714,12 +845,19 @@ function frame() {
   }
   const target = sim.irrigation === 'on' ? 1 : sim.irrigation === 'off' ? 0 : irrSchedule(state.hour) ? 1 : 0;
   state.water += clamp(target - state.water, -dt * 2, dt * 2); // valve opens / closes over ~0.5 s
-  // simulation modules: sky -> power -> water -> growth
+  const wt = state.season === 'winter' ? 1 : 0;
+  state.winter += clamp(wt - state.winter, -dt / 4, dt / 4); // ~4 s transition
+  if (filmOn() !== lastFilmOn) {
+    lastFilmOn = filmOn(); renderList(); if (itemById.film.label) { itemById.film.label.visible = lastFilmOn; labelsDirty = true; }
+    if (!lastFilmOn && selected === itemById.film) select(null);
+  }
+  // simulation modules: sky -> power -> water -> growth -> winter
   if (mods.sky) callMod('sky', 'update', dt, state);
   if (fallbackSky) fallbackSkyUpdate();
   callMod('power', 'update', dt, state);
   callMod('water', 'update', dt, state);
   callMod('growth', 'update', dt, state);
+  callMod('winter', 'update', dt, state);
   // camera
   stepTween(dt);
   if (mode === 'walk') stepWalk(dt); else if (mode === 'iso') orbitP.update(); else orbitO.update();
@@ -731,7 +869,7 @@ function frame() {
       if (_v.distanceToSquared(itemById.farmdroid.label.position) > 1e-4) { itemById.farmdroid.label.position.copy(_v); labelsDirty = true; }
     }
   }
-  if (selected && (selected.id === 'farmdroid' || selected.id === 'cabbage')) selBoxes();
+  if (selected && (selected.id === 'farmdroid' || selected.id === 'cabbage' || selected.id === 'film')) selBoxes();
   if (now - uiT > 100) { uiT = now; syncClock(); if (sim.autoSeason) syncGrowth(); }
   if (now - hudT > 250) { hudT = now; updateHud(); }
   if (!glLost) { if (composer) composer.render(); else renderer.render(scene, cam); }
@@ -740,6 +878,7 @@ function frame() {
 }
 addEventListener('resize', () => {
   persp.aspect = innerWidth / innerHeight; persp.updateProjectionMatrix(); fitOrtho();
+  if (mode === 'iso' && !camTouched) isoHome();
   renderer.setPixelRatio(pixelRatio()); renderer.setSize(innerWidth, innerHeight);
   if (composer) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(innerWidth, innerHeight); }
   labelRenderer.setSize(innerWidth, innerHeight); labelsDirty = true;
@@ -760,4 +899,4 @@ updateHud();
 frame();
 requestAnimationFrame(() => boot?.done());
 if (QUALITY.software && !QUALITY.forced) notice(esc(t('slow.notice', { fps: '<10' })), 15000);
-window.__witkowo = { colliders, state, sim, mods, ctx, info, setMode, select, ITEMS, walk, persp, orbitP, ortho, pickAt, QUALITY, get mode() { return mode; }, get cam() { return cam; } };
+window.__witkowo = { colliders, setXray, flyToFlow, state, sim, mods, ctx, info, setMode, select, ITEMS, walk, persp, orbitP, ortho, pickAt, QUALITY, get mode() { return mode; }, get cam() { return cam; } };

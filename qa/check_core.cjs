@@ -6,7 +6,8 @@ const { chromium } = require(PW);
 const URL = process.argv[2] || 'http://localhost:8765/?q=high';
 const OUT = path.join(__dirname, 'out');
 require('fs').mkdirSync(OUT, { recursive: true });
-const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${n}.png`) });
+const TAG = process.env.QA_TAG ? process.env.QA_TAG + '-' : ''; // e.g. QA_TAG=winter -> core-winter-*.png
+const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${TAG}${n}.png`) });
 
 (async () => {
   const browser = await chromium.launch({ headless: true, args: ['--use-angle=metal', '--enable-gpu', '--ignore-gpu-blocklist'] });
@@ -22,10 +23,20 @@ const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${n}.png`
     await fn(page);
     await ctx.close();
   };
-  const W = (page) => page.evaluate(() => { const w = window.__witkowo; return { mode: w.mode, hour: +w.state.hour.toFixed(2), sun: +w.state.sun.toFixed(3), water: w.state.water, day: +w.state.dayOfSeason.toFixed(1), mods: Object.keys(w.mods), info: w.info, walk: [+w.walk.x.toFixed(2), +w.walk.z.toFixed(2)], q: w.QUALITY.low ? 'low' : 'high', gpu: w.QUALITY.gpu }; });
+  const W = (page) => page.evaluate(() => { const w = window.__witkowo; return { mode: w.mode, hour: +w.state.hour.toFixed(2), sun: +w.state.sun.toFixed(3), water: w.state.water, day: +w.state.dayOfSeason.toFixed(1), mods: Object.keys(w.mods), winter: w.state.winter, walk: [+w.walk.x.toFixed(2), +w.walk.z.toFixed(2)], q: w.QUALITY.low ? 'low' : 'high', gpu: w.QUALITY.gpu }; });
 
+  const joyWalk = async (page, label) => {
+    const j = await page.locator('#joy').boundingBox();
+    if (!j) { console.log(label, 'joystick not visible'); return; }
+    const a = await W(page);
+    const cx = j.x + j.width / 2, cy = j.y + j.height / 2;
+    await page.mouse.move(cx, cy); await page.mouse.down(); await page.mouse.move(cx, cy - j.height * 0.45, { steps: 4 });
+    await page.waitForTimeout(1500); await page.mouse.up();
+    console.log(label, 'joystick walk', JSON.stringify(a.walk), '->', JSON.stringify((await W(page)).walk));
+  };
   await run('desktop', { width: 1440, height: 900 }, async (page) => {
     console.log('start', JSON.stringify(await W(page)));
+    console.log('season', await page.evaluate(() => { const w = window.__witkowo; return JSON.stringify({ season: w.state.season, winter: w.state.winter, hudWinter: document.querySelector('#hud').classList.contains('winter'), film: !!document.querySelector('#objects li[data-id="film"]'), filmOff: !!document.querySelector('#objects li[data-id="film"].off'), lang: document.documentElement.lang, title: document.title, cyr: /[\u0400-\u04FF]/.test(document.body.innerText) }); }));
     await shot(page, 'iso');
     // clock slider -> noon, pause
     await page.click('#bPlay');
@@ -44,6 +55,14 @@ const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${n}.png`
     const picked = await page.evaluate(() => window.__witkowo.pickAt(innerWidth / 2 + 120, innerHeight / 2)?.id || null);
     console.log('pick near centre after PV fly:', picked);
     await page.click('#pclose');
+    // flows: x-ray + presets + legend
+    await page.click('label:has(#tFlows) .sw'); await page.waitForTimeout(400);
+    await page.click('.fly[data-fly="water"]'); await page.waitForTimeout(1500);
+    await shot(page, 'flows-water');
+    await page.click('.fly[data-fly="power"]'); await page.waitForTimeout(1500);
+    await shot(page, 'flows-power');
+    console.log('flows', await page.evaluate(() => JSON.stringify({ xray: document.querySelector('#tFlows').checked, legend: getComputedStyle(document.querySelector('#hud .legend')).display })));
+    await page.click('label:has(#tFlows) .sw'); await page.waitForTimeout(300);
     // plan
     await page.click('#modes button[data-mode="top"]'); await page.waitForTimeout(900);
     await shot(page, 'plan');
@@ -59,6 +78,11 @@ const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${n}.png`
     await page.keyboard.down('KeyW'); await page.waitForTimeout(3000); await page.keyboard.up('KeyW');
     console.log('collision test (walk -x from -5.5,-6; column x=-10):', JSON.stringify((await W(page)).walk));
     await shot(page, 'walk-collide');
+    if ((await page.evaluate(() => window.__witkowo.state.season)) === 'winter') {
+      const film = await page.$('#objects li[data-id="film"]:not(.off)');
+      if (film) { await film.click(); await page.waitForTimeout(1200); await shot(page, 'film-select'); await page.click('#pclose'); }
+      console.log('winter info', JSON.stringify(await page.evaluate(() => window.__witkowo.info.winter)));
+    }
     // night + language EN
     await page.click('#modes button[data-mode="iso"]');
     await page.evaluate(() => { const r = document.querySelector('#rClock'); r.value = 23; r.dispatchEvent(new Event('input', { bubbles: true })); r.dispatchEvent(new Event('change', { bubbles: true })); });
@@ -66,7 +90,7 @@ const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${n}.png`
     await page.waitForTimeout(1200);
     await shot(page, 'night-en');
     console.log('title', await page.title(), '| lang stored', await page.evaluate(() => localStorage.getItem('witkowo3d:lang')));
-    await page.click('#side header .langs button[data-lang="ru"]');
+    await page.click('#side header .langs button[data-lang="pl"]');
   });
 
   await run('mobile', { width: 390, height: 844 }, async (page) => {
@@ -78,9 +102,27 @@ const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${n}.png`
     await shot(page, 'mobile-panel');
     await page.click('#pclose'); await page.waitForTimeout(400);
     await page.click('#modes button[data-mode="walk"]'); await page.waitForTimeout(800);
+    await joyWalk(page, 'portrait');
     await shot(page, 'mobile-walk');
     const ov = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
     console.log('mobile horizontal overflow:', ov);
+    await page.click('#modes button[data-mode="top"]'); await page.waitForTimeout(800);
+    await shot(page, 'mobile-plan');
+  }, { hasTouch: true, isMobile: true });
+
+  await run('landscape', { width: 844, height: 390 }, async (page) => {
+    await shot(page, 'mobile-landscape');
+    const r = await page.evaluate(() => Object.fromEntries(['#side', '#hud', '#hint'].map((s) => { const b = document.querySelector(s).getBoundingClientRect(); return [s, [b.x, b.y, b.width, b.height].map(Math.round)]; })));
+    console.log('landscape rects', JSON.stringify(r));
+    await page.click('#menuBtn'); await page.waitForTimeout(500);
+    await shot(page, 'mobile-landscape-drawer');
+    await page.click('#objects li[data-id="tanks"]'); await page.waitForTimeout(1200);
+    await shot(page, 'mobile-landscape-panel');
+    await page.click('#pclose'); await page.waitForTimeout(300);
+    await page.click('#modes button[data-mode="walk"]'); await page.waitForTimeout(600);
+    await page.evaluate(() => document.body.classList.add('touch'));
+    await joyWalk(page, 'landscape');
+    await shot(page, 'mobile-landscape-walk');
   }, { hasTouch: true, isMobile: true });
 
   console.log('--- console errors/warnings ---\n' + (logs.join('\n') || '(none)'));

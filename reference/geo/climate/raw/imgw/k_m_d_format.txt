@@ -1,0 +1,32 @@
+
+NSP     Kod stacji
+POST    Nazwa stacji
+ROK     Rok
+MC      Miesi¹c
+TMAX    Absolutna maksymalna temperatura powietrza [°C]
+WTMAX   Status pomiaru TMAX
+TMXS    Œrednia maksymalna temperatura powietrza [°C]
+WTMXS   Status pomiaru TMXS
+TMIN    Absolutna minimalna temperatura powietrza [°C]
+WTMIN   Status pomiaru TMIN
+TMNS    Œrednia minimalna temperatura powietrza [°C]
+WWTMNS  Status pomiaru TMNS
+STM     Œrednia miesiêczna temperatura powietrza [°C]
+WSTM    Status pomiaru STM
+TMNG    Minimalna temperatura powietrza przy gruncie [°C]
+WTMNG   Status pomiaru TMNG
+SUMM    Miesiêczna suma opadów [mm]
+WSUMM   Status pomiaru SUMM
+OPMX    Maksymalna dobowa suma opadów w miesi¹cu [mm]
+WOPMX   Status pomiaru OPMX
+DN1     Pierwszy dzieñ wyst¹pienia opadu maksymalnego
+DN2     Ostatni dzieñ wyst¹pienia opadu maksymalnego
+PKSN    Maksymalna wysokoœæ pokrywy œnie¿nej [cm]
+WPKSN   Status pomiaru PKSN
+PSDN    Liczba dni z pokryw¹ œnie¿n¹
+DESD    Liczba dni z opadem deszczu
+SNID    Liczba dni z opadem œniegu
+
+Status "8" brak pomiaru
+Status "9" brak zjawiska
+Wartoœæ "0" w kolumnie "Maksymalna wysokoœæ pokrywy œnie¿nej", je¿eli nie jest doprecyzowana wartoœci¹ kolumny status, oznacza, ¿e pokrywa nie wystêpowa³a w danym miesi¹cu lub nie mo¿na ustaliæ wartoœci maksymalnej
