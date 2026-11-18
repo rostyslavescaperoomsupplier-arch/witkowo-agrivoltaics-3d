@@ -10,7 +10,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181816';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181823';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -563,6 +563,9 @@ $('#objects').addEventListener('keydown', (e) => { const li = e.target.closest('
 function syncSheets() {
   const d = $('#drawer').classList.contains('open'), p = $('#panel').classList.contains('open');
   document.body.classList.toggle('drawer', d); document.body.classList.toggle('sheet', smallMQ.matches && (d || p));
+  // desktop: an open info / report panel and the HUD share the right edge, so the HUD shrinks to its key rows
+  document.body.classList.toggle('panelopen', p && !smallMQ.matches);
+  const hud = $('#hud'); if (hud && !smallMQ.matches) document.documentElement.style.setProperty('--hudh', hud.offsetHeight + 'px');
 }
 function setDrawer(open) {
   $('#drawer').classList.toggle('open', open); $('#menuBtn').setAttribute('aria-expanded', open);
@@ -1104,9 +1107,6 @@ async function applySite(site, { initial = false } = {}) {
   state.site = site; ctx.site = site;
   for (const k of STEP_IDS) steps[k] = { st: mods[k] ? 'wait' : 'skip' };
   renderLoc();
-  // while a new site's ground is being rebuilt geo.js's draped mesh can shade NaN (black screen through the bloom
-  // pass): keep it hidden until terrain + geo are ready, the farm stays visible over the sky meanwhile
-  if (mods.geo) callMod('geo', 'setVisible', false);
   if (initial) { // terrain / geo / underground were started on this site by init(ctx.site): just follow them
     await runStep('terrain', () => mods.terrain.ready);
     await runStep('geo', () => mods.geo.ready);
@@ -1116,10 +1116,9 @@ async function applySite(site, { initial = false } = {}) {
     await runStep('geo', () => mods.geo.setSite(site, { terrain: mods.terrain }));
     await runStep('sky', () => mods.sky.setSite?.(site));
   }
-  if (mods.geo) callMod('geo', 'setVisible', geoOn);
   await Promise.all([
     runStep('climate', () => mods.climate.setSite?.(site)),
-    runStep('sitedata', () => mods.sitedata.setSite(site, { onProgress: onReport })),
+    runStep('sitedata', () => (reportP = mods.sitedata.setSite(site, { onProgress: onReport }))),
   ]);
   await runStep('underground', () => (initial ? mods.underground.ready : mods.underground.setSite?.(site)));
   siteBusy = false; renderLoc(); readInfo(); renderYears(true); renderLayers();
@@ -1221,10 +1220,17 @@ function renderClimate() {
   for (const k of ['stripes', 'annual', 'monthly']) { const cv = callMod('climate', 'chartCanvas', k, L2(), { width: w, height: k === 'stripes' ? 90 : 170 }); if (cv) box.appendChild(cv); }
 }
 // the default site's report is fetched only when asked for (~20 public services); other sites load it on arrival
-function ensureReport() {
+// ePSH (MHP unit + yield, balance area) is opt-in in sitedata.js: fetched only once the user opens the report
+let reportP = null;
+async function ensureReport() {
   if (!mods.sitedata) return;
-  const st = callMod('sitedata', 'info')?.status;
-  if (st === 'idle' || st === 'aborted') Promise.resolve(callMod('sitedata', 'setSite', state.site, { onProgress: onReport })).then(() => { readInfo(); renderReport(); renderLoc(); }).catch((e) => console.warn('sitedata', e));
+  try {
+    const st = callMod('sitedata', 'info')?.status;
+    if (!reportP || st === 'idle' || st === 'aborted') reportP = mods.sitedata.setSite(state.site, { onProgress: onReport });
+    await reportP;
+    if (typeof mods.sitedata.loadEpsh === 'function') await mods.sitedata.loadEpsh({ onProgress: onReport });
+  } catch (e) { console.warn('sitedata', e); }
+  readInfo(); renderReport(); renderLoc();
 }
 $('#bReport').addEventListener('click', () => { ensureReport(); openPanel('report'); });
 $('#bClimate').addEventListener('click', () => openPanel('climate'));
@@ -1410,10 +1416,7 @@ setMode('iso');
 }
 updateHud(); renderYears(true); renderLayers(); renderLoc();
 if (!isDefaultSite(state.site)) applySite(state.site, { initial: true });
-else if (mods.geo) { // default site: same as applySite, ground hidden until terrain + geo are ready (no NaN frame)
-  callMod('geo', 'setVisible', false);
-  Promise.all([mods.terrain?.ready, mods.geo.ready].map((p) => Promise.resolve(p).catch(() => {}))).then(() => { callMod('geo', 'setVisible', geoOn); ctx.invalidateShadows(); renderYears(true); });
-}
+else if (mods.geo) Promise.resolve(mods.geo.ready).catch(() => {}).then(() => { ctx.invalidateShadows(); renderYears(true); });
 frame();
 requestAnimationFrame(() => boot?.done());
 if (QUALITY.software && !QUALITY.forced) notice(esc(t('slow.notice', { fps: '<10' })), 15000);

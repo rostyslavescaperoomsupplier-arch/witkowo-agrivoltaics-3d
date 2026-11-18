@@ -1,0 +1,78 @@
+// UX critique screenshots, desktop. node qa/adv/ux_desktop.cjs [w] [h]
+const path = require('path');
+const { open, launch, OUT } = require('./h.cjs');
+const W = +process.argv[2] || 1440, H = +process.argv[3] || 900, P = `ux_${W}x${H}_`;
+const shot = (page, n) => page.screenshot({ path: path.join(OUT, P + n + '.png') });
+const tog = (page, id) => page.evaluate((id) => { const i = document.querySelector(id); const d = i.closest('details'); if (d) d.open = true; i.click(); }, id);
+const clk = (page, sel) => page.evaluate((sel) => { const i = document.querySelector(sel); const d = i && i.closest('details'); if (d) d.open = true; i && i.click(); }, sel);
+const setR = (page, id, v) => page.evaluate(([id, v]) => { const r = document.querySelector(id); r.value = v; r.dispatchEvent(new Event('input', { bubbles: true })); r.dispatchEvent(new Event('change', { bubbles: true })); }, [id, v]);
+(async () => {
+  const b = await launch();
+  // loading experience
+  {
+    const { ctx, page } = await open(b, '', { noWait: true }, { viewport: { width: W, height: H } });
+    await page.waitForTimeout(700); await shot(page, '00_boot');
+    const t0 = Date.now();
+    await page.waitForFunction(() => window.__witkowo && !document.querySelector('#boot'), null, { timeout: 90000 });
+    console.log('boot to ready ms (after 0.7s)', Date.now() - t0);
+    await page.waitForTimeout(300); await shot(page, '01_first');
+    await page.waitForTimeout(4000); await shot(page, '02_first5s');
+    await ctx.close();
+  }
+  const { ctx, page, logs } = await open(b, '', {}, { viewport: { width: W, height: H } });
+  await page.waitForTimeout(2500);
+  await shot(page, '03_default');
+  const step = async (n, fn, wait = 1500) => { try { await fn(); await page.waitForTimeout(wait); await shot(page, n); } catch (e) { console.log('FAIL', n, e.message.split('\n')[0]); } };
+  await step('04_allopen', () => page.evaluate(() => document.querySelectorAll('details.acc').forEach((d) => (d.open = true))), 400);
+  await page.evaluate(() => { const s = document.querySelector('#drawer'); if (s) s.scrollTop = 99999; });
+  await step('05_allopen_scrolled', async () => {}, 200);
+  await page.evaluate(() => { const s = document.querySelector('#drawer'); if (s) s.scrollTop = 0; document.querySelectorAll('details.acc').forEach((d) => (d.open = false)); document.querySelector('details[data-acc=sim]').open = true; });
+  await page.click('#bPlay');
+  await step('06_noon', () => setR(page, '#rClock', 13));
+  await step('07_labels', () => tog(page, '#tLabels'));
+  await tog(page, '#tLabels');
+  await step('08_plan', () => page.click('#modes [data-mode=top]'), 2500);
+  await step('09_walk', () => page.click('#modes [data-mode=walk]'), 2500);
+  await step('10_iso_back', () => page.click('#modes [data-mode=iso]'), 2500);
+  await step('11_night', () => setR(page, '#rClock', 22.5));
+  await step('12_dusk', () => setR(page, '#rClock', 19.8));
+  await setR(page, '#rClock', 13);
+  await step('13_xray', () => page.evaluate(() => { document.querySelector('details[data-acc=layers]').open = true; }).then(() => tog(page, '#tFlows')), 2000);
+  await step('14_xray_night', () => setR(page, '#rClock', 22));
+  await setR(page, '#rClock', 13);
+  await tog(page, '#tFlows');
+  await step('15_flyPower', () => page.click('.fly[data-fly=power]'), 2500);
+  await step('16_flyWater', () => page.click('.fly[data-fly=water]'), 2500);
+  await page.click('#modes [data-mode=iso]'); await page.waitForTimeout(1500);
+  await step('17_rain', () => page.evaluate(() => { document.querySelector('details[data-acc=weather]').open = true; }).then(() => clk(page, '#rainMode [data-rain=on]')), 2500);
+  await clk(page, '#rainMode [data-rain=off]');
+  await step('18_winter', () => clk(page, '#seasons [data-season=winter]'), 3500);
+  await step('19_winter_walk', () => page.click('#modes [data-mode=walk]'), 2500);
+  await page.click('#modes [data-mode=iso]'); await page.waitForTimeout(1500);
+  await step('20_winter_night', () => setR(page, '#rClock', 21));
+  await setR(page, '#rClock', 13);
+  await clk(page, '#seasons [data-season=summer]'); await page.waitForTimeout(1500);
+  await step('21_select_inv', () => page.evaluate(() => { document.querySelector('details[data-acc=objects]').open = true; }).then(() => clk(page, '#objects li[data-id="inverters"]')), 2000);
+  await page.click('#pclose').catch(() => {});
+  await step('22_underground', () => page.evaluate(() => { document.querySelector('details[data-acc=data]').open = true; }).then(() => tog(page, '#tUnder')), 4000);
+  const views = await page.$$('#underViews button');
+  if (views[2]) await step('23_under_column', () => views[2].click(), 3000);
+  await tog(page, '#tUnder'); await page.waitForTimeout(1500);
+  await step('24_report', () => clk(page, '#bReport'), 4000);
+  await page.click('#pclose').catch(() => {});
+  await step('25_climate', () => clk(page, '#bClimate'), 3000);
+  await page.click('#pclose').catch(() => {});
+  await step('26_mapview', () => page.evaluate(() => { document.querySelector('details[data-acc=map]').open = true; }).then(() => clk(page, '#bMapView')), 6000);
+  await clk(page, '#bMapView').catch(() => {}); await page.waitForTimeout(2000);
+  await step('27_picker', () => clk(page, '#bLoc'), 4000);
+  await page.keyboard.press('Escape'); await page.waitForTimeout(800);
+  await shot(page, '28_after_esc');
+  await step('29_en', () => page.click('#side header [data-lang=en]'), 800);
+  // focus ring check
+  await page.evaluate(() => document.activeElement && document.activeElement.blur());
+  for (let i = 0; i < 6; i++) await page.keyboard.press('Tab');
+  await step('30_focus', async () => {}, 200);
+  console.log('focused:', await page.evaluate(() => { const a = document.activeElement; const cs = getComputedStyle(a); return a.outerHTML.slice(0, 120) + ' outline=' + cs.outline + ' shadow=' + cs.boxShadow; }));
+  console.log('logs', logs.slice(0, 10).join('\n'));
+  await b.close();
+})();

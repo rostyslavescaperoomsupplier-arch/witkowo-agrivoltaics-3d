@@ -189,6 +189,8 @@
   @media (prefers-reduced-motion: reduce) { #boot .ring { animation-duration: 3s; } }
   #note { position: fixed; left: 50%; top: 16px; transform: translateX(-50%); z-index: 35; display: flex; align-items: flex-start; gap: 10px; max-width: min(520px, calc(100% - 32px)); padding: 10px 12px 10px 14px; font-size: 13px; }
 
+  /* desktop: info panel open -> compact HUD (time, PV, irrigation, crop), panel takes the rest of the right edge */
+  body.panelopen #hud dt.full, body.panelopen #hud dd.full, body.panelopen #hud div.bar, body.panelopen #hud div.legend, body.panelopen #hud h2 { display: none; }
   /* ---------- mobile / touch ---------- */
   html, body { height: 100dvh; overscroll-behavior: none; }
   #menuBtn, #joy, .grab { display: none; }
@@ -439,7 +441,7 @@
       fetch(url, { cache: 'no-store', mode: 'cors' }).then(function (r) { clearTimeout(t); ok(r.ok); }, function () { clearTimeout(t); ok(false); });
     });
   }
-  import('./main.js?v=202611181816').catch(function (e) {
+  import('./main.js?v=202611181823').catch(function (e) {
     var m = (e && e.message) || String(e);
     if (m === 'WebGL unavailable') { boot.started = true; clearTimeout(slow); el.remove(); return; }
     console.error(e);
