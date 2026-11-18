@@ -10,7 +10,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181749';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181812';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -26,7 +26,7 @@ addEventListener('unhandledrejection', (e) => showErr(e.reason?.message || Strin
 
 // ---------------- quality tier ----------------
 // low: <= 2 GB RAM, small GPUs, software GL, a slow first second (fps probe below), or ?q=low. ?q=high forces high.
-// Phones start on the high tier (user: "почему на телефоне урезанная графика"); the fps probe drops them if needed.
+// Phones start on the high tier (user asked why phones got reduced graphics); the fps probe drops them if needed.
 const ssGet = (k) => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
 const ssSet = (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) { /* storage blocked */ } };
 const qp = new URLSearchParams(location.search).get('q');
@@ -243,14 +243,32 @@ const state = {
   show: { power: true, water: true, labels: !smallMQ.matches },
 };
 state.winter = state.season === 'winter' ? 1 : 0; // ?season=winter starts in full winter
-const sim = { playing: true, irrigation: 'auto', autoSeason: false };
+const sim = { playing: true, irrigation: 'auto', autoSeason: false, rain: 'auto', rainLevel: 0.5, simDay: 0 };
+// ---------------- site (any point in Poland) ----------------
+// state.site = { lat, lon, rotDeg, name, source }: default Witkowo from data/geo/site.json, or ?lat=..&lon=..&rot=..
+const QS = new URLSearchParams(location.search);
+const DEFAULT_SITE = await fetch('./data/geo/site.json').then((r) => r.json())
+  .then((j) => ({ lat: +j.lat, lon: +j.lon, rotDeg: +j.rotDeg, name: 'Witkowo', source: 'default' }))
+  .catch(() => ({ lat: 53.2886348, lon: 15.068703, rotDeg: 313, name: 'Witkowo', source: 'default' }));
+const inPoland = (lat, lon) => lat > 48.9 && lat < 55 && lon > 14 && lon < 24.3;
+function siteFromUrl() {
+  const lat = parseFloat(QS.get('lat')), lon = parseFloat(QS.get('lon')), rot = parseFloat(QS.get('rot'));
+  if (!Number.isFinite(lat) || !Number.isFinite(lon) || !inPoland(lat, lon)) return null;
+  return { lat, lon, rotDeg: Number.isFinite(rot) ? ((rot % 360) + 360) % 360 : DEFAULT_SITE.rotDeg, name: QS.get('name') || '', source: 'url' };
+}
+state.site = siteFromUrl() || DEFAULT_SITE;
+const isDefaultSite = (st) => Math.abs(st.lat - DEFAULT_SITE.lat) < 1e-5 && Math.abs(st.lon - DEFAULT_SITE.lon) < 1e-5;
+state.show.underground = false; state.undergroundScale = 'full'; state.show.rays = true;
+state.realClimate = false; state.rain = 0; state.irrigationLpm = 0;
 let cam = persp;
 const ctx = {
   THREE, scene, root, node, renderer, getCamera: () => cam,
   // extras beyond the contract (optional for modules): all objects with a name, bloom pass (null on low tier), state
   nodes, bloom: bloomPass || null, state,
+  site: state.site, // terrain / geo / underground start on this site (set again on every site change)
 };
-const MOD_ORDER = ['sky', 'power', 'water', 'growth', 'winter'];
+const MOD_ORDER = ['sky', 'power', 'water', 'growth', 'winter', 'rain', 'terrain', 'geo', 'underground', 'climate', 'sitedata'];
+const libs = {}; // module namespaces (extra exports such as rain.js autoRain / mmhFromRain)
 const mods = {};
 const modErr = (name, where, e) => console.warn(`[${name}] ${where} failed, module disabled:`, e);
 boot?.progress?.(t('boot.modules'));
@@ -259,7 +277,16 @@ const lightsBefore = new Set(); scene.traverse((o) => { if (o.isLight) lightsBef
   const loaded = await Promise.all(MOD_ORDER.map((n) => import(`./lib/${n}.js${new URL(import.meta.url).search}`).then((m) => m, (e) => { console.warn(`[${n}] not loaded:`, e.message || e); return null; })));
   MOD_ORDER.forEach((n, i) => {
     const m = loaded[i]; if (!m || typeof m.init !== 'function') return;
-    try { const api = m.init(ctx); if (api && typeof api.update === 'function') mods[n] = api; else console.warn(`[${n}] init returned no update()`); }
+    libs[n] = m;
+    try {
+      const api = m.init(ctx);
+      if (api && typeof api.update === 'function') {
+        mods[n] = api;
+        // later modules read these from ctx: geo / underground / sitedata use the terrain, underground the site report
+        if (n === 'terrain') ctx.terrain = api;
+        if (n === 'sitedata') ctx.sitedata = api;
+      } else console.warn(`[${n}] init returned no update()`);
+    }
     catch (e) { modErr(n, 'init', e); }
   });
 }
@@ -268,7 +295,7 @@ const lightsBefore = new Set(); scene.traverse((o) => { if (o.isLight) lightsBef
   let skyLights = 0; scene.traverse((o) => { if (o.isLight && !lightsBefore.has(o)) skyLights++; });
   if (mods.sky && skyLights) { scene.remove(fbHemi, fbSun, fbSun.target); }
   // sky.js draws its own ground below the horizon (dome) and fog; the fallback farmland planes would show seams
-  if (mods.sky) { scene.remove(ground, groundIn); ground.geometry.dispose(); groundIn.geometry.dispose(); }
+  if (mods.sky || mods.geo) { scene.remove(ground, groundIn); ground.geometry.dispose(); groundIn.geometry.dispose(); }
 }
 const fallbackSky = !mods.sky || fbSun.parent === scene;
 function callMod(n, fn, ...args) {
@@ -596,7 +623,8 @@ function select(it, fly = false) {
   selected = it || null; const panel = $('#panel');
   Object.entries(labelEls).forEach(([id, el]) => el.classList.toggle('on', !!it && id === it.id));
   $$('#objects li.item').forEach((li) => li.classList.toggle('on', !!it && li.dataset.id === it.id));
-  if (!it) { selHelpers.forEach((h) => (h.visible = false)); panel.classList.remove('open'); syncSheets(); return; }
+  if (!it) { selHelpers.forEach((h) => (h.visible = false)); panel.classList.remove('open', 'wide'); panel.dataset.kind = ''; syncSheets(); return; }
+  panel.dataset.kind = 'item'; panel.classList.remove('wide');
   if (smallMQ.matches) setDrawer(false); // landscape phones too: drawer + panel together would hide the scene
   selBoxes(); renderPanel(); panel.classList.add('open'); panel.scrollTop = 0; syncSheets();
   if (fly) {
@@ -877,8 +905,11 @@ else { $('#tShadow').checked = true; applyShadows(true); }
 
 // ---------------- HUD ----------------
 const stageName = (s) => (s ? t('stage.' + s) : t('hud.na'));
-const info = { sky: null, power: null, water: null, growth: null, winter: null };
-function readInfo() { for (const n of MOD_ORDER) info[n] = mods[n] && typeof mods[n].info === 'function' ? callMod(n, 'info') ?? null : null; }
+const info = Object.fromEntries(MOD_ORDER.map((n) => [n, null]));
+function readInfo() {
+  const lang = document.documentElement.lang;
+  for (const n of MOD_ORDER) info[n] = mods[n] && typeof mods[n].info === 'function' ? callMod(n, 'info', lang) ?? null : null;
+}
 function hudTemplate() {
   $('#hud').innerHTML = `<h2><span>${esc(t('hud.title'))}</span><span class="clk" id="hClock"></span></h2>
     <dl>
@@ -891,7 +922,11 @@ function hudTemplate() {
       <dt><i style="background:var(--water)"></i>${esc(t('hud.water'))}</dt><dd id="hLpm"></dd>
       <dt class="full"><i style="background:var(--water)"></i>${esc(t('hud.litres'))}</dt><dd class="full" id="hL"></dd>
       <dt class="full wint"><i style="background:#9ec9ea"></i>${esc(t('hud.outside'))}</dt><dd class="full wint" id="hOut"></dd>
-      <dt class="wint"><i style="background:#f0a35e"></i>${esc(t('hud.inside'))}</dt><dd class="wint" id="hIn"></dd>
+      <dt class="wint inrow"><i style="background:#f0a35e"></i>${esc(t('hud.inside'))}</dt><dd class="wint inrow" id="hIn"></dd>
+      <dt class="full rainrow"><i style="background:#7fb3e6"></i>${esc(t('hud.rain'))}</dt><dd class="full rainrow" id="hRain"></dd>
+      <dt class="full rainrow"><i style="background:#3d9be9"></i>${esc(t('hud.tank'))}</dt><dd class="full rainrow" id="hTank"></dd>
+      <dt class="full rainrow"><i style="background:#3d9be9"></i>${esc(t('hud.flow'))}</dt><dd class="full rainrow" id="hTankFlow"></dd>
+      <div class="bar rainrow"><b id="hTankBar" style="background:#3d9be9"></b></div>
       <dt class="crop"><i style="background:var(--leaf)"></i>${esc(t('hud.crop'))}</dt><dd class="crop" id="hCrop"></dd>
       <div class="bar"><b id="hCropBar" style="background:var(--leaf)"></b></div>
     </dl>
@@ -916,12 +951,25 @@ function updateHud() {
   $('#hL').innerHTML = wa ? `${fmt(wa.litresToday, 0)}<small>${t('unit.l')}</small>` : t('hud.na');
   $('#hCrop').innerHTML = gr ? `${esc(stageName(gr.stage))}${isFinite(gr.headDiameterCm) && gr.headDiameterCm > 0 ? `<small>Ø ${fmt(gr.headDiameterCm, 0)} ${t('unit.cm')}</small>` : ''}` : `${Math.round(state.dayOfSeason)}%`;
   $('#hCropBar').style.transform = `scaleX(${clamp(state.dayOfSeason, 0, 100) / 100})`;
-  const wi = info.winter, showT = !!wi && (state.season === 'winter' || state.winter > 0);
-  $('#hud').classList.toggle('winter', showT);
-  if (showT) {
-    $('#hOut').innerHTML = `${fmt(wi.outsideC)}<small>${t('unit.c')}</small>`;
-    $('#hIn').innerHTML = `${fmt(wi.insideC)}<small>${t('unit.c')}</small>`;
+  const wi = info.winter, inWinter = !!wi && (state.season === 'winter' || state.winter > 0);
+  const realT = state.realClimate && Number.isFinite(state.tempOutsideC);
+  const hud = $('#hud'); hud.classList.toggle('winter', inWinter || realT); hud.classList.toggle('noin', !inWinter);
+  if (inWinter || realT) {
+    $('#hOut').innerHTML = `${fmt(realT ? state.tempOutsideC : wi.outsideC)}<small>${t('unit.c')}</small>`;
+    $('#hIn').innerHTML = wi ? `${fmt(wi.insideC)}<small>${t('unit.c')}</small>` : t('hud.na');
   }
+  const ri = info.rain; hud.classList.toggle('rain', !!ri);
+  if (ri) {
+    $('#hRain').innerHTML = `${fmt(ri.rainMmH)}<small>${t('unit.mmh')}</small>`;
+    $('#hTank').innerHTML = `${fmt((ri.tankLevel || 0) * 100, 0)}<small>%</small> · ${fmt((ri.tankLitres || 0) / 1000)}<small>m³</small>`;
+    $('#hTankFlow').innerHTML = `+${fmt(ri.inflowLpm)} / −${fmt(ri.outflowLpm)}<small>${t('unit.lpm')}</small>`;
+    $('#hTankBar').style.transform = `scaleX(${clamp(ri.tankLevel || 0, 0, 1)})`;
+    $('#vRain').textContent = ri.rainMmH > 0.05 ? `${fmt(ri.rainMmH)} ${t('unit.mmh')}` : t('irr.off');
+  }
+  renderYears(); syncAttr(); syncMapView();
+  if (!smallMQ.matches) document.documentElement.style.setProperty('--hudh', hud.offsetHeight + 'px'); // info panel stops above the HUD
+  if (info.geo) { const g = info.geo; $('#mapStatus').textContent = g.loading ? t('map.loading') : g.error || ''; }
+  { const n = siteName(); if ($('#locName').textContent !== n) renderLoc(); }
   syncLegend();
   winterWalls = wi && wi.filmDeployed > 0.5 && Array.isArray(mods.winter?.colliders) ? mods.winter.colliders : null;
   const on = state.water > 0.01;
@@ -929,10 +977,321 @@ function updateHud() {
   if (selected) { const l = liveHtml(selected), el = $('#plive'); if (el && l != null) el.innerHTML = l; }
 }
 
+// ---------------- side-panel accordions (open state remembered per viewer) ----------------
+{
+  const KEY = 'witkowo3d:acc';
+  let saved = {}; try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+  $$('details.acc').forEach((d) => {
+    if (d.dataset.acc in saved) d.open = !!saved[d.dataset.acc];
+    else if (smallMQ.matches && d.dataset.acc !== 'sim') d.open = false;
+    d.addEventListener('toggle', () => { saved[d.dataset.acc] = d.open; try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) { /* storage blocked */ } });
+  });
+}
+const L2 = () => (document.documentElement.lang === 'en' ? 'en' : 'pl');
+const lbl = (o) => (o ? (L2() === 'en' ? o.label_en || o.label_pl : o.label_pl || o.label_en) || o.label || '' : '');
+const num = (v, d = 1) => (v == null || !Number.isFinite(+v) ? t('hud.na') : Number(v).toFixed(d).replace('.', L2() === 'en' ? '.' : ','));
+
+// ---------------- camera limits for the map / the geological section ----------------
+const ORBIT_BASE = { maxDistance: orbitP.maxDistance, maxPolarAngle: orbitP.maxPolarAngle };
+const geoRec = (() => { try { return mods.geo?.info?.()?.recommended || null; } catch (e) { return null; } })();
+let geoOn = !!mods.geo;
+if (mods.geo) { persp.far = geoRec?.cameraFar || 9000; persp.updateProjectionMatrix(); }
+function syncOrbitLimits() {
+  if (state.show.underground) { orbitP.maxPolarAngle = Math.PI - 0.05; orbitP.maxDistance = info.underground?.camera?.maxDistance || 420; }
+  else { orbitP.maxPolarAngle = ORBIT_BASE.maxPolarAngle; orbitP.maxDistance = geoOn ? geoRec?.maxDistance || 1800 : ORBIT_BASE.maxDistance; }
+}
+// fog: sky.js sets a near fog every frame (90..360 m); zoomed out over the real map it is pushed out to the map's
+// recommended range, so the photo ground stays visible to the horizon
+function mapFog() {
+  if (!geoOn || !scene.fog || cam !== persp || mode === 'walk') return;
+  const d = persp.position.distanceTo(orbitP.target), k = clamp((d - 120) / 480, 0, 1);
+  if (k <= 0) return;
+  const near = geoRec?.fogNear || 1400, far = geoRec?.fogFar || 7000;
+  scene.fog.near += (near - scene.fog.near) * k; scene.fog.far += (far - scene.fog.far) * k;
+}
+function flyPose(pos, target, d = 1.1) {
+  if (mode !== 'iso') setMode('iso');
+  camTouched = true;
+  tween = { k: 0, d, from: orbitP.target.clone(), to: target.clone(), p0: persp.position.clone(), p1: pos.clone() };
+  if (smallMQ.matches) setDrawer(false);
+}
+syncOrbitLimits();
+
+// ---------------- map: ground photo, year, overlay, map view ----------------
+const selYear = $('#selYear'), selLayer = $('#selLayer'), rOpacity = $('#rOpacity');
+let yearsSig = '';
+function yearLabel(y) {
+  const k = String(y.kind || ''), d = y.date || String(y.id);
+  return /s2|sentinel/i.test(k) || /^s2/i.test(String(y.id)) ? `Sentinel-2 ${d}` : /live/.test(k) ? `${d} (Geoportal)` : d;
+}
+function renderYears(force) {
+  const g = mods.geo; if (!g || !Array.isArray(g.years)) return;
+  const sig = g.years.map((y) => y.id).join('|') + L2();
+  if (!force && sig === yearsSig) return; yearsSig = sig;
+  const cur = String(info.geo?.year ?? '');
+  selYear.innerHTML = g.years.map((y) => `<option value="${esc(y.id)}"${String(y.id) === cur ? ' selected' : ''}>${esc(yearLabel(y))}</option>`).join('');
+  selYear.disabled = !g.years.length;
+}
+function renderLayers() {
+  const g = mods.geo; if (!g || !Array.isArray(g.layers)) return;
+  const cur = info.geo?.layer ?? 'none';
+  selLayer.innerHTML = g.layers.map((l) => `<option value="${esc(l.id)}"${l.id === cur ? ' selected' : ''}>${esc(lbl(l))}</option>`).join('');
+}
+function syncOpacity() { fillRange(rOpacity); $('#vOpacity').textContent = Math.round(rOpacity.value * 100) + '%'; }
+if (mods.geo) {
+  selYear.addEventListener('change', () => { const y = mods.geo.years.find((v) => String(v.id) === selYear.value); if (y) Promise.resolve(callMod('geo', 'setYear', y.id)).catch((e) => console.warn('geo.setYear', e)); });
+  selLayer.addEventListener('change', () => {
+    const l = mods.geo.layers.find((v) => v.id === selLayer.value);
+    if (l && Number.isFinite(l.opacity) && l.opacity > 0) { rOpacity.value = l.opacity; callMod('geo', 'setOpacity', l.opacity); syncOpacity(); }
+    Promise.resolve(callMod('geo', 'setLayer', selLayer.value)).catch((e) => console.warn('geo.setLayer', e));
+  });
+  rOpacity.addEventListener('input', () => { callMod('geo', 'setOpacity', +rOpacity.value); syncOpacity(); });
+  $('#tGround').addEventListener('change', (e) => { geoOn = e.target.checked; callMod('geo', 'setVisible', geoOn); syncOrbitLimits(); ctx.invalidateShadows(); });
+  syncOpacity();
+} else { $('#accMap').querySelectorAll('input, select').forEach((el) => (el.disabled = true)); }
+// "Map view": pull back to ~800 m over the real map; pressed again (or when already far out): back to the farm
+const mapFar = () => cam === persp && persp.position.distanceTo(orbitP.target) > 300;
+$('#bMapView').addEventListener('click', () => {
+  if (mapFar()) { const p = isoHomePose(); flyPose(p.pos, p.target, 1.4); return; }
+  if (!geoOn && mods.geo) { $('#tGround').checked = true; $('#tGround').dispatchEvent(new Event('change')); }
+  if (state.show.underground) { $('#tUnder').checked = false; $('#tUnder').dispatchEvent(new Event('change')); }
+  const target = new THREE.Vector3(C.x, 0, C.z), dir = new THREE.Vector3(0.45, 0.78, 0.55).normalize();
+  flyPose(target.clone().addScaledVector(dir, 800), target, 1.6);
+});
+function syncMapView() { const b = $('#bMapView'), far = mapFar(); b.textContent = t(far ? 'map.home' : 'map.view'); }
+
+// ---------------- location (any point in Poland) ----------------
+const SITE_GAP_MS = 60000; // Open-Meteo: ~6-7 new sites an hour; one new site per minute at most
+let lastSiteAt = 0, siteBusy = false;
+const STEP_IDS = ['terrain', 'geo', 'sky', 'climate', 'sitedata', 'underground'];
+const steps = {};
+const fmtCoord = (st) => `${Math.abs(st.lat).toFixed(4)}° ${st.lat >= 0 ? 'N' : 'S'}, ${Math.abs(st.lon).toFixed(4)}° ${st.lon >= 0 ? 'E' : 'W'}`;
+function siteName() {
+  const st = state.site; if (st.name) return st.name;
+  const rep = info.sitedata, f = rep?.fields || {};
+  const parts = ['admin.commune', 'admin.county'].map((k) => f[k]?.value).filter(Boolean);
+  return parts.length ? String(parts[0]) : t('loc.title');
+}
+function renderLoc() {
+  $('#locName').textContent = siteName(); $('#locCoord').textContent = fmtCoord(state.site);
+  const note = $('#locNote'), list = STEP_IDS.filter((k) => steps[k]);
+  if (!list.length) { note.hidden = true; return; }
+  note.hidden = false;
+  const bad = list.filter((k) => steps[k].st === 'err');
+  const head = siteBusy ? t('loc.loading') : bad.length ? t('loc.partial', { list: bad.map((k) => t('mod.' + k)).join(', ') }) : t('loc.done');
+  note.innerHTML = `<div>${esc(head)}</div><ul>${list.map((k) => {
+    const s = steps[k], cls = { wait: 'st-wait', run: 'st-run', ok: 'st-ok', err: 'st-err', skip: 'st-skip' }[s.st];
+    const txt = { wait: t('loc.pending'), run: t('loc.running'), ok: t('loc.ok'), err: t('loc.err'), skip: t('loc.skip') }[s.st];
+    return `<li><span>${esc(t('mod.' + k))}</span><span class="${cls}" title="${esc(s.msg || '')}">${esc(txt)}</span></li>`;
+  }).join('')}</ul>`;
+}
+let reportT = 0;
+function onReport() { const now = performance.now(); if (panelKind() === 'report' && now - reportT > 300) { reportT = now; readInfo(); renderReport(); } }
+async function runStep(k, fn) {
+  if (!mods[k]) { steps[k] = { st: 'skip' }; renderLoc(); return; }
+  steps[k] = { st: 'run' }; renderLoc();
+  try {
+    const r = await fn();
+    const errs = (() => { try { return mods[k]?.info?.()?.errors || []; } catch (e) { return []; } })();
+    steps[k] = { st: 'ok', msg: Array.isArray(errs) ? errs.slice(-2).join('; ') : '' }; void r;
+  } catch (e) { console.warn(`[${k}] setSite failed:`, e); steps[k] = { st: 'err', msg: e?.message || String(e) }; }
+  renderLoc();
+}
+// order: terrain first (geo drapes the ground on it), then geo, sky; climate + site report in parallel; underground
+// last (it reads the site report for the surface geology)
+async function applySite(site, { initial = false } = {}) {
+  siteBusy = true;
+  state.site = site; ctx.site = site;
+  for (const k of STEP_IDS) steps[k] = { st: mods[k] ? 'wait' : 'skip' };
+  renderLoc();
+  // while a new site's ground is being rebuilt geo.js's draped mesh can shade NaN (black screen through the bloom
+  // pass): keep it hidden until terrain + geo are ready, the farm stays visible over the sky meanwhile
+  if (mods.geo) callMod('geo', 'setVisible', false);
+  if (initial) { // terrain / geo / underground were started on this site by init(ctx.site): just follow them
+    await runStep('terrain', () => mods.terrain.ready);
+    await runStep('geo', () => mods.geo.ready);
+    await runStep('sky', () => mods.sky.setSite?.(site));
+  } else {
+    await runStep('terrain', () => mods.terrain.setSite(site));
+    await runStep('geo', () => mods.geo.setSite(site, { terrain: mods.terrain }));
+    await runStep('sky', () => mods.sky.setSite?.(site));
+  }
+  if (mods.geo) callMod('geo', 'setVisible', geoOn);
+  await Promise.all([
+    runStep('climate', () => mods.climate.setSite?.(site)),
+    runStep('sitedata', () => mods.sitedata.setSite(site, { onProgress: onReport })),
+  ]);
+  await runStep('underground', () => (initial ? mods.underground.ready : mods.underground.setSite?.(site)));
+  siteBusy = false; renderLoc(); readInfo(); renderYears(true); renderLayers();
+  ctx.invalidateShadows();
+  if (panelKind() === 'report') renderReport();
+  if (panelKind() === 'climate') renderClimate();
+  setTimeout(() => { if (!siteBusy && !STEP_IDS.some((k) => steps[k]?.st === 'err')) { for (const k of STEP_IDS) delete steps[k]; renderLoc(); } }, 8000);
+}
+function setSiteUrl(site) {
+  const u = new URL(location.href);
+  if (isDefaultSite(site)) { u.searchParams.delete('lat'); u.searchParams.delete('lon'); u.searchParams.delete('rot'); u.searchParams.delete('name'); }
+  else { u.searchParams.set('lat', site.lat.toFixed(6)); u.searchParams.set('lon', site.lon.toFixed(6)); u.searchParams.set('rot', String(Math.round(site.rotDeg ?? 0))); if (site.name) u.searchParams.set('name', site.name); else u.searchParams.delete('name'); }
+  history.replaceState(history.state, '', u.href);
+}
+$('#bLoc').addEventListener('click', async () => {
+  const wait = SITE_GAP_MS - (Date.now() - lastSiteAt);
+  if (siteBusy || wait > 0) { notice(esc(t('loc.throttle', { s: Math.max(1, Math.ceil(wait / 1000)) })), 9000); return; }
+  let site = null;
+  try { const m = await import(`./lib/locate.js${new URL(import.meta.url).search}`); site = await m.openPicker({ ...state.site }, L2()); }
+  catch (e) { console.warn('locate', e); notice(esc(t('loc.pickerFail', { m: e?.message || e })), 9000); return; }
+  if (!site || !Number.isFinite(+site.lat) || !Number.isFinite(+site.lon)) return;
+  site = { lat: +site.lat, lon: +site.lon, rotDeg: Number.isFinite(+site.rotDeg) ? +site.rotDeg : state.site.rotDeg, name: site.name || '', source: site.source || 'picker' };
+  lastSiteAt = Date.now(); setSiteUrl(site);
+  applySite(site);
+});
+
+// ---------------- info panel: site report + climate ----------------
+const panelKind = () => ($('#panel').classList.contains('open') ? $('#panel').dataset.kind || 'item' : null);
+function openPanel(kind) {
+  select(null);
+  const p = $('#panel'); p.dataset.kind = kind; p.classList.add('wide');
+  if (kind === 'report') renderReport(); else renderClimate();
+  p.classList.add('open'); p.scrollTop = 0; syncSheets();
+  if (smallMQ.matches) setDrawer(false);
+}
+const panelHead = (eyebrow, title, sub) => `<div class="grab" aria-hidden="true"></div>
+  <div class="top"><div><div class="eyebrow">${esc(eyebrow)}</div><h3>${esc(title)}</h3>${sub ? `<div class="meta">${esc(sub)}</div>` : ''}</div><button type="button" class="close" id="pclose">${esc(t('close'))}</button></div>`;
+function bindClose() { $('#pclose').onclick = () => { const p = $('#panel'); p.classList.remove('open', 'wide'); p.dataset.kind = ''; syncSheets(); }; }
+function fieldValue(f) {
+  if (!f) return null;
+  if (f.pending) return `<span class="pend">${esc(t('report.loading'))}</span>`;
+  if (f.value == null) return f.error ? `<span class="fail" title="${esc(f.error)}">${esc(t('report.failed'))}</span>` : `<span class="pend">${esc(t('report.nodata'))}</span>`;
+  const v = L2() === 'en' && f.value_en ? f.value_en : f.value;
+  return esc(typeof v === 'number' ? num(v, Math.abs(v) >= 100 ? 0 : 1) : v) + (f.unit ? ' ' + esc(f.unit) : '');
+}
+const safeHref = (u) => (/^https?:\/\//.test(u || '') ? esc(u) : '');
+function renderReport() {
+  const p = $('#panel'); if (p.dataset.kind !== 'report') return;
+  const sd = mods.sitedata, rep = info.sitedata || (sd ? callMod('sitedata', 'info') : null);
+  const suit = sd ? callMod('sitedata', 'suitability', L2()) || [] : [];
+  const ti = info.terrain || (mods.terrain ? callMod('terrain', 'info') : null);
+  let html = panelHead(t('sec.data'), t('report.title'), `${siteName()} · ${fmtCoord(state.site)}`);
+  if (suit.length) {
+    const o = suit[0];
+    html += `<div class="light"><span class="bulb lv-${esc(o.level)}"></span><div><b>${esc(t('report.suit'))}</b><div>${esc(o.text)}</div></div></div>
+      <ul class="suit">${suit.slice(1).map((n) => `<li><i class="lv-${esc(n.level)}"></i><span>${esc(n.text)}</span></li>`).join('')}</ul>`;
+  }
+  if (ti && !ti.loading) {
+    const row = (k, v) => `<tr><td>${esc(t(k))}</td><td>${v}</td></tr>`;
+    html += `<h4>${esc(t('report.terrain'))}</h4><table class="rep">
+      ${row('report.elev', `${num(ti.elevationM)} m`)}${row('report.slope', `${num(ti.slopePct)} %`)}${Number.isFinite(ti.aspectDeg) ? row('report.aspect', `${num(ti.aspectDeg, 0)}°`) : ''}
+      ${row('report.relief', `${num(ti.reliefM)} m`)}${row('report.pad', `${num(ti.padLevelM)} m`)}
+      ${row('report.cut', `${num(ti.cutM3, 0)} m³`)}${row('report.fill', `${num(ti.fillM3, 0)} m³`)}
+      <tr><td>${esc(t('report.src'))}</td><td><span class="s">${esc(ti.source || '')}</span></td></tr></table>`;
+  } else if (mods.terrain) html += `<h4>${esc(t('report.terrain'))}</h4><p class="est">${esc(t('report.loading'))}</p>`;
+  if (!rep) html += `<p class="est">${esc(t('report.none'))}</p>`;
+  else {
+    for (const g of rep.groups || []) {
+      const rows = (g.keys || []).map((k) => [k, rep.fields?.[k]]).filter(([, f]) => f);
+      if (!rows.length) continue;
+      html += `<h4>${esc(lbl(g))}</h4><table class="rep">${rows.map(([, f]) => {
+        const src = f.source ? (safeHref(f.link) ? `<a href="${safeHref(f.link)}" target="_blank" rel="noopener">${esc(f.source)}</a>` : esc(f.source)) : '';
+        const conf = f.confidence ? ` · ${esc(t('report.conf.' + f.confidence))}` : '';
+        return `<tr><td>${esc(lbl(f))}</td><td>${fieldValue(f)}${src || conf ? `<span class="s">${src}${conf}</span>` : ''}</td></tr>`;
+      }).join('')}</table>`;
+    }
+    if (rep.linkOnly?.length) html += `<h4>${esc(t('report.links'))}</h4><table class="rep">${rep.linkOnly.map((l) => `<tr><td colspan="2">${safeHref(l.url) ? `<a href="${safeHref(l.url)}" target="_blank" rel="noopener">${esc(lbl(l))}</a>` : esc(lbl(l))}</td></tr>`).join('')}</table>`;
+    if (rep.errors?.length) html += `<p class="est" title="${esc(rep.errors.join('\n'))}">${esc(t('report.errors', { n: rep.errors.length }))}</p>`;
+  }
+  html += `<p class="est">${esc(t('est'))}</p>`;
+  const top = p.scrollTop; p.innerHTML = html; p.scrollTop = top; bindClose();
+}
+function renderClimate() {
+  const p = $('#panel'); if (p.dataset.kind !== 'climate') return;
+  const c = mods.climate, ci = c ? callMod('climate', 'info', L2()) : null;
+  let html = panelHead(t('sec.data'), t('climate.title'), `${siteName()} · ${fmtCoord(state.site)}`);
+  if (!c) { p.innerHTML = html + `<p class="est">${esc(t('climate.none'))}</p>`; bindClose(); return; }
+  const sgn = (v) => (v > 0 ? '+' : '') + num(v);
+  html += `<dl class="kv">
+    <dt>${esc(t('climate.annual'))}${ci?.annualMeanPeriod ? ` (${esc(ci.annualMeanPeriod)})` : ''}</dt><dd>${num(ci?.annualMean)} °C</dd>
+    <dt>${esc(t('climate.base'))}</dt><dd>${num(ci?.baselineMean)} °C</dd>
+    <dt>${esc(t('climate.warming'))}</dt><dd>${ci?.warmingVsBaseline != null ? sgn(ci.warmingVsBaseline) : t('hud.na')} °C</dd>
+    <dt>${esc(t('climate.trend'))}</dt><dd>${ci?.trendPerDecade != null ? sgn(ci.trendPerDecade) : t('hud.na')} ${esc(t('unit.perDecade'))}</dd>
+    <dt>${esc(t('climate.ghi'))}</dt><dd>${num(ci?.typicalDayKWhm2, 2)} ${esc(t('unit.kwhm2'))}</dd>
+    <dt>${esc(t('climate.now'))}</dt><dd>${num(ci?.tempOutsideC)} °C</dd>
+  </dl><div id="climCharts"></div><p class="est">${esc(t('climate.caveat'))}</p><p class="est">${esc(ci?.source || '')}</p>`;
+  p.innerHTML = html; bindClose();
+  const box = $('#climCharts'), w = Math.max(260, Math.min(560, p.clientWidth - 36));
+  for (const k of ['stripes', 'annual', 'monthly']) { const cv = callMod('climate', 'chartCanvas', k, L2(), { width: w, height: k === 'stripes' ? 90 : 170 }); if (cv) box.appendChild(cv); }
+}
+// the default site's report is fetched only when asked for (~20 public services); other sites load it on arrival
+function ensureReport() {
+  if (!mods.sitedata) return;
+  const st = callMod('sitedata', 'info')?.status;
+  if (st === 'idle' || st === 'aborted') Promise.resolve(callMod('sitedata', 'setSite', state.site, { onProgress: onReport })).then(() => { readInfo(); renderReport(); renderLoc(); }).catch((e) => console.warn('sitedata', e));
+}
+$('#bReport').addEventListener('click', () => { ensureReport(); openPanel('report'); });
+$('#bClimate').addEventListener('click', () => openPanel('climate'));
+if (!mods.sitedata && !mods.terrain) $('#bReport').disabled = true;
+if (!mods.climate) $('#bClimate').disabled = true;
+
+// ---------------- geological section ----------------
+const UV_LABEL = { oblique: 'under.v.oblique', shallow: 'under.v.shallow', column: 'under.v.column' };
+function renderUnderViews() {
+  const v = info.underground?.camera?.views || (mods.underground ? callMod('underground', 'info')?.camera?.views : null) || {};
+  const box = $('#underViews'), keys = Object.keys(v);
+  box.style.gridTemplateColumns = `repeat(${Math.max(1, keys.length)}, 1fr)`;
+  box.innerHTML = keys.map((k) => `<button type="button" data-view="${esc(k)}">${esc(UV_LABEL[k] ? t(UV_LABEL[k]) : k)}</button>`).join('');
+}
+$('#underViews').addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-view]'); if (!b) return;
+  const v = (info.underground || callMod('underground', 'info'))?.camera?.views?.[b.dataset.view]; if (!v) return;
+  flyPose(new THREE.Vector3(...v.pos), new THREE.Vector3(...v.target), 1.2);
+});
+$('#tUnder').addEventListener('change', (e) => {
+  state.show.underground = e.target.checked; $('#underCtl').hidden = !e.target.checked;
+  callMod('underground', 'setVisible', e.target.checked); syncOrbitLimits(); ctx.invalidateShadows();
+  if (e.target.checked) { renderUnderViews(); const v = callMod('underground', 'info')?.camera?.views?.oblique; if (v) flyPose(new THREE.Vector3(...v.pos), new THREE.Vector3(...v.target), 1.2); }
+});
+$('#underScale').addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-scale]'); if (!b) return; state.undergroundScale = b.dataset.scale;
+  $$('#underScale button').forEach((x) => x.classList.toggle('on', x === b)); ctx.invalidateShadows();
+});
+if (!mods.underground) $('#lUnder').style.display = 'none';
+
+// ---------------- weather: rain, real climate, sun rays ----------------
+const rRain = $('#rRain');
+function syncRainUi() {
+  $$('#rainMode button').forEach((b) => { const on = b.dataset.rain === sim.rain; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+  $('#rainInt').hidden = sim.rain !== 'on'; $('#rainHint').hidden = sim.rain !== 'auto'; fillRange(rRain);
+}
+$('#rainMode').addEventListener('click', (e) => { const b = e.target.closest('button[data-rain]'); if (!b) return; sim.rain = b.dataset.rain; syncRainUi(); });
+rRain.addEventListener('input', () => { sim.rainLevel = +rRain.value; fillRange(rRain); });
+if (!mods.rain) $('#rainCtl').style.display = 'none';
+syncRainUi();
+$('#tClimate').addEventListener('change', (e) => { state.realClimate = e.target.checked; });
+if (!mods.climate) $('#lClimate').style.display = 'none';
+$('#tRays').addEventListener('change', (e) => { state.show.rays = e.target.checked; callMod('sky', 'setRaysVisible', e.target.checked); });
+if (!mods.sky?.setRaysVisible) $('#lRays').style.display = 'none';
+
+// ---------------- data attribution (always visible) ----------------
+function syncAttr() {
+  const parts = [];
+  const add = (s) => { s = String(s || '').trim(); if (s && !parts.includes(s)) parts.push(s); };
+  if (geoOn) add(info.geo?.attribution);
+  if (mods.climate) add(info.climate?.source);
+  if (state.show.underground) add(info.underground?.attribution);
+  const srcs = new Set(); for (const f of Object.values(info.sitedata?.fields || {})) if (f?.source && f.value != null && !/^lib\//.test(f.source)) srcs.add(f.source);
+  [...srcs].slice(0, 8).forEach(add);
+  const el = $('#attr'), txt = parts.length ? `${t('attr.label')}: ${parts.join(' · ')}` : '';
+  if (el.textContent !== txt) { el.textContent = txt; el.title = txt; }
+}
+$('#attr').addEventListener('click', () => $('#attr').classList.toggle('open'));
+
 // ---------------- language switch: re-render dynamic text ----------------
 function relabel() {
   renderList(); hudTemplate(); updateHud(); syncPlay(); setHint(); syncSeason();
+  renderYears(true); renderLayers(); renderLoc(); syncRainUi(); if (state.show.underground) renderUnderViews();
+  callMod('underground', 'setLang', L2());
   if (selected) renderPanel();
+  if (panelKind() === 'report') renderReport();
+  if (panelKind() === 'climate') renderClimate();
   labelsDirty = true;
 }
 onLang(relabel);
@@ -977,7 +1336,7 @@ function frame() {
   // simulated clock
   if (sim.playing && !clockDrag) {
     const dh = (dt * state.speed) / 3600;
-    state.hour += dh; if (state.hour >= 24) state.hour -= 24;
+    state.hour += dh; if (state.hour >= 24) { state.hour -= 24; sim.simDay++; }
     if (sim.autoSeason && !growthDrag) { state.dayOfSeason += dh * SEASON_PER_SIM_HOUR; if (state.dayOfSeason > 100) state.dayOfSeason = 0; }
   }
   const target = sim.irrigation === 'on' ? 1 : sim.irrigation === 'off' ? 0 : irrSchedule(state.hour) ? 1 : 0;
@@ -995,6 +1354,22 @@ function frame() {
   callMod('water', 'update', dt, state);
   callMod('growth', 'update', dt, state);
   callMod('winter', 'update', dt, state);
+  // rain: Auto (climate-normal wet days, deterministic per simulated day) / Off / On (slider)
+  state.rain = sim.rain === 'off' ? 0 : sim.rain === 'on' ? sim.rainLevel : libs.rain?.autoRain ? libs.rain.autoRain(sim.simDay, state.hour, state.winter) : 0;
+  if (mods.rain) {
+    state.irrigationLpm = mods.water ? (callMod('water', 'info')?.lpm || 0) : 0;
+    // the tank cut-away windows open only while the water layer is on AND the tanks are selected
+    const w = state.show.water; state.show.water = w && selected === itemById.tanks;
+    callMod('rain', 'update', dt, state);
+    state.show.water = w;
+  }
+  callMod('terrain', 'update', dt, state);
+  callMod('geo', 'update', dt, state);
+  callMod('underground', 'update', dt, state);
+  callMod('climate', 'update', dt, state);
+  callMod('sitedata', 'update', dt, state);
+  mapFog();
+  { const far = cam === persp && mode !== 'walk' && persp.position.distanceTo(orbitP.target) > 260; const v = state.show.labels && !far; if (labelsG.visible !== v) { labelsG.visible = v; labelsDirty = true; } }
   // camera
   stepTween(dt);
   if (mode === 'walk') stepWalk(dt); else if (mode === 'iso') orbitP.update(); else orbitO.update();
@@ -1033,8 +1408,13 @@ setMode('iso');
   catch (e) { console.warn('compile failed', e); } finally { renderer.setRenderTarget(prev); }
   try { await p; } catch (e) { console.warn('compileAsync failed', e); }
 }
-updateHud();
+updateHud(); renderYears(true); renderLayers(); renderLoc();
+if (!isDefaultSite(state.site)) applySite(state.site, { initial: true });
+else if (mods.geo) { // default site: same as applySite, ground hidden until terrain + geo are ready (no NaN frame)
+  callMod('geo', 'setVisible', false);
+  Promise.all([mods.terrain?.ready, mods.geo.ready].map((p) => Promise.resolve(p).catch(() => {}))).then(() => { callMod('geo', 'setVisible', geoOn); ctx.invalidateShadows(); renderYears(true); });
+}
 frame();
 requestAnimationFrame(() => boot?.done());
 if (QUALITY.software && !QUALITY.forced) notice(esc(t('slow.notice', { fps: '<10' })), 15000);
-window.__witkowo = { colliders, setXray, flyToFlow, state, sim, mods, ctx, info, setMode, select, ITEMS, walk, persp, orbitP, ortho, pickAt, QUALITY, get mode() { return mode; }, get cam() { return cam; } };
+window.__witkowo = { applySite, openPanel, libs, colliders, setXray, flyToFlow, state, sim, mods, ctx, info, setMode, select, ITEMS, walk, persp, orbitP, ortho, pickAt, QUALITY, get mode() { return mode; }, get cam() { return cam; } };

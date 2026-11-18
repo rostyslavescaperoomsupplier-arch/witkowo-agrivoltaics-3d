@@ -102,7 +102,7 @@ async function go(site, force = false) {
   current = site;
   document.querySelectorAll('[data-s]').forEach((b) => b.classList.toggle('on', b.dataset.s === site.id));
   window.__done = false;
-  await sd.setSite(site, { onProgress: render, force });
+  await sd.setSite(site, { onProgress: render, force, epsh: true }); // QA = report opened explicitly
   render();
   window.__done = sd.info().status === 'ready';
 }

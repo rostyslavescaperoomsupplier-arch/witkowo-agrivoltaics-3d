@@ -20,6 +20,7 @@ const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${TAG}${n
     await page.goto(URL);
     await page.waitForFunction(() => window.__witkowo && !document.querySelector('#boot'), null, { timeout: 90000 });
     await page.waitForTimeout(1500);
+    await page.evaluate(() => document.querySelectorAll('details.acc').forEach((d) => { d.open = true; }));
     await fn(page);
     await ctx.close();
   };
@@ -63,6 +64,45 @@ const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${TAG}${n
     await shot(page, 'flows-power');
     console.log('flows', await page.evaluate(() => JSON.stringify({ xray: document.querySelector('#tFlows').checked, legend: getComputedStyle(document.querySelector('#hud .legend')).display })));
     await page.click('label:has(#tFlows) .sw'); await page.waitForTimeout(300);
+    // ---- new controls: location, map, report, climate, underground, rain, rays
+    console.log('controls', await page.evaluate(() => JSON.stringify(Object.fromEntries(['#bLoc', '#selYear', '#selLayer', '#rOpacity', '#bMapView', '#tGround', '#bReport', '#bClimate', '#tUnder', '#rainMode', '#tClimate', '#tRays']
+      .map((s) => { const el = document.querySelector(s); return [s, !!el && el.offsetParent !== null && !el.disabled]; })))));
+    await page.click('#bLoc'); await page.waitForTimeout(4000);
+    await shot(page, 'picker');
+    console.log('picker open', await page.evaluate(() => !!document.querySelector('[class*="loc-"]')));
+    await page.keyboard.press('Escape'); await page.waitForTimeout(600);
+    console.log('picker closed', await page.evaluate(() => !document.querySelector('.loc-modal, .loc-backdrop, .loc-root')));
+    console.log('loc', await page.evaluate(() => document.querySelector('#locName').textContent + ' | ' + document.querySelector('#locCoord').textContent));
+    await page.selectOption('#selLayer', 'geology'); await page.waitForTimeout(400);
+    await page.click('#bMapView'); await page.waitForTimeout(6000);
+    await shot(page, 'mapview');
+    console.log('mapview', await page.evaluate(() => { const w = window.__witkowo; return JSON.stringify({ dist: Math.round(w.persp.position.distanceTo(w.orbitP.target)), far: w.persp.far, maxD: w.orbitP.maxDistance, fog: [Math.round(w.ctx.scene.fog?.near), Math.round(w.ctx.scene.fog?.far)], geo: { layer: w.info.geo?.layer, year: w.info.geo?.year, err: w.info.geo?.error } }); }));
+    await page.selectOption('#selLayer', 'none'); await page.click('#bMapView'); await page.waitForTimeout(1600);
+    await page.click('#bReport'); await page.waitForTimeout(9000);
+    await shot(page, 'report');
+    console.log('report', await page.evaluate(() => { const r = window.__witkowo.info.sitedata; return JSON.stringify({ status: r?.status, errors: r?.errors?.length, light: !!document.querySelector('#panel .light'), rows: document.querySelectorAll('#panel .rep tr').length }); }));
+    await page.click('#bClimate'); await page.waitForTimeout(1500);
+    await shot(page, 'climate');
+    console.log('climate charts', await page.evaluate(() => document.querySelectorAll('#panel canvas').length));
+    await page.click('#pclose');
+    await page.click('label:has(#tUnder) .sw'); await page.waitForTimeout(2500);
+    await shot(page, 'underground');
+    console.log('underground', await page.evaluate(() => { const w = window.__witkowo; return JSON.stringify({ on: w.state.show.underground, maxPolar: +w.orbitP.maxPolarAngle.toFixed(2), maxD: w.orbitP.maxDistance, views: document.querySelectorAll('#underViews button').length }); }));
+    await page.click('#underScale button[data-scale="true"]'); await page.click('#underViews button[data-view="column"]'); await page.waitForTimeout(1800);
+    await shot(page, 'underground-column');
+    await page.click('label:has(#tUnder) .sw'); await page.waitForTimeout(300);
+    await page.click('#rainMode button[data-rain="on"]'); await page.evaluate(() => { const r = document.querySelector('#rRain'); r.value = 0.8; r.dispatchEvent(new Event('input', { bubbles: true })); });
+    await page.click('label:has(#tClimate) .sw'); await page.click('#bPlay'); await page.waitForTimeout(3000);
+    await page.evaluate(() => window.__witkowo.setMode('iso'));
+    const homeBtn = await page.$('#objects li[data-id="tanks"]'); if (homeBtn) await homeBtn.click(); await page.waitForTimeout(1500);
+    await shot(page, 'rain-tanks');
+    console.log('rain', await page.evaluate(() => { const w = window.__witkowo; return JSON.stringify({ rain: +w.state.rain.toFixed(2), rainInfo: w.info.rain && { mmh: +w.info.rain.rainMmH.toFixed(2), level: +w.info.rain.tankLevel.toFixed(3), in: +w.info.rain.inflowLpm.toFixed(1) }, realClimate: w.state.realClimate, tOut: w.state.tempOutsideC, hudOut: document.querySelector('#hOut')?.textContent }); }));
+    await page.click('#pclose'); await page.click('#rainMode button[data-rain="auto"]'); await page.click('label:has(#tClimate) .sw'); await page.click('#bPlay');
+    await page.click('label:has(#tRays) .sw'); console.log('rays', await page.evaluate(() => window.__witkowo.state.show.rays)); await page.click('label:has(#tRays) .sw');
+    // plan view really switches camera and framing
+    await page.click('#modes button[data-mode="top"]'); await page.waitForTimeout(900);
+    console.log('plan', await page.evaluate(() => { const w = window.__witkowo; return JSON.stringify({ mode: w.mode, ortho: w.cam.isOrthographicCamera, y: w.ortho.position.y, zoom: w.ortho.zoom }); }));
+    await page.click('#modes button[data-mode="iso"]'); await page.waitForTimeout(400);
     // plan
     await page.click('#modes button[data-mode="top"]'); await page.waitForTimeout(900);
     await shot(page, 'plan');

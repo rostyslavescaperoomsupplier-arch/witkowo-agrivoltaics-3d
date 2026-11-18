@@ -70,6 +70,9 @@
   li.item.off:hover { background: none; color: #5d616a; }
   li.item .sub2 { margin-left: auto; font-size: 11px; color: #5d616a; }
   #hud .wint { display: none; }
+  #hud .rainrow { display: none; }
+  #hud.rain dt.rainrow { display: flex; } #hud.rain dd.rainrow, #hud.rain div.rainrow { display: block; }
+  #hud.winter.noin dt.inrow, #hud.winter.noin dd.inrow { display: none; }
   #hud.winter .wint { display: flex; }
   #hud.winter dd.wint { display: block; }
   .tog .fly { cursor: pointer; text-decoration: underline dotted rgba(217, 173, 87, 0.5); text-underline-offset: 3px; }
@@ -79,6 +82,52 @@
   #hud .legend span { display: flex; align-items: center; gap: 7px; color: #cfcbc2; }
   #hud .legend i { width: 14px; height: 3px; border-radius: 2px; flex: none; }
   #hud .legend span.off { display: none; }
+  /* accordions (side panel groups) */
+  details.acc { border-bottom: 1px solid var(--line); }
+  details.acc > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; padding: 11px 16px; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); user-select: none; }
+  details.acc > summary::-webkit-details-marker { display: none; }
+  details.acc > summary::after { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform .15s; }
+  details.acc[open] > summary::after { transform: rotate(-135deg) translateY(-1px); }
+  details.acc > summary:hover { color: var(--text); }
+  details.acc > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .accb { padding: 0 16px 12px; }
+  .q3d-btn.sm { padding: 6px 10px; font-size: 11px; min-height: 0; text-align: center; }
+  .q3d-btn.wide { display: block; width: 100%; box-sizing: border-box; margin-top: 8px; }
+  .btnrow { display: flex; gap: 6px; margin-bottom: 6px; } .btnrow .q3d-btn { flex: 1; }
+  .sel { width: 100%; margin-top: 4px; padding: 6px 8px; background: #0d0f12; color: var(--text); border: 1px solid var(--line2); border-radius: 6px; font: 13px var(--font); }
+  .sel:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .lab.sub { margin-top: 6px; font-size: 11px; color: var(--muted); }
+  /* location bar */
+  .locbar { padding: 10px 16px; }
+  .locrow { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .locinfo { min-width: 0; }
+  .locrow .q3d-btn { white-space: nowrap; flex: none; }
+  .locname { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .loccoord { font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .locnote { margin-top: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 7px; background: #0e1014; font-size: 11px; }
+  .locnote ul { margin: 4px 0 0; } .locnote li { display: flex; justify-content: space-between; gap: 8px; padding: 1px 0; }
+  .locnote .st-ok { color: #5fd38a; } .locnote .st-err { color: #d0745a; } .locnote .st-run { color: var(--accent); } .locnote .st-wait, .locnote .st-skip { color: var(--muted); }
+  /* report / climate panel */
+  #panel.wide { width: 380px; }
+  .light { display: flex; align-items: flex-start; gap: 10px; margin-top: 12px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; background: #0e1014; }
+  .light .bulb { width: 14px; height: 14px; border-radius: 50%; flex: none; margin-top: 2px; }
+  .lv-green { background: #5fd38a; } .lv-amber { background: #e8b04a; } .lv-red { background: #d0745a; } .lv-grey { background: #6b7079; }
+  .suit { margin: 6px 0 0; } .suit li { display: flex; gap: 8px; align-items: flex-start; padding: 3px 0; font-size: 11px; color: #cfcbc2; }
+  .suit li i { width: 8px; height: 8px; border-radius: 50%; flex: none; margin-top: 4px; }
+  .rep { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .rep td { padding: 4px 6px 4px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .rep td:first-child { color: var(--muted); width: 42%; }
+  .rep td .s { display: block; color: #6b7079; font-size: 11px; }
+  .rep a { color: var(--accent); }
+  .rep .pend { color: var(--muted); font-style: italic; } .rep .fail { color: #d0745a; }
+  #panel canvas { display: block; width: 100%; height: auto; margin-top: 8px; border-radius: 8px; }
+  .kv { display: grid; grid-template-columns: 1fr auto; gap: 3px 10px; font-size: 13px; margin-top: 10px; }
+  .kv dt { color: var(--muted); } .kv dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+  /* data attribution line */
+  #attr { position: fixed; left: 300px; right: 300px; bottom: 2px; z-index: 8; font-size: 11px; color: rgba(232, 228, 218, 0.62); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8); cursor: default; }
+  #attr:empty { display: none; }
+  #attr.open { white-space: normal; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; bottom: 6px; }
+  #hint { bottom: 22px; }
   /* objects list */
   ul { list-style: none; margin: 0; padding: 0; }
   li.item { display: flex; align-items: center; gap: 8px; padding: 5px 8px; margin: 0 -8px; border-radius: 6px; cursor: pointer; color: #cfcbc2; }
@@ -91,7 +140,7 @@
   section.langsec { display: none; }
   h1 .short { display: none; }
   /* info panel */
-  #panel { top: 14px; right: 14px; width: 330px; max-height: calc(100% - 260px); overflow-y: auto; padding: 18px; transform: translateX(16px); opacity: 0; pointer-events: none; transition: transform .2s ease-out, opacity .2s ease-out; z-index: 12; }
+  #panel { top: 14px; right: 14px; width: 330px; max-height: calc(100% - var(--hudh, 240px) - 42px); overflow-y: auto; padding: 18px; transform: translateX(16px); opacity: 0; pointer-events: none; transition: transform .2s ease-out, opacity .2s ease-out; z-index: 12; }
   #panel.open { transform: none; opacity: 1; pointer-events: auto; }
   #panel .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
   #panel h3 { margin: 0; font-size: 17px; font-weight: 600; }
@@ -194,6 +243,13 @@
     #hud h2, #hud .full, #hud .bar { display: none; }
     #hud dl { grid-template-columns: none; grid-auto-columns: auto; grid-auto-flow: column; grid-template-rows: auto auto; gap: 0 10px; justify-content: space-between; }
     #hud dt { font-size: 11px; }
+    #attr { left: 8px; right: 8px; bottom: calc(var(--sab) + 2px); }
+    body.sheet #attr { display: none; }
+    details.acc > summary { min-height: 44px; padding: 0 16px; font-size: 13px; }
+    .q3d-btn.sm { min-height: 40px; font-size: 13px; }
+    .sel { min-height: 40px; font-size: 13px; }
+    #panel.wide { width: auto; }
+    #hud.rain dt.rainrow, #hud.rain dd.rainrow, #hud.rain div.rainrow { display: none; }
     #hud.winter dt.full, #hud.winter dd.full, #hud.winter .crop { display: none; } /* winter strip: time, PV, water, greenhouse temp */
     #hud dd { max-width: 30vw; overflow: hidden; text-overflow: ellipsis; }
     #hCrop small { display: none; }
@@ -247,7 +303,15 @@
   <button id="menuBtn" type="button" data-i18n-aria="menu" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
   <div id="drawer">
     <div class="grab" aria-hidden="true"></div>
-    <section><h2 data-i18n="sec.sim">Symulacja</h2>
+    <section class="locbar">
+      <div class="locrow">
+        <div class="locinfo"><div class="eyebrow" data-i18n="loc.title">Lokalizacja</div><div class="locname" id="locName">Witkowo</div><div class="loccoord" id="locCoord"></div></div>
+        <button type="button" class="q3d-btn sm" id="bLoc" data-i18n="loc.change">Zmień lokalizację</button>
+      </div>
+      <div class="locnote" id="locNote" hidden></div>
+    </section>
+    <details class="acc" data-acc="sim" open><summary data-i18n="sec.sim">Symulacja</summary><div class="accb">
+
       <div class="ctl">
         <div class="lab"><span data-i18n="sim.season">Pora roku</span></div>
         <div class="seg two" id="seasons" role="group" data-i18n-aria="sim.season"><button type="button" data-season="summer" class="on" aria-pressed="true" data-i18n="season.summer">Lato</button><button type="button" data-season="winter" aria-pressed="false" data-i18n="season.winter">Zima</button></div>
@@ -270,18 +334,47 @@
         <div class="seg" id="irr" role="group" data-i18n-aria="sim.irrigation"><button type="button" data-irr="auto" class="on" data-i18n="irr.auto">Auto</button><button type="button" data-irr="on" data-i18n="irr.on">Wł.</button><button type="button" data-irr="off" data-i18n="irr.off">Wył.</button></div>
         <div class="sub" id="irrHint" data-i18n="irr.autoHint">Auto: 5:00–7:00 i 19:00–21:00</div>
       </div>
-    </section>
-    <section><h2 data-i18n="sec.layers">Warstwy</h2>
+    </div></details>
+    <details class="acc" data-acc="weather"><summary data-i18n="sec.weather">Pogoda</summary><div class="accb">
+      <div class="ctl" id="rainCtl">
+        <div class="lab"><span data-i18n="rain.label">Deszcz</span><span class="val" id="vRain"></span></div>
+        <div class="seg" id="rainMode" role="group" data-i18n-aria="rain.label"><button type="button" data-rain="auto" class="on" data-i18n="rain.auto">Auto</button><button type="button" data-rain="off" data-i18n="rain.off">Wył.</button><button type="button" data-rain="on" data-i18n="rain.on">Wł.</button></div>
+        <div id="rainInt" hidden><div class="lab sub"><span data-i18n="rain.intensity">Natężenie</span></div><input type="range" id="rRain" min="0.05" max="1" step="0.01" value="0.5" data-i18n-aria="rain.intensity"></div>
+        <div class="sub" id="rainHint" data-i18n="rain.autoHint">Auto</div>
+      </div>
+      <label class="tog" id="lClimate"><span class="lk"><i style="background:#f0a35e"></i><span data-i18n="climate.real">Realny klimat (ERA5)</span></span><input type="checkbox" id="tClimate"><span class="sw"></span></label>
+      <div class="sub" data-i18n="climate.realHint"></div>
+    </div></details>
+    <details class="acc" data-acc="layers"><summary data-i18n="sec.layers">Warstwy</summary><div class="accb">
+
       <label class="tog"><span class="lk"><i style="background:var(--power)"></i><span class="fly" data-fly="power" role="button" tabindex="0" data-i18n-title="layer.flyHint" data-i18n="layer.power">Przepływ energii</span></span><input type="checkbox" id="tPower" checked><span class="sw"></span></label>
       <label class="tog"><span class="lk"><i style="background:var(--water)"></i><span class="fly" data-fly="water" role="button" tabindex="0" data-i18n-title="layer.flyHint" data-i18n="layer.water">Przepływ wody</span></span><input type="checkbox" id="tWater" checked><span class="sw"></span></label>
       <label class="tog"><span class="lk"><i style="background:#8f939c"></i><span data-i18n="layer.flows">Przepływy (rentgen)</span></span><input type="checkbox" id="tFlows"><span class="sw"></span></label>
       <label class="tog"><span class="lk"><i style="background:var(--accent)"></i><span data-i18n="layer.labels">Etykiety</span></span><input type="checkbox" id="tLabels"><span class="sw"></span></label>
       <label class="tog" id="lShadow"><span class="lk"><i style="background:#555a63"></i><span data-i18n="layer.shadows" id="sShadow">Cienie od słońca</span></span><input type="checkbox" id="tShadow"><span class="sw"></span></label>
-    </section>
+      <label class="tog" id="lRays"><span class="lk"><i style="background:#f6d77a"></i><span data-i18n="layer.rays">Promienie słońca</span></span><input type="checkbox" id="tRays" checked><span class="sw"></span></label>
+    </div></details>
+    <details class="acc" data-acc="map" id="accMap"><summary data-i18n="sec.map">Lokalizacja i mapa</summary><div class="accb">
+      <label class="tog"><span class="lk"><i style="background:#8a9a5b"></i><span data-i18n="map.ground">Zdjęcie terenu</span></span><input type="checkbox" id="tGround" checked><span class="sw"></span></label>
+      <div class="ctl"><div class="lab"><span data-i18n="map.year">Zdjęcie z roku</span></div><select id="selYear" class="sel" data-i18n-aria="map.year"></select></div>
+      <div class="ctl"><div class="lab"><span data-i18n="map.overlay">Nakładka</span></div><select id="selLayer" class="sel" data-i18n-aria="map.overlay"></select>
+        <div class="lab sub"><span data-i18n="map.opacity">Krycie nakładki</span><span class="val" id="vOpacity"></span></div><input type="range" id="rOpacity" min="0" max="1" step="0.05" value="0.7" data-i18n-aria="map.opacity"></div>
+      <button type="button" class="q3d-btn sm wide" id="bMapView" data-i18n="map.view">Widok mapy</button>
+      <div class="sub" id="mapStatus"></div>
+    </div></details>
+    <details class="acc" data-acc="data" id="accData"><summary data-i18n="sec.data">Dane</summary><div class="accb">
+      <div class="btnrow"><button type="button" class="q3d-btn sm" id="bReport" data-i18n="data.report">Raport miejsca</button><button type="button" class="q3d-btn sm" id="bClimate" data-i18n="data.climate">Klimat</button></div>
+      <label class="tog" id="lUnder"><span class="lk"><i style="background:#b08a5a"></i><span data-i18n="under.toggle">Przekrój geologiczny</span></span><input type="checkbox" id="tUnder"><span class="sw"></span></label>
+      <div id="underCtl" hidden>
+        <div class="ctl"><div class="lab sub"><span data-i18n="under.scale">Skala głębokości</span></div>
+          <div class="seg two" id="underScale" role="group" data-i18n-aria="under.scale"><button type="button" data-scale="full" class="on" data-i18n="under.full">Pełna kolumna</button><button type="button" data-scale="true" data-i18n="under.true">0–100 m</button></div></div>
+        <div class="ctl"><div class="lab sub"><span data-i18n="under.views">Widoki przekroju</span></div><div class="seg" id="underViews" role="group"></div></div>
+      </div>
+    </div></details>
+    <details class="acc" data-acc="objects"><summary data-i18n="sec.objects">Obiekty</summary><div class="accb"><ul id="objects"></ul></div></details>
     <section class="langsec"><h2 data-i18n="lang">Język</h2>
       <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div>
     </section>
-    <section><h2 data-i18n="sec.objects">Obiekty</h2><ul id="objects"></ul></section>
     <div class="foot" data-i18n="app.footer">Rekonstrukcja ze zdjęć, wymiary szacunkowe</div>
   </div>
 </aside>
@@ -290,6 +383,7 @@
 <div id="tip"></div>
 <div id="joy" aria-hidden="true"><div class="knob"></div></div>
 <div id="hint" class="panel"></div>
+<div id="attr" role="note" tabindex="0"></div>
 <div id="err" class="panel"></div>
 <div id="boot" role="status" aria-live="polite"><div class="card"><div class="ring" aria-hidden="true"></div><h2>Ładowanie modelu 3D&hellip;</h2><div class="msg"></div><div class="act"></div></div></div>
 <script>
@@ -345,7 +439,7 @@
       fetch(url, { cache: 'no-store', mode: 'cors' }).then(function (r) { clearTimeout(t); ok(r.ok); }, function () { clearTimeout(t); ok(false); });
     });
   }
-  import('./main.js?v=202611181749').catch(function (e) {
+  import('./main.js?v=202611181812').catch(function (e) {
     var m = (e && e.message) || String(e);
     if (m === 'WebGL unavailable') { boot.started = true; clearTimeout(slow); el.remove(); return; }
     console.error(e);

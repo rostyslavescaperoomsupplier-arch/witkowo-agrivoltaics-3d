@@ -1,0 +1,508 @@
+{
+ "label": "before",
+ "date": "2026-11-18T16:54:55.777Z",
+ "base": "http://localhost:8793/",
+ "secs": 10,
+ "glb": {
+  "decode_cpu1": {
+   "bytes": 3956096,
+   "decodeMs": [
+    12,
+    16,
+    12
+   ],
+   "meshes": 92,
+   "verts": 1023432,
+   "indexed": 0
+  },
+  "decode_cpu4": {
+   "bytes": 3956096,
+   "decodeMs": [
+    47,
+    46,
+    42
+   ],
+   "meshes": 92,
+   "verts": 1023432,
+   "indexed": 0
+  }
+ },
+ "profiles": {
+  "desktop": {
+   "overview": {
+    "frameMs": {
+     "n": 601,
+     "median": 16.7,
+     "p95": 16.7,
+     "max": 16.8,
+     "mean": 16.67
+    },
+    "cpuMs": {
+     "n": 601,
+     "median": 1.8,
+     "p95": 3.3,
+     "max": 4.4,
+     "mean": 1.89
+    },
+    "fps": 60,
+    "drawCalls": 339,
+    "triangles": 1028694,
+    "programs": 37,
+    "geometries": 77,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 885,
+     "glbMs": 8,
+     "wallMs": 1313
+    },
+    "bootLongTasks": {
+     "n": 2,
+     "totalMs": 175,
+     "max": 122
+    },
+    "quality": "high",
+    "pixelRatio": 1
+   },
+   "walk": {
+    "frameMs": {
+     "n": 377,
+     "median": 33.3,
+     "p95": 33.4,
+     "max": 50,
+     "mean": 26.52
+    },
+    "cpuMs": {
+     "n": 377,
+     "median": 1.9,
+     "p95": 3.5,
+     "max": 4.5,
+     "mean": 2.11
+    },
+    "fps": 37.7,
+    "drawCalls": 294,
+    "triangles": 1023166,
+    "programs": 37,
+    "geometries": 77,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1352,
+     "glbMs": 21,
+     "wallMs": 1801
+    },
+    "bootLongTasks": {
+     "n": 3,
+     "totalMs": 679,
+     "max": 418
+    },
+    "quality": "high",
+    "pixelRatio": 1
+   },
+   "winter": {
+    "frameMs": {
+     "n": 601,
+     "median": 16.7,
+     "p95": 16.7,
+     "max": 16.8,
+     "mean": 16.67
+    },
+    "cpuMs": {
+     "n": 601,
+     "median": 3.6,
+     "p95": 4.5,
+     "max": 6.1,
+     "mean": 3.53
+    },
+    "fps": 60,
+    "drawCalls": 346,
+    "triangles": 1022230,
+    "programs": 37,
+    "geometries": 82,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1319,
+     "glbMs": 20,
+     "wallMs": 1766
+    },
+    "bootLongTasks": {
+     "n": 3,
+     "totalMs": 683,
+     "max": 431
+    },
+    "quality": "high",
+    "pixelRatio": 1
+   },
+   "flows": {
+    "frameMs": {
+     "n": 364,
+     "median": 33.3,
+     "p95": 33.4,
+     "max": 50,
+     "mean": 27.52
+    },
+    "cpuMs": {
+     "n": 364,
+     "median": 5.1,
+     "p95": 9.1,
+     "max": 14.6,
+     "mean": 5.6
+    },
+    "fps": 36.3,
+    "drawCalls": 440,
+    "triangles": 1369838,
+    "programs": 47,
+    "geometries": 77,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1108,
+     "glbMs": 14,
+     "wallMs": 1540
+    },
+    "bootLongTasks": {
+     "n": 2,
+     "totalMs": 450,
+     "max": 292
+    },
+    "quality": "high",
+    "pixelRatio": 1
+   }
+  },
+  "laptop-4x": {
+   "overview": {
+    "frameMs": {
+     "n": 601,
+     "median": 16.7,
+     "p95": 16.8,
+     "max": 16.8,
+     "mean": 16.67
+    },
+    "cpuMs": {
+     "n": 601,
+     "median": 3.7,
+     "p95": 4.4,
+     "max": 5.1,
+     "mean": 3.69
+    },
+    "fps": 60,
+    "drawCalls": 339,
+    "triangles": 1028694,
+    "programs": 37,
+    "geometries": 77,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1715,
+     "glbMs": 10,
+     "wallMs": 2158
+    },
+    "bootLongTasks": {
+     "n": 4,
+     "totalMs": 864,
+     "max": 592
+    },
+    "quality": "high",
+    "pixelRatio": 1
+   },
+   "walk": {
+    "frameMs": {
+     "n": 601,
+     "median": 16.7,
+     "p95": 16.7,
+     "max": 16.8,
+     "mean": 16.67
+    },
+    "cpuMs": {
+     "n": 601,
+     "median": 3,
+     "p95": 3.9,
+     "max": 5.1,
+     "mean": 3.08
+    },
+    "fps": 60,
+    "drawCalls": 295,
+    "triangles": 1023350,
+    "programs": 37,
+    "geometries": 77,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1374,
+     "glbMs": 11,
+     "wallMs": 1822
+    },
+    "bootLongTasks": {
+     "n": 4,
+     "totalMs": 847,
+     "max": 589
+    },
+    "quality": "high",
+    "pixelRatio": 1
+   },
+   "winter": {
+    "frameMs": {
+     "n": 600,
+     "median": 16.7,
+     "p95": 16.7,
+     "max": 16.8,
+     "mean": 16.67
+    },
+    "cpuMs": {
+     "n": 600,
+     "median": 3.7,
+     "p95": 4.6,
+     "max": 5.5,
+     "mean": 3.73
+    },
+    "fps": 60,
+    "drawCalls": 346,
+    "triangles": 1022230,
+    "programs": 37,
+    "geometries": 82,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1534,
+     "glbMs": 12,
+     "wallMs": 1973
+    },
+    "bootLongTasks": {
+     "n": 4,
+     "totalMs": 954,
+     "max": 666
+    },
+    "quality": "high",
+    "pixelRatio": 1
+   },
+   "flows": {
+    "frameMs": {
+     "n": 585,
+     "median": 16.7,
+     "p95": 16.8,
+     "max": 33.4,
+     "mean": 17.12
+    },
+    "cpuMs": {
+     "n": 585,
+     "median": 15.1,
+     "p95": 17.7,
+     "max": 21.4,
+     "mean": 15.27
+    },
+    "fps": 58.4,
+    "drawCalls": 440,
+    "triangles": 1369838,
+    "programs": 47,
+    "geometries": 77,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1493,
+     "glbMs": 11,
+     "wallMs": 1937
+    },
+    "bootLongTasks": {
+     "n": 4,
+     "totalMs": 786,
+     "max": 546
+    },
+    "quality": "high",
+    "pixelRatio": 1
+   }
+  },
+  "phone-4x": {
+   "overview": {
+    "frameMs": {
+     "n": 600,
+     "median": 16.7,
+     "p95": 16.8,
+     "max": 16.8,
+     "mean": 16.67
+    },
+    "cpuMs": {
+     "n": 600,
+     "median": 2.8,
+     "p95": 3.8,
+     "max": 4.9,
+     "mean": 2.89
+    },
+    "fps": 60,
+    "drawCalls": 339,
+    "triangles": 1028694,
+    "programs": 37,
+    "geometries": 77,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1594,
+     "glbMs": 10,
+     "wallMs": 2041
+    },
+    "bootLongTasks": {
+     "n": 4,
+     "totalMs": 868,
+     "max": 597
+    },
+    "quality": "high",
+    "pixelRatio": 2
+   },
+   "walk": {
+    "frameMs": {
+     "n": 600,
+     "median": 16.7,
+     "p95": 16.7,
+     "max": 16.8,
+     "mean": 16.67
+    },
+    "cpuMs": {
+     "n": 600,
+     "median": 2.4,
+     "p95": 3.4,
+     "max": 4.2,
+     "mean": 2.43
+    },
+    "fps": 60,
+    "drawCalls": 287,
+    "triangles": 1021962,
+    "programs": 37,
+    "geometries": 77,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1455,
+     "glbMs": 9,
+     "wallMs": 1887
+    },
+    "bootLongTasks": {
+     "n": 4,
+     "totalMs": 798,
+     "max": 560
+    },
+    "quality": "high",
+    "pixelRatio": 2
+   },
+   "winter": {
+    "frameMs": {
+     "n": 600,
+     "median": 16.7,
+     "p95": 16.8,
+     "max": 16.8,
+     "mean": 16.67
+    },
+    "cpuMs": {
+     "n": 600,
+     "median": 3,
+     "p95": 4,
+     "max": 5.5,
+     "mean": 3.05
+    },
+    "fps": 60,
+    "drawCalls": 346,
+    "triangles": 1022230,
+    "programs": 37,
+    "geometries": 82,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1390,
+     "glbMs": 9,
+     "wallMs": 1821
+    },
+    "bootLongTasks": {
+     "n": 4,
+     "totalMs": 801,
+     "max": 556
+    },
+    "quality": "high",
+    "pixelRatio": 2
+   },
+   "flows": {
+    "frameMs": {
+     "n": 593,
+     "median": 16.7,
+     "p95": 16.7,
+     "max": 33.4,
+     "mean": 16.86
+    },
+    "cpuMs": {
+     "n": 593,
+     "median": 13.8,
+     "p95": 17.5,
+     "max": 19.6,
+     "mean": 14.09
+    },
+    "fps": 59.3,
+    "drawCalls": 380,
+    "triangles": 1361538,
+    "programs": 47,
+    "geometries": 77,
+    "textures": 16,
+    "longTasks": {
+     "n": 0,
+     "totalMs": 0,
+     "max": 0
+    },
+    "load": {
+     "firstFrameMs": 1422,
+     "glbMs": 9,
+     "wallMs": 1852
+    },
+    "bootLongTasks": {
+     "n": 4,
+     "totalMs": 800,
+     "max": 560
+    },
+    "quality": "high",
+    "pixelRatio": 2
+   }
+  }
+ },
+ "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)",
+ "consoleErrors": []
+}
