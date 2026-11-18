@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA rain</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; height: 100%; background: #111317; color: #ddd; font: 13px system-ui, sans-serif; overflow: hidden; }
+  #ui { position: fixed; top: 10px; left: 10px; background: rgba(17,19,23,.9); padding: 10px 12px; border-radius: 8px;
+        display: grid; gap: 6px; min-width: 260px; z-index: 2; }
+  #ui label { display: flex; gap: 8px; align-items: center; }
+  #ui input[type=range] { flex: 1; }
+  #info { color: #d9ad57; font-variant-numeric: tabular-nums; white-space: pre; }
+  button { background: #2a2e36; color: #ddd; border: 1px solid #444; border-radius: 4px; padding: 2px 6px; cursor: pointer; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="ui">
+  <label>rain <input type="range" id="rain" min="0" max="1" step="0.01" value="0.9"><span id="rainv"></span></label>
+  <label>tank <input type="range" id="tankLevel" min="0" max="1" step="0.01" value="0.6"><span id="tankLevelv"></span></label>
+  <label>irrig L/min <input type="range" id="irrigationLpm" min="0" max="40" step="1" value="0"><span id="irrigationLpmv"></span></label>
+  <label>winter <input type="range" id="winter" min="0" max="1" step="0.01" value="0"><span id="winterv"></span></label>
+  <label>hour <input type="range" id="hour" min="0" max="24" step="0.1" value="13"><span id="hourv"></span></label>
+  <label>speed h/s <input type="range" id="speed" min="0" max="0.5" step="0.01" value="0"><span id="speedv"></span></label>
+  <label><input type="checkbox" id="showWater" checked> show water (tank windows)</label>
+  <label><input type="checkbox" id="low"> quality low</label>
+  <div>
+    <button data-v="over">overview</button><button data-v="tank">tank</button><button data-v="roof">runoff</button>
+    <button data-v="puddle">puddles</button><button data-v="walk">walk</button><button data-v="gutter">gutter</button>
+  </div>
+  <div id="info">loading...</div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+
+const q = new URLSearchParams(location.search);
+const chain = q.get('chain') !== '0'; // also run sky / water / winter / geo (they patch the same ground materials)
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.shadowMap.enabled = true;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x8d99a6);
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.05, 2000);
+const controls = new OrbitControls(camera, renderer.domElement);
+
+const state = { hour: 13, sun: 0.4, dayOfSeason: 60, water: 0, speed: 0, quality: 'high', season: 'summer', winter: 0,
+  rain: 0.9, irrigationLpm: 0, tankLevel: 0.6, show: { power: false, water: true, labels: false } };
+window.__state = state;
+const $ = (id) => document.getElementById(id);
+const loader = new GLTFLoader();
+loader.setMeshoptDecoder(MeshoptDecoder);
+const gltf = await loader.loadAsync('../model/witkowo.glb');
+const root = gltf.scene;
+scene.add(root);
+root.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+const node = (name) => { let h = null; root.traverse(o => { if (!h && o.userData.name === name) h = o; }); return h || root.getObjectByName(name); };
+const ctx = { THREE, scene, root, node, renderer, getCamera: () => camera, state };
+
+const mods = {};
+if (chain) {
+  for (const n of ['sky', 'water', 'winter', 'geo']) {
+    try { const m = await import(`../lib/${n}.js`); mods[n] = m.init(ctx); } catch (e) { console.error(`[qa] ${n} init failed`, e); }
+  }
+}
+if (!mods.sky) {
+  scene.add(new THREE.HemisphereLight(0xdfe6ee, 0x5a5448, 1.0));
+  const sun = new THREE.DirectionalLight(0xfff2e0, 1.6); sun.position.set(25, 30, 20); scene.add(sun);
+}
+const { init: initRain, RAIN_AUTO, autoRain } = await import('../lib/rain.js');
+const rain = initRain(ctx);
+window.__rain = rain; window.__RAIN_AUTO = RAIN_AUTO; window.__autoRain = autoRain;
+
+const views = {
+  over:   [[30, 20, 22], [0, 1.5, -13]],
+  tank:   [[-7.7, 1.55, -4.4], [-10, 0.6, -7.1]],
+  roof:   [[-4.6, 2.6, -2.2], [-10, 2.8, -7.1]],
+  puddle: [[-5, 2.4, 6.5], [-4.6, 0, -3]],
+  walk:   [[-5.2, 1.65, 3.5], [-5.2, 1.5, -10]],
+  gutter: [[-7.4, 3.7, -3.6], [-9.2, 4.45, -7.1]],
+};
+const setView = (k) => { const v = views[k]; camera.position.set(...v[0]); controls.target.set(...v[1]); controls.update(); };
+window.__view = setView; setView('over');
+document.querySelectorAll('[data-v]').forEach((b) => b.onclick = () => setView(b.dataset.v));
+const KEYS = ['rain', 'tankLevel', 'irrigationLpm', 'winter', 'hour', 'speed'];
+const sync = () => { for (const k of KEYS) { $(k).value = state[k]; $(k + 'v').textContent = (+state[k]).toFixed(2); } };
+for (const k of KEYS) $(k).oninput = (e) => { state[k] = +e.target.value; sync(); };
+$('showWater').onchange = (e) => { state.show.water = e.target.checked; mods.water?.setVisible?.(state.show.water); };
+$('low').onchange = (e) => state.quality = e.target.checked ? 'low' : 'high';
+window.__set = (o) => { Object.assign(state, o); if (o.show) $('showWater').checked = state.show.water; sync(); };
+// run the simulation forward quickly (sim hours) in small steps
+window.__advance = (hours, step = 0.05) => {
+  for (let h = 0; h < hours; h += step) { state.hour = (state.hour + step) % 24; tick(0.016); }
+  sync();
+};
+sync();
+
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+const clock = new THREE.Clock();
+function tick(dt) {
+  if (mods.sky) mods.sky.update(dt, state); else state.sun = Math.max(0, Math.sin((state.hour - 6) / 14 * Math.PI)) * 0.8;
+  mods.water?.update(dt, state);
+  mods.winter?.update(dt, state);
+  mods.geo?.update?.(dt, state);
+  rain.update(dt, state);
+}
+let frame = 0;
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(0.1, clock.getDelta());
+  if (state.speed > 0) { state.hour = (state.hour + dt * state.speed) % 24; if (++frame % 10 === 0) sync(); }
+  tick(dt);
+  const i = rain.info();
+  if (frame++ % 6 === 0) {
+    $('tankLevel').value = state.tankLevel; $('tankLevelv').textContent = state.tankLevel.toFixed(2);
+    $('info').textContent = `rain ${i.rainMmH.toFixed(2)} mm/h  today ${i.rainTodayMm.toFixed(1)} mm\n`
+      + `tanks ${(i.tankLevel * 100).toFixed(1)} %  ${Math.round(i.tankLitres)} / ${i.tankCapacityL} L (${i.tanks} x ${i.tankCapacityEachL})\n`
+      + `in ${i.inflowLpm.toFixed(1)}  out ${i.outflowLpm.toFixed(1)}  spill ${i.spillLpm.toFixed(1)} L/min\n`
+      + `catchment ${i.catchmentM2} m2  wet ${i.wetness.toFixed(2)}  puddles ${i.puddles.toFixed(2)}`;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+});
+</script>
+</body>
+</html>

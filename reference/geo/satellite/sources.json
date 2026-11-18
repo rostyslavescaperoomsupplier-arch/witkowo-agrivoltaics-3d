@@ -1,0 +1,270 @@
+{
+ "center_wgs84": [
+  53.28976,
+  15.06804
+ ],
+ "center_2176": [
+  5504537.026007319,
+  5906414.805719877
+ ],
+ "center_2180": [
+  238032.0410924146,
+  609943.6260020379
+ ],
+ "items": [
+  {
+   "file": "ortho_2025-04-13_1000m.jpg",
+   "url": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolution?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Raster&STYLES=&SRS=EPSG%3A2176&BBOX=5504037.03%2C5905914.81%2C5505037.03%2C5906914.81&WIDTH=2000&HEIGHT=2000&FORMAT=image%2Fjpeg",
+   "crs": "EPSG:2176",
+   "bbox": [
+    5504037.026007319,
+    5905914.805719877,
+    5505037.026007319,
+    5906914.805719877
+   ],
+   "m_per_px": 0.5,
+   "white_frac": 4.5e-06,
+   "flight_date": "2025-04-13"
+  },
+  {
+   "file": "ortho_2025-04-13_400m_texture.jpg",
+   "url": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolution?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Raster&STYLES=&SRS=EPSG%3A2176&BBOX=5504337.03%2C5906214.81%2C5504737.03%2C5906614.81&WIDTH=1600&HEIGHT=1600&FORMAT=image%2Fjpeg",
+   "crs": "EPSG:2176",
+   "bbox": [
+    5504337.026007319,
+    5906214.805719877,
+    5504737.026007319,
+    5906614.805719877
+   ],
+   "m_per_px": 0.25,
+   "white_frac": 1.5625e-06,
+   "flight_date": "2025-04-13"
+  },
+  {
+   "file": "ortho_2025-04-13_200m.jpg",
+   "url": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolution?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Raster&STYLES=&SRS=EPSG%3A2176&BBOX=5504437.03%2C5906314.81%2C5504637.03%2C5906514.81&WIDTH=800&HEIGHT=800&FORMAT=image%2Fjpeg",
+   "crs": "EPSG:2176",
+   "bbox": [
+    5504437.026007319,
+    5906314.805719877,
+    5504637.026007319,
+    5906514.805719877
+   ],
+   "m_per_px": 0.25,
+   "white_frac": 0.0,
+   "flight_date": "2025-04-13"
+  },
+  {
+   "file": "ortho_2023_1000m.jpg",
+   "url": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Raster&STYLES=&SRS=EPSG:2176&BBOX=5504036.83,5905914.87,5505036.83,5906914.87&WIDTH=1000&HEIGHT=1000&FORMAT=image/jpeg&TIME=2023-01-01T00:00:00.000Z/2023-12-31T00:00:00.000Z",
+   "crs": "EPSG:2176",
+   "bbox": [
+    5504036.83,
+    5905914.87,
+    5505036.83,
+    5906914.87
+   ],
+   "m_per_px": 1.0,
+   "white_frac": 0.0,
+   "flight_date": "2023-05-08"
+  },
+  {
+   "file": "ortho_2020_1000m.jpg",
+   "url": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Raster&STYLES=&SRS=EPSG%3A2176&BBOX=5504037.03%2C5905914.81%2C5505037.03%2C5906914.81&WIDTH=2000&HEIGHT=2000&FORMAT=image%2Fjpeg&TIME=2020-01-01T00%3A00%3A00.000Z%2F2020-12-31T00%3A00%3A00.000Z",
+   "crs": "EPSG:2176",
+   "bbox": [
+    5504037.026007319,
+    5905914.805719877,
+    5505037.026007319,
+    5906914.805719877
+   ],
+   "m_per_px": 0.5,
+   "white_frac": 0.0,
+   "flight_date": "2020-09-12"
+  },
+  {
+   "file": "ortho_2014_1000m.jpg",
+   "url": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Raster&STYLES=&SRS=EPSG%3A2176&BBOX=5504037.03%2C5905914.81%2C5505037.03%2C5906914.81&WIDTH=2000&HEIGHT=2000&FORMAT=image%2Fjpeg&TIME=2014-01-01T00%3A00%3A00.000Z%2F2014-12-31T00%3A00%3A00.000Z",
+   "crs": "EPSG:2176",
+   "bbox": [
+    5504037.026007319,
+    5905914.805719877,
+    5505037.026007319,
+    5906914.805719877
+   ],
+   "m_per_px": 0.5,
+   "white_frac": 1e-06,
+   "flight_date": "2014-07-18"
+  },
+  {
+   "file": "ortho_2012_1000m.jpg",
+   "url": "https://mapy.geoportal.gov.pl/wss/service/PZGIK/ORTO/WMS/StandardResolutionTime?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=Raster&STYLES=&SRS=EPSG%3A2176&BBOX=5504037.03%2C5905914.81%2C5505037.03%2C5906914.81&WIDTH=2000&HEIGHT=2000&FORMAT=image%2Fjpeg&TIME=2012-01-01T00%3A00%3A00.000Z%2F2012-12-31T00%3A00%3A00.000Z",
+   "crs": "EPSG:2176",
+   "bbox": [
+    5504037.026007319,
+    5905914.805719877,
+    5505037.026007319,
+    5906914.805719877
+   ],
+   "m_per_px": 0.5,
+   "white_frac": 5e-06,
+   "flight_date": "2012-04-28"
+  },
+  {
+   "file": "s2_2024-05-17_1000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2024/5/S2A_33UWV_20240517_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    504040.0,
+    5904010.0,
+    505040.0,
+    5905010.0
+   ],
+   "m_per_px": 10,
+   "date": "2024-05-17"
+  },
+  {
+   "file": "s2_2024-05-17_2000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2024/5/S2A_33UWV_20240517_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    503540.0,
+    5903510.0,
+    505540.0,
+    5905510.0
+   ],
+   "m_per_px": 10,
+   "date": "2024-05-17"
+  },
+  {
+   "file": "s2_2025-07-01_1000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2025/7/S2C_33UWV_20250701_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    504040.0,
+    5904010.0,
+    505040.0,
+    5905010.0
+   ],
+   "m_per_px": 10,
+   "date": "2025-07-01"
+  },
+  {
+   "file": "s2_2025-07-01_2000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2025/7/S2C_33UWV_20250701_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    503540.0,
+    5903510.0,
+    505540.0,
+    5905510.0
+   ],
+   "m_per_px": 10,
+   "date": "2025-07-01"
+  },
+  {
+   "file": "s2_2025-11-08_1000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2025/11/S2C_33UWV_20251108_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    504040.0,
+    5904010.0,
+    505040.0,
+    5905010.0
+   ],
+   "m_per_px": 10,
+   "date": "2025-11-08"
+  },
+  {
+   "file": "s2_2025-11-08_2000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2025/11/S2C_33UWV_20251108_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    503540.0,
+    5903510.0,
+    505540.0,
+    5905510.0
+   ],
+   "m_per_px": 10,
+   "date": "2025-11-08"
+  },
+  {
+   "file": "s2_2026-05-02_1000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2026/5/S2B_33UWV_20260502_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    504040.0,
+    5904010.0,
+    505040.0,
+    5905010.0
+   ],
+   "m_per_px": 10,
+   "date": "2026-05-02"
+  },
+  {
+   "file": "s2_2026-05-02_2000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2026/5/S2B_33UWV_20260502_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    503540.0,
+    5903510.0,
+    505540.0,
+    5905510.0
+   ],
+   "m_per_px": 10,
+   "date": "2026-05-02"
+  },
+  {
+   "file": "s2_2026-06-26_1000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2026/6/S2C_33UWV_20260626_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    504040.0,
+    5904010.0,
+    505040.0,
+    5905010.0
+   ],
+   "m_per_px": 10,
+   "date": "2026-06-26"
+  },
+  {
+   "file": "s2_2026-06-26_2000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2026/6/S2C_33UWV_20260626_0_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    503540.0,
+    5903510.0,
+    505540.0,
+    5905510.0
+   ],
+   "m_per_px": 10,
+   "date": "2026-06-26"
+  },
+  {
+   "file": "s2_2026-08-27_1000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2026/8/S2A_33UWV_20260827_1_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    504040.0,
+    5904010.0,
+    505040.0,
+    5905010.0
+   ],
+   "m_per_px": 10,
+   "date": "2026-08-27"
+  },
+  {
+   "file": "s2_2026-08-27_2000m_10m.png / _x8.png",
+   "url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/33/U/WV/2026/8/S2A_33UWV_20260827_1_L2A/TCI.tif",
+   "crs": "EPSG:32633",
+   "bbox": [
+    503540.0,
+    5903510.0,
+    505540.0,
+    5905510.0
+   ],
+   "m_per_px": 10,
+   "date": "2026-08-27"
+  }
+ ]
+}

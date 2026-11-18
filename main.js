@@ -10,7 +10,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181638';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181733';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -25,14 +25,14 @@ addEventListener('error', (e) => { if (e.message) showErr(e.message); });
 addEventListener('unhandledrejection', (e) => showErr(e.reason?.message || String(e.reason)));
 
 // ---------------- quality tier ----------------
-// low: phones/tablets (coarse pointer), small screens, <= 4 GB RAM, small GPUs, software GL, or ?q=low. ?q=high forces high.
+// low: <= 2 GB RAM, small GPUs, software GL, a slow first second (fps probe below), or ?q=low. ?q=high forces high.
+// Phones start on the high tier (user: "почему на телефоне урезанная графика"); the fps probe drops them if needed.
 const ssGet = (k) => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
 const ssSet = (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) { /* storage blocked */ } };
 const qp = new URLSearchParams(location.search).get('q');
 const AUTO_KEY = 'q3dAutoLow:' + location.pathname;
 const QUALITY = {
-  low: qp === 'low' || (qp !== 'high' && (matchMedia('(pointer: coarse)').matches || Math.min(screen.width, screen.height) < 600
-    || (!!navigator.deviceMemory && navigator.deviceMemory <= 4) || ssGet(AUTO_KEY) === '1')),
+  low: qp === 'low' || (qp !== 'high' && ((!!navigator.deviceMemory && navigator.deviceMemory <= 2) || ssGet(AUTO_KEY) === '1')),
   forced: qp === 'low' || qp === 'high', software: false, gpu: '',
 };
 const markAutoLow = () => ssSet(AUTO_KEY, '1');
@@ -47,8 +47,11 @@ function refineQuality(r) {
 
 // ---------------- renderer ----------------
 const view = $('#view');
+// no MSAA on the canvas: the high tier draws the scene into the composer's (non-multisampled) render target and
+// only blits the result to the canvas, so a multisampled canvas cost memory + a resolve per frame for nothing;
+// the low tier never had it
 function makeRenderer() {
-  for (const opts of [{ antialias: !QUALITY.low, powerPreference: QUALITY.low ? 'default' : 'high-performance' }, { antialias: false, powerPreference: 'default' }]) {
+  for (const opts of [{ antialias: false, powerPreference: QUALITY.low ? 'default' : 'high-performance' }, { antialias: false, powerPreference: 'default' }]) {
     try { return new THREE.WebGLRenderer(opts); } catch (e) { console.warn('WebGL context failed', opts, e); }
   }
   document.body.insertAdjacentHTML('beforeend', `<div style="position:fixed;inset:0;display:grid;place-items:center;background:#0d0d10;color:#ddd;font:15px/1.5 system-ui;z-index:99;padding:24px;text-align:center"><div style="max-width:460px"><h2 style="margin:0 0 8px;color:#d9ad57">${esc(t('gl.noneTitle'))}</h2>${esc(t('gl.none'))}</div></div>`);
@@ -125,7 +128,9 @@ function isoFitDist(dir = ISO_DIR, target = orbitP.target, freeFrac = 1) {
   const tanV = Math.tan(THREE.MathUtils.degToRad(45 / 2)) * (matchMedia('(max-width: 820px), (max-height: 500px)').matches ? 0.8 : 0.9); // phones: top bar + HUD strip
   const tanH = Math.tan(THREE.MathUtils.degToRad(45 / 2)) * (innerWidth / innerHeight) * 0.94 * freeFrac, q = new THREE.Vector3();
   let d = 10;
-  for (const x of [SITE.x0, SITE.x1]) for (const z of [SITE.z0, SITE.z1]) for (const y of [0, 5]) {
+  // portrait: fit the structures (canopies + cabinets), not the whole soil patch, so the farm is not tiny on phones
+  const B = innerWidth < innerHeight ? { x0: -11.5, x1: 14.5, z0: -31.5, z1: 4 } : SITE;
+  for (const x of [B.x0, B.x1]) for (const z of [B.z0, B.z1]) for (const y of [0, 5]) {
     q.set(x, y, z).sub(target); const fz = q.dot(F);
     d = Math.max(d, Math.abs(q.dot(Rv)) / tanH - fz, Math.abs(q.dot(U)) / tanV - fz);
   }
@@ -296,6 +301,76 @@ const filmOn = () => state.winter > 0.5;
 pickMeshes.length = 0; root.traverse((o) => { if (o.isMesh && !filmMeshes.has(o)) { pickMeshes.push(o); o.layers.enable(PICK_LAYER); } });
 callMod('power', 'setVisible', state.show.power);
 callMod('water', 'setVisible', state.show.water);
+// performance, same pixels:
+// - static model meshes: no per-frame matrix recompose (the FarmDroid subtree moves, so it keeps auto update)
+// - additive, non-depth-writing, double-sided transparent materials (power ripples, sun rays): one pass instead of
+//   three.js' back-then-front double pass. Additive blending is order independent, so the image is identical, and
+//   the double pass bumped material.version twice per draw (program lookup on every frame).
+{
+  const robotSub = new Set(); mods.growth?.robot?.traverse?.((o) => robotSub.add(o));
+  for (const m of meshes) if (!robotSub.has(m) && m.parent === root) { m.updateMatrix(); m.matrixAutoUpdate = false; }
+  scene.traverse((o) => [].concat(o.material || []).forEach((m) => {
+    if (m.transparent && m.side === THREE.DoubleSide && m.blending === THREE.AdditiveBlending && !m.depthWrite) m.forceSinglePass = true;
+  }));
+}
+// Draw batches: static structure parts that share a material, an owner item (sidebar / picking) and a parent are
+// drawn as one merged mesh instead of one draw call per glTF node (canopy steel 8 -> 1 per canopy, tanks 9 -> 1,
+// cables 9 -> 1, robot chassis 5 -> 1 ...; about half of all draw calls). The original nodes stay in the scene
+// exactly as before (names, node(), bounding boxes, picking on PICK_LAYER, world matrices for labels); they are only
+// taken off camera layer 0, so the camera and the shadow pass draw the batch instead. If anything later hides one of
+// them or swaps its material, its batch is dissolved and the originals are drawn again (syncBatches).
+const BATCH_NODES = /^(Canopy \d \/ (columns|feet|anchors|knee braces|longitudinal braces|molded water tanks|tank reinforcement belts|tank molded ribs|blue conduits|connection plates|bolts|cross girders|longitudinal girders|cable trunk|PV frames|cell busbars|junction boxes|hanging leads|roof tension rods)|FarmDroid \/ (main body|lower battery|green roof rim|axle|wheel arms|control console|cultivation arms|tool discs|seed hopper|GNSS mast|GNSS antenna))$/;
+const batches = [];
+function buildBatches() {
+  const groups = new Map();
+  for (const m of meshes) {
+    const nm = m.userData.nodeName;
+    if (!BATCH_NODES.test(nm) || !m.visible || !m.parent || Array.isArray(m.material) || m.isInstancedMesh || m.isSkinnedMesh) continue;
+    const it = ownerOf.get(m), k = `${m.parent.uuid}|${it ? it.id : '-'}|${m.material.uuid}|${/cell busbars|roof solar grid/.test(nm) ? 'nc' : 'c'}`;
+    if (!groups.has(k)) groups.set(k, []); groups.get(k).push(m);
+  }
+  const v = new THREE.Vector3(), rel = new THREE.Matrix4(), inv = new THREE.Matrix4(), nmat = new THREE.Matrix3();
+  for (const src of groups.values()) {
+    if (src.length < 2) continue;
+    const parent = src[0].parent; parent.updateWorldMatrix(true, true); inv.copy(parent.matrixWorld).invert();
+    let nv = 0, ni = 0;
+    for (const m of src) { const g = m.geometry; nv += g.attributes.position.count; ni += g.index ? g.index.count : g.attributes.position.count; }
+    const P = new Float32Array(nv * 3), N = new Float32Array(nv * 3), I = nv > 65535 ? new Uint32Array(ni) : new Uint16Array(ni);
+    let vo = 0, io = 0;
+    for (const m of src) {
+      const g = m.geometry, pos = g.attributes.position, nor = g.attributes.normal, idx = g.index;
+      rel.multiplyMatrices(inv, m.matrixWorld); nmat.getNormalMatrix(rel);
+      for (let i = 0; i < pos.count; i++) {
+        v.fromBufferAttribute(pos, i).applyMatrix4(rel); P[(vo + i) * 3] = v.x; P[(vo + i) * 3 + 1] = v.y; P[(vo + i) * 3 + 2] = v.z;
+        if (nor) { v.fromBufferAttribute(nor, i).applyMatrix3(nmat).normalize(); N[(vo + i) * 3] = v.x; N[(vo + i) * 3 + 1] = v.y; N[(vo + i) * 3 + 2] = v.z; }
+      }
+      if (idx) for (let i = 0; i < idx.count; i++) I[io++] = idx.getX(i) + vo; else for (let i = 0; i < pos.count; i++) I[io++] = i + vo;
+      vo += pos.count;
+    }
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(P, 3)); geo.setAttribute('normal', new THREE.BufferAttribute(N, 3)); geo.setIndex(new THREE.BufferAttribute(I, 1));
+    geo.computeBoundingSphere(); geo.computeBoundingBox();
+    const b = new THREE.Mesh(geo, src[0].material);
+    b.name = 'Batch / ' + src.map((m) => m.userData.nodeName).join(', ');
+    b.userData.batchOf = src; b.userData.canCast = !/cell busbars|roof solar grid/.test(src[0].userData.nodeName);
+    b.renderOrder = src[0].renderOrder;
+    parent.add(b); b.updateMatrix(); b.matrixAutoUpdate = parent === root ? false : b.matrixAutoUpdate;
+    for (const m of src) m.layers.disable(0);
+    batches.push(b);
+  }
+}
+function dissolveBatch(b) {
+  for (const m of b.userData.batchOf) m.layers.enable(0);
+  b.removeFromParent(); b.geometry.dispose(); batches.splice(batches.indexOf(b), 1);
+  ctx.invalidateShadows?.();
+}
+function syncBatches() {
+  for (let i = batches.length - 1; i >= 0; i--) {
+    const b = batches[i];
+    if (b.userData.batchOf.some((m) => !m.visible || m.material !== b.material || !m.parent)) dissolveBatch(b);
+  }
+}
+try { buildBatches(); } catch (e) { console.warn('draw batching skipped:', e); for (const b of [...batches]) dissolveBatch(b); }
 
 // fallback sun (sky.js missing): sunrise 6, sunset 20, max altitude ~60 deg (lat 53.4 N, summer); south = +z
 const _sunDir = new THREE.Vector3();
@@ -534,10 +609,10 @@ const pickBuf = new Uint8Array(4);
 const pickMats = ITEMS.map((it, i) => new THREE.MeshBasicMaterial({ color: new THREE.Color().setRGB((i + 1) * 20 / 255, 0, 0, THREE.LinearSRGBColorSpace), toneMapped: false, side: THREE.DoubleSide }));
 const occluder = new THREE.MeshBasicMaterial({ color: 0x000000, toneMapped: false, side: THREE.DoubleSide });
 function pickAt(x, y) {
-  const c = cam, bg = scene.background, au = renderer.shadowMap.autoUpdate, mask = c.layers.mask, saved = [];
+  const c = cam, bg = scene.background, au = renderer.shadowMap.autoUpdate, nu = renderer.shadowMap.needsUpdate, mask = c.layers.mask, saved = [];
   const list = pickMeshes.filter((m) => m.visible && m.material); // growth.js hides the original merged wheel meshes
   for (const m of list) { saved.push(m.material); const it = ownerOf.get(m); m.material = it ? pickMats[ITEMS.indexOf(it)] : occluder; }
-  scene.background = null; renderer.shadowMap.autoUpdate = false; c.layers.set(PICK_LAYER);
+  scene.background = null; renderer.shadowMap.autoUpdate = false; renderer.shadowMap.needsUpdate = false; c.layers.set(PICK_LAYER);
   c.setViewOffset(innerWidth, innerHeight, Math.floor(x), Math.floor(y), 1, 1);
   const prevRT = renderer.getRenderTarget(), prevClear = renderer.getClearAlpha();
   try {
@@ -545,7 +620,7 @@ function pickAt(x, y) {
     renderer.readRenderTargetPixels(pickRT, 0, 0, 1, 1, pickBuf);
   } finally {
     renderer.setRenderTarget(prevRT); renderer.setClearAlpha(prevClear);
-    c.clearViewOffset(); c.layers.mask = mask; scene.background = bg; renderer.shadowMap.autoUpdate = au;
+    c.clearViewOffset(); c.layers.mask = mask; scene.background = bg; renderer.shadowMap.autoUpdate = au; renderer.shadowMap.needsUpdate = nu;
     list.forEach((m, i) => (m.material = saved[i]));
   }
   const idx = Math.round(pickBuf[0] / 20) - 1;
@@ -678,15 +753,19 @@ function setXray(on) {
   if (on === XRAY.on) return; XRAY.on = on;
   if (on) {
     for (const m of xrayMaterials()) {
-      XRAY.saved.set(m, { color: m.color?.clone(), emissive: m.emissive?.clone(), ei: m.emissiveIntensity, opacity: m.opacity, transparent: m.transparent, depthWrite: m.depthWrite });
+      XRAY.saved.set(m, { color: m.color?.clone(), emissive: m.emissive?.clone(), ei: m.emissiveIntensity, opacity: m.opacity, transparent: m.transparent, depthWrite: m.depthWrite, fsp: m.forceSinglePass });
       if (m.color) { const l = m.color.r * 0.3 + m.color.g * 0.59 + m.color.b * 0.11; m.color.copy(_grey.setScalar(0.12 + l * 0.35)); }
       if (m.emissive) m.emissive.setScalar(0);
       m.opacity = Math.min(m.opacity, 0.22); m.transparent = true; m.depthWrite = false;
+      // one pass for the double-sided model materials: three's transparent double-sided path draws every mesh
+      // twice (back, then front) and flags the material for a program lookup before each of the two draws, which
+      // made x-ray cost ~4x the CPU of the normal view. Grey at 22 % opacity looks the same in either order.
+      m.forceSinglePass = true;
     }
   } else {
     for (const [m, v] of XRAY.saved) {
       if (v.color) m.color.copy(v.color); if (v.emissive) m.emissive.copy(v.emissive);
-      m.emissiveIntensity = v.ei; m.opacity = v.opacity; m.transparent = v.transparent; m.depthWrite = v.depthWrite;
+      m.emissiveIntensity = v.ei; m.opacity = v.opacity; m.transparent = v.transparent; m.depthWrite = v.depthWrite; m.forceSinglePass = v.fsp;
     }
     XRAY.saved.clear();
   }
@@ -720,6 +799,10 @@ $$('.tog .fly').forEach((el) => {
 
 // ---------------- sun shadows (high tier; off and hidden on the low tier) ----------------
 function sunLights() { const out = []; scene.traverse((o) => { if (o.isDirectionalLight && o.visible) out.push(o); }); return out; }
+// detail that sits flat on a bigger caster (contact lines on the PV cells / robot roof, lugs on the tyres): its
+// shadow is inside that caster's shadow or below one shadow-map texel (~3 cm), so it is left out of the shadow pass
+// (Canopy busbars alone are 207 k of the model's 1 M vertices). It still receives shadows.
+const NO_CAST = /^(Canopy \d \/ cell busbars|FarmDroid \/ roof solar grid|FarmDroid \/ tire lugs)$/;
 function applyShadows(on) {
   renderer.shadowMap.enabled = on; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   for (const L of sunLights()) {
@@ -730,8 +813,51 @@ function applyShadows(on) {
       L.shadow.map?.dispose(); L.shadow.map = null;
     }
   }
-  for (const m of meshes) { m.castShadow = on && !GROUND_NODES.has(m.userData.nodeName); m.receiveShadow = on; }
+  for (const m of meshes) { m.castShadow = on && !GROUND_NODES.has(m.userData.nodeName) && !NO_CAST.test(m.userData.nodeName); m.receiveShadow = on; }
+  for (const b of batches) { b.castShadow = on && b.userData.canCast; b.receiveShadow = on; }
   scene.traverse((o) => { if (o.material) [].concat(o.material).forEach((mm) => (mm.needsUpdate = true)); });
+  SHADOW.force = true;
+}
+// The sun's shadow map is re-rendered only when it would change (it was a full extra pass over the ~1 M-vertex
+// model on every frame, ~1/3 of the frame's CPU): when a shadow light turned by > 0.25 deg (shadows move < 1 shadow
+// texel), when the crops grew (growth.js scales them in the depth shader) or the winter transition runs, when a
+// visible caster moved / appeared / hid (FarmDroid driving: at most every 30 ms, i.e. the robot's shadow trails it by
+// < 5 cm), and at least once a second as a safety net. Nothing while the sun is down (the map is not used then).
+// Other code can force a refresh with ctx.invalidateShadows().
+const SHADOW = { dirs: new Map(), sig: NaN, t: 0, force: true, lights: [] };
+const COS_SUN_STEP = Math.cos(THREE.MathUtils.degToRad(0.25));
+const _ld = new THREE.Vector3();
+renderer.shadowMap.autoUpdate = false;
+ctx.invalidateShadows = () => { SHADOW.force = true; };
+function shadowSignature() {
+  let s = 0, k = 0;
+  scene.traverseVisible((o) => {
+    if (!o.castShadow || !(o.isMesh || o.isPoints || o.isLine)) return;
+    const e = o.matrixWorld.elements; k++;
+    s += k * (e[0] + 2 * e[1] + 3 * e[2] + 5 * e[4] + 7 * e[5] + 11 * e[6] + 13 * e[8] + 17 * e[9] + 19 * e[10] + 23 * e[12] + 29 * e[13] + 31 * e[14]);
+  });
+  return s + k * 1e-3;
+}
+function updateShadowsIfNeeded(now) {
+  if (!renderer.shadowMap.enabled) return;
+  const L = SHADOW.lights; L.length = 0;
+  scene.traverse((o) => { if (o.isDirectionalLight && o.castShadow && o.visible) L.push(o); });
+  let need = SHADOW.force || SHADOW.crop !== state.dayOfSeason || SHADOW.winter !== state.winter, lit = false;
+  for (const o of L) {
+    if (!o.shadow.map) need = lit = true;
+    if (o.intensity > 0) lit = true;
+    _ld.subVectors(o.position, o.target.position).normalize();
+    const d = SHADOW.dirs.get(o);
+    if (!d || d.dot(_ld) < COS_SUN_STEP) need = true;
+  }
+  if (!lit) { SHADOW.force ||= need; return; }
+  scene.updateMatrixWorld(); // the renderer does this again; cheap, static meshes are skipped
+  const sig = shadowSignature();
+  if (sig !== SHADOW.sig && now - SHADOW.t >= 30) need = true;
+  if (!need && now - SHADOW.t < 1000) return;
+  renderer.shadowMap.needsUpdate = true;
+  SHADOW.force = false; SHADOW.t = now; SHADOW.sig = sig; SHADOW.crop = state.dayOfSeason; SHADOW.winter = state.winter;
+  for (const o of L) { const d = SHADOW.dirs.get(o) || new THREE.Vector3(); d.subVectors(o.position, o.target.position).normalize(); SHADOW.dirs.set(o, d); }
 }
 const hideShadowToggle = () => { $('#tShadow').checked = false; $('#lShadow').style.display = 'none'; };
 $('#tShadow').addEventListener('change', (e) => applyShadows(e.target.checked && !QUALITY.low));
@@ -872,7 +998,8 @@ function frame() {
   if (selected && (selected.id === 'farmdroid' || selected.id === 'cabbage' || selected.id === 'film')) selBoxes();
   if (now - uiT > 100) { uiT = now; syncClock(); if (sim.autoSeason) syncGrowth(); }
   if (now - hudT > 250) { hudT = now; updateHud(); }
-  if (!glLost) { if (composer) composer.render(); else renderer.render(scene, cam); }
+  if (batches.length) syncBatches();
+  if (!glLost) { updateShadowsIfNeeded(now); if (composer) composer.render(); else renderer.render(scene, cam); }
   renderLabels();
   requestAnimationFrame(frame);
 }

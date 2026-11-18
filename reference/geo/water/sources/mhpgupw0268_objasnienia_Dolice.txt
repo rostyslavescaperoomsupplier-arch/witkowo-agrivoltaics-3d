@@ -1,0 +1,9472 @@
+=== PAGE 1
+Praca wykonana na zamówienie Ministra Środowiska 
+Copyright by PIG & MŚ, Warszawa 2004 
+ 
+MINISTERSTWO ŚRODOWISKA 
+Zleceniodawca 
+ 
+ 
+PAŃSTWOWY INSTYTUT GEOLOGICZNY 
+Generalny Wykonawca Mapy Hydrogeologicznej Polski 
+w skali 1 : 50 000 
+ 
+Państwowy Instytut Geologiczny 
+Oddział Pomorski, 71-130 Szczecin, ul. Wieniawskiego 20 
+ 
+OBJAŚNIENIA DO 
+MAPY HYDROGEOLOGICZNEJ POLSKI 
+w skali 1: 50 000 
+ 
+Arkusz DOLICE (0268) 
+ 
+  
+  
+Opracował: DYREKTOR 
+ Państwowego Instytutu Geologicznego 
+................................  
+mgr Piotr Fuszara  
+upr. geol. Nr V-1272  
+Państwowy Instytut Geologiczny   
+  
+  
+  
+  
+  
+  
+Redaktor arkusza:  
+  
+................................  
+dr Jan Prażak  
+upr. geol. Nr 050908  
+Państwowy Instytut Geologiczny   
+  
+ 
+ 
+ 
+Sfinansowano ze środków 
+NARODOWEGO FUNDUSZU OCHRONY 
+ŚRODOWISKA I GOSPODARKI WODNEJ 
+=== PAGE 2
+ 2 
+SPIS TREŚCI 
+ 
+I. WPROWADZENIE ..................................................................................................... 4 
+I
+.1. CHARAKTERYSTYKA TERENU ...................................................................... 5 
+I
+.2. ZAGOSPODAROWANIE TERENU ................................................................... 7 
+I
+.3. WYKORZYSTANIE WÓD PODZIEMNYCH .................................................... 8 
+II. KL
+IMAT, WODY POWIERZCHNIOWE ................................................................ 9 
+III. BUD
+OWA GEOLOGICZNA .................................................................................... 10 
+IV. WODY POD
+ZIEMNE................................................................................................ 13 
+IV
+.1. UŻYTKOWE PIĘTRA WODONOŚNE .......................................................... 15 
+IV
+.2. REGIONALIZACJA HYDROGEOLOGICZNA ............................................ 16 
+V. JAK
+OŚĆ WÓD PODZIEMNYCH ........................................................................... 22 
+VI. Z
+AGROŻENIE I OCHRONA WÓD PODZIEMNYCH ........................................ 27 
+VII. LITERATURA I WYKORZYSTANE MATERIAŁY ARCHIWALNE .............. 29 
+ 
+S
+PIS RYCIN ZAMIESZCZONYCH W TEKŚCIE 
+Ryc. 1 Położenie arkusza Dolice na tle jednostek fizycznogeograficznych wg J. Kondrackiego (2000). 
+Ryc. 2 Zasoby eksploatacyjne ujęć wód podziemnych i ich wykorzystanie. 
+Ryc. 3 Położenie arkusza Dolice na tle mapy głównych zbiorników wód  podziemnych wg A.S. Kleczkowskiego (1990). 
+Ryc. 4 Wielkości modułów zasobowych w zależności od głębokości występowania poziomów wodonośnych. 
+Ryc. 5 Podstawowe wartości statystyczne wybranych wskaźników fizykochemicznych wód podziemnych pietra czwartorzędowego. 
+Ryc. 6 Histogramy ważniejszych składników chemicznych wód podziemnych w utworach czwartorzędowych. 
+SPIS ZAŁĄCZNIKÓW DOŁĄCZONYCH DO TEKSTU 
+Załącznik 1.1 Przekrój hydrogeologiczny I-I 
+Załącznik 1.2 Przekrój hydrogeologiczny II-II 
+Załącznik 1.3 Przekrój hydrogeologiczny III-III 
+Załącznik 2 Mapa głębokości występowania głównego poziomu wodonośnego 
+(w skali 1:100 000) 
+Załącznik 3 Mapa miąższości i przewodności głównego poziomu wodonośnego 
+(w skali 1:100 000) 
+Załącznik 4 Mapa dokumentacyjna (w skali 1:100 000) 
+  
+=== PAGE 3
+ 3 
+SPIS TABEL DOŁĄCZONYCH DO TEKSTU 
+Tabela 1a Reprezentatywne otwory studzienne 
+Tabela 1d Inne reprezentatywne punkty dokumentacyjne umieszczone na planszy 
+głównej (hydrogeologiczne otwory badawcze, otwory bez opróbowania 
+hydrogeologicznego, inne)  
+Tabela 2 Główne parametry jednostek hydrogeologicznych 
+Tabela 3a Wyniki analiz chemicznych wód podziemnych wykonanych dla mapy - 
+reprezentatywne otwory studzienne 
+Tabela 4 Obiekty uciążliwe dla wód podziemnych 
+Tabela A Otwory studzienne pominięte na planszy głównej  
+Tabela B Inne punkty dokumentacyjne pominięte na planszy głównej 
+(hydrogeologiczne otwory badawcze, otwory bez opróbowania 
+hydrogeologicznego, inne)  
+Tabela C1 Wyniki analiz chemicznych wód podziemnych – materiały archiwalne – 
+reprezentatywne otwory studzienne 
+Tabela C5 Wyniki analiz chemicznych wód podziemnych – materiały archiwalne –
+otwory studzienne pominięte na planszy głównej 
+SPIS MAP (wydruki ploterowe) 
+Mapa hydrogeologiczna Polski - plansza główna w skali 1:50 000 
+Mapa dokumentacyjna w skali 1:50 000 
+WERSJA CYFROWA MAPY (GIS) 
+Materiał archiwalny w Centralnym Archiwum Geologicznym PIG 
+ 
+=== PAGE 4
+ 4 
+I. WPROWADZENIE 
+ 
+Arkusz Dolice opracowano w Oddziale Pomorskim Państwowego Instytutu 
+Geologicznego w Szczecinie w latach 2002-2004 w ramach realizacji Mapy 
+hy
+drogeologicznej Polski w skali 1:50 000. Arkusz wykonano zgodnie z obowiązującą 
+Instruk
+cją opracowania i komputerowej edycji mapy Hydrogeologicznej Polski w skali 
+1:50 000 (6),  z 1999 roku. 
+Państwowy Instytut Geologiczny jest generalnym wykonawcą Mapy 
+hydrogeologicznej Polski w skali 1:50 000 realizowanej na zamówienie Ministerstwa 
+Środowiska ze środków  Narodowego Funduszu Ochrony Środowiska i Gospodarki Wodnej. 
+Dla 
+opracowania arkusza zebrano i wykorzystano materiały informacyjne 
+z Centralnego Archiwum Geologicznego PIG, Centralnego Banku Danych 
+Hydrogeologicznych “HYDRO”, Wydziału Ochrony Środowiska Zachodniopomorskiego 
+Urzędu Wojewódzkiego w Szczecinie, Wojewódzkiego Inspektoratu Ochrony Środowiska 
+w Szczecinie, Regionalnego Zarządu Gospodarki Wodnej w Szczecinie i Instytutu 
+Meteorologii i Gospodarki Wodnej, Starostw Powiatowych w Stargardzie Szczecińskim 
+i Pyrzycach. 
+W ramach prac kontrolno - pomiarowych dokonano przeglądu terenu (sierpień-
+wrzesień 2003) z przeprowadzeniem weryfikacji lokalizacji wybranych otworów 
+studzienn
+ych wraz z pomiarem głębokości ustabilizowanego zwierciadła wody. 
+Zw
+eryfikowano również lokalizację potencjalnych i istniejących ognisk zanieczyszczeń 
+środowiska, głównie wód podziemnych. Pobrano 19 próbek wody do analiz chemicznych. 
+W zakresie ustalonym dla MhP wykonało je Centralne Laboratorium Chemiczne PIG 
+w Warszawie.  
+W celu opracowania treści mapy przeanalizowano następujące materiały 
+dokumentacyjne: 67 otworów studziennych uznanych za reprezentatywne (tabela 1a), 
+105 otworów studziennych pominiętych na planszy głównej mapy (tabela A), 1 otwór 
+badawczy (tabela 1d), 37 otworów badawczych pominiętych na planszy głównej (tabela B). 
+Otwory
+ te umieszczono na mapie dokumentacyjnej, a uznane za reprezentatywne (tabela 1a i 
+1d) - na planszy głównej.  
+Ponadto w formie tabelarycznej zestawiono: 
+=== PAGE 5
+ 5 
+- wyniki 151 archiwalnych analiz chemicznych wody z otworów studziennych -   
+tabele C1, i C5 
+- wyniki 19 analiz chemicznych z reprezentatywnych studni wierconych 
+wykonanych dla mapy - tabela 3a,  
+- dane dotyczące ognisk zanieczyszczeń wód podziemnych -tabela 4.   
+Obraz budowy geologicznej przedstawiono w oparciu o wykonaną Szczegółową 
+mapę geologiczną Polski ( 20). 
+Przeanalizowano również opracowania geofizyczne, które pozwoliły na rozpoznanie 
+warunków i struktur hydrogeologicznych między innymi w rejonie Barnima, Witkowa 
+i Stargardu Szczecińskiego(22, 23, 24).  
+Opracowanie komputerowe arkusza MhP Dolice w systemie INTERGRAPH 
+wykonała  Małgorzata Schiewe, a analizę statystyczną danych hydrochemicznych wykonał 
+Piotr Fuszara. 
+ 
+I.1. CHARAKTERYSTYKA TERENU 
+ 
+Obszar arkusza Dolice w całości położony jest na terenie województwa 
+zachodniopomorskiego. W północnej części obszaru arkusza znajduje się miasto i gmina 
+Stargard Szczeciński, w centralnej części gmina Dolice, w północno-wschodniej gmina 
+Suchań, a w południowej gmina Jesionowo. Gminy te należą do powiatu stargardzkiego. 
+Południowo-zachodnia część arkusza obejmuje tereny gminy Warnice, Przelewice i Pyrzyce 
+wchodzące w skład powiatu pyrzyckiego.  
+Arkusz Dolice położony jest pomiędzy 15o00’00’’ i 15o15’00’’ długości geograficznej 
+wschodniej oraz 53o10’00’’ i 53o20’00’’ szerokości geograficznej północnej. 
+Pod względem fizycznogeograficznym (podział wg J. Kondrackiego 2000) obszar 
+arkusza Dolice leży w podprowincji Pojezierzy Południowobałtyckich; w mezoregionach 
+Równina
+ Pyrzycko-Stargardzka (313.31), Równina Nowogardzka (313.32), Pojezierze Ińskie 
+(314.43), i Pojezierze Choszczeńskie (314.42) (Ryc. 1).  
+=== PAGE 6
+ 6 
+ 
+Ryc. 1. Położenie arkusza Dolice na tle jednostek fizycznogeograficznych 
+wg J. Kondrackiego (2000). 
+Pobrzeże Południowobaltyckie: 313.23 – Równina Wkrzańska, 313.24 – Dolina Dolnej Odry, 313.25 – Równina Goleniowska, 
+313.26 – Wzgórza Szczecińskie, 313.27 – Wzgórza Bukowe, 313.28 – Równina Wełtyńska, 313.31 – Równina Pyrzycko-
+Stargardzka, 313.23 – Równina Nowogardzka,  
+Pojezierza Południowobałtyckie: 314.43 – Pojezierze Ińskie, 314.42 – Pojezierze Choszczeńskie, 314.41– Pojezierze 
+Myśliborskie, 314.61 – Równina Gorzowska, 314.62 – Pojezierze Dobiegniewskie, 
+ 
+Na równinie Pyrzycko-Stargardzkiej zajmującej większość powierzchni arkusza 
+można wyróżnić wysoczyznę morenową, zastoisko pyrzyckie i dolinę Iny i Małej Iny. 
+Wysoczyzna polodowcowa wznosi się tam od 40 m n.p.m. na wschodzie do 71.0 m n.p.m.  na 
+zachodzie. Powierzchnia wysoczyzny pokryta jest licznymi morenami martwego lodu, 
+=== PAGE 7
+ 7 
+zagłębieniami po bryłach martwego lodu, pagórami kemowymi i pojedynczymi ozami.  
+Rozcięta jest ponadto dolinami wód roztopowych, które wykorzystane zostały przez Inę,  
+Małą Iną i liczne ich dopływy (20). 
+W kierunku zachodnim wysoczyzna morenowa przechodzi w sposób łagodny w obszar 
+zastoiska pyrzyckiego położonego na rzędnych 30-36 m n.p.m. Powierzchnia zastoiska jest 
+płaska i opada w kierunku wschodnim. Urozmaicona jest kemami i ozami „zatopionymi” 
+w osadach zastoiskowych oraz zagłębieniami po martwym lodzie i pojedynczymi ostańcami 
+moreny dennej. 
+Dolina Iny biegnie przez teren arkusza z SE na NW, charakteryzuje się znaczną 
+szerokością i wysokimi krawędziami, przez co jest widocznym elementem morfologicznym 
+w krajobrazie tego obszaru. Jej dno stanowi równina torfowa  opadająca w kierunku 
+zachodnim, położona na rzędnych od 20 do 25 m n.p.m. W północnej części arkusza Ina 
+zmienia bieg na bardziej północny oraz łączy się z odpływami Małą Iną i Krąpielą (20).  
+R
+ównina Nowogardzka jest położona na północ od doliny Iny. Jest to falista morena 
+denna urozmaicona pagórami kemowymi,  drumlinami oraz płytkimi rynnami i licznymi 
+zagłębieniami po bryłach martwego lodu. Wysoczyzna rozcięta jest tam przez dolinę Krąpieli. 
+Dolina jest wąska, kręta, o wysokich i stromych krawędziach, ale posiada też miejscami 
+poziomy tarasowe wykształcone przez akumulacyjną działalność wód roztopowych (20).   
+Pojezierze Ińskie i Choszczeńskie zajmują niewielkie fragmenty wysoczyzny 
+morenowej we wschodniej części arkusza. 
+ 
+I.2. ZAGOSPODAROWANIE TERENU 
+ 
+W północno-zachodniej części terenu arkusza Dolice jest położona południowa część 
+miasta Stargard Szczeciński. Pozostałe miejscowości to wsie i wsie gminne. Stargard 
+Szczeciński, 74 tysięczna miejscowość, jest regionalnym ośrodkiem usługowym 
+i przemysłowym. Znajdują się w nim zakłady przemysłu spożywczego (Cukrownia Kluczewo 
+S. A., Młyn), chemicznego (TES S.C.) oraz kilka firm usługowych.  
+Niewielki udział (około 10%) w użytkowaniu gruntów stanowią lasy. Obszar arkusza 
+zalicza się bowiem do terenów, gdzie przeważa rolnictwo. Grunty wykorzystywane rolniczo 
+zajmują ponad 50% jego powierzchni. Dominują uprawy typu pszenno-buraczanego (2). 
+ 
+=== PAGE 8
+ 8 
+I.3. WYKORZYSTANIE WÓD PODZIEMNYCH 
+ 
+Wody podziemne ogrywają główną rolę w zaopatrzeniu w wodę w tym rejonie. 
+Większość ujęć wód podziemnych służy do zaopatrzenia w wodę ludności.  Zarządzane są 
+przez: Wodociągi Zachodniopomorskie z Goleniowa oraz spółdzielnie  mieszkaniowe 
+z Kluczewa, Żalęcina i Rzeplina. Kilka ujęć należy do Spółdzielczej Agrofirmy z Witkowa. 
+Największ
+e na tym obszarze jest ujęcie dla miasta Stargardu Szczecińskiego. 
+Ujęcie wód podziemnych  dla Stargardu Szczecińskiego znajduje się  przy 
+ul. Warszawskiej, w dolinie Iny po obu jej stronach. Składa się ono z 23 czynnych studni. 
+Pobór wody z ujęcia wynosi ponad 10000 m3/dobę (10750m3/dobę w 2002 r. ). Zasoby 
+ustalone w dokumentacji hydrogeologicznej (18)  dla obszaru zasobowego (300 km2) 
+wynoszą: Q = 4313 m3/h przy S = 2-20 m, w tym 2721 m3/h wód infiltracyjnych. Zasoby 
+rozdzielono w następujący sposób: ujęcia wiejskie i przemysłowe - Q = 863 m3/h przy S = 2-
+20 m, ujęcie Stargard Północ (Klępino) znajdujące się na arkuszu Stargard Szczeciński – 
+Q = 1640 m3/h przy S = 8-19,5 m, ujęcie Stargard Południe (ul. Warszawska) – 
+Q = 1560 m3/h przy S = 12-20 m. i ujęcie Kluczewo (ul. Przodowników) - Q = 350 m3/h przy 
+S = 10,5 m 
+Na 
+obszarze arkusza Dolice znajduje się ponadto 35 innych czynnych ujęć wody. 
+Większość ujęć (34) eksploatuje wodę z poziomów czwartorzędowych a dwa z poziomów 
+trzeciorzędowych. Piętro czwartorzędowe odgrywa główną rolę w zaopatrzeniu w wodę. 
+Sumar
+yczny pobór wody ze wszystkich ujęć wynosi 14690 m3/24h. Z tej ilości na ujęcia 
+w gminie Stargard  przypada 12420 m3/24h, na ujęcia w gminie Dolice - 1504 m3/24h, 
+na ujęcia w gminie Przelewice - 32 m3/24h, na ujęcia w gminie Dolice - 1504 m3/24h, 
+na
+ ujęcia w gminie Suchań - 117 m3/24h, a na uję cia w gminie Warnice - 717 m3/24h.  
+Zasoby dyspozycyjne obliczone dla obszaru arkusza na podstawie danych zawartych 
+w tab.2 wynoszą: 2087 m3/h, (22 m3/h dla piętra trzeciorzędowego i 2065 m3/h dla piętra 
+czwartorzędowego), a pobór wynosi 612 m3/h, co stanowi niecałe 30 % zasobów 
+dyspozycyjnych. Zasoby eksploatacyjne i ich wykorzystanie podano w tabeli na ryc.2 
+ 
+ 
+ 
+ 
+ 
+=== PAGE 9
+ 9 
+Ujęcia Zasoby 
+eksploatacyjne 
+[m3/h] 
+Pobór 
+wody 
+[m3/h] 
+Rezerwa 
+[m3/h] 
+Wykorzystanie zasobów 
+eksploatacyjnych 
+[%] 
+czwartorzędowe 2983,0 606,5 2376,5 20,3 
+trzeciorzędowe 68,0 5,5 62,5 8,1 
+Łącznie 3051,0 612,0 2439,0 20,0 
+ 
+Ryc. 2.  Zasoby eksploatacyjne ujęć wód podziemnych i ich wykorzystanie. 
+II. KLIMAT, WODY POWIERZCHNIOWE 
+ 
+Obszar arkusza leży w strefie klimatu umiarkowanego. Średnia roczna temperatura 
+powietrza wynosi od 7,5 do 8,0o C, w okresie letnim od 13,6 do 14,0o C i w okresie od maja 
+do lipca  15,0 ÷ 15,6o C. Średnia ilość dni gorących w ciągu roku, o temperaturze powyżej 
+25 oC, wynosi od 10 ÷ 20 oC. Średnie dzienne nasłonecznienie wynosi 7 godz./dobę w lecie 
+i około 1,3 godz./dobę w okresie zimy. Średnia roczna suma opadów z okresu od 1971 do 
+2000 roku wynosi 543 mm. Średnie parowanie terenowe wynosi od 450 do  500 mm/rok. 
+Zima trwa tu od 40 do 60 dni,  przy średniej 40 dni z pokrywą śnieżną (11). 
+Istotną cechą lokalnego klimatu jest bardzo duża zmienność i nieregularność, 
+związana z z łatwym przemieszczaniem się dużych mas powietrza.  Wpływ na klimat mają 
+tu masy powietrza: podzwrotnikowo morskie, ciepłe i na ogół bardzo wilgotne, napływające 
+w okresie całego roku znad basenu Morza Śródziemnego i Azorów, podzwrotnikowo 
+kontynentalne, ciepłe i suche, napływające głównie latem i jesienią znad północnej Afryki, 
+Azji południowo - wschodniej i Europy południowej, polarno morskie, chłodne i wilgotne, 
+napływające znad północnego Atlantyku, z rejony Islandii i Grenlandii, polarno 
+kontynentalne, zimne i suche, napływające znad Europy północno - wschodniej i Syberii, 
+arktyczno morskie, zimne i wilgotne, o dużej przejrzystości , napływające znad rejonów 
+Arktyki, głównie w okresie zimowym, umiarkowanie kontynentalne, suche, napływające 
+w czasie lata znad Europy Wschodniej. 
+Na omawianym terenie dość zróżnicowana jest prędkość wiatru o średniej wartości 
+od 4 do  8 m/sek. W ostatnim dwudziestoleciu dominowały tu wiatry o kierunkach SW,  W 
+i NW, rzadziej SE.  
+=== PAGE 10
+ 10 
+Najbliższa stacja meteorologiczna znajduje się w Szczecinie, a posterunek opadowy 
+w Przelewicach. 
+ 
+Wody powierzchniowe 
+Obszar arkusza Dolice należy do zlewni Odry. Przebiegający z północy na południe 
+dział wodny II rzędu oddziela zlewnię Płoni od zlewni Iny.  W sieci wód powierzchniowych 
+dominującą rolę odgrywa rzeka Ina i jej dopływ Mała Ina wraz z systemem rowów biegnących do 
+nich równolegle oraz kanałów melioracyjnych. W okolicy Stargardu Szczecińskiego Ina zasilana 
+jest wodami dwóch rzek Krąpieli i Małej Iny. Sieć hydrograficzną uzupełniają: źródłowy odcinek 
+rzeki Gowienicy i uregulowana część rzeki Płoni, która nazywana jest Kanałem Płońskim. 
+Ponadto w części wysoczyznowej do wód powierzchniowych należy zaliczyć stawy, 
+niewielkie powierzchniowo jeziora wypełniające zagłębienia po martwym lodzie, oraz liczne 
+podmokłości i rowy melioracyjne (1). 
+Ina jest największym dopływem Odry w obrębie województwa zachodniopomorskiego 
+o długości 129, km. W obrębie arkusza znajduje się jej środkowy bieg. W jej zlewni znajduje się 
+niemal cały obszar arkusza, z wyjątkiem fragmentu terenu w jego południowej części 
+należącego do zlewni Płoni (Kanał Płoński i jezioro Zaborsko). 
+Jakość wód w rzekach i jeziorach jest badana w ramach monitoringu regionalnego 
+przez Wojewódzki Inspektorat Ochrony Środowiska w Szczecinie. Ina i Mała Ina w obrębie 
+granic arkusza prowadzą wody pozaklasowe, Krąpiel i Ina od ujścia Krapieli prowadzą wody 
+III klasy Wody zanieczyszczone są materią organiczną i  biogenami, a okresowo pogarszają 
+ich się warunki tlenowe i stan sanitarny (13). 
+III. BUDOWA GEOLOGICZNA 
+ 
+Najstarszymi nawierconymi utworami na obszarze arkusza są margle piaszczyste, 
+które ku stropowi przechodzą w mułowce margliste zaliczone do jury środkowej (keloweju) 
+i górnej (oksfordu). Na utworach jurajskich niezgodnie leżą utwory kredy górnej (od albu 
+po mastrycht) wykształcone w facji węglanowej. Powyżej zalęgają utwory trzeciorzędu, 
+reprezentowanego przez osady eocenu, oligocenu i miocenu. Osady eocenu stanowią iłowce 
+i mułowce glaukonitowe z wkładkami iłów, węgli brunatnych i piasków kwarcowych 
+stwie
+rdzone w środkowej części arkusza w obrębie obniżenia związanego ze strefą 
+=== PAGE 11
+ 11 
+dyslokacyjną Maszewo-Recz. Osady oligocenu leżą niezgodnie i przekraczające na osadach 
+eocenu. Są to iły, iłowce i mułowce z glaukonitem z przewarstwieniami piasków bardzo 
+drobnoziarnistych lub pylastych występujące na północy w okolicy Pęzina oraz na południu 
+obszaru arkusza w rejonie Zaborska. Utwory miocenu pokrywają obszar podczwartorzędowej 
+powierzchni arkusza w jego części zachodniej. Miocen wykształcony jest tam w postaci 
+osadów 
+limnicznych reprezentowanych przez piaski, mułki i iły z  przewarstwieniami węgla 
+bruna
+tnego.  
+ Osady czwartorzędu pokrywają cały obszar arkusza Dolice i zalegają na osadach 
+miocenu, oligocenu i eocenu. Miąższość ich uzależniona jest od konfiguracji podłoża 
+i obecnej rzeźby terenu. Najmniejsze miąższości osadów czwartorzędowych notowane są 
+w okolicy Kluczewa (40 m), a największe w okolicy Bralęcina (202 m.). 
+Na obszarze arkusza wydzielono osady zlodowaceń: południowopolskich, 
+środkowopolskich i północnopolskich oraz osady interglacjału mazowieckiego. W osadach 
+plejstoceńskich spotykane są również kry osadów starszych. Najstarsze występujące tu osady 
+lodowcowe zaliczone zostały do zlodowaceń południowopolskich, a reprezentowane są one 
+przez mułki i piaski zastoiskowe oraz kilkumetrowej miąższości warstwę glin zwałowych. 
+Mułki i piaski zastoiskowe zalegają bezpośrednio na podłożu podczwartorzędowym, w spągu 
+nieroz
+dzielonych glin zwałowych. Osady takie zachowały się tylko w obrębie obniżeń 
+w podłożu czwartorzędowym, stwierdzono je w wierceniach w Krąpieli i Wójcinie. 
+Kompleks osadów zlodowaceń południowopolskich od wyżej zalegających osadów 
+zlodowaceń środkowopolskich rozdziela seria mułkowo-piaszczysta interglacjału wielkiego 
+Osady te reprezentowane są przez mułki i piaski z fauną arktyczną stwierdzone w wierceniach 
+w Jagowie, Przywodziu i Lubiatowie. Kompleks osadów zlodowaceń środkowopolskich 
+składa się z dwóch poziomów glin zwałowych zaliczonych do zlodowaceń Odry i Warty oraz 
+z towarzyszących im serii piaszczysto - żwirowych oraz zastoiskowych. Zlodowacenie Odry 
+reprezentowane jest przez piaski i żwiry wodnolodowcowe zalegające na osadach 
+interglacjalnych lub bezpośrednio na podłożu podczwartorzędowym. Ponad nimi lub 
+bezpośrednio na podłożu lub na osadach interglacjalnych zalegają gliny zwałowe zachowane 
+jako nieciągły poziom, który pierwotnie pokrywał cały obszar arkusza.  Najmłodszymi 
+osadami zaliczonymi do zlodowacenia Odry są mułki zastoiskowe wypełniające obniżenia 
+w okolicy Dolic, Kłębów, Szemielina, Rzeplina, Witkowa, Żukowa, Brudzewie i Stargardu 
+Szczecińskiego. Najstarszymi osadami zlodowacenia Warty są mułki zastoiskowe 
+występujące w wielu lokalnych zastoiskach w okolicy Dolic, Trzebienia, Krępcewa 
+=== PAGE 12
+ 12 
+i Rzeplina. Kolejnym ogniwem są sandrowe piaski i żwiry wodnolodowcowe. Zalegają na 
+starszych glinach zwałowych lub osadach zastoiskowych. Mają szerokie rozprzestrzenienie, 
+szczególnie w obrębie depresji Maszewo-Barlinek, ale także występują w lokalnych 
+obniżeniach, lub leżą na osadach trzeciorzędowych. Gliny zwałowe zlodowacenia Warty 
+zachowały się  przede wszystkim w zachodniej części arkusza, gdzie zostały stwierdzone 
+w okolicy Kolina. Tutaj zalegają bezpośrednio na osadach, mogą także zalegać na glinach 
+zwałowych zlodowacenia Odry, na piaskach i żwirach wodnolodowcowych warciańskich 
+oraz na osadach zastoiskowych zlodowacenia Odry. Mułki zastoiskowe pochodzące z recesji 
+zlodowacenia Warty stwierdzone w okolicy Bralęcina są najmłodszymi osadami tego 
+zlododowacenia. Po wycofaniu się lądolodu zlodowacenia Warty nastąpił okres wzmożonej 
+denudacji. Akumulowane osady lodowcowe, wodnolodowcowe i zastoiskowe ulegają silnemu 
+rozmyciu. Powierzchnia ulega zróżnicowaniu przy generalnym nachyleniu ku zachodowi. 
+Niewątpliwie ocieplenie klimatu w interglacjale eemskim spowodowało wyżej wymienione 
+procesy, ale na badanym obszarze brak jest dowodów palinologicznych dla jednoznacznego 
+wydzielenia osadów tego wieku Najmłodsza seria lodowcowa należąca do zlodowaceń 
+północnopolskich składa się z trzech poziomów glin zwałowych i rozdzielających je osadów 
+Zlodowacenie Wisły rozpoczynają piaski i żwiry wodnolodowcowe związane z transgresją 
+lądolodu stadiału środkowego (Świecia). Następnie występują gliny zwałowe występujące 
+w postaci warstw o zróżnicowanej miąższości i w różnym stopniu rozmytych. Osady 
+inte
+rstadiału Grudziądza  reprezentowane przez mułki i iły jeziorne oddzielają stadiał 
+środkowy (Świecia) od stadiału górnego (pomorsko-leszczyńskiego). Stadiał górny składa się 
+z osadów fazy poznańsko–leszczyńkiej i pomorskiej. W wyniku transgresji lądolodu fazy 
+pozna
+ńsko-leszczyńskiej powstają piaski wodnolodowcowe, występujące głównie 
+w środkowej i wschodniej części arkusza. Gliny zwałowe fazy leszczyńsko-poznańskiej 
+występują dość powszechnie, choć nie pokrywają całej powierzchni arkusza. Zalegają one na 
+piaskach i glinach stadiału środkowego (Świecia), na osadach wodnolodowcowych fazy 
+leszczyńsko-poznańskiej, na mułkach i iłach interstadiału Grudziądza oraz na glinach 
+zlodowacenia Warty. Kompleks glacjalny fazy pomorskiej na arkuszu Dolice składa się 
+z transgresywnych osadów wodnolodowcowych, poziomu gliny zwałowej, piasków 
+lodowcowych, piasków i żwirów moren martwego lodu, piasków i glin kemów, piasków 
+i glin ozów, osadów zastoiskowych recesyjnych zbiorników wodnych, piasków rzecznych 
+tarasu akumulacyjnego. Holocen reprezentowany jest przez osady akumulacji rzecznej, 
+jeziornej (20). 
+=== PAGE 13
+ 13 
+IV. WODY PODZIEMNE 
+ 
+Według podziału regionalnego zwykłych wód podziemnych Polski obszar arkusza leży 
+w regionie pomorskim, w obrębie niecki szczecińskiej (14, 15 ). 
+Dotychczasowe rozpoznanie hydrogeologiczne umożliwia wydzielenie na obszarze 
+arkusza MhP Dolice dwóch pięter wodonośnych: trzeciorzędowego i czwartorzędowego. 
+Piętro czwartorzędowe stanowią utwory piaszczyste reprezentowane przez poziomy 
+wodonośne: poziom wód gruntowych w dolinach rzek (poziom dolinny), międzyglinowy 
+i podglinowy. Poziom  miedzyglinowy uznano za główny użytkowy poziom wodonośny na 
+większ
+ości obszaru arkusza. 
+Utworami wodonośnymi piętra trzeciorzędowego są piaski mioceńskie, 
+drobnoziarniste.  
+ Zasilanie poziomów czwartorzędowych odbywa się poprzez infiltrację opadów 
+atmosferycznych. Cieki powierzchniowe mają charakter drenujący. Zasilanie poziomów 
+trzeciorzędowych następuje głównie w wyniku przesączania wód z utworów 
+czwartorzędowych.  
+Na poniższej ryc. 3 zaznaczono położenie arkusza na tle  Głównych Zbiorników Wód 
+Podziemnych. W północno-zachodniej arkusza Dolice wydzielony został  zbiornik wód 
+podziemnych nr 123.  Jest to zbiornik międzymorenowy Stargard-Goleniów, o szacunkowych 
+zasobach dyspozycyjnych 38,4 tys. m3/d (9). 
+Z układu hydroizohips wynika, że wody podziemne drenowane są przez rzekę Inę, 
+przepływającą przez obszar arkusza Dolice, a w jego południowo-zachodniej części przez 
+rzekę Płonię. Wody podziemne płyną w kierunku północno-zachodnim do rzeki Iny 
+na większej części obszaru arkusza. Zwierciadło wód podziemnych poziomu 
+trzeciorzędowego występującego w południowej części obszaru arkusza stabilizuje się na 
+podobnej wysokości co zwierciadło wód poziomu czwartorzędowego  w sąsiednich 
+jednostkach.  
+=== PAGE 14
+ 14 
+ 
+1.  - Granice wydzielonych GZWP; 2., 3., 4. -   Kierunki i prędkości (im większa grubość strzałki tym większa prędkość) dopływu 
+wód do GZWP; QM –zbiornik międzymorenowy, QD – zbiornik dolinny ;  GZWP nr 102 – Zbiornik dolinno-międzymorenowy wyspy 
+Wolin, GZWP nr 122 – Dolina kopalna Szczecina, GZWP nr 123 – Zbiornik międzymorenowy Stargard-Goleniów, GZWP nr 135 – 
+Zbiornik Barlinek 
+Ryc.3. Położenie arkusza Dolice na tle mapy głównych zbiorników wód  podziemnych wg 
+A.S. Kleczkowskiego (1990). 
+=== PAGE 15
+ 15 
+IV.1. UŻYTKOWE PIĘTRA WODONOŚNE 
+ 
+Piętro czwartorzędowe 
+Czwartorzędowe piętro wodonośne występuje na  całym obszarze arkusza. 
+Wydzielono w nim trzy poziomy: 
+ Poziom wód gruntowych w dolinie Iny, 
+ międzyglinowy poziom wodonośny, 
+ podglinowy poziom wodonośny, 
+Poziom wód gruntowych w dolinie Iny. Wody tego poziomu są o zwierciadle 
+swobodnym. Ujmowany jest w miejscowości Stargard (na ujęciu „Warszawska”) razem z 
+poziomem międzyglinowym. Tworzą go  piaski różnoziarniste o miąższości dochodzącej do 
+kilku metr
+ów. 
+Międzyglinowy poziom wodonośny ma regionalne rozprzestrzenienie. Jest głównym 
+użytkowym poziomem wodonośnym w utworach czwartorzędowych. Charakter użytkowy 
+mają warstwy związane z utworami fluwioglacjalnymi Poziom międzyglinowy występuje pod 
+warstwą glin zwałowych na głębokości od 1,5 m w Strachocinie (otw. 147) do 85,0 m 
+w
+ Brudzewicach (otw. 150). Zbudowany jest z piasków średnioziarnistych ze żwirem, 
+mie
+jscami żwirów, rzadziej piasków drobnoziarnistych. Miąższość tych utworów zmienia się 
+od 7 m do 48 m (Stargard Szcz. otw. 49 i 31).  Lokalnie, w dolinie Iny, poziom ten łączy się 
+z poziomem dolinnym. W poziomie międzyglinowym, w zależności położenia (rzędne stropu) 
+można wyróżnić poziom międzyglinowy górny i dolny. 
+Zwierciadło wody ma charakter napięty i stabilizuje się na głębokości od + 2,5 m 
+(25,1 m n.p.m.) w Strachocinie (otw. 146) do 19,5 m (29,0 m n.p.m.) w Dolicach. (otw. 6).  
+Za
+silanie poziomu międzyglinowego następuje poprzez przesączanie wód z warstw 
+położonych wyżej. 
+Poziom międzyglinowy górny występuje na większości obszaru arkusza. Rzędne jego 
+stropu mieszczą się w przedziale 38,7 m n.p.m. w Bralęcinie (otw. 54) do - 29,1 m. n.p.m. w 
+Żukowie
+ (otw. 167). Średnia miąższość poziomu wynosi  14,6 m, a przewodność 446 m2/24h. 
+J
+est to główny użytkowy poziom wodonośny w utworach czwartorzędowych. 
+Poz
+iom międzyglinowy dolny  stwierdzono na wielu ujęciach wody na obszarze 
+arkusza Dolice. Poziom ma regionalne rozprzestrzenienie i jest w mniejszym stopniu 
+używany do zaopatrzenia w wodę. Rzędne stropu tego poziomu mieszczą się w przedziale od 
+=== PAGE 16
+ 16 
+– 39,3 m n.p.m. w Bralęcinie (otw. 56) do –66,5 w Wójcinie (otw. 52). Średnia miąższość 
+poziom
+u wynosi  16,0  m, a przewodność 76 m2/24h. 
+P
+odglinowy poziom wodonośny jest podrzędnym poziomem wodonośnym 
+w utworach czwartorzędowych. Na obszarze arkusza stwierdzany jest jedynie na ujęciu w 
+Krąpieli (otw. 43, 166). Miąższość poziomu wynosi 25-29,2 m., a przewodność 163-167 
+m2/24h (otw. 43, 166).  
+ 
+Piętro trzeciorzędowe 
+Trzeciorzędowe piętro wodonośne występuje we wschodniej części obszaru arkusza 
+i związane jest z utworami piaszczystymi miocenu. W piętrze tym wydzielono jeden poziom 
+użytkowy w osadach miocenu nazywany trzeciorzędowym poziomem wodonośnym. Tworzą 
+go piaszczyste utwory miocenu (piaski drobnoziarniste i pylaste). Występuje on na głębokości 
+od 98,0 m w Witkowie (otw. 41)  do 105, 0 m  w Strzyżnie (otw. 45). Miąższość średnia 
+wynosi 32,5 m, a przewodność 933 m2/24h.  
+ 
+IV.2. REGIONALIZACJA HYDROGEOLOGICZNA 
+ 
+Na obszarze arkusza Dolice wydzielono 8 jednostek hydrogeologicznych Zasoby 
+odnawia
+lne wyliczono metodą odpływu na podstawie danych zawartych w opracowaniu 
+„Przepływy średnie w wybranych przekrojach rzek województwa szczecińskiego” (5). 
+Odpływy średnie z niskich (SNq) dla przekroju wodowskazowego w Goleniowie 
+charakteryzują wartość odpływu podziemnego regionalnego z całej zlewni Iny. Można 
+przyjąć, że odpływ ten odpowiada modułowi zasobów odnawialnych na obszarze arkusza. 
+Wynosi on 285 m3/24h·km. 
+Odpływy jednostkowe najniższe z niskich (NNq) odpowiadają nienaruszalnemu 
+przepływowi jednostkowemu rzeki, który wynosi 64 m3/24h·km2 (3). Różnica pomiędzy 
+modułem zasobów odnawialnych  i „nienaruszalnych” odpowiada modułowi zasobów 
+dyspozycyjnych zlewni (kryterium hydrologiczne), który wynosi 221 m3/24h·km2. B iorąc 
+jednak pod uwagę kryteria hydrogeologiczne i warunki zasilania poszczególnych poziomów 
+wodonośnych jest on w obszarze badań bardzo zróżnicowany (tabela 2). 
+Moduł zasobów odnawialnych dla poszczególnych jednostek hydrogeologicznych 
+(Tabela 2) obliczano jako procent regionalnego modułu zasobów odnawialnych 
+(285 m3/24h·km) w zależności od warunków hydrogeologicznych jednostki, a następnie 
+=== PAGE 17
+ 17 
+wyliczano moduł zasobów dyspozycyjnych.  Wielkość procentowego udziału zasobów 
+odnawialnych jednostki hydrogeologicznej w module odpływu podziemnego zlewni oraz 
+udziału zasobów dyspozycyjnych w zasobach odnawialnych ustalono, zgodnie z tabelą 
+(Ryc. 4). 
+ 
+Poziom Moduł zasobów odnawialnych % modułu odpływu podziemnego ze zlewni Moduł zasobów dyspozycyjnych % modułu zasobów odnawialnych 
+odkryty (nadglinowy) 80 -100 % <50 % 
+międzyglinowy 50 – 60 % 50 – 70 % 
+podglinowy <= 40 % 100 % 
+ 
+Ryc. 4.  Wielkości modułów zasobowych w zależności od głębokości występowania 
+poziom
+ów wodonośnych. 
+W 
+utworach czwartorzędowych na obszarze arkusza wydzielono 7 jednostek 
+hydrogeologicznych, a w utworach trzeciorzędowych 1.   
+ 
+Je
+dnostka  
+Tr
+IIab1 Q  
+ Powierzchnia jednostki wynosi  78,4 km2. W kierunku zachodnim kontynuuje się ona 
+na arkusz Stare Czarnowo, gdzie ma nr 
+Tr
+IIba7 Q  i w kierunku południowym na arkusz 
+Jesionowo, gdzie ma nr  
+Tr
+IIb2 Q . Głównym użytkowym poziomem w jej obrębie jest  
+międzyglinowy poziom wodonośny (górny) zbudowany z piasków średnioziarnistych 
+ze żwirem i piasków drobnoziarnistych związany z utworami fluwioglacjalnymi. Wody 
+są o zwierciadle napiętym stabilizującym się na głębokości od 1,8 m  (23,5 m. n.p.m.) 
+w Krępcewie  (otw. 173) do 12,5 m (22,7 m n.p.m) w Kluczewie (otw. 153).  
+Średnia miąższość poziomu wodonośnego wynosi 15,6 m i zmienia się w zakresie 
+od ponad 5,0 m w Kluczewie (otw. 154) do 34,0 m w Cieszysławiu (otw. 199). Współczynnik 
+filtracji warstwy jest zmienny i wynosi od 1,9 m/24h w Strzyżnie (otw. 169) do 98,5 m/24h 
+w Krępcewie (otw. 47) - średnio 23,5 m/24h, przewodność 3677 m2/24h, a wydajności 
+potencjalne studni  50-70 m3/h w części północnej i 30-50 m3/h w części południowej. Moduł 
+=== PAGE 18
+ 18 
+zasobów odnawialnych poziomu międzyglinowego wynosi 228 m3/24h·km2, a zasobów 
+dyspozycyjnych  114/24h·km2. 
+Z uwagi na słabą izolację głównego poziomu użytkowego i ogniska zanieczyszczeń na 
+obszarze jednostki ustalono średni stopień zagrożenia wód podziemnych.  Wody są średniej 
+jakości (klasa II b) z uwagi na podwyższoną zawartość żelaza i manganu.  
+Poziomem podrzędnym jest poziom trzeciorzędowy ujmowany na ujęciu w Strzyżnie 
+(otw. 45 i 171). 
+ 
+Jednostka  
+Q
+IIba2 Q                           
+Powierzchnia jednostki wynosi 20,4 km2. Stanowi ona kontynuację jednostki 
+nr 
+Q
+IIba8 Q z przylegającego od północy arkusza Stargard i przechodzi dalej na 
+przylegający od zachodu arkusz Stare Czarnowo, gdzie ma numer 
+Q
+IIba5 Q . 
+Głównym użytkowym poziomem w jej obrębie jest  międzyglinowy  poziom 
+wodonośny (górny) zbudowany z piasków średnioziarnistych ze żwirem i piasków 
+drobnoziarnistych, związany z utworami fluwioglacjalnymi. Poziom prowadzi wody 
+o zwierciadle napiętym stabilizującym się w otworach na głębokości od +2,5 m  
+(25,1 m. n.p.m.) w Strachocinie  (otw. 146) do 20,5 m (19,0 m n.p.m) w Stargardzie (otw. 6).  
+Miejscami w dolinie Iny może on łączyć się z poziomem dolinnym o zwierciadle 
+swobodnym.  
+Średnia miąższość poziomu wodonośnego wynosi 15,5 m i zmienia się w zakresie od 
+ponad 4,5 m do 29,3 m w Stargardzie (otw. 117, 105). Współczynnik filtracji warstwy jest 
+zmienny od 8,0 m/24h do 119,2 m/24h w Stargardzie (otw. 4, 128), średnio wynosi - 
+52,8 m/24h, a przewodność 818 m2/24h. Wydajności potencjalne studni wynoszą 70-120 m3/h 
+na większości obszaru jednostki. Moduł zasobów odnawialnych poziomu międzyglinowego 
+wynosi 171 m3/24h·km2,  zasobów dyspozycyjnych 120 m3/24h·km2. 
+Z uwagi na zmienną izolację i ogniska zanieczyszczeń na obszarze jednostki ustalono 
+średni  i wysoki stopień zagrożenia wód podziemnych. Wody są średniej jakości (klasa II b) 
+z uwagi na podwyższoną zawartość żelaza i manganu. 
+Poziomem podrzędnym jest międzyglinowy dolny stwierdzony w otworze nr 7 
+na głębokości 61,0 m. Poziom występuje w sposób nieciągły z uwagi na wypiętrzenie 
+=== PAGE 19
+ 19 
+utworów trzeciorzędowych w rejonie Stargardu. Wody w utworach trzeciorzędowych są złej 
+jakości (wysoka barwa i zawartość żelaza). 
+ 
+Jednostka  
+Q
+IIb3 Q  
+Powierzchnia jednostki wynosi 39,4 km2. Stanowi ona kontynuację                         
+jednostki nr 
+Q
+IIbc1 Q  z arkusza Stargard. Głównym użytkowym poziomem jest  poziom 
+międzyglinowy (górny) zbudowany z piasków  drobnoziarnistych i średnioziarnistych. 
+Wody są o zwierciadle napiętym stabilizującym się na głębokości od 1,2 m 
+(23,4 m. n.p.m.) w Kluczewie  (otw. 152) do 14,5 m (33,6 m n.p.m.) w Trzebiatowie 
+(otw. 149). Średnia miąższość poziomu wodonośnego wynosi 11,2 m i zmienia się w zakresie 
+od  5,0 m w Trzebiatowie (otw. 149) do 23,0 m w Kluczewie (otw. 158). Współczynnik 
+filtracji warstwy jest zmienny od 0,6 m/24h w Sułkowie (otw. 148) do 94,2 m/24h 
+w Kluczewie (otw. 32), średnio wynosi – 24,0 m/24h, a przewodność 269 m2/24h.  
+Wydajności potencjalne studni wynoszą 70-120 m3/h. Moduł zasobów odnawialnych 
+poziomu trzeciorzędowego wynosi 171 m3/24h·km2, zasobów dyspozycyjnych 
+120 m3/24h·km2. 
+Z uwagi na dobrą izolację i bark ognisk zanieczyszczeń ustalono niski stopień 
+zagrożenia głównego poziomu użytkowego. Wody są średniej jakości (klasa II b) z uwagi na 
+podwyższoną zawartość żelaza i manganu. 
+Podrzędnym, odizolowanym od poziomu głównego, jest poziom międzyglinowy 
+dolny
+. W obrębie jednostki brak jest otworu eksploatującego ten poziom. 
+ 
+Jed
+nostka  
+Q
+Ibc4 Q  
+ Powierzchnia jednostki wynosi 52,9 km2. Stanowi ona kontynuację                         
+jednostki nr 
+Icb4 Q  z przylegającego od wschodu arkusza Choszczno i przechodzi na 
+przylegający od północy arkusz Stargard Szcz., gdzie ma numer
+Q
+Ibc6 Q . 
+Głównym poziomem użytkowym w obrębie tej jednostki jest  międzyglinowy  poziom 
+wodonośny (górny) zbudowany z fluwioglacjalnych piasków średnioziarnistych ze żwirem 
+i piasków drobnoziarnistych. Wody są o zwierciadle napiętym stabilizującym się w otworach 
+na 
+głębokości od 4,1 m  (29,9 m. n.p.m.) w Rzeplinie (otw. 175) do 9,2 m (35,2 m n.p.m) 
+=== PAGE 20
+ 20 
+w Żukowie (otw. 167). Średnia jego miąższość wodonośnego wynosi 17,2 m i zmienia się 
+w zakresie od 7,0 m w Rzeplinie (otw. 175) do 36,5 m  w Żukowie (otw. 44). Współczynnik 
+filtracji warstwy jest zmienny od 13,0 m/24h w Brudzewicach (otw. 150) do 46,8 m/24h 
+w Rzeplinie (otw. 175), średnio wynosi – 24,4 m/24h, a przewodność 420 m2/24h. 
+Wy
+dajności potencjalne studni na większej części obszaru jednostki wynoszą od 70-120 m3/h,  
+jedynie w jej części wschodniej  są niższe 30-50 m3/h. Moduł zasobów odnawialnych 
+poziomu międzyglinowego wynosi 86 m3/24h·km2, a  zasobów dyspozycyjnych 
+86 m3/24h·km2. 
+Izolacja poziomu jest dobra o bardzo niskim stopniu zagrożenia. Wody są średniej 
+jakości (klasa II b) z uwagi na podwyższoną zawartość żelaza i manganu. 
+Poziomem podrzędnym jest poziom podglinowy zbudowany z piasków średnio 
+i drobnoziarnistych występujący w Krąpieli (otw 166 i 43). Miąższość poziomu wynosi 25-
+29,2 m., a prz
+ewodność 163-167 m2/24h (otw. 43, 166) .   
+  
+Jednostka  
+Q
+IIab5 Q  
+Powierzchnia jednostki wynosi 102,1 km2. Kontynuuje się ona na przylegający od 
+wschodu arkusz Choszczno, gdzie ma nr
+Q
+IIb2 Q . Niewielki jej fragment występuje 
+również w części północnej arkusza i przechodzi na przylegające arkusze Stargard 
+Szczeciński - 
+Q
+IIb7 Q  , Chociwel  - jednostka 
+Q
+IIb10 Q   i  Choszczno – jednostka 
+Q
+IIb2 Q
+. Głównym użytkowym poziomem wodonośnym jest międzyglinowy górny. Wody 
+są zwierciadle napiętym lub miejscami swobodnym w dolinie Małej Iny stabilizującym się na 
+głębokości od 3,0 m (34,3 m. n.p.m.) w Żalęcinie (otw. 196) do 12,1 m (36,4 m n.p.m) 
+w Trzebieniu (otw. 55). W dolinie Małej Iny łączy się on z poziomem odkrytym dolinnym 
+(zwierciadło wody swobodne). Średnia miąższość poziomu wodonośnego wynosi 17,7 m 
+i zmienia się w zakresie od 5,0 m w Dolicach (otw. 204) do 44,0 m  w Szemielinie (otw. 60). 
+Współ
+czynnik filtracji warstwy jest zmienny od 2,9 m/24h w Dolicach (otw. 204) do 
+80,4 m/24h w Żalęcinie (otw. 59), średnio wynosi – 28,6 m/24h, a przewodność 506 m2/24h.  
+Wydajności potencjalne studni wynoszą od 50-70 m3/h i wysokie 70-120 m3/h. Moduł 
+zasobów odnawialnych poziomu międzyglinowego wynosi 228 m3/24h·km2, a zasobów 
+dy
+spozycyjnych 114 m3/24h·km2. 
+=== PAGE 21
+ 21 
+Stopień zagrożenia głównego poziomu użytkowego jest średni lub niski. Wody są 
+średniej jakości (klasa II b) z uwagi na podwyższoną zawartość żelaza i manganu. 
+Poziomem o drugorzędnym znaczeniu jest poziom międzyglinowy dolny zbudowany 
+z piasków drobno i średnioziarnistych stwierdzony  w otworach (otw 42, 52, 56, 166, 182, 
+192). Miąższość poziomu wynosi 5,8-10,5 m., a przewodność 19-378 m2/24h (otw. 43, 182) .   
+ 
+Jednostka  
+IIa6 Q  
+Powierzchnia jednostki wynosi 1,4 km2. Zamyka ona od zachodu jednostkę  
+nr 
+IIa5 Q  wydzieloną  na arkuszu Choszczno. Głównym użytkowym poziomem jest poziom 
+dolinny o zwierciadle swobodnym występujący w dolinie Iny. Zbudowany jest z piasków 
+średnio i drobnoziarnistych. Z uwagi na brak rozpoznania w obrębie jednostki opis poziomu 
+przyjęto na podstawie danych z arkusza Choszczno. Średnia miąższość poziomu 
+wodonośnego wynosi 19,6 m, średni współczynnik filtracji warstwy wynosi 22,4 m/24h, 
+a przewodność 439 m2/24h. Wydajności potencjalne studni wynoszą 10-30 m3/h. Moduł 
+zasobów odnawialnych poziomu dolinnego wynosi 228 m3/24h·km2, a zasobów 
+dyspozycyjnych 114 m3/24h·km2. 
+Ze względu na brak na terenie jednostki ognisk zanieczyszczeń stopień zagrożenia 
+głównego poziomu użytkowego jest średni. Wody są  dobrej jakości (klasa II a) z powodu 
+podwyższonej zawartości żelaza i manganu. 
+ 
+ Jednostka   
+Tr
+IIa7 Q  
+Powierzchnia jednostki wynosi 1,8 km2. Stanowi ona zamknięcie jednostki 
+nr 
+Tr
+IIa1 Q  na przylegającym od południa arkuszu Jesionowo i kontynuuje się na arkusz 
+Pyrzyce, gdzie ma nr 
+Tr
+IIa6 Q  i Stare Czarnowo – jednostka nr 
+Tr
+IIa12 Q . Z uwagi na brak 
+rozpoznania poziomu na obszarze arkusza Dolice, do opisu jednostki wykorzystano dane 
+z sąsiedniego arkusza Jesionowo. Głównym użytkowym poziomem jest poziom 
+międzyglinowy górny zbudowany z piasków różnoziarnistych i żwirów, który w dolinie Płoni 
+jest odkr
+yty i łączy się bezpośrednio z poziomem dolinnym. Wody są o zwierciadle 
+swobodnym. Średnia miąższość poziomu wodonośnego wynosi ponad 40,0 m. Współczynnik  
+filtracji warstwy zmienia się od 30,1 m/24h  do 103,7 m/24h,  średnio wynosi 66,9 m/24h, 
+a przewodność 2850 m2/24h. Wydajności potencjalne studni wynoszą  70 – 120m3/h.  Moduł 
+=== PAGE 22
+ 22 
+zasobów odnawialnych poziomu międzyglinowego wynosi 228 m3/24h·km2, a zasobów 
+dy
+spozycyjnych 114 m3/24h·km2.    
+Z uwagi na brak izolacji głównego poziomu użytkowego na obszarze jednostki 
+ustalono wysoki stopień zagrożenia wód podziemnych.  
+Poziomem podrzędnym jest poziom trzeciorzędowy. Na obszarze jednostki nie jest on 
+ujmowany. 
+ 
+Jednostka   
+Ib
+Q8 Tr  
+Powierzchnia jednostki wynosi 9,6 km2. Stanowi kontynuację jednostki nr 
+Ibc
+Q3 Tr  
+z przylegającego od południa arkusza Jesionowo. Głównym poziomem użytkowym jest 
+poziom trzeciorzędowy (piaski drobnoziarniste i pylaste miocenu). Wody są o zwierciadle 
+napiętym stabilizującym się na głębokości od 6,2 m  (33,8 m. n.p.m.) do 7,0 m (33,0 m n.p.m) 
+w 
+Moskorzynie (otw. 65 i 202) .  Średnia miąższość poziomu wodonośnego wynosi 15,8 m 
+i zmienia się w zakresie od 12,0 m do ponad 19,5 m  w samym tylko Moskorzynie (otw. 65 
+i 202). Współczynnik filtracji warstwy jest zmienny od 0,8 m/24h do 1,1 m/24h (otw. 65 
+i 202), średnio wynosi – 1,0 m/24h, a przewodność 16 m2/24h. W ydajności potencjalne studni 
+są niskie i wynoszą od 10 - 30 m3/h. Moduł zasobów odnawialnych poziomu 
+trzeciorzędowego wynosi 86 m3/24h·km2, a  zasobów dyspozycyjnych 86 m3/24h·km2. 
+Ze względu na brak ognisk zanieczyszczeń stopień zagrożenia wód głównego 
+poziomu użytkowego jest niski. Wody są średniej jakości z powodu podwyższonej zawartości 
+żelaza i manganu.  
+Poziomem o drugorzędnym znaczeniu jest poziom międzyglinowy górny zbudowany 
+z piasków drobno i średnioziarnistych. W obrębie jednostki brak jest otworu eksploatującego 
+ten poziom. 
+V. JAKOŚĆ WÓD PODZIEMNYCH 
+ 
+W ramach badań jakości wód podziemnych na arkuszu, wykonano analizy19 próbek 
+wody pobranej z czynnych studni wierconych (tab. 3a). Przeanalizowano również analizy 
+archiwalne. 
+=== PAGE 23
+ 23 
+Na arkuszu Dolice występują wody dobrej, średniej i lokalnie złej jakości. 
+klasa IIa – wody o dobrej jakości – wody wymagające prostego uzdatniania jedynie w 
+zakresie żelaza, manganu, barwy i mętności (Fe
+ 2,0mg/l, Mn
+ 0,1mg/l, barwa 
+ 20mgPt/l, 
+mętność 
+ 15 mgSiO2/l). 
+klasa IIb– wody o średniej jakości – wody wymagające prostego uzdatniania ze 
+względu na podwyższone zawartości żelaza (Fe<5,0mg/l), manganu (Mn<0,1mg/l), amoniaku 
+(N-NH4
+ 0,7mg/l), barwy (
+ 20mgPt/l), mętności (
+ 15mgSiO2/l), siarkowodoru 
+(H2S
+ 0,7mg/l), przy utlenialności 
+ 0,7mg/l i zasadowości > 4,5 mval/l, 
+Klasa III – jakość niska wody wymagające skomplikowanego uzdatniania (parametry 
+wody przekraczają dopuszczalne wartości dla klasy II b). 
+Podstawowe parametry statystyczne dla wód piętra czwartorzędowego zestawiono 
+w tabeli  - ryc. 5 
+Cecha statystyczna Barwa[mgSiO2/dm3] Cl[mg/dm3] SO4[mg/dm3] NH4[mgN/dm3] Fe[mg/dm3] Mn[mg/dm3] 
+Liczba oznaczeń 141 154 24 149 160 119 
+Wartość maksymalna 70 153 150 7,2 8,0 2,4 
+Średnia arytmetyczna 21,8 29,0 75 0,58 2,12 0,22 
+Wartość minimalna 0 0 0 0,00 0,00 0,00 
+Rozstęp 70 153 126 7,2 8,00 2,4 
+Odchylenie standardowe 11,1 23 58 0,79 1,38 0,24 
+Tło hydrochemiczne 5-35 7-45 5-130 0,02-1,00 0,5-4,0 0,05-0,25 
+ 
+Ryc. 5. Podstawowe wartości statystyczne wybranych wskaźników fizykochemicznych wód 
+podziemnych pietra czwartorzędowego. 
+ 
+=== PAGE 24
+ 24 
+HISTOGRAM ROZKŁADU CZĘSTOŚCI
+0
+10
+20
+30
+40
+50
+1 2 3 4 5 6 7 8 9 1011121314151617181920
+Zasadowość ogólna[mval/dm 3]
+Liczebność
+ 
+KRZYWA ROZKŁADU CZĘSTOŚCI
+0
+20
+40
+60
+80
+100
+0 1 2 3 4 5 6 7 8 9 1011121314151617181920
+Zasadowość ogólna[mval/dm 3]
+Częstość skum. w %  
+HISTOGRAM ROZKŁADU CZĘSTOŚCI
+0
+5
+10
+15
+20
+25
+30
+35
+5 10 15 20 25 30 35 40 45 50 55 60 65 70
+Barwa [mgPt/dm 3]
+Liczebność
+ 
+KRZYWA ROZKŁADU CZĘSTOŚCI
+0
+20
+40
+60
+80
+100
+0 5 10 15 20 25 30 35 40 45 50 55 60 65 70
+Barwa [mgPt/dm 3]
+Częstość skum. w %  
+HISTOGRAM ROZKŁADU CZĘSTOŚCI
+0
+2
+4
+6
+8
+10 30 50 70 90 110 130 150
+Siarczany  [mgSO4/dm 3]
+Liczebność
+ 
+KRZYWA ROZKŁADU CZĘSTOŚCI
+0
+20
+40
+60
+80
+100
+0 50 100 150
+Siarczany  [mgSO4/dm 3]
+Częstość skum. w %  
+=== PAGE 25
+ 25 
+HISTOGRAM ROZKŁADU CZĘSTOŚCI
+0
+10
+20
+30
+40
+50
+10 20 30 40 50 60 70 80
+Chlorki  [mgCl/dm 3]
+Liczebność
+ 
+KRZYWA ROZKŁADU CZĘSTOŚCI
+0
+20
+40
+60
+80
+100
+0 20 40 60 80
+Chlorki  [mgCl/dm 3]
+Częstość skum. w %  
+HISTOGRAM ROZKŁADU CZĘSTOŚCI
+0
+5
+10
+15
+20
+25
+30
+35
+40
+0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1 1.1 1.2 1.3
+Amoniak [mgN/dm3]
+Liczebność
+ 
+KRZYWA ROZKŁADU CZĘSTOŚCI
+0
+20
+40
+60
+80
+100
+0 0.2 0.4 0.6 0.8 1 1.2
+Amoniak [mgN/dm3]
+Częstość skum. w %  
+HISTOGRAM ROZKŁADU CZĘSTOŚCI
+0
+5
+10
+15
+20
+25
+30
+35
+0.5 1 1.5 2 2.5 3 3.5 4 4.5 5
+Żelazo [mgFe/dm 3]
+Liczebność
+ 
+KRZYWA ROZKŁADU CZĘSTOŚCI
+0
+20
+40
+60
+80
+100
+0 1 2 3 4 5
+Żelazo [mgFe/dm 3]
+Częstość skum. w %  
+=== PAGE 26
+ 26 
+HISTOGRAM ROZKŁADU CZĘSTOŚCI
+0
+5
+10
+15
+20
+25
+0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45
+Mangan [mgMn/dm 3]
+Liczebność
+ 
+KRZYWA ROZKŁADU CZĘSTOŚCI
+0
+20
+40
+60
+80
+100
+0 0.15 0.3 0.45
+Mangan [mgMn/dm 3]
+Częstość skum. w %
+ 
+ 
+Ryc. 6. Histogramy ważniejszych składników chemicznych wód podziemnych w utworach 
+czwartorzędowych.  
+Uwa
+ga: Wartość pod słupkiem histogramu  oznacza górną wartość przedziału 
+zmienności. 
+ 
+Uzyskane wyniki świadczą o średniej jakości wód podziemnych. W większości ujęć 
+nie stwierdzono, poza żelazem, manganem barwą i mętnością, innych składników w ilościach 
+ponadnormatywnych. Wody podziemne wymagają uzdatniania polegającego na odżelazianiu 
+i odmanganianiu. Na większości obszaru gdzie poziomem użytkowym jest piętro 
+czwartorzędowe występują wody klasy II b z uwagi na przekroczenia dopuszczalnej 
+zawartości manganu i żelaza. Wody II a klasy stwierdzono jedynie wschodniej części arkusza. 
+W Bralęcinie stwierdzono wody klasy III z uwagi na przekroczenie zawartości 
+azotanów i azotynów  
+Analizę statystyczną wybranych własności chemicznych wody wykonano tylko dla 
+piętra czwartorzędowego (Ryc. 5 i 6 ). Są to wody z reguły średniej (klasa II b ) i  dobrej 
+(klasa II a) jakości. Wymagają tylko prostego uzdatniania z powodu podwyższonych 
+zawartości żelaza i manganu. Tło hydrochemiczne barwy  wynosi 5 – 35 mgSiO2/dm3,  
+c
+hlorków 7- 45 mg Cl/dm3,  siarczanów 5 – 130 mgSO4/dm3, azotu amonowego 0,02 – 
+1,0 mgN/dm3, żelaza 0,5 – 4,0 mgFe/dm3 i manganu 0,02 – 0,25 mgMn/dm3. Tł o 
+hydrochemiczne ustalono na podstawie krzywych kumulacyjnych, odrzucając z zakresu 
+wartośc
+i poszczególnych składników po 10% wartości najniższych i najwyższych. 
+=== PAGE 27
+ 27 
+VI. ZAGROŻENIE I OCHRONA WÓD PODZIEMNYCH 
+ 
+Ar
+kusz Dolice charakteryzuje się, średnim, niskim i bardzo niskim stopniem 
+zagrożenia  użytkowych poziomów wodonośnych. Brak jest zagrożeń ze strony istotnych 
+ognisk zanieczyszceń. Na obszarze arkusza zinwentaryzowano 19 obiektów stanowiących 
+zagrożenie potencjalne dla wód podziemnych. Do największych z nich należą: oczyszczalnia 
+ścieków oraz wylewiska dla cukrowni w Stargardzie Kluczewie. Potencjalne zagrożenie 
+stanowią też stacje paliw  w Stargardzie, Strachocinie, Morzycy,  Krępcewie,  Cieszysławiu 
+i Rzeplinie.  
+Dla płytko występujących poziomów międzyglinowych ustalono średni stopień 
+zagrożenia. Jest to centralna część arkusza , rejon Przewłok i Bralęcina , Żelęcina,   Zaborska. 
+Na obszarach, gdzie poziom międzyglinowy występuje głębiej, poniżej 15 m ustalono niski i 
+bardzo niski stopień zagrożenia. W rejonie Rzeplina, Żukowa i Krąpieli ustalono bardzo niski 
+stopień zagrożenia, a niski we wschodniej części obszaru arkusza. 
+Wysoki stopień zagrożenia występuje w południowo-zachodnim narożu obszaru 
+arkusza, gdzie użytkowy poziom wodonośny nie posiada izolacji oraz w rejonie Stargardu 
+Szczecińskiego. 
+Ujęcie dla miasta Stargard Szczeciński posiada wyznaczoną i ustanowioną strefę 
+ochronną.  
+Obszar arkusza Dolice jest intensywnie wykorzystywany rolniczo z uwagi na 
+występujące tu dobre jakościowo gleby. Intensywne rolnictwo w tym rejonie jest zagrożeniem 
+dla wód podziemnych poprzez niewłaściwie stosowanie nawozów i środków ochrony roślin.  
+Na obszarze arkusza zlokalizowano również  kilka  ferm hodowlanych bydła, trzody 
+oraz drobiu. Niewłaściwa gospodarka odpadami pochodzącymi z hodowli oraz ich rolnicze 
+wykorzystanie również może zagrażać jakości wód podziemnych. W rejonie Bralęcina 
+zaobserwowano w próbie wody podziemnej podwyższone zawartości azotanów i azotynów, 
+spowodowane prawdopodobnie przez wyżej opisywane czynniki. 
+Poziom trzeciorzędowy jest w niewielkim stopniu narażony za zanieczyszczenia. 
+Poziom użytkowy występuje na głębokości poniżej 15 m i  posiada często w nadkładzie serię 
+utworów ilastych.  Dlatego dla obszarów jego występowania jako poziomu użytkowego 
+ustalono niski stopień zagrożenia.  
+Na obszarze arkusza Dolice nie są  prowadzone obserwacje wód podziemnych 
+w ramach Krajowej Sieci Obserwacji Hydrogeologicznych, brak jest też posterunków 
+=== PAGE 28
+ 28 
+obserwacji wód poziemnych  sieci IMGW.  Najbliższy punkt Krajowej Sieci Obserwacji 
+Hydrogeologicznych znajduje się na przylegającym od północnego-zachodu arkuszu 
+Wielgowo,  są tam dwa punkty II rzędu w miejscowości Rogowo.  
+Jedna ze studni ujęcia nr 18 (tabela 1a – 16) w Stargardzie Szczecińskim stanowi 
+punkt si
+eci krajowej monitoringu jakości wód podziemnych. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+=== PAGE 29
+ 29 
+VII. LITERATURA I WYKORZYSTANE MATERIAŁY ARCHIWALNE 
+ 
+1. Atlas hydrograficzny Polski w skali 1: 200 000, 1980 - IMGW. Warszawa. 
+2. Atlas zasobów, walorów i zagrożeń środowiska przyrodniczego Polski. PAN Warszawa 
+1994. 
+3. Duda L., Żygas M., 1985 – Przepływy charakterystyczne rzek województwa 
+szc
+zecińskiego. Szczecińskie Towarzystwo Naukowe. Szczecin (maszynopis). 
+4. Dobrzyński D., Macioszczyk A., 2002 – Hydrogeochemia strefy aktywnej wymiany wód 
+podzi
+emnych. PWN. Warszawa. 
+5. Friedrich M., i in., 1989 – Przepływy średnie w wybranych przekrojach rzek województwa 
+szc
+zecińskiego. IMGW. Słupsk. 
+6. Instrukcja opracowania Mapy Hydrogeologicznej Polski w skali 1 : 50 000. PIG Warszawa 
+1999 r. 
+7. Jarząbek H., 1986 - Mapa hydrogeologiczna Polski  arkusz Gorzów Wlkp. Państwowy 
+Instytut Geologiczny. Warszawa.  
+8. Jarząbek H., 1986 - Objaśnienia do Mapy hydrogeologicznej Polski w skali 1 : 200 000  
+arkusz Gorzów Wlkp. Wyd. Geol. Warszawa. 
+9. Kleczkowski A.S. (red.), 1990 - Mapa obszarów głównych zbiorników wód podziemnych 
+w Polsce. Wyd. AGH. Kraków. 
+10.Kondracki J., 2000 - Geografia Regionalna Polski. Wydawnictwo Naukowe PWN 
+Warszawa. 
+11.Kostecki M., 2003 - Mapa hydrograficzna 1:50 000 arkusz Stargard Szcz. – Płd. Główny 
+Urz
+ąd Geodezji i Kartografii.Warszawa 
+12.Kozacki L., i in., 2002 – Mapa sozologiczna Polski  arkusz Stargard Szcz. –Płd. Główny 
+Urz
+ąd Geodezji i Kartografii.Warszawa 
+13. Landsberg-Uczciwek M., i inni 1999- 2003 - Raport o stanie środowiska w województwie 
+zachodniopomorskim. Biblioteka Monitoringu Środowiska. Szczecin. 
+14. Malinowski J. (red) 1976 - Atlas zasobów zwykłych wód podziemnych i ich 
+wykorzystanie  w Polsce, część I , Zasoby zwykłych wód podziemnych. Wyd. Geol. 
+Wa
+rszawa. 
+15. Malinowski J. (red.), 1991 - Budowa geologiczna Polski, tom VII  Hydrogeologia. PIG 
+Warszawa. 
+=== PAGE 30
+ 30 
+16.Paczyński B., (red.), 1993 -1995- Atlas hydrogeologiczny Polski w skali 1 : 500 000. 
+Cz
+ęść I - System Zwykłych wód podziemnych i część II - Zasoby, jakość i ochrona 
+zwykłych wód podziemnych. PIG Warszawa. 
+17. Paczyński B., Macioszczyk T, Kazimierski B., Mitręga  J., 1996 - Ustalanie 
+dyspozycyjnych zasobów wód podziemnych. Wydawnictwo TRIO Warszawa. 
+18. Pleczyński J., Ziółkowski M., 1986 – Dokumentacja hydrogeologiczna ujęcia wód 
+podziemnych z utworów czwartorzędowych w kat. B + C w rejonie Stargardu 
+Szczecińskiego. PG Wrocław Oddział w Poznaniu. Poznań. 
+19. Podlaszewska S., Ziółkowski M., 1998 – Projekt strefy ochronnej dla ujęcia wody 
+w Stargardzie Szczecińskim. Slavia. Szczecin (maszynopis) 
+20.Sochan A., 2000 - Szczegółowa mapa geologiczna Polski w skali  1 : 50 000, arkusz 
+Dolice. (
+Maszynopis). PIG Oddział Pomorski - Szczecin. 
+21. Staniewicz-Dubois H., 1995 - Wskazówki metodyczne dotyczące tworzenia regionalnych 
+i lokalnych monitoringów wód podziemnych. Biblioteka Monitoringu Środowiska. PIOŚ, 
+Warszawa. 
+22.Stankiewicz W., 1983 - Dokumentacja badań elektrooporowych wykonanych -Kluczewo. 
+PG Wrocław Oddz w  Poznaniu. 
+23.Stanoch M., 1983 - Dokumentacja badań elektrooporowych wykonanych -Stargard. PG 
+Wrocław Oddz w  Poznaniu. 
+24. Trypolin A., 1980 - Dokumentacja badań elektrooporowych – Barnim. Bipromel. 
+Wa
+rszawa 
+ 
+=== PAGE 31
+, 
+ARKUSZ DOLICE 0268 PRZEKROJ HYDROGEOLOGICZNY l - 1 1 
+11 : 11
+1 
+w Barnim Wójcin żalędno Moskorzyn Do lice 
+66 
+Załącznik 1.1 
+E 
+49 50 51 59 65 mn.p. m mn. p. m 
+60 36,2 . 60 
+50 so 
+40 25,8 ~~~-;;:;;~~-· ~--~··~~St:~f40 
+30 • 30 ...__...._.... -r 
+20 ' 11 'l !11 ••• , ... .. .. ... ....... l l 20 .. ... .. ' • .. l • • • • .. • ... ~ Ił.. f ~ • ~ ł • ... ... 'III •• .. o l . 
+1:~--~·-·-·-·~·--~~--~~0~-r--~o--~--~··-·~:_:_:_·~·-+~·--~~~~._·~~--J-~~~--~~~~-·~·~·-·~·~··~~~-·=·=·t··= .. ~·=>~.:=~~:·==~~~~--~~o~. --~r--~l~-j~·--:0~: 
+() 
+-10 
+-20 
+-30 
+-40 
+-50 
+-60 
+-70 
+-80 
+-90 
+-100 
+-110 
+...___ __ ,_ 
+~-----1 b Q III Tr 
+O G 
+o 
+-
+Przepływ w oŚ'rodku porowym 
+piaski 
+o 
+-
+piaski i piaski mułkowate 
+z wkładkami węgla brunatnego 
+Przepływ ograniczony, brak przepływu 
+1-::1 mułki 
+[[l] gliny 
+·~ iły 
+o 
+l 
+CI o 
+o 
+....._..:.....----. ....:._ .".,.... 
+.....__. .--.- ---..... ..... i!idlldiJII ~ ---
+____ ..__ ----- ~ - ....".,.-- ,.._ ~---
+-c ----- _;.,._ ..-- - .11 
+-. ---- - --- -- - --- _.."".,__. ....._._ ---------
+5abQII Q -~--+------ 9 bTr l 
+51 numer otworu 
+24,8 rzędna zwierciadła wody 
+1 
+ujęta część 
+· warstwy wodonośnej 
+Stratygrafia utworów: 
+<:) czvvartorzęd 
+T r trzeciorzęd 
+-
+l 
+o 
+5abQII Q 
+22,0 głębokość otworu 
+2 
+ustalone 
+1 b Q li Symbol jednostki hydrogeologicznej 
+T r (objaśnienia zgodne z mapą ) 
+Zwierciadło wody podziemnej 
+nawiercone 
+zwierciadło głównego 
+oziomu u· kowe o 
+o 
+o 
+.. ... . . 
+o 
+o 
+l 
+Q o 
+o 
+l o 
+o 
+o 
+o 
+l 
+• l l 
+11 l.., '"'IIII 0 
+----t----
+6 a bQ li Q 
+o 
+o 500 1000 
+-10 
+-20 
+-30 
+-40 
+-so 
+-:-60 
+-70' 
+-s o 
+-90 
+-100 
+li 
+Opracował: P. Fuszara 
+=== PAGE 32
+ARKUSZ DOLICE 0268 
+PRZEKRÓJ HYDROGEOLOGICZNY 11 - 11
+1 
+SW l' m n p. m 
+l 
+70- ubiatowo Moskorzyn Marzyca Trzebień 
+64 65 62 55 60-
+36,4 
+50-
+40-
+33 ... 5 
+(1 
+o o 
+o o o o 
+-10-
+-20-
+o o o o 
+l) o 
+l o o o ł • o o o 
+l l l l l o (ł o o o o 
+l 
+o o o o o o o o (ł 
+o 
+i l ... 
+o o o l (ł ft o o o o 
+o o 
+(ł 
+o 
+l l o o l 
+ft o . . l ... , .1 ... l 
+' . .. '. . . ' . ' ' . . . 
+• l 
+. . •. ... . . . ,. . .. . . . . . .. . . . . . . 
+Rzeplino 
+48 
+o 
+o 
+o 
+l 
+o 
+l 
+...... - .. . . . 
+Żukowo 
+44 
+o 
+t o 
+l 
+o 
+l 
+o 
+l 
+o 
+l 
+"..," .. . .... " .. .. . : -: .... _ .. · ...... 
+,<1 •• , .. ' - ... .l' .. .. • Ił' .. • "' • • "' 
+: • ,"" " • • .. • ,. ..., "' .,.'" r 
+.. l , l, • .. • .. • ... • .. , ,., i .. 
+.. " - . . .. .. ... .. .... 
+• ' ł.. • ' • • " .. ~ ł 
+',, .• . . . 
+.. .. .. '' ... . . . . . . . 
+' . ł 11 ' ... 
+, . . ~ 
+, 
+l 
+(J 
+l 
+D 
+l 
+Załącznik 1 .2 
+- -
+NE 
+mnp.m 
+70 
+-60 
+-50 
+-40 
+-30 o 
+-20 
+-10 
+-0 
+--10 
+--20 
+--30 
+-40 
+-50 
+-60 
+1-----
+1 bQII Tr --+----9bTrl --+----S abQ li Q ---------t-------4 be Q li Q li 
+Przepływ w oś'radku porowym 
+piaski 
+~ piaski, mułki z wkładkami 
+węgli brunatnych 
+Przepływ ograniczony, brak przepływu 
+~ 
+mułki 
+[[] gliny 
+0 
+iły 
+-
+65 numer otworu 
+33,5 rzędna zwierciadła wody 
+1 
+ujęta część 
+warstwy wodonośnej 
+58,8 głębokość otworu 
+2 
+ustalone 
+"Zwierciadło wody podziemnej 
+nawiercone 
+_ _ _ zwierciadło głównego 
+poziomu użytkowego 
+Stratygrafia utworów: 
+Q czwartorzęd 
+T r trzeciorzęd 
+5abQII Q Symbol jednostki hydrogeologicznej (objaśnienia zgodne z mapą) 
+11
+1 
+o 500 1000 
+Opracował: P. Fuszara 
+=== PAGE 33
+, 
+ARKUSZ DOLICE 0268 PRZEKROJ HYDROGEOLOGICZNY III -111 11 
+NW 
+mn.p.m 
+60 
+50 
+40 
+30 
+20 
+10 
+Barnim 
+49 
+Wójdn 
+52 51 
+. 
+.. "' .. "' ...... . . . 
+Żalędno 
+59 
+11 : 11' l 
+Moskorzyn 
+65 
+sE;w 
+o~--~0---+---T--~--,_~~o~~~~o~--~--~--~--r---~--+--+~ 
+-10 
+-20 
+-30 
+-40 
+-50 
+-60 
+-10 
+-80 
+-90 
+-100 
+-110 
+......_ __ _ 
+-­.......... 
+-- ,.,.".- -_.,.,... -.".,..,., 
+........... --­/---
+o o 
+o o 
+o 
+l o o 
+o l o \ . 
+D 
+o 
+---­ ... _ "",.....-
+---- --.-- --- ....,._ :-- . 
+- .._;,.... 
+D 
+' 
+• .. ' • ~ l 11 . . . ....... . i 1 i --- -t.---CSlJ!.......JL-~--lL-:-~~-:-7. -:-: .. -:-. T· .:-."':'. -:-• .;. 1 ·"'~~"· '""!'.-:::~"7 • ........,,1""""--:--:-~~-:-:1 .- - -- -T r- ł .. " .. • ł _" Ił olll -. . . . . . ' 
+' .. 
+.. 'III •• - • 
+. . 
+' "' l •' • • ł 
+. 
+\ . 
+.. • l • . ' . . 
+...... ,. 
+o 
+-
+5abQII Q 
+.. l l ... l .. l! Ił . . -- ----. . . . . . . . . 
+f ..... .. .. -- ---. . . . ~· _""....- "........_ -.. .___... 
+-------·- - -. --- - -....... 
+-
+----+---+--1 8 _Q_ 
+ao'Q 11 bTr l 
+Przepływ w oś·rodku porowym 51 numer otworu studziennego 1 Tr 
+piaski 
+piaski i piaski mułkowate 
+Stratygrafia utworów: 
+Q czwartorzęd 
+T r trzeciorzęd 
+24,8 rzędna zwierciadła wody 
+1 
+ujęta część 
+· warstwy wodonośnej 
+l 
+D 
+o 
+l e 
+o 
+' .. . . . . . 
+' .. • . · . . 
+. 
+l o c 
+(J 
+o 
+o 
+. .. "' • J . . • ' . . .• ... . . • • . •• .. 
+' , • .. : . . . . . . ' ~ 
+5abQII Q 
+z wkładkami węgla brunatnego 
+Przepływ ograniczony, brak przepływu 
+[[1] gliny 
+22,0 głębokość otworu 
+2 
+ustalone 
+1 b Q li Symbol jednostki hydrogeologicznej 
+T r (objaśnienia zgodne z mapą) 
+~ iły Zwierciadło wody podziemnej 
+nawiercone 
+zwierciadło głównego 
+poziomu użytkowego 
+granica stratygraficzna pięter 
+linia przecięcia przekrojów 
+o 
+. . l~ ...... 
+. . 
+. . . . 
+Dolice 
+66 
+35,1 
+.. 
+o 58,0 
+l 
+() 
+o 
+.. , .. . . ... . . .. • l 
+. . 
+.. , 
+. . . . 
+• •• . . 
+' . 
+(} 
+o 
+·~ ' 
+. . 
+l 
+o 
+o 
+o 
+. . . 
+. . . 
+l .. · . .. . . 
+500 1000 
+. . 
+. 
+Załącznik 1.3 
+o 
+. 
+• . . . 
+E 
+o 
+-10 
+-20 
+-~ 
+-100 
+Opracował: P. Fuszara 
+=== PAGE 34
+PAŃSTWOWY 
+INSTYTUT GEO LOGICZNY 
+Opracowali: Piotr Fuszara, 2004 r. 
+Ol 0 2 
+lO 
+09 
+OB 
+07 
+06 
+05 i 
+04 15-50 
+0 3 
+02 
+Ol 
+00 
+99 
+9B 
+97 
+96 
+95 
+94 9<-5 
+Copyright by PIG a MŚ, warnawa 2004 
+03 0 4 
+MAPA GŁĘBOKOŚCI WYSTĘPOWANIA 
+GŁÓWNEGO POZIOMU WODONOŚNEGO 
+( N-33-1 03-A) 
+05 06 0 7 OB 09 lO 12 13 14 
+50-100 
+b 
+Załącznik Nr 2 
+268- DOLICE 
+15 
+lO 
+09 
+OB 
+0 7 
+06 
+05 
+04 
+03 
+0 2 
+Ol 
+00 
+99 
+9B 
+97 
+96 
+95 
+94 
+53"10' 
+15°15' 
+15 16 
+Oprac.owanie komputerowe w systemie INTERGRAPH: Piotr Fu szara 
+1000m 4 km 
+5-15,15-50,50-100 Przedz i ały głębokości, [m] 
+-- -
+Granica zasięgu głębokości 
+~ J!....l- ......r Q....,...._ Granica m i ędzy dwoma głównym i poziomami wodonośnym i 
+Q Tr Główne poziomy użytkowe , 
+=== PAGE 35
+PAŃSTWOWY 
+INSTYTUT GEOLOGICZNY 
+Opracowali: Piotr Fuszara, 2004 r. 
+2 
+lO 
+09 
+08 
+07 
+06 
+05 
+Ol 02 
+l ~ 
+\ 
+03 
+MAPA MIĄŻSZOŚCI l PRZEWODNOŚCI 
+GŁÓWNEGO POZIOMU WODONOŚNEGO 
+( N-33-103-A) 
+04 05 06 
+10-20 
+1· 
+------
+Miąższość gpw9 
+,. 
+/ R ' 
+l 
+./ 
+f 
+\ 
+' ' ' ..... 
+lO 12 13 
+Załącznik Nr 3 
+268- DOLICE 
+14 
+,. lO 
+/ 
+f 3 l 
+...._/ 09 
+10-20 
+08 
+0 7 
+06 
+05 , __ ,. 
+04 { 
+03 
+02 
+" 
+Ol 
+~" 
+00 
+99 10-20 
+98 
+4 
+97 
+20-40 
+96 
+95 
+94 
+t' 
+53°10' 
+15"00' 
+Ol 02 03 04 
+Copyright by PIG a MŚ, w arnawa 2004 
+< 1 O, 1 0-20, 20-40 
+Q, Tr 
+04 
+03 
+02 
+/ l 
+3 
+Ol 
+00 
+l ~ 
+/ 
+~ 99 
+.f 98 
+~ /"" / ,. 
+/ ) ------"""' 10-20 / l / 5 / l / ~"" 
+l / . 
+,",. 97 
+96 
+95 
+94 
+53"10' 
+15°15' 
+05 06 07 08 09 lO 12 13 14 15 16 
+Opracowanie komputerowe w systemie INTERGRAPH: Piotr Fu szara 
+1000m 4 km 
+Przedz i ały m i ąższośc i , [m) 
+Granica zasięgu miąższości 
+Granica między dwoma głównymi poziomami wodonośnymi 
+Przewodność, [m'/24h) 
+< 100 
+100-200 
+200-500 
+500- 1000 
+>1000 
+Główne poziomy użytkowe 
+'- - .,;- - ' Granica zasięgu przewodności 
+=== PAGE 36
+PAŃSTWOWY 
+INSTYrUT GEOLOGICZNY 
+Op r acował Piotr Fuszara (Państwowy Instytut Geologiczny), 2004 r. 
+Ol 02 03 04 05 
+15"00' 
+53"20' 
+J 
+d 
+lO 
+09 l 
+) l 
+l 
+08 / .. 
+/ 
+.. 133 158 31~ ~ l 
+01 ........ 15 g .. 
+l ~,J,_, d 
+' 
+l 
+\ l 4~ 1 06 ~~ 
+' /~70 
+\ 1 62 
+..... 1 1o168 
+r 69 
+05 
+04 :f 
+Załączn i k Nr 4 
+MAPA DOKUMENTACYJNA 
+( N-33-1 03 -A) 268 - DOLICE 
+06 01 08 09 lO 12 13 14 
+T 
+& 149 
+"" 
+09 
+tiJ~3 
+~ł~ 
+~~ 
+Ó:6s 08 
+!""' 
+t 
+~ 
+4 07 
+} 
+0 172 fi6 " 06 
+~ 
+05 
+t 
+o'74 
+04 
+"~ 2A\Jr '\t 03 03 
+-.-.-·-~:! 5 ~ ~ 02 
+\ t 1 ~ 02 
+\ _"A" 19 6189 o' a9 
+\ Ol Ol 
+\ .. 
+00 \ 00 
+99 0 61 99 
+6tjb'98 
+98 98 
+91 
+o'92 
+0 67 97 
+96 96 
+cl~9 
+95 95 
+94 t-~ 94 
+53"10' 53"10' 
+15"00' 15"15' 
+Ol 02 03 04 05 06 01 08 09 lO 12 13 14 15 16 
+COpYfight by P1G 8o MS, Warszawa 2002 Opraoowanie komputerowe w system ie INTERGRAPH: Piotr Fuszara 
+Podziaładminis t racyjny SKALA 1 100 000 
+WOJ. ZACHODNIOPOMORSKIE IQ()() m 4km 
+powiatstargardzk.i powiatpyrzycki 
+1. g m. m . StargardSzczeci ń sk.i 5. gm. Warnice 
+2.gm. Stargard Szczecil'\sk.i 6.gm. Przelewice 
+3.gm. Dolice 7.gm. Pyrzyce 
+4.gm.Suchal'l 
+Redaktor arkusza: Jan Praża k (Państwowy Instytut Geologiczny) 
+G łówny koordynator: Piotr Herbich 
+OBJAŚNIENIA 
+Reprezentatywne otwory wiertnicze (n umery od 1 do 1 00 zgodne z t a b elą 1 a), 
+inne reprezentatywne punkty dokumentacyjne (numery od 1 do 1 00 zgodne z tabe l ą 1 d) 
+zlokalizowane na planszy głównej . 
+OtlNÓr wiertn iczy, w którym zbadano/uj ęto następu j ące pięt r o/poz i om wodono~ny: 
+o • czwartorzędowe 
+0 8S trzeciorzędowe 
+14 e Otwór wiertniczy bezopróbowania hydrogeologicznego 
+Pozostale otwory wiertnicze (n umery od 101 zgodne z ta belą N. 
+i pozostałe inne punkty dokumentacyjne (numery od 1 01 zgodne z tabelą B) 
+pom i nię te na planszy głównej. 
+Otwór wiertniczy, w którym zbadanO/ujęto następujące p i ętrO/poz i om wodonośny: 
+o 104 czwartorzędowe 
+0202 
+trze<:iorzędowe 
+133 e Otwór wiertn iczy bezopróbowania hydrogeologicznego 
+Dodatkowe oznaczenia do t yc z ące otworów wiertniczych 
+.6.62 Punkty opróbowania wód podziemnych wykonanego dla mapy 
+Inne oznaczen ia wyst ę p ujące na mapie dokumentacyjnej. 
+";a-- Dokumentacja hydrogeologiczna (numer oznacza pozycję w VII rozdziale części tekstu) 
+!',..-. ."., 
+Dokumentacja geofizyczna (numer oznacza pozycję w VII rozdziale części tekstu) . ·' (_._._.." 
+1---1' Lin ia przekroju hydrogeologicznego 
+da 
+d 3 1()1 01 
+0 144 
+290 47 do 
+d 46 
+145 
+o 
+o • 
+0 6 
+=== PAGE 37
+  
+ 
+Tabela 1a. Reprezentatywne otwory studzienne 
+Numer otworu Numer  
+planszy 
+głównej 
+Miejscowość  
+Użytkownik 
+Otwór Poziom wodonośny Filtr Pompowanie 
+pomiarowe 
+(końcowy stopień) 
+Współ- 
+czynnik 
+ filtracji 
+Przewodność 
+poziomu 
+wodonośnego 
+Zatwierdzone 
+zasoby 
+[m3/h] 
+------------------------------------ 
+Rok  
+zatwierdzenia 
+zasobów 
+Uwagi 
+zgodny 
+z mapą 
+zgodny z 
+bankiem 
+HYDRO  
+  Rok 
+wykona- 
+nia 
+Głębokość 
+[m] 
+--------------------------------------- 
+Stratygrafia 
+spągu 
+Wysokość 
+[m n.p.m.] 
+Straty- 
+grafia 
+Strop 
+--------------------- 
+Spąg 
+[m] 
+Miąższość bez 
+przewarstwień 
+słaboprze-
+puszczalnych 
+[m] 
+Głębokość 
+zwierciadła 
+wody 
+[m] 
+Średnica 
+[mm] 
+---------------------------------- 
+przelot*  
+od - do 
+[m] 
+ 
+Wydajność 
+[m3/h] 
+------------------------------------ 
+Depresja 
+[m] 
+[m/24h] [m2/24h] Depresja 
+[m]  
+  
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+1 2680098 1 
+Giżynek 
+_________________________ 
+dwwny PGR 
+1978 
+56,5 
+_______________ 
+Q 
+32,0 Q 
+44,0 
+____________ 
+>56,5 
+>12,5 12,0 
+406 
+____________ 
+45,5-54,5 
+50,8 
+____________ 
+2,3 
+8,9 >111 
+863 
+____________ 
+2 – 18,5 
+1986 Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe 
+2 2680208 1 
+Stargard 
+Szczeciński 
+_________________________ 
+POD im. 
+Owoc Naszej 
+Pracy 
+1985 
+47,7 
+_______________ 
+Q 
+35,0 Q 
+22,0 
+____________ 
+44,7 
+22,7 17,6 
+406 
+____________ 
+35,5-44,7 
+48,0 
+____________ 
+1,5 
+4,9 112   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe 
+3 2680207 1 
+Stargard 
+Szczeciński 
+_________________________ 
+POD im. 4-
+go Marca 
+1979 
+34,0 
+_______________ 
+Q 
+33,3 Q 
+26,0 
+____________ 
+33,5 
+7,5 13,2 
+356 
+____________ 
+26,6-33,0 
+30,4 
+____________ 
+1,8 
+56,3 422   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe 
+4 2680205 1 
+Stargard 
+Szczeciński 
+_________________________ 
+Zakład 
+Napraw 
+Infrastrukt. 
+1965 
+43,0 
+_______________ 
+Q 
+33,0 Q 
+28,0 
+____________ 
+>43,0 
+>15,0 13,6 
+245 
+____________ 
+37,0-42,0 
+11,5 
+____________ 
+2,7 
+8,0 >120   
+regionalne 
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe 
+5 2680089 1 
+Stargard 
+Szczeciński 
+_________________________ 
+Lecznica 
+zwierzęca 
+1976 
+35,0 
+_______________ 
+Q 
+27,7 Q 
+19,5 
+____________ 
+33,0 
+13,5 9,8 
+298 
+____________ 
+27,8-33,0 
+48,4 
+____________ 
+1,9 
+65,7 886   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe, 
+nieczynny 
+=== PAGE 38
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+6 2680182 1 
+Stargard 
+Szczeciński 
+_________________________ 
+Projektow. 
+szpital-1 
+1987 
+61,0 
+_______________ 
+Q  
+39,5 Q  
+37,0 
+____________ 
+58,0 
+20,5 20,5 
+bd 
+____________ 
+38,0-50,0 
+59,0 
+____________ 
+2,6 
+31,2 639   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe, 
+nieczynny 
+7 2680191 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+10A 
+1989 
+83,0 
+_______________ 
+Tr 
+20,5 Q 
+61,0 
+____________ 
+73,0 
+12,0 4,0 
+406 
+____________ 
+61,0-73,0 
+61,0 
+____________ 
+4,0 
+  
+1560 
+____________ 
+2 – 18,5 
+1986 Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+8 2680103 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+16 
+1979 
+32,0 
+_______________ 
+Q 
+21,9 Q 
+21,0 
+____________ 
+29,0 
+10,0 7,6 
+bd 
+____________ 
+21,0-29,0 
+90,3 
+____________ 
+5,4 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+9 2680192 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+15 
+1991 
+32,0 
+_______________ 
+Q 
+20,5 Q 
+17,3 
+____________ 
+30,0 
+12,7 9,5 
+bd 
+____________ 
+19,9-30,0 
+86,0 
+____________ 
+2,2 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+10 2680198 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+2B 
+1994 
+31,5 
+_______________ 
+Q 
+20,7 Q 
+14,5 
+____________ 
+28,1 
+13,6 6,4 
+bd 
+____________ 
+15,4-28,1 
+76,0 
+____________ 
+3,0 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+11 2680190 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+2A 
+1988 
+30,0 
+_______________ 
+Q 
+20,5 Q 
+12,0 
+____________ 
+26,0 
+14,0 5,4 
+bd 
+____________ 
+17,2-25,0 
+69,0 
+____________ 
+2,6 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+12 2680189 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+12A 
+1988 
+28,0 
+_______________ 
+Q 
+20,5 Q 
+16,0 
+____________ 
+26,0 
+10,0 6,4 
+bd 
+____________ 
+16,0-25,5 
+69,5 
+____________ 
+2,9 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+=== PAGE 39
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+13 2680199 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+31 
+1994 
+41,8 
+_______________ 
+Q 
+20,5 Q 
+13,5 
+____________ 
+27,0 
+ 
+33,0 
+____________ 
+38,0 
+13,5 
+ 
+ 
+ 
+5,0 
+5,6 
+ 
+ 
+ 
+5,6 
+bd 
+____________ 
+13,5-
+37,9* 
+90,0 
+____________ 
+2,6 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+14 2680168 1 
+Strgard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+30 
+1985 
+34,0 
+_______________ 
+Q 
+20,2 Q 
+13,0 
+____________ 
+28,0 
+15,0 4,6 
+457 
+____________ 
+19,0-27,0 
+80,2 
+____________ 
+3,0 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+15 2680104 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+17 
+1979 
+30,0 
+_______________ 
+Q 
+20,0 Q 
+9,0 
+____________ 
+24,0 
+15,0 6,1 
+bd 
+____________ 
+12,0-23,0 
+110,1 
+____________ 
+3,1 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+16 2680118 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+18C 
+1981 
+26,0 
+_______________ 
+Q 
+20,5 Q 
+14,0 
+____________ 
+23,0 
+9,0 6,2 
+bd 
+____________ 
+15,0-23,0 
+92,8 
+____________ 
+6,4 
+46,8 421   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+17 2680114 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+22 
+1981 
+26,0 
+_______________ 
+Q 
+20,5 Q 
+11,0 
+____________ 
+23,0 
+12,0 5,9 
+bd 
+____________ 
+15,0-23,0 
+92,8 
+____________ 
+3,8 
+64,8 778   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+18 2680126 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+24 
+1981 
+35,0 
+_______________ 
+Q 
+20,0 Q 
+15,0 
+____________ 
+32,0 
+17,0 6,7 
+bd 
+____________ 
+22,0-31,0 
+111,0 
+____________ 
+2,9 
+73,2 1244   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+19 2680210 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+20A 
+1985 
+32,0 
+_______________ 
+Q 
+31,0 Q 
+10,0 
+____________ 
+27,0 
+17,0 8,6 
+457 
+____________ 
+15,0-27,0 
+27,0 
+____________ 
+2,8 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+=== PAGE 40
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+20 2680102 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+19A 
+1979 
+30,0 
+_______________ 
+Q 
+21,2 Q 
+18,0 
+____________ 
+28,0 
+10,0 6,1 
+bd 
+____________ 
+19,0-28,0 
+110,1 
+____________ 
+5,5 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+21 2680197 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+22 
+1993 
+30,0 
+_______________ 
+Q 
+21,5 Q 
+12,1 
+____________ 
+28,0 
+15,9 8,6 
+bd 
+____________ 
+16,6-27,8 
+96,0 
+____________ 
+2,6 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+22 2680194 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+21A 
+1992 
+74,5 
+_______________ 
+Q 
+21,5 Q 
+12,0 
+____________ 
+33,5 
+21,5 8,5 
+bd 
+____________ 
+21,1-31,7 
+69,0 
+____________ 
+14,9 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+23 2680195 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+24 
+1992 
+31,5 
+_______________ 
+Q 
+22,0 Q 
+8,1 
+____________ 
+28,5 
+20,4 8,1 
+bd 
+____________ 
+13,7-27,9 
+96,0 
+____________ 
+2,4 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+24 2680196 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+26 
+1992 
+34,0 
+_______________ 
+Q 
+20,3 Q 
+10,0 
+____________ 
+31,8 
+21,8 5,1 
+bd 
+____________ 
+17,9-31,5 
+86,0 
+____________ 
+2,4 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+25 2680169 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+27 
+1985 
+38,0 
+_______________ 
+Q 
+20,3 Q 
+11,5 
+____________ 
+35,0 
+23,5 3,5 
+457 
+____________ 
+25,0-35,0 
+80,0 
+____________ 
+3,7 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+26 2680170 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+29 
+1985 
+36,0 
+_______________ 
+Q 
+20,2 Q 
+19,0 
+____________ 
+30,0 
+11,0 3,7 
+457 
+____________ 
+20,0-30,0 
+92,8 
+____________ 
+6,7 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+=== PAGE 41
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+27 2680201 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+28 
+1998 
+41,0 
+_______________ 
+Q 
+20,2 Q 
+11,0 
+____________ 
+38,6 
+27,6 3,9 
+bd 
+____________ 
+18,7-37,1 
+84,0 
+____________ 
+2,2 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcie 
+„ul. 
+Warszawska” 
+28 2680097 1 
+Stargard 
+Szczeciński 
+_________________________ 
+Zakład-
+ogrodniczy 
+1977 
+35,0 
+_______________ 
+Q 
+20,6 
+Q 
+ 
+ 
+Q 
+2,2 
+____________ 
+13,0 
+ 
+26,5 
+____________ 
+33,0 
+9,8 
+ 
+ 
+ 
+6,5 
+2,2 
+ 
+ 
+ 
+4,4 
+ 
+ 
+ 
+298 
+____________ 
+26,6-33,0 
+ 
+ 
+ 
+32,6 
+____________ 
+4,0 
+ 
+ 
+ 
+ 
+32,9 
+ 
+ 
+ 
+ 
+214 
+  
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe, 
+nieczynny 
+29 2680090 1 
+Strachocin 
+_________________________ 
+Spółdzielna 
+Usługowo-
+Handlowa 
+1976 
+34,3 
+_______________ 
+Q 
+22,4 Q 
+24,3 
+____________ 
+>34,3 
+>10,0 -1,2 
+298 
+____________ 
+27,3-33,3 
+27,0 
+____________ 
+2,2 
+34,6 >346   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe, 
+nieczynny 
+30 2680014 1 
+Strachocin 
+_________________________ 
+Szkoła 
+1963 
+40,0 
+_______________ 
+Q 
+30,0 Q 
+21,0 
+____________ 
+>40,0 
+>19,0 7,0 
+254 
+____________ 
+36,2-39,2 
+13,7 
+____________ 
+1,1 
+30,2 >575 
+15,0 
+____________ 
+1,2 
+1964 nieczynny 
+31 2680042 1 
+Sułkowo 
+_________________________ 
+Gosp. Rolne-
+2 
+1969 
+53,0 
+_______________ 
+Q 
+43,6 Q 
+42,5 
+____________ 
+48,0 
+5,5 9,1 
+305 
+____________ 
+43,0-48,0 
+17,7 
+____________ 
+1,4 
+1,2 6 
+5,3 
+____________ 
+27,0 
+1965 
+Zasoby dla 
+otworów 31 i 
+148, 
+nieczynny 
+32 2680065 1 
+Trzebiatów 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów-2 
+1972 
+58,0 
+_______________ 
+Q 
+46,7 Q 
+50,0 
+____________ 
+57,5 
+7,5 13,6 
+356 
+____________ 
+50,5-56,5 
+65,4 
+____________ 
+1,9 
+94,2 706 
+78,0 
+____________ 
+2,5 
+1972 
+Zasoby dla 
+otworów 32 i 
+149 
+33 2680087 1 
+Brudzewice 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów 
+1975 
+97,0 
+_______________ 
+Q 
+57,4 Q 
+78,0 
+____________ 
+95,0 
+17,0 4,2 
+406 
+____________ 
+88,0-95,0 
+60,0 
+____________ 
+9,8 
+14,4 245 
+57,0 
+____________ 
+9,5 
+1975 
+Zasoby dla 
+otworów 33 i 
+150 
+34 2680185 1 
+Kluczewo 
+_________________________ 
+TES-1 
+1988 
+41,0 
+_______________ 
+Q 
+29,3 Q 
+18,0 
+____________ 
+>41,0 
+>23,0 5,8 
+508 
+____________ 
+26,3-35,5 
+50,8 
+____________ 
+32,0 
+32,1 >739   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe 
+=== PAGE 42
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+35 2680200 1 
+Stargard 
+Szczeciński 
+_________________________ 
+Dutch 
+Farmers-2 
+1995 
+47,0 
+_______________ 
+Q  
+28,8 Q  
+31,0 
+____________ 
+>47,0 
+>16,0 7,1 
+bd 
+____________ 
+35,0-45,0 
+     
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz. 
+36 2680096 1 
+Kluczewo 
+_________________________ 
+SM 
+Kluczewia -2 
+1977 
+48,0 
+_______________ 
+Q 
+29,6 Q 
+31,0 
+____________ 
+>48,0 
+>17,0 5,7 
+356 
+____________ 
+31,0-41,0 
+60,0 
+____________ 
+2,1 
+70,8 >1203   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe 
+37 2680111 1 
+Kluczewo 
+_________________________ 
+Cukrownia-1 
+1980 
+81,0 
+_______________ 
+Q  
+27,5 Q  
+18,8 
+____________ 
+26,6 
+ 
+39,2 
+____________ 
+>81,0 
+5,8 
+ 
+ 
+ 
+>41,8 
+2,8 
+ 
+ 
+ 
+3,2 
+406 
+____________ 
+19,6-
+78,1* 
+67,7 
+____________ 
+4,0 
+2,2 >92   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe 
+38 2680106 1 
+Kluczewo 
+_________________________ 
+Młyn-1A 
+1979 
+40,0 
+_______________ 
+Q  
+26,0 Q 
+27,5 
+____________ 
+>40,0 
+>12,5 
+2,1 
+_______________ 
+1,2** 
+406 
+____________ 
+29,0-37,0 
+33,3 
+____________ 
+7,7 
+11,1 >138   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., 
+nieczynny 
+39 2680176 1 
+Kluczewo 
+_________________________ 
+WOD-S-3 
+1986 
+73,0 
+_______________ 
+Tr 
+30,6 
+Q 
+ 
+ 
+Q/Tr 
+28,0 
+____________ 
+44,0 
+ 
+48,0 
+____________ 
+>73,0 
+16,0 
+ 
+ 
+ 
+> 25,0 
+bd 
+ 
+ 
+ 
+6,4 
+ 
+ 
+ 
+457 
+____________ 
+48,2-54,5 
+ 
+ 
+ 
+47,8 
+____________ 
+9,0 
+ 
+ 
+ 
+11,8 
+ 
+ 
+ 
+>295 
+250,0 
+____________ 
+10,5 
+1986 
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz. „ujęcie 
+Kluczewo”, 
+nieczynny 
+40 2680086 1 
+Witkowo 
+_________________________ 
+Agrofirma 
+Witkowo -4 
+1975 
+96,0 
+_______________ 
+Q 
+35,2 Q 
+79,5 
+____________ 
+>96,0 
+ 
+>16,5 10,6 
+406 
+____________ 
+85,0-93,5 
+51,6 
+____________ 
+17,7 
+7,5 >124   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe 
+41 2680151 1 
+Witkowo 
+_________________________ 
+Agrofirma 
+Witkowo -
+1A 
+1982 
+127,0 
+_______________ 
+Tr 
+34,8 Tr 
+98,0 
+____________ 
+125,0 
+27,0 7,4 
+356 
+____________ 
+115,7-
+125,0 
+34,5 
+____________ 
+25,3 
+3,0 82   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargard 
+Szcz., ujęcia 
+wiejskie i 
+przemysłowe 
+=== PAGE 43
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+42 2680068 1 
+Tychowo 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów 1 
+1973 
+46,0 
+_______________ 
+Q 
+31,0 Q 
+38,0 
+____________ 
+45,0 
+7,0 2,8 
+356 
+____________ 
+39,1-44,9 
+55,0 
+____________ 
+9,8 
+26,0 182 
+50,0 
+____________ 
+9,1 
+1980 
+Zasoby dla 
+otworów 42 i 
+163 
+43 2680095 1 
+Krąpiel 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -
+1A 
+1977 
+177,0 
+_______________ 
+Q 
+48,4 Q 
+145,0 
+____________ 
+174,0 
+29,0 20,5 
+406 
+____________ 
+160,5-
+174,0 
+61,0 
+____________ 
+12,2 
+6,3 183 
+65,0 
+____________ 
+21,0 
+1974 
+Zasoby dla 
+otworów 43 i 
+166 
+44 2680092 1 
+Żukowo 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -2 
+1976 
+93,5 
+_______________ 
+Q 
+45,2 Q 
+57,0 
+____________ 
+>93,5 
+>36,5 10,0 
+406 
+____________ 
+82,8-91,5 
+64,6 
+____________ 
+5,6 
+21,6 >788 
+56,0 
+____________ 
+5,5 
+1974 
+Zasoby dla 
+otworów 44 i 
+167 
+45 2680164 1 
+Strzyżno 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -
+2A 
+1985 
+165,0 
+_______________ 
+Tr 
+29,6 
+Q 
+ 
+ 
+Tr 
+45,0 
+____________ 
+57,0 
+ 
+105,0 
+____________ 
+163,0 
+12,0 
+ 
+ 
+ 
+52,0 
+7,5 
+ 
+ 
+ 
+4,8 
+ 
+ 
+ 
+356 
+____________ 
+148,0-
+161,0 
+ 
+ 
+ 
+49,3 
+____________ 
+1,3 
+ 
+ 
+ 
+58,8 
+ 
+ 
+ 
+3055 
+ 
+ 
+ 
+55,0 
+____________ 
+2,1 
+ 
+ 
+1980 
+Zasoby dla 
+otworów 45 i 
+171 
+46 2680067 1 
+Radziszewo 
+_________________________ 
+Agrofirma 
+Witkowo 
+1973 
+34,0 
+_______________ 
+Q 
+30,0 Q 
+23,0 
+____________ 
+33,0 
+9,2 5,2 
+356 
+____________ 
+26,7-32,7 
+36,9 
+____________ 
+13,7 
+8,9 82 
+32,0 
+____________ 
+11,9 
+1973  
+47 2680073 1 
+Krępcewo 
+_________________________ 
+SM Promyk -
+2 
+1974 
+44,5 
+_______________ 
+Q 
+24,7 Q 
+30,5 
+____________ 
+42,5 
+12,0 3,2 
+356 
+____________ 
+34,3-42,5 
+71,3 
+____________ 
+7,9 
+98,5 1182 
+74,0 
+____________ 
+8,2 
+1974 
+Zasoby dla 
+otworów 47 i 
+173 
+48 2680091 1 
+Rzeplino 
+_________________________ 
+SM Promyk-
+2 
+1976 
+64,0 
+_______________ 
+Q 
+33,8 Q 
+51,0 
+____________ 
+60,0 
+9,0 4,1 
+298 
+____________ 
+52,7-59,5 
+55,8 
+____________ 
+7,5 
+25,9 233 
+52,0 
+____________ 
+5,2 
+1966 
+Zasoby dla 
+otworów 48 i 
+175 
+49 2680107 1 
+Barnim 
+_________________________ 
+Gosp. Rolne 
+(d.PGR) 
+St -3A 
+1979 
+26,0 
+_______________ 
+Q 
+33,5 Q 
+12,0 
+____________ 
+22,5 
+10,5 7,2 
+bd 
+____________ 
+16,0-22,5 
+49,3 
+____________ 
+7,2 
+19,1 200 
+35,0 
+____________ 
+5,1 
+1980 
+Zasoby dla 
+otworów 49, 
+176, 177, 
+178 i 179 
+50 2680084 1 
+Wójcin 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -2 
+1975 
+21,0 
+_______________ 
+Q 
+33,8 Q 
+8,0 
+____________ 
+18,0 
+10,0 8,0 
+bd 
+____________ 
+14,0-18,0 
+26,3 
+____________ 
+4,8 
+16,4 164 
+88,0 
+____________ 
+6,0 
+1982 
+Zasoby dla 
+otworów 50, 
+52 i 182 
+51 2680059 1 
+Wójcin 
+_________________________ 
+Gosp. Rolne 
+-2 
+1971 
+22,0 
+_______________ 
+Q 
+33,0 Q 
+13,0 
+____________ 
+19,0 
+6,0 7,2 
+508 
+____________ 
+15,0-19,0 
+37,7 
+____________ 
+4,5 
+39,4 236 
+40,0 
+____________ 
+4,8 
+1971 
+Zasoby dla 
+otworów 50, 
+51 i 181 
+=== PAGE 44
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+52 2680187 1 
+Wójcin 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -3 
+1988 
+124,0 
+_______________ 
+Q 
+33,5 
+Q 
+ 
+ 
+ 
+Q 
+9,0 
+____________ 
+17,0 
+ 
+100,0 
+____________ 
+123,0 
+8,0 
+ 
+ 
+ 
+23,0 
+9,0 
+ 
+ 
+ 
+7,5 
+ 
+ 
+ 
+356 
+____________ 
+108,0-
+123,0 
+ 
+ 
+ 
+45,1 
+____________ 
+4,5 
+ 
+ 
+ 
+16,4 
+ 
+ 
+ 
+378 
+  
+Zasoby dla 
+otworów 50, 
+52 i 182 
+53 2680076 1 
+Przewłoki 
+_________________________ 
+Agrofirma 
+Witkowo -2 
+1974 
+30,0 
+_______________ 
+Q 
+34,5 Q 
+10,0 
+____________ 
+>30,0 
+>20,0 7,4 
+406 
+____________ 
+20,0-28,0 
+55,8 
+____________ 
+8,6 
+12,3 >245 
+55,0 
+____________ 
+8,6 
+1974 
+Zasoby dla 
+otworów 53 i 
+184 
+54 2680140 1 
+Kolin 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -
+1A 
+1982 
+69,0 
+_______________ 
+Q 
+31,4 Q 
+4,0 
+____________ 
+32,5 
+ 
+45,0 
+____________ 
+>69,0 
+28,5 
+ 
+ 
+ 
+>23,5 
+2,0 
+ 
+ 
+ 
+1,5 
+_______________ 
+1,8** 
+ 
+ 
+ 
+ 
+406 
+____________ 
+50,0-61,0 
+ 
+ 
+ 
+ 
+55,8 
+____________ 
+2,2 
+ 
+ 
+ 
+41,0 
+ 
+ 
+ 
+>964 
+ 
+ 
+ 
+ 
+27,0 
+____________ 
+4,3 
+ 
+ 
+ 
+1980 
+Zasoby dla 
+otworów 54, 
+185 i 186 
+55 2680105 1 
+Trzebień 
+_________________________ 
+SM Promyk -
+1A 
+1979 
+45,6 
+_______________ 
+Q 
+48,5 Q 
+16,0 
+____________ 
+>45,6 
+29,6 12,1 
+457 
+____________ 
+32,2-43,0 
+51,6 
+____________ 
+3,9 
+18,4 545 
+48,0 
+____________ 
+3,7 
+1979 
+Zasoby dla 
+otworów 55 i 
+187 
+56 2680193 1 
+Bralęcin 
+_________________________ 
+Agrofirma 
+Witkowo -2 
+1992 
+96,0 
+_______________ 
+Q 
+46,8 
+Q 
+ 
+ 
+Q 
+9,0 
+____________ 
+20,0 
+ 
+87,5 
+____________ 
+93,5 
+11,0 
+ 
+ 
+6,0 
+9,0 
+ 
+ 
+ 
+11,0 
+ 
+ 
+ 
+406 
+____________ 
+88,5-93,5 
+ 
+ 
+ 
+15,4 
+____________ 
+19,2 
+ 
+ 
+3,1 
+ 
+ 
+19 
+12,0 
+____________ 
+2,1 
+1983 
+Zasoby dla 
+otworów 56, 
+67 i 191 
+57 2680158 1 
+Bralęcin 
+_________________________ 
+Agrofirma 
+Witkowo -2 
+1983 
+23,0 
+_______________ 
+Q 
+48,2 Q 
+12,0 
+____________ 
+19,0 
+7,0 10,4 
+bd 
+____________ 
+15,2-19,0 
+25,3 
+____________ 
+4,4 
+23,3 163   
+Zasoby dla 
+otworów 56, 
+67 i 191 
+58 2680203 1 
+Wójcin 
+_________________________ 
+Dutch 
+Farmers-2 
+2001 
+32,0 
+_______________ 
+Q 
+31,7 Q 
+13,0 
+____________ 
+29,0 
+16,0 5,1 
+bd 
+____________ 
+20,0-27,0 
+55,0 
+____________ 
+2,6 
+30,1 482 
+88,0 
+____________ 
+6,0 
+1982  
+59 2680184 1 
+Żalęcino 
+_________________________ 
+SM Bratek-
+2A 
+1987 
+30,0 
+_______________ 
+Q 
+34,6 Q 
+6,0 
+____________ 
+29,8 
+23,8 3,8 
+508 
+____________ 
+22,0-28,0 
+44,7 
+____________ 
+1,0 
+80,4 1914 
+35,0 
+____________ 
+0,7 
+1971 
+Zasoby dla 
+otworów 59 i 
+197 
+60 2680113 1 
+Szemielino 
+_________________________ 
+SM Bratek -
+2 
+1980 
+75,0 
+_______________ 
+Q 
+34,1 Q 
+30,0 
+____________ 
+74,0 
+44,0 3,9 
+406 
+____________ 
+61,9-73,0 
+60,0 
+____________ 
+3,1 
+32,1 1414 
+58,0 
+____________ 
+3,0 
+1981  
+61 2680204 1 
+Szemielino 
+_________________________ 
+Dutch 
+Farmers-1 
+1999 
+60,0 
+_______________ 
+Q 
+32,5 Q 
+43,0 
+____________ 
+56,0 
+13,0 2,0 
+bd 
+____________ 
+46,0-55,5 
+51,2 
+____________ 
+8,6 
+16,2 211 
+51,0 
+____________ 
+8,6 
+1999  
+62 2680079 1 
+Morzyca 
+_________________________ 
+Agrofirma 
+Witkowo 
+1975 
+19,0 
+_______________ 
+Q 
+39,1 Q 
+5,5 
+____________ 
+16,0 
+10,5 5,5 
+bd 
+____________ 
+12,0-16,0 
+36,9 
+____________ 
+5,5 
+36,5 383 
+34,0 
+____________ 
+5,1 
+1975  
+=== PAGE 45
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 
+63 2680066 1 
+Cieszysław 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -2 
+1972 
+45,0 
+_______________ 
+Q 
+30,5 Q 
+10,0 
+____________ 
+43,0 
+33,0 7,2 
+356 
+____________ 
+38,0-43,0 
+39,1 
+____________ 
+6,4 
+18,0 593 
+43,0 
+____________ 
+18,5 
+1966 
+Zasoby dla 
+otworów 63 i 
+199 
+64 2680077 1 
+Lubiatowo 
+_________________________ 
+Wodociągi 
+Zachodniopo
+morskie 
+Goleniów -2 
+1974 
+32,0 
+_______________ 
+Q 
+27,8 Q 
+13,0 
+____________ 
+29,0 
+16,0 9,0 
+bd 
+____________ 
+22,0-29,0 
+40,5 
+____________ 
+12,4 
+8,3 134   
+Zasoby dla 
+otworów 64, 
+200 i 201 
+65 2680058 1 
+Moskorzyn 
+_________________________ 
+Gosp.  Rolne 
+(dawny 
+PGR)-2 
+1971 
+58,5 
+_______________ 
+Tr 
+40,0 Tr 
+39,0 
+____________ 
+>58,5 
+>19,5 6,2 
+406 
+____________ 
+49,5-57,5 
+7,8 
+____________ 
+34,1 
+0,8 >16 
+10,0 
+____________ 
+28,5 
+1965 nieczynne 
+66 2680100 1 
+Dolice 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -
+1A 
+1979 
+58,0 
+_______________ 
+Q 
+53,8 Q 
+46,0 
+____________ 
+56,0 
+10,0 
+18,7 
+_______________ 
+19,56** 
+406 
+____________ 
+46,3-55,0 
+37,0 
+____________ 
+9,8 
+10,6 106 
+60,0 
+____________ 
+10,2 
+1984 
+Zasoby dla 
+otworów 66, 
+204 i 205 
+67 2680188 1 
+Dolice 
+_________________________ 
+GS 
+1988 
+41,0 
+_______________ 
+Q 
+40,3 
+Q 
+ 
+ 
+Q 
+ 
+5,0 
+____________ 
+29,0 
+ 
+33,0 
+____________ 
+>41,0 
+24,0 
+ 
+ 
+ 
+>8,0 
+5,0 
+ 
+ 
+ 
+4,5 
+ 
+ 
+ 
+508 
+____________ 
+33,2-39,5 
+ 
+ 
+ 
+41,2 
+____________ 
+3,9 
+ 
+ 
+ 
+35,9 
+ 
+ 
+ 
+>288 
+ 
+ 
+ 
+36,0 
+____________ 
+3,5 
+ 
+ 
+1989 
+ 
+* Istnieją odcinki rury międzyfiltrowej 
+** pomiar zwierciadła wody (07.2003) 
+ 
+=== PAGE 46
+  
+ 
+Tabela 1d. Inne  reprezentatywne punkty dokumentacyjne  umieszczone na planszy głównej  (hydrogeologiczne otwory badawcze, otwory bez opróbowania 
+hydrogeologicznego, inne)  
+Numer punktu Numer  Miejscowość  Punkt dokumentacyjny Poziom wodonośny Uwagi 
+zgodny z 
+mapą 
+zgodny z bankiem 
+HYDRO lub innym 
+źródłem informacji* 
+planszy głównej Użytkownik Rodzaj 
+punktu 
+Rok 
+wyko-
+nania 
+Głębokość 
+[m] 
+ 
+Wysokość 
+[m n.p.m.] 
+Straty- 
+grafia 
+Strop 
+__________________ 
+Spąg 
+[m] 
+Głębokość 
+zwierciadła wody 
+[m] 
+Wydajność 
+[m3/h] 
+_____________________ 
+Depresja 
+[m] 
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 
+1 2680002 1 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-A 
+posz 1945 148.0 23.0 Q 
+2,1 
+____________ 
+>11,0 
+-2.1   
+ 
+ 
+=== PAGE 47
+ 
+Tabela 2. Główne parametry jednostek hydrogeologicznych  
+Numer jednostki 
+hydrogeologicznej 
+Symbol jednostki 
+hydrogeologicznej 
+Piętro 
+wodonośne 
+Miąższość  
+[m] 
+Współczynnik filtracji  
+[m/24h] 
+Przewodność piętra wodonośnego 
+[m2/24h] Moduł zasobów odnawialnych [m3/24h·km2] Pow. jednostki hydrogeologicznej [km2] Moduł zasobów dyspozycyjnych [m3/24h·km2] 
+ 
+1 2 3 4 5 6 7 8 9 
+1 
+Tr
+IIab Q
+  
+Q 15,6 23,5 367 228 78,4 114 
+2 
+Q
+IIab Q
+ 
+Q 15,5 52,8 818 171 20,4 120 
+3 
+Q
+IIb Q
+ 
+Q 11,2 24,0 269 171 39,4 120 
+4 
+Q
+Icb Q
+ 
+Q 17,2 24,4 420 86 52,9 86 
+5 
+Q
+IIab Q
+ 
+Q 17,7 28,6 506 228 102,1 114 
+6 
+IIa Q  Q 19,6 22,4 439 228 1,4 114 
+7 
+Tr
+IIa Q
+ 
+Q 42,6 66,9 2850 228 4,1 114 
+8 
+IIb
+Q
+Tr
+ 
+Tr 15,8 1,0 16 86 9,6 86 
+ 
+=== PAGE 48
+ 
+Tabela 3a. Wyniki analiz chemicznych wód podziemnych wykonanych dla mapy - reprezentatywne otwory studzienne  
+Numer 
+zgodny 
+z mapą 
+Data 
+analizy 
+Miejscowość 
+______________________________ 
+Użytkownik 
+Wiek piętra 
+wodonośnego 
+_____________________________ 
+Głębokość 
+stropu poziomu 
+wodonośnego 
+Przewodnictwo 
+_____________________________ 
+pH 
+ 
+ 
+[
+ S/cm] 
+____________________________ 
+Mineralizacja 
+ogólna 
+ 
+Zasadowość 
+ogólna 
+ 
+ 
+HCO3 
+SO4  
+__________
+ 
+Cl 
+NO2 
+__________ 
+NO3 
+F 
+__________ 
+HPO4 
+SiO2 
+__________ 
+NH4 
+ 
+Ca 
+___________ 
+Mg 
+Na 
+__________ 
+K 
+Fe 
+__________ 
+Mn 
+Cu 
+__________ 
+Pb 
+Sr 
+__________ 
+Ba 
+Al 
+__________ 
+B 
+Klasa jakości 
+wody 
+podziemnej 
+   [m.] [-] [mg/dm3] [mval/dm3] [mg/dm3] 
+ 
+1 2 3 4 5 6 7 9 10 11 12 13 14 15 16 18 19 20 21 
+32 27-01- 03 
+Trzebiatów 
+_____________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 
+Q 
+__________ 
+50,0 
+606 
+_____________________________ 
+7.3 
+ 3.68 224.0 
+74 
+__________ 
+33 
+<0,01 
+__________ 
+0.1 
+0.22 
+__________ 
+<l,00 
+16.60 
+__________ 
+0.16 
+96.6 
+__________ 
+9.2 
+9.0 
+__________ 
+2.0 
+1.70 
+__________ 
+0.20 
+<0,005 
+__________ 
+<0,05 
+0.293 
+__________ 
+0.040 
+<0,01 
+__________ 
+<0,05 
+II b 
+36 06-02- 03 Kluczewo _____________________________ SM Kluczewia Q __________ 31,0 330 _____________________________ 7.7  3.06 187.0 9 __________ 4 0.020 __________ 0.2 0.27 __________ <l,00 22.50 __________ 0.22 56.1 __________ 6.5 10.5 __________ 3.0 0.61 __________ 0.07 <0,005 __________ <0,05 0.246 __________ 0.040 0.030 __________ 0.070 II b 
+40 06-02-
+03 
+Witkowo 
+_____________________________ 
+Agrofirma 
+Witkowo 
+Q 
+__________ 
+79,5 
+612 
+_____________________________ 
+7.3  5.64 
+344.0 47 
+__________ 
+19 
+0.010 
+__________ 
+0.1 
+0.35 
+__________ 
+<l,00 
+18.20 
+__________ 
+0.19 
+90.8 
+__________ 
+11.7 
+10.1 
+__________ 
+2.0 
+1.89 
+__________ 
+0.13 
+<0,005 
+__________ 
+<0,05 
+0.327 
+__________ 
+0.060 
+<0,01 
+__________ 
+<0,05 II b 
+41 06-02- 03 
+Witkowo 
+_____________________________ 
+Agrofirma 
+Witkowo 
+Tr 
+__________ 
+98,0 
+610 
+_____________________________ 
+7.3 
+ 6.12 373.0 
+5 
+__________ 
+11 
+0.010 
+__________ 
+0.0 
+0.30 
+__________ 
+<l,00 
+22.20 
+__________ 
+0.51 
+88.6 
+__________ 
+12.3 
+21.5 
+__________ 
+3.0 
+2.20 
+__________ 
+0.15 
+<0,005 
+__________ 
+<0,05 
+0.829 
+__________ 
+0.050 
+<0,01 
+__________ 
+0.070 
+II b 
+42 27-01- 03 
+Tychowo 
+_____________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 
+Q 
+__________ 
+38,0 
+512 
+_____________________________ 
+7.3 
+ 4.32 264.0 
+30 
+__________ 
+15 
+0.010 
+__________ 
+0.0 
+0.31 
+__________ 
+<l,00 
+18.70 
+__________ 
+0.51 
+82.7 
+__________ 
+7.8 
+8.7 
+__________ 
+1.0 
+2.15 
+__________ 
+0.17 
+<0,005 
+__________ 
+<0,05 
+0.269 
+__________ 
+0.040 
+0.010 
+__________ 
+0.060 
+II b 
+43 27-01- 03 
+Krąpiel 
+_____________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 
+Q 
+__________ 
+145,0 
+436 
+_____________________________ 
+7.4 
+ 4.10 250.0 
+8 
+__________ 
+7 
+0.010 
+__________ 
+0.0 
+0.21 
+__________ 
+<l,00 
+20.00 
+__________ 
+0.39 
+61.4 
+__________ 
+8.8 
+15.5 
+__________ 
+2.0 
+1.28 
+__________ 
+0.11 
+<0,005 
+__________ 
+<0,05 
+0.475 
+__________ 
+0.040 
+0.030 
+__________ 
+0.110 
+II b 
+45 27-01- 03 
+Strzyżno 
+_____________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 
+Tr 
+__________ 
+105,0 
+633 
+_____________________________ 
+7.2 
+ 5.96 364.0 
+1 
+__________ 
+16 
+0.010 
+__________ 
+0.0 
+0.43 
+__________ 
+<l,00 
+17.00 
+__________ 
+0.58 
+82.4 
+__________ 
+14.7 
+27.7 
+__________ 
+3.0 
+2.11 
+__________ 
+0.20 
+<0,005 
+__________ 
+<0,05 
+0.929 
+__________ 
+0.050 
+<0,01 
+__________ 
+0.110 
+II b 
+46 06-02- 03 
+Radziszewo 
+_____________________________ 
+Agrofirma 
+Witkowo 
+Q 
+__________ 
+23,0 
+642 
+_____________________________ 
+7.3 
+ 5.02 306.0 
+32 
+__________ 
+25 
+0.010 
+__________ 
+0.1 
+0.42 
+__________ 
+<l,00 
+16.60 
+__________ 
+0.33 
+92.3 
+__________ 
+12.7 
+21.9 
+__________ 
+2.0 
+2.69 
+__________ 
+0.28 
+<0,005 
+__________ 
+<0,05 
+0.602 
+__________ 
+0.050 
+<0,01 
+__________ 
+0.060 
+II b 
+=== PAGE 49
+ 
+1 2 3 4 5 6 7 9 10 11 12 13 14 15 16 18 19 20 21 
+47 06-02- 03 
+Krępcewo 
+_____________________________ 
+SM Promyk w 
+Replinie 
+Q 
+__________ 
+30,5 
+551 
+_____________________________ 
+7.5 
+ 5.54 338.0 
+<l,00 
+__________ 
+11 
+0.010 
+__________ 
+0.0 
+0.29 
+__________ 
+<l,00 
+22.90 
+__________ 
+0.87 
+78.3 
+__________ 
+12.6 
+21.5 
+__________ 
+3.0 
+2.46 
+__________ 
+0.11 
+<0,005 
+__________ 
+<0,05 
+0.724 
+__________ 
+0.080 
+<0,01 
+__________ 
+0.120 
+II b 
+48 06-02- 03 
+Rzeplino 
+_____________________________ 
+SM Promyk w 
+Replinie 
+Q 
+__________ 
+51,0 
+666 
+_____________________________ 
+7.3 
+ 5.98 365.0 
+19 
+__________ 
+14 
+0.010 
+__________ 
+0.0 
+0.37 
+__________ 
+<l,00 
+20.80 
+__________ 
+0.44 
+101.6 
+__________ 
+14.5 
+15.0 
+__________ 
+2.0 
+3.81 
+__________ 
+0.26 
+<0,005 
+__________ 
+<0,05 
+0.767 
+__________ 
+0.070 
+<0,01 
+__________ 
+0.050 
+II b 
+50 27-01- 03 
+Wójcin 
+(Barnim C) 
+_____________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 
+Q 
+__________ 
+8,0 
+665 
+_____________________________ 
+7.2 
+ 6.50 397.0 
+<l,00 
+__________ 
+13 
+0.020 
+__________ 
+0.0 
+0.24 
+__________ 
+<l,00 
+21.80 
+__________ 
+0.46 
+100.6 
+__________ 
+16.9 
+18.2 
+__________ 
+3.0 
+1.20 
+__________ 
+0.16 
+<0,005 
+__________ 
+<0,05 
+1.091 
+__________ 
+0.100 
+<0,01 
+__________ 
+0.090 
+II b 
+53 06-02- 03 
+Przewłoki 
+_____________________________ 
+Agrofirma 
+Witkowo 
+Q 
+__________ 
+10,0 
+810 
+_____________________________ 
+7.1 
+ 4.02 245.0 
+119 
+__________ 
+30 
+0.020 
+__________ 
+47.8 
+0.20 
+__________ 
+<l,00 
+13.40 
+__________ 
+<0,05 
+133.5 
+__________ 
+13.3 
+11.6 
+__________ 
+4.0 
+0.07 
+__________ 
+0.03 
+<0,005 
+__________ 
+<0,05 
+0.252 
+__________ 
+0.060 
+0.010 
+__________ 
+<0,05 
+II b 
+55 06-02- 03 
+Trzebień 
+_____________________________ 
+SM Promyk w 
+Replinie 
+Q 
+__________ 
+15,8 
+628 
+_____________________________ 
+7.4 
+ 6.12 373.0 
+<l,00 
+__________ 
+12 
+0.010 
+__________ 
+0.0 
+0.34 
+__________ 
+<l,00 
+22.50 
+__________ 
+1.04 
+82.5 
+__________ 
+16.6 
+26.9 
+__________ 
+4.0 
+2.55 
+__________ 
+0.11 
+<0,005 
+__________ 
+<0,05 
+1.044 
+__________ 
+0.090 
+<0,01 
+__________ 
+0.170 
+II b 
+56 06-02- 03 
+Bralęcin 
+_____________________________ 
+Agrofirma 
+Witkowo 
+Q 
+__________ 
+87,5 
+668 
+_____________________________ 
+7.3 
+ 3.98 243.0 
+97 
+__________ 
+26 
+0.120 
+__________ 
+7.3 
+0.32 
+__________ 
+<l,00 
+12.60 
+__________ 
+<0,05 
+102.8 
+__________ 
+13.6 
+9.3 
+__________ 
+2.0 
+0.50 
+__________ 
+0.10 
+<0,005 
+__________ 
+<0,05 
+0.184 
+__________ 
+0.040 
+<0,01 
+__________ 
+<0,05 
+II b 
+57 06-02- 03 
+Bralęcin 
+_____________________________ 
+Agrofirma 
+Witkowo 
+Q 
+__________ 
+12,0 
+1770 
+_____________________________ 
+7.2 
+ 8.50 519.0 
+196 
+__________ 
+153 
+0.910 
+__________ 
+62.1 
+0.22 
+__________ 
+<l,00 
+7.60 
+__________ 
+0.85 
+211.9 
+__________ 
+29.2 
+48.9 
+__________ 
+45.0 
+0.06 
+__________ 
+0.32 
+0.083 
+__________ 
+<0,05 
+0.372 
+__________ 
+0.110 
+<0,01 
+__________ 
+<0,05 
+III 
+60 06-02- 03 
+Szemielino 
+_____________________________ 
+SM Bratek w 
+Żalęcinie 
+Q 
+__________ 
+30,0 
+640 
+_____________________________ 
+7.3 
+ 5.98 365.0 
+9 
+__________ 
+18 
+0.010 
+__________ 
+0.0 
+0.39 
+__________ 
+<l,00 
+23.60 
+__________ 
+0.91 
+94.9 
+__________ 
+15.0 
+24.3 
+__________ 
+3.0 
+1.56 
+__________ 
+0.17 
+<0,005 
+__________ 
+<0,05 
+0.839 
+__________ 
+0.080 
+<0,01 
+__________ 
+0.080 
+II b 
+62 06-02- 03 
+Morzyca 
+_____________________________ 
+Agrofirma 
+Witkowo 
+Q 
+__________ 
+5,5 
+820 
+_____________________________ 
+7.2 
+ 5.76 351.0 
+91 
+__________ 
+31 
+0.060 
+__________ 
+1.5 
+0.38 
+__________ 
+<l,00 
+17.90 
+__________ 
+0.24 
+131.6 
+__________ 
+23.6 
+12.6 
+__________ 
+6.0 
+1.87 
+__________ 
+0.27 
+<0,005 
+__________ 
+<0,05 
+0.438 
+__________ 
+0.080 
+<0,01 
+__________ 
+<0,05 
+II b 
+64 27-01- 03 
+Lubiatowo 
+_____________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 
+Q 
+__________ 
+13,0 
+918 
+_____________________________ 
+7.3 
+ 5.98 365.0 
+112 
+__________ 
+41 
+<0,01 
+__________ 
+0.1 
+0.42 
+__________ 
+<l,00 
+16.80 
+__________ 
+0.14 
+131.0 
+__________ 
+26.6 
+18.0 
+__________ 
+5.0 
+0.95 
+__________ 
+0.11 
+<0,005 
+__________ 
+<0,05 
+0.704 
+__________ 
+0.080 
+<0,01 
+__________ 
+0.100 
+II b 
+=== PAGE 50
+ 
+1 2 3 4 5 6 7 9 10 11 12 13 14 15 16 18 19 20 21 
+66 27-01- 03 
+Dolice 
+_____________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 
+Q 
+__________ 
+46,0 
+610 
+_____________________________ 
+7.3 
+ 4.70 287.0 
+42 
+__________ 
+18 
+0.010 
+__________ 
+0.0 
+0.36 
+__________ 
+<l,00 
+18.00 
+__________ 
+0.33 
+89.9 
+__________ 
+16.4 
+8.9 
+__________ 
+2.0 
+2.30 
+__________ 
+0.17 
+<0,005 
+__________ 
+<0,05 
+0.268 
+__________ 
+0.040 
+0.020 
+__________ 
+0.050 
+II b 
+ 
+=== PAGE 51
+ 
+Tabela 4. Obiekty uciążliwe dla wód podziemnych 
+    Rodzaj uciążliwości Zanieczysz- Zagrożenie wód   
+Numer Numer Źródło  Obiekt Ścieki Emisja Materiały i odpady czenie wód podziemnych Uwagi 
+zgodny 
+ z mapą 
+planszy 
+głównej 
+informacji Miejscowość Rodzaj Objętość 
+[m3/d] 
+______________________ 
+Stan na rok 
+Odbiornik Urządzenia 
+oczyszczające 
+pyłowa 
+[Mg/r] 
+_____________ 
+w roku 
+gazowa 
+ [Mg/r] 
+_____________ 
+w roku 
+Urządzenie 
+oczyszczające  
++ istnieje 
+ - brak 
+Rodzaj Sposób 
+składowania 
+podziemnych 
++ istnieje 
+- brak 
+ 
++ istnieje 
+- brak 
+ 
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+1 1 Wizja 
+terenowa 
+Stacja paliw  
+Stargard 
+Szczeciński 
+       Paliwa płynne Zbiorniki 
+podziemne 
+- + czynna 
+2 1 Wizja 
+terenowa 
+Stacja paliw  
+Stargard 
+Szczeciński 
+       Paliwa płynne Zbiorniki 
+podziemne 
+- + czynna 
+3 1 Wizja 
+terenowa 
+Stacja paliw  
+Stargard 
+Szczeciński 
+       Paliwa płynne Zbiorniki 
+podziemne 
+- + czynna 
+4 1 Wizja 
+terenowa 
+Stacja paliw  
+Strachocin 
+       Paliwa płynne Zbiorniki 
+podziemne 
+- + czynna 
+5 1 Wizja 
+terenowa 
+Cukrownia 
+Kluczewo 
+Przemysłowe 3000 
+______________________ 
+2000 
+Mała Ina MB  41 + Paliwa płynne Zbiorniki 
+podziemne 
+- +  
+5 1 Wizja 
+terenowa 
+        Odpady 
+przemysłowe 
+wylewisko - + czynne 
+6 1 Wizja 
+terenowa 
+Oczyszczalnia 
+Strzyżno 
+komunalne 90 
+______________________ 
+2000 
+Mała Ina MB      - + czynna 
+7 1 Wizja 
+terenowa 
+Agrofirma  
+Witkowo 
+Komunalne, 
+przemysłowe 
+515 
+______________________ 
+2000 
+Rów, Ina MBCh      - + Hodowla trzody 
+8 1 Wizja 
+terenowa 
+Zakład Rolny 
+Krąpiel 
+         - + Hodowla trzody 
+9 1 Wizja 
+terenowa 
+Oczyszczalnia 
+Krąpiel 
+komunalne 70 
+______________________ 
+2000 
+Ina MB      - + czynna 
+10 1 Wizja 
+terenowa 
+Droga krajowa 
+nr 10 
+         - + Hodowla trzody, 
+ferma drobiu 
+11 1 Wizja 
+terenowa 
+Zakład Rolny 
+Rzeplino 
+         - + Hodowla trzody 
+12 1 Wizja 
+terenowa 
+Zakład Rolny 
+Krępcewo 
+         - + Hodowla bydła 
+13 1 Wizja 
+terenowa 
+Oczyszczalnia 
+Rzeplino 
+komunalne 13 
+______________________ 
+2000 
+Ina B      - + czyynna 
+14 1 Wizja 
+terenowa 
+Oczyszczalnia 
+Barnim 
+komunalne 350 
+______________________ 
+2000 
+Rów, 
+Gowienica 
+MB      - + czynna 
+15 1 Wizja 
+terenowa 
+Oczyszczalnia 
+Wójcin 
+komunalne 280 
+______________________ 
+2000 
+Rów, 
+Gowienica 
+MB      - + czynna 
+16 1 Wizja 
+terenowa 
+Agrofirma 
+Przewłoki 
+komunalne 200 
+______________________ 
+2000 
+Mała Ina MB      - + Hodowla trzody, 
+ferma drobiu 
+=== PAGE 52
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 
+17 1 Wizja 
+terenowa 
+Agrofirma 
+Bralęcin 
+         - + Hodowla bydła i 
+trzody chlewnej 
+18 1 Wizja 
+terenowa 
+Agrofirma 
+Morzyca 
+         - + Hodowla bydła i 
+trzody chlewnej 
+19 1 Wizja 
+terenowa 
+Składowisko 
+odpadów 
+Dolice 
+       Odpady 
+komunalne 
+ - + nieczynne 
+20 1 Wizja 
+terenowa 
+Zakład Rolny 
+Cieszysław 
+         - + Hodowla bydła 
+21 1 Wizja 
+terenowa 
+Oczyszczalnia 
+Lubiatowo 
+komunalne 300 
+______________________ 
+2000 
+Kanał 
+Lubiatowski 
+MB      - + czynna 
+22 1 Wizja 
+terenowa 
+Oczyszczalnia 
+Żalęcino 
+komunalne 150 
+______________________ 
+2000 
+Rów, Jezioro 
+Płoń 
+MB      - + czynna 
+23 1 Wizja 
+terenowa 
+Oczyszczalnia 
+Dolice 
+komunalne 450 
+______________________ 
+2000 
+Mała Ina MB      - + czynna 
+24 1 Wizja 
+terenowa 
+GS (Piekarnia) 
+Dolice 
+       Paliwa płynne Zbiorniki 
+podziemne 
+- + czynna 
+ 
+=== PAGE 53
+  
+ 
+Tabela A. Otwory studzienne pominięte na planszy głównej 
+Numer otworu 
+ 
+Miejscowość  
+Użytkownik 
+Otwór 
+ 
+Piętro wodonośne 
+ 
+Filtr Pompowanie 
+pomiarowe 
+(końcowy 
+stopień) 
+Współ- 
+czynnik 
+ filtracji 
+[m/24h] 
+Przewodność 
+poziomu 
+wodonośnego 
+[m2/24h] 
+Zatwierdzone 
+zasoby 
+Rok zatwier- 
+dzenia 
+zasobów 
+Uwagi 
+zgodny z 
+mapą 
+dokum. 
+zgodny z 
+bankiem 
+HYDRO 
+ Rok 
+wykona- 
+nia 
+Głębokość 
+[m] 
+______________________ 
+Stratygrafia 
+spągu 
+Wysokość 
+[m n.p.m.] 
+Straty- 
+grafia 
+Strop 
+____________ 
+Spąg 
+[m] 
+Miąższość bez 
+przewarstwień 
+słaboprze-
+puszczalnych 
+[m] 
+Głębokość 
+zwierciadła 
+wody 
+[m] 
+Średnica 
+[mm] 
+_____________________ 
+przelot* 
+od - do 
+[m] 
+ 
+Wydajność 
+[m3/h] 
+______________________ 
+Depresja 
+[m] 
+  [m3/h] 
+____________________ 
+Depresja 
+[m]  
+  
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+101 2680078 Stargard 
+_________________________ 
+POD im. 4-go 
+Marca 
+1975 38,5 
+_______________ 
+Q 
+33,2 Q 27,3 
+____________ 
+>38,5 
+>10,8 14,3 356 
+____________ 
+31,5-37,5 
+54,0 
+____________ 
+3,0 
+19,0 >205   Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+102 2680209 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-7A 
+1985 
+46,0 
+_______________ 
+Q 
+23,0 Q 
+12,0 
+____________ 
+43,0 
+21,0 9,6 
+457 
+____________ 
+25,0-38,0 
+72,3 
+____________ 
+4,9 
+    zlikwidowany 
+103 2680001 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-7 
+1900 
+85,3 
+_______________ 
+Tr 
+22,0 
+Q 
+ 
+ 
+Q 
+ 
+ 
+ 
+Tr 
+ 
+7,5 
+____________ 
+31,0 
+ 
+46,0 
+____________ 
+52,0 
+ 
+67,0 
+____________ 
+>85,3 
+23,5 
+ 
+ 
+6,0 
+ 
+ 
+ 
+>28,7 
+5,5 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      zlikwidowany 
+104 2680027 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-6A 
+1965 
+23,0 
+_______________ 
+Q 
+20,3 Q 
+8,1 
+____________ 
+20,7 
+12,6 4,1 
+bd 
+____________ 
+12,7-20,7 
+73,3 
+____________ 
+3,4 
+    zlikwidowany 
+105 2680008 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM--4 
+1955 
+108,8 
+_______________ 
+Tr 
+20,0 Q 
+10,0 
+____________ 
+39,3 
+29,3 2,0 
+bd 
+____________ 
+14,0-27,0      zlikwidowany 
+106 2680011 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-4A 
+1958 
+21,0 
+_______________ 
+Q 
+20,1 Q 
+9,0 
+____________ 
+21,0 
+12,0 1,9 
+203 
+____________ 
+10,0-20,0 
+109,0 
+____________ 
+5,4 
+    zlikwidowany 
+107 2680032 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-18 
+1954 
+26,5 
+_______________ 
+Q 
+22,4 Q 
+14,1 
+____________ 
+41,5 
+27,4 1,4 
+356 
+____________ 
+14,0-21,8      zlikwidowany 
+=== PAGE 54
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+108 2680081 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-6 
+1975 
+31,5 
+_______________ 
+Q 
+23,0 Q 
+16,0 
+____________ 
+30,8 
+14,8 7,4 
+bd 
+____________ 
+19,2-29,2 
+161,7 
+____________ 
+7,4 
+45,0 680   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcie „ul. 
+Warszawska” 
+109 2680004 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-1A 
+1967 
+41,7 
+_______________ 
+Q 
+22,4 Q 
+14,1 
+____________ 
+41,5 
+27,4 6,0 
+bd 
+____________ 
+15,0-30,0 
+75,3 
+____________ 
+3,0 
+    zlikwidowany 
+110 2680080 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM--4 
+1975 
+29,5 
+_______________ 
+Q 
+23,0 Q 
+12,0 
+____________ 
+27,3 
+15,3 7,6 
+bd 
+____________ 
+16,3-27,0 
+146,3 
+____________ 
+5,0 
+54,1 828   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcie „ul. 
+Warszawska” 
+111 2680007 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-20 
+1954 
+25,0 
+_______________ 
+Q 
+21,0 Q 
+13,5 
+____________ 
+24,5 
+11,0 1,6 
+356 
+____________ 
+14,5-24,5      zlikwidowany 
+112 2680010 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM--11 
+1958 
+21,0 
+_______________ 
+Q 
+20,5 Q 
+9,0 
+____________ 
+>21,0 
+>12,0 4,5 
+bd 
+____________ 
+9,7-19,7 
+109,0 
+____________ 
+5,4 
+35,9 >430   zlikwidowany 
+113 2680083 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-3 
+1975 
+32,0 
+_______________ 
+Q 
+21,7 Q 
+14,0 
+____________ 
+30,0 
+16,0 6,7 
+bd 
+____________ 
+18,7-29,5 
+177,1 
+____________ 
+5,9 
+54,0 864   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcie „ul. 
+Warszawska” 
+114 2680006 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-21 
+1954 
+22,5 
+_______________ 
+Q 
+20,8 Q 
+16,0 
+____________ 
+>22,5 
+>6,5 1,3 
+356 
+____________ 
+17,0-22,0      zlikwidowany 
+115 2680025 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+14A 
+1965 
+29,0 
+_______________ 
+Q 
+19,7 Q 
+10,4 
+____________ 
+26,0 
+15,6 3,4 
+bd 
+____________ 
+16,0-26,0 
+74,3 
+____________ 
+3,4 
+    zlikwidowany 
+116 2680003 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-14 
+1953 
+25,5 
+_______________ 
+Q 
+20,0 Q 
+4,6 
+____________ 
+25,1 
+20,5 1,2 
+356 
+____________ 
+15,0-25,0      zlikwidowany 
+117 2680047 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-16 
+1969 
+26,5 
+_______________ 
+Q 
+20,4 Q 
+17,5 
+____________ 
+22,0 
+4,5 17,5 
+bd 
+____________ 
+17,5-22,0 
+33,2 
+____________ 
+14,4 
+    zlikwidowany 
+118 2680026 
+Stargard 
+Szczeciński 
+_________________________ 
+WODOCIĄ-
+23A 
+1965 
+24,8 
+_______________ 
+Q 
+20,4 Q 
+8,4 
+____________ 
+21,0 
+12,6 2,8 
+bd 
+____________ 
+13,0-21,0 
+45,5 
+____________ 
+8,8 
+    zlikwidowany 
+=== PAGE 55
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+119 2680034 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+15A 
+1967 
+28,0 
+_______________ 
+Q 
+20,5 Q 
+13,2 
+____________ 
+>28,0 
+>14,8 3,3 
+bd 
+____________ 
+15,6-27,6 
+70,2 
+____________ 
+3,3 
+    zlikwidowany 
+120 2680005 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-15 
+1954 
+25,0 
+_______________ 
+Q 
+20,5 Q 
+9,5 
+____________ 
+24,6 
+15,1 1,7 
+305 
+____________ 
+15,0-24,5      zlikwidowany 
+121 2680082 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-2 
+1975 
+26,0 
+_______________ 
+Q 
+20,3 Q 
+14,0 
+____________ 
+24,0 
+10,0 5,2 
+bd 
+____________ 
+14,5-23,7 
+131,4 
+____________ 
+6,1 
+48,3 483   zlikwidowany 
+122 2680085 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-1 
+1975 
+28,0 
+_______________ 
+Q 
+20,1 Q 
+13,0 
+____________ 
+26,0 
+13,0 3,4 
+bd 
+____________ 
+13,5-26,0 
+168,7 
+____________ 
+5,9 
+61,5 830   zlikwidowany 
+123 2680125 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-23 
+1981 
+40,1 
+_______________ 
+Q 
+20,5 Q 
+14,0 
+____________ 
+21,0 
+ 
+30,0 
+____________ 
+40,0 
+7,0 
+ 
+ 
+ 
+10,0 
+7,5 
+ 
+ 
+ 
+7,5 
+ 
+ 
+ 
+bd 
+____________ 
+30,0-38,5 
+ 
+ 
+ 
+102,0 
+____________ 
+12,1 
+ 
+ 
+ 
+25,6 
+ 
+ 
+ 
+256 
+  
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcie „ul. 
+Warszawska” 
+124 2680181 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+21A 
+1987 
+32,0 
+_______________ 
+Q 
+26,0 Q 
+15,0 
+____________ 
+28,0 
+13,0 7,0 
+bd 
+____________ 
+18,0-28,0 
+128,0 
+____________ 
+3,5 
+83,6 1087   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcie „ul. 
+Warszawska” 
+125 2680033 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+10A 
+1967 
+22,0 
+_______________ 
+Q 
+20,5 Q 
+5,0 
+____________ 
+20,5 
+15,5 2,8 
+bd 
+____________ 
+10,5-20,5 
+60,0 
+____________ 
+2,6 
+    zlikwidowany 
+126 2680046 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-9 
+1969 
+28,0 
+_______________ 
+Q 
+21,1 Q 
+14,0 
+____________ 
+27,0 
+13,0 3,5 
+bd 
+____________ 
+21,0-27,0 
+80,3 
+____________ 
+3,1 
+    zlikwidowany 
+127 2680069 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM--5 
+1973 
+21,0 
+_______________ 
+Q 
+20,6 Q 
+13,0 
+____________ 
+20,1 
+7,1 6,7 
+356 
+____________ 
+13,6-20,1 
+83,3 
+____________ 
+2,8 
+116,6 828   zlikwidowany 
+128 2680062 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM--1 
+1971 
+24,0 
+_______________ 
+Q 
+20,9 Q 
+14,0 
+____________ 
+22,0 
+8,0 5,0 
+bd 
+____________ 
+14,3-21,8 
+125,7 
+____________ 
+6,1 
+119,2 954   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcie „ul. 
+Warszawska” 
+129 2680060 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-2 
+1971 
+26,7 
+_______________ 
+Q 
+20,7 Q 
+13,7 
+____________ 
+24,7 
+11,0 4,3 
+bd 
+____________ 
+14,0-24,5 
+146,3 
+____________ 
+6,3 
+79,1 871   zlikwidowany 
+130 2680061 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-3 
+1971 
+30,0 
+_______________ 
+Q 
+20,8 Q 
+10,0 
+____________ 
+28,0 
+18,0 5,4 
+bd 
+____________ 
+14,0-27,0 
+177,1 
+____________ 
+5,3 
+52,8 950   zlikwidowany 
+=== PAGE 56
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+131 2680045 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-4A 
+1969 
+28,0 
+_______________ 
+Q 
+20,8 Q 
+14,0 
+____________ 
+27,0 
+13,0 4,5 
+bd 
+____________ 
+21,0-27,0 
+92,6 
+____________ 
+7,3 
+    zlikwidowany 
+132 2680064 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-4 
+1971 
+36,5 
+_______________ 
+Q 
+20,9 Q 
+12,0 
+____________ 
+34,5 
+22,5 6,8 
+bd 
+____________ 
+22,5-33,5 
+221,3 
+____________ 
+6,4 
+86,4 1944   zlikwidowany 
+133 2680148 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-8B 
+1982 
+40,0 
+_______________ 
+Q 
+20,2 Q 
+13,0 
+____________ 
+37,0 
+24,0 5,9 
+bd 
+____________ 
+23,4-33,4 
+92,8 
+____________ 
+5,3 
+13,4 321   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcie „ul. 
+Warszawska” 
+134 2680163 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+H10 
+1985 
+36,0 
+_______________ 
+Q 
+20,2 Q 
+15,0 
+____________ 
+31,0 
+16,0 4,4 
+457 
+____________ 
+19,0-31,0 
+72,3 
+____________ 
+2,5 
+61,6 986   
+zlikwidowany 
+135 2680147 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-H-2 
+1982 
+41,0 
+_______________ 
+Q 
+21,3 Q 
+2,5 
+____________ 
+9,0 
+ 
+15,5 
+____________ 
+39,0 
+6,5 
+ 
+ 
+ 
+23,5 
+2,5 
+ 
+ 
+ 
+4,5 
+ 
+ 
+bd 
+____________ 
+18,0-36,0 
+ 
+ 
+138,4 
+____________ 
+4,5 
+ 
+ 
+43,5 
+ 
+ 
+1021 
+  
+zlikwidowany 
+136 2680166 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-H8 
+1985 
+40,0 
+_______________ 
+Q 
+21,6 Q 
+13,0 
+____________ 
+36,0 
+23,0 5,0 
+457 
+____________ 
+20,6-31,0 
+80,2 
+____________ 
+4,2 
+31,3 720   
+zlikwidowany 
+137 2680165 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-H9 
+1985 
+35,0 
+_______________ 
+Q 
+20,5 Q 
+15,0 
+____________ 
+31,0 
+16,0 4,4 
+457 
+____________ 
+19,0-31,0 
+80,2 
+____________ 
+2,5 
+65,9 1054   
+zlikwidowany 
+138 2680145 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-12 
+1982 
+41,0 
+_______________ 
+Q 
+21,2 Q 
+11,0 
+____________ 
+39,0 
+28,0 3,4 
+bd 
+____________ 
+18,5-36,5      
+zlikwidowany 
+139 2680180 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+H11 
+1985 
+35,0 
+_______________ 
+Q 
+20,5 Q 
+19,0 
+____________ 
+30,0 
+11,0 3,7 
+457 
+____________ 
+20,0-30,0 
+92,0 
+____________ 
+6,7 
+36,5 401   
+zlikwidowany 
+140 2680167 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-H7 
+1985 
+31,0 
+_______________ 
+Q 
+20,2 Q 
+13,0 
+____________ 
+>31,0 
+>18,0 4,6 
+457 
+____________ 
+19,0-27,0 
+80,2 
+____________ 
+3,0 
+90,7 >1633   
+zlikwidowany 
+141 2680162 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-
+H12 
+1985 
+38,0 
+_______________ 
+Q 
+20,3 Q 
+11,5 
+____________ 
+35,0 
+23,5 3,5 
+457 
+____________ 
+25,0-35,0 
+92,8 
+____________ 
+3,6 
+32,7 753   
+zlikwidowany 
+=== PAGE 57
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+142 2680142 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-H-1 
+1982 
+35,0 
+_______________ 
+Q 
+21,8 Q 
+4,0 
+____________ 
+10,0 
+ 
+12,0 
+____________ 
+32,0 
+6,0 
+ 
+ 
+ 
+19,6 
+4,0 
+ 
+ 
+ 
+7,5 
+ 
+ 
+ 
+bd 
+____________ 
+20,5-32,0 
+ 
+ 
+ 
+92,8 
+____________ 
+6,5 
+ 
+ 
+ 
+44,4 
+ 
+ 
+ 
+870 
+  
+zlikwidowany 
+143 2680149 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-H-4 
+1982 
+41,0 
+_______________ 
+Q 
+20,4 Q 
+13,0 
+____________ 
+33,0 
+20,0 4,0 
+406 
+____________ 
+21,0-33,0 
+127,1 
+____________ 
+4,5 
+80,9 1617   
+zlikwidowany 
+144 2680141 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-H-5 
+1982 
+33,0 
+_______________ 
+Q 
+21,8 Q 
+3,0 
+____________ 
+24,0 
+21,0 3,0 
+bd 
+____________ 
+18,0-24,0 
+60,2 
+____________ 
+4,0 
+29,3 615   zlikwidowany 
+145 2680137 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-H-3 
+1982 
+41,0 
+_______________ 
+Q 
+21,1 Q 
+3,,0 
+____________ 
+22,0 
+ 
+29,0 
+____________ 
+38,0 
+19,0 
+ 
+ 
+ 
+9,0 
+2,5 
+ 
+ 
+ 
+2,5 
+ 
+ 
+ 
+bd 
+____________ 
+30,0-38,0 
+ 
+ 
+ 
+41,7 
+____________ 
+22,1 
+ 
+ 
+ 
+61,0 
+ 
+ 
+ 
+549 
+  zlikwidowany 
+146 2680150 
+Strachocin 
+_________________________ 
+MPGKIM -19 
+1982 
+40,0 
+_______________ 
+Q  
+22,6 Q 
+9,5 
+____________ 
+28,0 
+18,5 -2,5 
+406 
+____________ 
+18,0-28,0 
+28,0 
+____________ 
+2,0 
+    zlikwidowany 
+147 2680063 
+Strachocin 
+_________________________ 
+Spółdzielna 
+Usługowo-
+Handlowa 
+1971 
+33,0 
+_______________ 
+Q 
+23,0 Q 
+1,5 
+____________ 
+7,0 
+ 
+23,0 
+____________ 
+>33,0 
+5,5 
+ 
+ 
+ 
+>10,0 
+1,5 
+ 
+ 
+ 
+-2,2 
+ 
+ 
+ 
+298 
+____________ 
+25,0-29,5 
+ 
+ 
+ 
+24,0 
+____________ 
+3,2 
+ 
+ 
+ 
+27,0 
+ 
+ 
+ 
+>270 
+  
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+148 2680020 
+Sułkowo 
+_________________________ 
+Gosp. Rolne -
+1 
+1964 
+55,4 
+_______________ 
+Q  
+40,5 Q  
+47,0 
+____________ 
+54,5 
+7,5 10,2 
+356 
+____________ 
+48,4-53,4 
+5,7 
+____________ 
+33,6 
+0,6 4   
+Zasoby dla 
+otworów 31 i 
+148, 
+nieczynny 
+149 2680015 
+Trzebiatów 
+_________________________ 
+Gosp. Rolne -
+1 
+1964 
+51,5 
+_______________ 
+Q 
+48,1 Q 
+46,5 
+____________ 
+>51,5 
+>5,0 14,5 
+305 
+____________ 
+46,5-50,5 
+17,7 
+____________ 
+1,4 
+50,1 >251   
+Zasoby dla 
+otworów 32 i 
+149 
+150 2680179 
+Brudzewice 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -2 
+1986 
+103,0 
+_______________ 
+Q 
+57,9 Q 
+85,0 
+____________ 
+101,0 
+16,0 4,8 
+406 
+____________ 
+88,0-101,0 
+47,1 
+____________ 
+5,1 
+13,0 207   
+Zasoby dla 
+otworów 33 i 
+150 
+151 2680043 
+Kluczewo 
+_________________________ 
+SM 
+Kluczewia-1 
+1969 
+43,0 
+_______________ 
+Q 
+30,0 Q 
+29,0 
+____________ 
+>43,0 
+>14,0 5,0 
+298 
+____________ 
+35,5-41,5 
+48,5 
+____________ 
+2,4 
+42,5 >595   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+=== PAGE 58
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+152 2680186 
+Kluczewo 
+_________________________ 
+TES-2 
+1988 
+42,0 
+_______________ 
+Q 
+29,7 Q 
+29,0 
+____________ 
+38,0 
+9,0 6,3 
+457 
+____________ 
+29,0-38,0 
+45,1 
+____________ 
+4,5 
+2,0 18   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+153 2680188 
+Kluczewo 
+_________________________ 
+D. PBRol 
+1977 
+29,5 
+_______________ 
+Q 
+35,2 Q 
+22,5 
+____________ 
+28,0 
+5,5 12,5 
+244 
+____________ 
+24,5-27,5 
+13,3 
+____________ 
+3,7 
+25,9 143   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+154 2680052 
+Kluczewo 
+_________________________ 
+Studnia-
+publiczna 
+1970 
+43,0 
+_______________ 
+Q  
+31,0 Q  
+38,0 
+____________ 
+>43,0 
+>5,0 5,3 
+254 
+____________ 
+39,8-42,3 
+6,0,0 
+____________ 
+0,5 
+43,2 >216   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+155 2680009 
+Kluczewo 
+_________________________ 
+Cukrownia-1 
+1958 
+28,0 
+_______________ 
+Q 
+27,5 Q 
+13,5 
+____________ 
+26,0 
+9,7 2,8 
+bd 
+____________ 
+13,5-16,0 
+29,3 
+____________ 
+2,4 
+    
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+156 2680138 
+Kluczewo 
+_________________________ 
+cukrownia- 
+1982 
+93,0 
+_______________ 
+Q 
+23,7 Q 
+80,0 
+____________ 
+91,0 
+11,0 3,0 
+457 
+____________ 
+80,0-91,0 
+44,2 
+____________ 
+9,3 
+11,1 123   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+157 2680012 
+Kluczewo 
+_________________________ 
+Młyn-1 
+1961 
+35,0 
+_______________ 
+Q 
+25,0 Q 
+19,5 
+____________ 
+>35,0 
+>15,5 1,2 
+254 
+____________ 
+28,0-33,0 
+21,3 
+____________ 
+12,2 
+3,2 >50   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+158 2680177 
+Kluczewo 
+_________________________ 
+WODOCIĄG-
+S-1 
+1986 
+80,0 
+_______________ 
+Tr 
+31,7 Q  
+26,0 
+____________ 
+49,0 
+23,0 7,6 
+457 
+____________ 
+27,0-40,0 
+121,2 
+____________ 
+6,4 
+26,7 614   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu 
+„ujęcie 
+Kluczewo”, 
+nieczynny 
+=== PAGE 59
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+159 2680171 
+Kluczewo 
+_________________________ 
+WOD-S-2 
+1985 
+53,0 
+_______________ 
+Tr 
+31,7 Q  
+27,0 
+____________ 
+41,0 
+14,0 7,5 
+bd 
+____________ 
+27,0-41,0 
+114,4 
+____________ 
+4,3 
+56,2 786   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu 
+„ujęcie 
+Kluczewo”, 
+nieczynny 
+160 2680178 
+Kluczewo 
+_________________________ 
+WOD-S-4 
+1986 
+50,5 
+_______________ 
+Tr 
+26,9 Q  
+35,0 
+____________ 
+51,0 
+14,0 2,9 
+bd 
+____________ 
+36,5-50,0 
+ 29,0 406   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu 
+„ujęcie 
+Kluczewo”, 
+nieczynny 
+161 2680036 
+Witkowo 
+_________________________ 
+Agrofirma 
+Witkowo -2 
+1968 
+33,0 
+_______________ 
+Q 
+33,4 Q 
+22,0 
+____________ 
+24,0 
+ 
+28,0 
+____________ 
+30,5 
+2,0 
+ 
+ 
+ 
+2,5 
+9,2 
+ 
+ 
+ 
+8,0 
+298 
+____________ 
+22,0-24,0 
+2,5 
+____________ 
+15,0 
+2,3 6   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+162 2680037 
+Witkowo 
+_________________________ 
+Agrofirma 
+Witkowo-3 
+1968 
+47,5 
+_______________ 
+Q 
+36,9 Q 
+40,0 
+____________ 
+>47,5 
+>7,5 11,4 
+356 
+____________ 
+40,0-45,0 
+21,3 
+____________ 
+18,6 
+3,4 >25   
+Zasoby 
+regionalne dla 
+obszaru 
+Stargardu, 
+ujęcia 
+wiejskie i 
+przemysłowe 
+163 2680112 
+Tychowo 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 2 
+1980 
+45,6 
+_______________ 
+Q 
+30,6 Q 
+38,0 
+____________ 
+44,0 
+6,0 2,3 
+406 
+____________ 
+38,0-44,0 
+39,0 
+____________ 
+9,5 
+15,1 91   
+Zasoby dla 
+otworów 42 i 
+163 
+164 2680031 
+Krąpiel 
+_________________________ 
+PGR 
+1967 
+53,0 
+_______________ 
+Q 
+49,4 Q 
+42,5 
+____________ 
+51,8 
+9,3 15,8 
+278 
+____________ 
+44,0-51,0 
+7,6 
+____________ 
+16,6 
+    zlikwidowany 
+165 2680044 
+Krąpiel 
+_________________________ 
+PGR-1 
+1969 
+102,0 
+_______________ 
+Q 
+50,1 Q 
+96,0 
+____________ 
+100,0 
+4,0 18,5 
+298 
+____________ 
+96,0-100,0 
+34,5 
+____________ 
+13,7 
+16,4 66   zlikwidowany 
+166 2680071 
+Krąpiel 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -2 
+1974 
+180,0 
+_______________ 
+Q 
+49,0 Q 
+157,5 
+____________ 
+>180,0 
+>22,5 20,0 
+356 
+____________ 
+165,0-178,0 
+64,6 
+____________ 
+20,8 
+7,4 >167   
+Zasoby dla 
+otworów 43 i 
+166 
+167 2680072 
+Żukowo 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+1974 
+91,0 
+_______________ 
+Q 
+44,4 Q 
+73,5 
+____________ 
+>91,0 
+>17,5 9,2 
+406 
+____________ 
+82,0-88,2 
+55,0 
+____________ 
+5,4 
+24,7 >432   
+Zasoby dla 
+otworów 44 i 
+167 
+=== PAGE 60
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+168 2680023 
+Strzyżno 
+_________________________ 
+Gosp. Rolne -
+1 
+1965 
+53,0 
+_______________ 
+Q 
+29,5 Q 
+21,0 
+____________ 
+49,0 
+28,0 5,8 
+244 
+____________ 
+43,5-48,5 
+14,1 
+____________ 
+21,6 
+2,0 56 
+32,0 
+____________ 
+19,0 
+1971 
+Zasoby dla 
+otworów 
+168,169 i 
+170, ujęcie 
+nieczynne  
+169 2680054 
+Strzyżno 
+_________________________ 
+Gosp. Rolne -
+2 
+1970 
+52,5 
+_______________ 
+Q 
+28,8 Q 
+25,0 
+____________ 
+>52,5 
+>26,3 5,2 
+406 
+____________ 
+39,0-49,0 
+22,3 
+____________ 
+13,0 
+1,9 >50   
+Zasoby dla 
+otworów 
+45,168,169,1
+70 i 171 
+170 2680057 
+Strzyżno 
+_________________________ 
+Gosp. Rolne -
+3 
+1971 
+51,0 
+_______________ 
+Q 
+29,4 Q 
+36,0 
+____________ 
+>51,0 
+>15,0 6,2 
+406 
+____________ 
+39,1-47,3 
+22,3 
+____________ 
+19,4 
+2,3 >34   
+Zasoby dla 
+otworów 
+45,168,169,1
+70 i 171 
+171 2680110 
+Strzyżno 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 1A 
+1980 
+164,0 
+_______________ 
+Tr 
+30,4 Tr 
+39,0 
+____________ 
+59,0 
+ 
+102,0 
+____________ 
+>164,0 
+20,0 
+ 
+ 
+ 
+>58,0 
+7,5 
+ 
+ 
+ 
+5,0 
+ 
+ 
+ 
+298 
+____________ 
+145,2-159,0 
+ 
+ 
+ 
+90,2 
+____________ 
+3,4 
+ 
+ 
+40,5 
+ 
+ 
+>2350 
+  
+Zasoby dla 
+otworów 45 i  
+171 
+172 2680159 
+Radziszewo 
+_________________________ 
+Budka-
+dróżnika 
+1983 
+30,0 
+_______________ 
+Q  
+20,0 Q  
+4,6 
+____________ 
+16,0 
+11,4 4,6 
+bd 
+____________ 
+13,4-16,0 
+2,9 
+____________ 
+4,1 
+  
+3,0 
+____________ 
+4,3 
+1983 nieczynny 
+173 2680049 
+Krępcewo 
+_________________________ 
+SM Promyk -1 
+1970 
+44,5 
+_______________ 
+Q 
+25,2 Q 
+31,0 
+____________ 
+44,3 
+13,3 1,7 
+406 
+____________ 
+34,1-42,3 
+54,9 
+____________ 
+6,6 
+21,6 287   
+Zasoby dla 
+otworów 47 i 
+173 
+174 2680109 
+Krępcewo 
+_________________________ 
+Jednostka 
+wojskowa 
+1980 
+18,5 
+_______________ 
+Q 
+30,0 Q 
+6,0 
+____________ 
+16,5 
+8,9 7,6 
+bd 
+____________ 
+12,1-16,0 
+21,0 
+____________ 
+3,2 
+18,9 168 
+17,0 
+____________ 
+2,8 
+1980  
+175 2680029 
+Rzeplino 
+_________________________ 
+SM Promyk -1 
+1966 
+59,3 
+_______________ 
+Q 
+34,0 Q 
+50,8 
+____________ 
+57,8 
+7,0 4,1 
+298 
+____________ 
+51,2-57,2 
+60,0 
+____________ 
+6,0 
+46,8 328 
+52,0 
+____________ 
+5,2 
+1966 
+Zasoby dla 
+otworów 48 i 
+175 
+176 
+2680019 
+Barnim 
+_________________________ 
+Gosp. Rolne -
+1 
+1964 
+27,0 
+_______________ 
+Q 
+33,9 Q 
+8,2 
+____________ 
+26,1 
+17,9 8,2 
+305 
+____________ 
+22,5-26,0 
+16,8 
+____________ 
+2,3 
+4,0 71   
+Zasoby dla 
+otworów 49, 
+176, 177, 178 
+i 179 
+177 
+2680017 
+Barnim 
+_________________________ 
+Gosp. Rolne -
+2 
+1964 
+23,0 
+_______________ 
+Q 
+33,3 Q 
+8,0 
+____________ 
+21,0 
+13,0 7,2 
+305 
+____________ 
+18,0-21,0 
+15,9 
+____________ 
+3,3 
+4,5 58   
+Zasoby dla 
+otworów 49, 
+176, 177, 178 
+i 179 
+178 
+2680050 
+Barnim 
+_________________________ 
+Gosp. Rolne-3 
+1970 
+24,0 
+_______________ 
+Q 
+33,6 Q 
+10,5 
+____________ 
+22,0 
+11,5 7,7 
+508 
+____________ 
+15,7-20,0 
+55,8 
+____________ 
+7,4 
+15,2 174   
+Zasoby dla 
+otworów 49, 
+176, 177, 178 
+i 179 
+179 
+2680075 
+Barnim 
+_________________________ 
+Gosp. Rolne-4 
+1974 
+26,0 
+_______________ 
+Q 
+33,4 Q 
+11,0 
+____________ 
+22,0 
+11,0 7,8 
+508 
+____________ 
+17,0-21,5 
+47,8 
+____________ 
+8,3 
+15,8 175   
+Zasoby dla 
+otworów 49, 
+176, 177, 178 
+i 179 
+=== PAGE 61
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+180 
+2680030 
+Wójcin 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+1966 
+22,0 
+_______________ 
+Q 
+30,0 Q 
+15,0 
+____________ 
+19,7 
+4,7 6,8 
+254 
+____________ 
+15,5-19,5 
+12,3 
+____________ 
+2,6 
+27,4 129   zlikwidowany 
+181 
+2680013 
+Wójcin 
+_________________________ 
+Gospodarstwo 
+Rolne-1 
+1961 
+21,0 
+_______________ 
+Q 
+33,0 Q 
+7,3 
+____________ 
+19,0 
+11,7 7,3 
+356 
+____________ 
+15,7-19,0 
+16,3 
+____________ 
+2,9 
+19,0 222   
+Zasoby dla 
+otworów 50, 
+51 i 181 
+182 
+2680135 
+Wójcin 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1A 
+1982 
+124,0 
+_______________ 
+Q 
+33,4 Q 
+11,2 
+____________ 
+17,0 
+ 
+97,0 
+____________ 
+122,0 
+5,8 
+ 
+ 
+ 
+25,0 
+11,2 
+ 
+ 
+ 
+7,5 
+ 
+ 
+ 
+356 
+____________ 
+109,0-122,0 
+ 
+ 
+ 
+55,8 
+____________ 
+5,4 
+ 
+ 
+ 
+13,0 
+ 
+ 
+ 
+324 
+  
+Zasoby dla 
+otworów 50, 
+52 i 182 
+183 
+268024 
+Przewłoki 
+_________________________ 
+Agrofirma 
+Witkowo -1 
+1965 
+31,0 
+_______________ 
+Q 
+34,5 Q 
+10,2 
+____________ 
+>31,0 
+>20,8 7,6 
+356 
+____________ 
+23,0-28,0 
+21,8 
+____________ 
+4,9 
+11,8 >246   zlikwidowany 
+184 
+2680099 
+Przewłoki 
+_________________________ 
+Agrofirma 
+Witkowo -1A 
+1978 
+32,0 
+_______________ 
+Q 
+34,6 Q 
+14,0 
+____________ 
+>32,0 
+>18,0 8,2 
+457 
+____________ 
+19,0-30,0 
+30,4 
+____________ 
+6,5 
+5,5 >99   
+Zasoby dla 
+otworów 53 i 
+184 
+185 
+2680035 
+Kolin 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+1967 
+24,7 
+_______________ 
+Q 
+31,6 Q 
+7,5 
+____________ 
+22,7 
+15,2 2,3 
+356 
+____________ 
+15,5-22,5 
+45,1 
+____________ 
+8,5 
+14,9 227 
+27,0 
+____________ 
+4,3 
+1980 
+Zasoby dla 
+otworów 54, 
+185 i 186 
+186 
+2680108 
+Kolin 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -2 
+1980 
+80,0 
+_______________ 
+Q 
+31,2 Q 
+7,5 
+____________ 
+32,0 
+ 
+46,0 
+____________ 
+79,0 
+24,5 
+ 
+ 
+ 
+33,0 
+1,8 
+ 
+ 
+ 
+1,1 
+ 
+ 
+ 
+406 
+____________ 
+50,3-61,1 
+ 
+ 
+ 
+36,4 
+____________ 
+5,6 
+ 
+ 
+ 
+7,3 
+ 
+ 
+ 
+241 
+27,0 
+____________ 
+4,3 
+1980 
+Zasoby dla 
+otworów 54, 
+185 i 186 
+187 
+2680038 
+Trzebień 
+_________________________ 
+SM Promyk -2 
+1968 
+37,0 
+_______________ 
+Q 
+46,9 Q 
+15,8 
+____________ 
+>37,0 
+>21,2 10,4 
+298 
+____________ 
+26,0-32,0 
+45,1 
+____________ 
+4,1 
+23,3 >495 
+48,0 
+____________ 
+3,7 
+1979 
+Zasoby dla 
+otworów 55 i 
+187 
+188 
+2680078 
+Bralęcin 
+_________________________ 
+Agrofirma 
+Witkowo  1974 
+12,0 
+_______________ 
+Q 47,0 Q 
+9,0 
+____________ 
+>12,0 >3,0 9,0 
+bd 
+____________ 
+bd 
+12,1 
+____________ 
+3,1     
+zlikwidowany 
+189 
+2680088 
+Bralęcin 
+_________________________ 
+Agrofirma 
+Witkowo -1 
+1975 
+22,5 
+_______________ 
+Q 
+47,9 Q 
+12,0 
+____________ 
+20,5 
+8,5 9,1 
+bd 
+____________ 
+16,5-20,5 
+34,5 
+____________ 
+6,1 
+18,3 156   
+zlikwidowany 
+190 
+2680157 
+Bralęcin 
+_________________________ 
+Agrofirma 
+Witkowo -1 
+1983 
+22,4 
+_______________ 
+Q 
+46,6 Q 
+9,5 
+____________ 
+18,5 
+9,0 9,5 
+bd 
+____________ 
+14,7-18,5 
+15,9 
+____________ 
+3,7 
+11,2 101   
+zlikwidowany 
+=== PAGE 62
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+191 
+2680101 
+Bralęcin 
+_________________________ 
+Agrofirma 
+Witkowo -1A 
+1979 
+101,0 
+_______________ 
+Q 
+47,7 Q 
+9,0 
+____________ 
+20,0 
+ 
+87,0 
+____________ 
+97,5 
+11,0 
+ 
+ 
+10,5 
+9,0 
+ 
+ 
+ 
+10,5 
+ 
+ 
+ 
+406 
+____________ 
+90,0-97,5 
+ 
+ 
+ 
+31,6 
+____________ 
+42,6 
+ 
+ 
+2,3 
+ 
+ 
+24 
+  
+Zasoby dla 
+otworów 56, 
+57 i 191 
+192 
+2680202 
+Wójcin 
+_________________________ 
+Dutch 
+Farmers-1 
+2001 
+31,0 
+_______________ 
+Q 
+36,8 Q 
+13,0 
+____________ 
+28,0 
+15,0 5,0 
+bd 
+____________ 
+20,0-27,0 
+33,4 
+____________ 
+1,5 
+33,9 508 
+88,0 
+____________ 
+6,0 
+1982  
+193 
+2680093 
+Kłęby 
+_________________________ 
+Plebania 
+1976 
+24,5 
+_______________ 
+Q 
+30,5 Q 
+17,9 
+____________ 
+21,6 
+6,6 6,5 
+bd 
+____________ 
+17,9-20,9 
+9,6 
+____________ 
+2,4 
+25,9 171  1983 nieczynny 
+194 
+2680018 
+Żalęcino 
+_________________________ 
+PGR-1 
+1964 
+30,0 
+_______________ 
+Q 
+37,9 Q 
+4,0 
+____________ 
+>30,0 
+>26,0 3,4 
+305 
+____________ 
+26,0-29,0 
+16,4 
+____________ 
+0,7 
+52,7 >1370   zlikwidowany 
+195 
+2680016 
+Żalęcino 
+_________________________ 
+Szkoła 
+podstawowa 
+1964 
+26,5 
+_______________ 
+Q 
+35,0 Q 
+6,5 
+____________ 
+>26,5 
+>20,0 3,5 
+305 
+____________ 
+21,0-25,0 
+15,9 
+____________ 
+0,6 
+49,2 >983   zlikwidowany 
+196 
+2680056 
+Żalęcino 
+_________________________ 
+PGR-2 
+1970 
+30,6 
+_______________ 
+Q 
+37,3 Q 
+3,0 
+____________ 
+29,8 
+26,8 3,0 
+298 
+____________ 
+24,6-29,6 
+55,8 
+____________ 
+3,2 
+49,5 1327   zlikwidowany 
+197 
+2680183 
+Żalęcino 
+_________________________ 
+SM Bratek -
+1A 
+1987 
+32,0 
+_______________ 
+Q 
+34,6 Q 
+6,0 
+____________ 
+30,0 
+24,0 4,3 
+508 
+____________ 
+23,2-30,0 
+44,7 
+____________ 
+0,9 
+69,5 1667 
+35,0 
+____________ 
+0,7 
+1971 
+Zasoby dla 
+otworów 59 i 
+197 
+198 
+2680039 
+Szemielino 
+_________________________ 
+PGR-1 
+1968 
+20,8 
+_______________ 
+Q 
+34,4 Q 
+12,0 
+____________ 
+18,0 
+6,0 3,1 
+298 
+____________ 
+14,8-17,8 
+7,0 
+____________ 
+3,6 
+4,3 26   zlikwidowany 
+199 
+2680021 
+Cieszysław 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+1965 
+46,0 
+_______________ 
+Q 
+30,0 Q 
+9,0 
+____________ 
+43,0 
+34,0 6,5 
+406 
+____________ 
+40,0-43,0 
+50,1 
+____________ 
+21,5 
+23,8 811 
+43,0 
+____________ 
+18,5 
+1966 
+Zasoby dla 
+otworów 63 i 
+199 
+200 
+2680074 
+Lubiatowo 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+1974 
+34,5 
+_______________ 
+Q 
+27,6 Q 
+22,0 
+____________ 
+29,0 
+7,0 8,3 
+406 
+____________ 
+22,0-29,0 
+60,4 
+____________ 
+10,1 
+6,5 45   
+Zasoby dla 
+otworów 64, 
+200 i 201 
+201 
+2680161 
+Lubiatowo 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -1A 
+1985 
+30,0 
+_______________ 
+Q 
+27,8 Q 
+20,0 
+____________ 
+28,0 
+8,0 9,3 
+bd 
+____________ 
+20,0-28,0 
+25,3 
+____________ 
+8,7 
+9,6 77 
+33,0 
+____________ 
+10,0 
+1974 
+Zasoby dla 
+otworów 64, 
+200 i 201 
+202 
+2680022 
+Moskorzyn 
+_________________________ 
+PGR-1 
+1965 
+54,0 
+_______________ 
+Tr 
+40,0 Tr 
+38,5 
+____________ 
+50,5 
+12,0 7,0 
+298 
+____________ 
+43,5-50,5 
+10,1 
+____________ 
+28,5 
+1,1 13   zlikwidowany 
+203 
+2680028 
+Dolice 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+1966 
+53,5 
+_______________ 
+Q 
+53,5 Q 
+45,0 
+____________ 
+>53,5 
+>8,5 17,1 
+356 
+____________ 
+45,0-53,0 
+39,8 
+____________ 
+17,0 
+5,2 >44   zlikwidowany 
+=== PAGE 63
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 
+204 
+2680070 
+Dolice 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -2 
+1973 
+50,0 
+_______________ 
+Q 
+53,4 Q 
+45,0 
+____________ 
+>50,0 
+>5,0 17,0 
+406 
+____________ 
+45,0-50,0 
+60,0 
+____________ 
+14,0 
+2,9 >14   
+Zasoby dla 
+otworów 66, 
+204 i 205 
+205 
+2680160 
+Dolice 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -3 
+1984 
+54,0 
+_______________ 
+Q 
+54,0 Q 
+36,0 
+____________ 
+51,0 
+15,0 19,5 
+406 
+____________ 
+39,0-50,5 
+32,6 
+____________ 
+10,5 
+5,3 79   
+Zasoby dla 
+otworów 66, 
+204 i 205 
+* Istnieją odcinki rury międzyfiltrowej 
+ 
+=== PAGE 64
+  
+ 
+Tabela B. Inne  punkty dokumentacyjne  pominiete na planszy głównej  (hydrogeologiczne otwory badawcze, otwory bez opróbowania hydrogeologicznego, 
+inne)  
+Numer punktu Miejscowość  Punkt dokumentacyjny Poziom wodonośny Uwagi 
+zgodny z 
+mapą 
+zgodny z bankiem 
+HYDRO lub innym 
+źródłem informacji* 
+Użytkownik Rodzaj 
+punktu 
+Rok 
+wyko-
+nania 
+Głębokość 
+[m] 
+ 
+Wysokość 
+[m n.p.m.] 
+Straty- 
+grafia 
+Strop 
+__________________ 
+Spąg 
+[m] 
+Głębokość 
+zwierciadła wody 
+[m] 
+Wydajność 
+[m3/h] 
+_____________________ 
+Depresja 
+[m] 
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 
+101 2680144 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-8B 
+Bad. 
+1982 
+13.5 
+ 
+ 
+20.2 Q  
+1,5 
+____________ 
+>6.0 
+1.5 
+  
+102 2680143 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-7 
+Bad. 
+1982 
+33.0 
+ 
+ 
+20.1 Q 
+12.0 
+____________ 
+30.0 
+6.0 
+  
+103 2680127 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-7 
+Bad. 
+1981 
+8.0 
+ 
+ 
+20.3 Q 
+8.0 
+____________ 
+>13.5 
+5.4 
+  
+104 2680123 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-9 
+Bad. 
+1981 
+40.0 
+ 
+ 
+22.5 Q 
+19.0 
+____________ 
+32.0 
+6.1 
+  
+105 2680131 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-9 
+Bad. 
+1981 
+13.5 
+ 
+ 
+22.4 Q 
+4.5 
+____________ 
+>8,0 
+1.9 
+  
+106 2680040 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-1B 
+Bad. 
+1968 
+40.0 
+ 
+ 
+20.5 Q 
+14.0 
+____________ 
+22.0 
+5.5 
+  
+107 2680041 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-2B 
+Bad. 
+1968 
+21.5 
+ 
+ 
+20.0 Q 
+5.5 
+____________ 
+>21.0 
+5.5 
+  
+108 2680048 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-3B 
+Bad. 
+1969 
+29.0 
+ 
+ 
+20.8 Q 
+13.5 
+____________ 
+28.5 
+5.3 
+  
+109 2680051 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-6B 
+Bad. 
+1970 
+30.0 
+ 
+ 
+24.1 Q 
+15.0 
+____________ 
+28.3 
+6.0 
+  
+110 2680053 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-5B 
+Bad. 
+1970 
+32.0 
+ 
+ 
+24.1 Q 
+6.2 
+____________ 
+30.8 
+6.2 
+  
+111 2680120 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-10 
+Bad. 
+1981 
+40.0 
+ 
+ 
+20.4 Q 
+11.0 
+____________ 
+32.0 
+4.5 
+  
+112 2680128 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-10 
+Bad. 
+1981 
+10.5 
+ 
+ 
+20.6 Q 
+4,3 
+____________ 
+>13,5 
+4.3 
+  
+=== PAGE 65
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 
+113 2680124 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-11 
+Bad. 
+1981 
+40.0 
+ 
+ 
+23.4 Q 
+4.0 
+____________ 
+18.0 
+ 
+22.0 
+____________ 
+39.0 
+4.0 
+ 
+ 
+ 
+7.4 
+  
+114 2680132 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-11 
+Bad. 
+1981 
+14.0 
+ 
+ 
+23.1 Q 
+6.5 
+____________ 
+>10.5 
+4.9 
+  
+115 2680152 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-12 
+Bad. 
+1982 
+12.0 
+ 
+ 
+20.5 Q 
+7,1 
+____________ 
+>14,0 
+7.1 
+  
+116 2680146 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-13 
+Bad. 
+1982 
+45.0 
+ 
+ 
+20.5 Q 
+2.0 
+____________ 
+16.0 
+ 
+18.0 
+____________ 
+42.0 
+2.0 
+ 
+ 
+ 
+3.4 
+  
+117 2680153 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-13 
+Bad. 
+1982 
+13.0 
+ 
+ 
+20.6 Q 
+6.0 
+____________ 
+>12,0 
+2.6 
+  
+118 2680139 
+Stargard 
+Szczeciński 
+_________________________ 
+WODOCIAG-
+15B 
+Bad. 
+1982 
+30.0 
+ 
+ 
+20.8 Q 
+2.0 
+____________ 
+15.0 
+2.0 
+  
+119 2680156 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM H6 
+BIS 
+Bad. 
+1983 
+40.0 
+ 
+ 
+20.6 Q 
+1,5 
+____________ 
+11.0 
+ 
+26,0 
+____________ 
+31.0 
+1,5 
+ 
+ 
+ 
+3.2 
+  
+120 2680136 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-H-6 
+Bad. 
+1982 
+32.6 
+ 
+ 
+21.0 Q 
+3.0 
+____________ 
+13.0 
+ 
+29,0 
+____________ 
+32.0 
+3,0 
+ 
+ 
+ 
+4.4 
+  
+121 2680134 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-14 
+Bad. 
+1982 
+42.0 
+ 
+ 
+20.8 Q 
+0.5 
+____________ 
+21.0 
+0.5 
+  
+122 2680154 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-14 
+Bad. 
+1982 
+9.0 
+ 
+ 
+20.9 Q 
+3,2 
+____________ 
+>3,0 
+3.2 
+  
+123 2680155 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-
+15B 
+Bad. 
+1982 
+9.0 
+ 
+ 
+21.0 Q 
+2,1 
+____________ 
+>9,0 
+2.1 
+  
+=== PAGE 66
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 
+124 2680116 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-16 
+Bad. 
+1981 
+41.0 
+ 
+ 
+21.8 Q 
+1.4 
+____________ 
+18.0 
+ 
+29.6 
+____________ 
+>41.0 
+1.4 
+ 
+ 
+ 
+1.5 
+  
+125 2680129 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-16 
+Bad. 
+1981 
+9.0 
+ 
+ 
+21.9 Q 
+2,7 
+____________ 
+>9,0 
+2.7 
+  
+126 2680121 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-20 
+Bad. 
+1981 
+65.0 
+ 
+ 
+21.5  
+2.0 
+____________ 
+23.0 
+2.1 
+  
+127 2680115 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-20 
+Bad. 
+1981 
+9.0 
+ 
+ 
+21.5 Q 
+2,7 
+____________ 
+>9,0 
+2.7 
+  
+128 2680119 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-21 
+Bad. 
+1981 
+42.3 
+ 
+ 
+21.4 Q 
+2,0 
+____________ 
+>9,0 
+2.0 
+  
+129 2680130 
+Stargard 
+Szczeciński 
+_________________________ 
+MPGKIM-P-21 
+Bad. 
+1981 
+11.0 
+ 
+ 
+21.5 Q 
+2.1 
+____________ 
+13.0 
+ 
+32.5 
+____________ 
+39.0 
+2.1 
+ 
+ 
+ 
+-0.3 
+  
+130 2680117 
+Strachocin 
+_________________________ 
+WODOCIĄG-P-
+17 
+Bad. 
+1981 
+10.0 
+ 
+  
+20.0    
+  
+131 2680122 
+Strachocin 
+_________________________ 
+WODOCIĄG-P-
+18 
+Bad. 
+1981 
+10.5 
+ 
+  
+20.0 Q  
+1.4 
+____________ 
+>10.0 
+1.4 
+  
+132 2680133 
+Strachocin 
+_________________________ 
+WODOCIĄG-P-
+19 
+Bad. 
+1981 
+6.0 
+ 
+  
+22.9 Q  
+2.0 
+____________ 
+>10.5 
+2.0 
+  
+133 2680172 
+Kluczewo 
+_________________________ 
+WODOCIĄG-B 
+Bad. 
+1985 51.0   22.5 Q 43.0 ____________ 51.0 9.6   
+134 2680173 
+Kluczewo 
+_________________________ 
+WODOCIĄG-D 
+Bad. 
+1985 
+49.0 
+ 
+  
+26.8 Q  
+39.0 
+____________ 
+49.0 
+2.8 
+  
+135 2680174 
+Kluczewo 
+_________________________ 
+WODOCĄG-A 
+Bad. 
+1985 
+58.0 
+ 
+ 
+29.8 Q  
+28.0 
+____________ 
+43.0 
+ 
+48.0 
+____________ 
+>58.0 
+5.0 
+ 
+ 
+ 
+5.6 
+  
+136 2680175 
+Kluczewo 
+_________________________ 
+WODOCIĄG-C 
+Bad. 
+1985 
+36.0 
+ 
+  
+32.0 Q  
+28.0 
+____________ 
+>36.0 
+8.4 
+  
+=== PAGE 67
+  
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 
+137 2680055 
+Krępcewo 
+_________________________ 
+WIEŚ 
+Bad. 
+1970 
+20.0 
+ 
+ 
+25.3  
+35.0 
+____________ 
+5.1 
+ 
+  
+ 
+ 
+=== PAGE 68
+Tabela C1. Wyniki analiz chemicznych wód podziemnych - materiały archiwalne - reprezentatywne otwory studzienne 
+Numer 
+zgodny 
+z mapą 
+Data 
+analizy 
+Miejscowość 
+______________________________ 
+Użytkownik 
+Wiek piętra 
+wodonośnego 
+_________________________ 
+Głębokość 
+stropu w-wy 
+wodonośnej 
+pH 
+ 
+ 
+Sucha 
+pozost. 
+ 
+ 
+ 
+ 
+Zasadowość 
+ogólna 
+ 
+Utlenialność 
+_________________________ 
+TOC 
+ 
+ 
+SO4 
+__________
+ 
+Cl 
+NO2* 
+__________ 
+NO3* 
+F 
+__________ 
+HPO4 
+SiO2 
+___________ 
+NH4* 
+Ca 
+___________ 
+Mg 
+Fe 
+__________ 
+Mn 
+Uwagi 
+   [m] [-] [mg/dm3] [mval/dm3] [mg/dm3] 
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+1 1978 01 02 Giżynek _________________________ dwwny PGR Q __________ 44.0 7.2  5.0 2.9 __________  __________ 62 0.001 __________ 0.00  __________ 0.00  2.00 __________ 0.15  
+5 1976 01 21 
+Stargard 
+Szczeciński 
+_________________________ 
+Lecznica 
+zwierzęca 
+Q 
+__________ 
+19,5 7.2  5.5 2.5 __________  __________ 38 0.001 __________ 0.00  __________ 0.28  3.00 __________ 0.20  
+6 1987 08 25 
+Stargard 
+Szczeciński 
+_________________________ 
+Projektow. 
+szpital-1 
+Q 
+__________ 
+37,0 7.2 478 5.5 3.7 __________  40 __________ 22 0.000 __________ 0.30 0.25 __________ __________ 0.34  1.20 __________ 0.20  
+7 1998 12 11 Stargard Szczeciński _________________________ MPGKIM-10A Q __________ 61,0 7.4  19.7 4.8 __________  __________ 18 0.003 __________ 0.65  __________ 1.46  2.18 __________ 0.54  
+8 1979 06 22 Stargard Szczeciński _________________________ MPGKIM-16 Q __________ 21,0   9.0  __________ 30     0.60 __________  
+9 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-15 Q __________ 17,3 7.2  16.0 2.2 __________  __________ 47 __________ 0.30  __________ 0.78  1.94 __________ 0.25  
+10 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-2B Q __________ 14,5 7.4  16.0 2.7 __________  __________ 135 0.008 __________  __________ 0.38  2.12 __________ 0.23  
+11 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-2A Q __________ 12,0 7.3  16.0 3.5 __________  __________ 28 0.010 __________ 0.10  __________ 0.41  1.92 __________ 0.22  
+12 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-12A Q __________ 14,0 7.1  15.8 2.6 __________  __________ 33 __________ 0.55  __________ 1.02  2.80 __________ 0.58  
+13 1999 10 05 Stargard Szczeciński _________________________ MPGKIM-31 Q __________ 13,0 7.1  18.5 6.6 __________  __________ 24 0.007 __________  __________ 0.10  1.30 __________ 0.19  
+14 1998 12 08 Strgard Szczeciński _________________________ MPGKIM-30 Q __________ 13,0 7.1  17.7 3.3 __________  __________ 21 0.001 __________ 0.10  __________ 0.83  2.23 __________ 0.24  
+=== PAGE 69
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+15 1979 06 29 Stargard Szczeciński _________________________ MPGKIM-17 Q __________ 9,0   9.0  __________ 40     0.60 __________  
+16 1981 08 03 Stargard Szczeciński _________________________ MPGKIM-18C Q __________ 14,0 7.2  6.9 4.0 __________  __________ 41 0.005 __________ 0.10  __________ 0.40  3.00 __________ 0.25  
+17 1981 07 06 Stargard Szczeciński _________________________ MPGKIM--22 Q __________ 11,0 7.2  3.5 4.3 __________  __________ 51 0.000 __________ 0.00  __________ 0.40  2.40 __________ 0.25  
+18 1981 11 17 Stargard Szczeciński _________________________ MPGKIM-24 Q __________ 15,0 7.3  5.8 4.2 __________  __________ 31 0.001 __________ 0.00  __________ 2.00  4.00 __________ 0.25  
+21 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-22 Q __________ 12,1 7.0  15.5 3.0 __________  __________ 31 0.002 __________ 0.20  __________ 0.79  2.90 __________ 0.40  
+22 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-21A Q __________ 12,0 7.0  15.5 3.8 __________  __________ 29 0.005 __________ 0.20  __________ 1.46  2.44 __________ 0.35  
+23 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-24 Q __________ 8,1 7.1  16.5 3.3 __________  __________ 26 0.001 __________ 0.30  __________ 1.40  3.52 __________ 0.30  
+24 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-26 Q __________ 10,0 7.2  16.0 2.2 __________  __________ 47 __________ 0.30  __________ 0.78  1.94 __________ 0.25  
+25 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-27 Q __________ 11,5 7.0  16.5 5.2 __________  __________ 28 0.005 __________ 0.10  __________ 1.20  4.90 __________ 0.47  
+26 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-29 Q __________ 19,0 7.1  16.2 2.2 __________  __________ 29 0.003 __________  __________ 1.10  2.33 __________ 0.25  
+27 1998 12 08 Stargard Szczeciński _________________________ MPGKIM-28 Q __________ 11,0 7.2  16.0 2.2 __________  __________ 47 __________ 0.30  __________ 0.78  1.94 __________ 0.25  
+28 1977 10 11 
+Stargard 
+Szczeciński 
+_________________________ 
+Zakład-
+ogrodniczy 
+Q 
+__________ 
+26.5 7.4  4.4 3.2 __________  __________ 17 0.000 __________ 0.00  __________ 0.28  2.00 __________ 0.15  
+29 1976 02 16 
+Strachocin 
+_________________________ 
+Spółdzielna 
+Usługowo-
+Handlowa 
+Q 
+__________ 
+24,3   9.0       1.20 __________ 0.15  
+=== PAGE 70
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+30 1962 12 13 Strachocin _________________________ Szkoła Q __________ 21,0 7.2  3.0 2.8 __________  __________ 35 0.001 __________  __________ 0.02  1.00 __________  
+31 1969 06 25 Sułkowo _________________________ Gosp. Rolne-2 Q __________ 46,5 7.4 440 3.8 2.2 __________  60 __________ 34 0.000 __________ 0.00  __________ 0.04  1.00 __________ 0.12  
+32 1972 03 07 
+Trzebiatów 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów-2 
+Q 
+__________ 
+50.0 7.2  4.2 4.0 __________  __________ 25 0.001 __________ 0.00  __________ 0.04  1.50 __________ 0.00  
+33 1975 06 16 
+Brudzewice 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów 
+Q 
+__________ 
+78,0 7.4  3.6 1.5 __________  __________ 4 0.000 __________ 0.00  __________ 0.20  1.00 __________ 0.10  
+34 1988 04 25 Kluczewo _________________________ TES-1 Q __________ 18,0 7.2 813 6.4 1.4 __________  149 __________ 64 0.001 __________ 0.76 0.26 __________ __________ 0.20  0.80 __________ 0.45  
+35 1995 08 03 
+Stargard 
+Szczeciński 
+_________________________ 
+Dutch Farmers-
+2 
+Q 
+__________ 
+40 6.9  9.0 2.2 __________  __________ 20   __________ 0.38  0.36 __________ 0.30  
+36 1977 10 24 Kluczewo _________________________ SM Kluczewia -2 Q __________ 31,0 7.2  6.4 2.2 __________  __________ 24 0.000 __________ 0.00  __________ 0.28  3.00 __________ 0.20  
+37 1980 08 12 Kluczewo _________________________ Cukrownia-1 Q __________ 18,8 7.3  7.8 4.8 __________  __________ 30 0.001 __________  __________ 0.28  4.00 __________  
+38 1979 11 19 Kluczewo _________________________ Młyn-1A Q __________ 27,5 7.2  6.6 3.0 __________  __________ 16 0.000 __________ 0.00  __________ 0.40  2.40 __________  
+39 1986 01 14 Kluczewo _________________________ WOD-S-3 Q/Tr __________ 48,0 7.4 436 5.6 3.1 __________  48 __________ 29 0.040 __________ 0.00 0.30 __________ __________ 0.80 117.0 __________ 17.0 3.50 __________ 0.30  
+40 1975 04 10 Witkowo _________________________ Agrofirma Witkowo -4 Q __________ 79,5 7.4  7.8 0.1 __________  __________ 14 0.001 __________ 0.00  __________ 0.02  1.50 __________ 0.10  
+41 1982 11 17 Witkowo _________________________ Agrofirma Witkowo -1A Tr __________ 98,0 7.4 326 5.9 2.1 __________  4 __________ 22 0.000 __________ 0.00 0.20 __________ __________ 0.16 15.0 __________ 80.0 2.10 __________ 0.20  
+42 1973 06 22 
+Tychowo 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów 1 
+Q 
+__________ 
+38,0 7.4  4.2 2.1 __________  __________ 37 0.001 __________ 0.00  __________ 0.26  1.20 __________ 0.10  
+=== PAGE 71
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+42 1980 09 10 
+Tychowo 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów 1 
+Q 
+__________ 
+38,0 7.3 504 4.0 2.2 __________  55 __________ 36 0.000 __________ 0.00 0.10 __________ __________ 0.12 102.0 __________ 10.0 1.50 __________ 0.15  
+43 1977 08 01 
+Krąpiel 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -1A 
+Q 
+__________ 
+145,0 7.3  4.3 4.1 __________  __________ 9 0.001 __________ 0.00  __________ 0.40  0.30 __________ 0.10  
+44 1976 08 04 
+Żukowo 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -2 
+Q 
+__________ 
+57,0 7.4  7.9 6.3 __________  __________ 14 0.000 __________ 0.10  __________ 1.20  2.40 __________ 0.10  
+45 1985 07 08 
+Strzyżno 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -2A 
+Tr 
+__________ 
+105,0 7.7 345 9.0 3.3 __________  3 __________ 16 0.025 __________ 0.00 0.20 __________ __________ 1.20 80.0 __________ 15.0 3.60 __________ 0.20  
+46 1973 02 05 Radziszewo _________________________ Agrofirma Witkowo Q __________ 23,0 7.6  5.8 1.8 __________  __________ 11 0.000 __________ 0.00  __________ 0.20  0.50 __________  
+47 1974 04 17 Krępcewo _________________________ SM Promyk -2 Q __________ 30,5 7.4  7.4 3.0 __________  __________ 10 0.000 __________ 10.00  __________ 0.80  2.00 __________ 0.15  
+48 1966 03 12 Rzeplino _________________________ SM Promyk-2 Q __________ 51,0 8.0  6.6 3.0 __________  __________ 26 0.040 __________ 0.00  __________ 0.70  2.40 __________  
+49 1979 11 27 
+Barnim 
+_________________________ 
+Gosp. Rolne 
+(d.PGR) 
+St -3A 
+Q 
+__________ 
+12,0 7.2  6.8 1.5 __________  __________ 40 0.007 __________ 0.40  __________ 0.20  1.00 __________  
+50 1975 03 04 
+Wójcin 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -2 
+Q 
+__________ 
+8,0 7.4  7.0 1.8 __________  __________ 39 0.001 __________ 0.00  __________ 0.02  0.30 __________  
+51 1971 03 08 Wójcin _________________________ Gosp. Rolne -2 Q __________ 13,0 7.0  6.6 1.7 __________  __________ 33 0.030 __________ 0.00  __________ 0.04  2.00 __________  
+52 1982 06 30 
+Wójcin 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -3 
+Q 
+__________ 
+100,0 7.4  7.1 3.9 __________  __________ 12 0.001 __________ 0.00  __________ 0.90  2.20 __________  
+=== PAGE 72
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+52 1988 07 12 
+Wójcin 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -3 
+Q 
+__________ 
+100,0 7.6 350 6.4 3.4 __________  5 __________ 12 0.001 __________ 0.26 0.20 __________ __________ 0.32  2.00 __________ 0.20  
+53 1974 07 31 Przewłoki _________________________ Agrofirma Witkowo -2 Q __________ 10,0 7.3  6.3 1.8 __________  __________ 77 0.007 __________ 4.00  __________ 0.00  0.40 __________ 0.15  
+54 1982 08 30 
+Kolin 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -1A 
+Q 
+__________ 
+45,0 7.6  4.5 3.2 __________  __________ 22 0.000 __________ 0.00  __________ 0.06  1.50 __________  
+55 1979 07 17 Trzebień _________________________ SM Promyk - 1A Q __________ 32.2 7.6  3.9 2.7 __________  __________ 15 0.000 __________ 0.00  __________ 0.08  1.00 __________  
+56 1992 06 02 Bralęcin _________________________ Agrofirma Witkowo -2 Q __________ 87.5 7.3 266 4.2 3.4 __________  5 __________ 9 0.012 __________ 0.38  __________ 0.28  1.65 __________ 0.10  
+57 1983 11 14 Bralęcin _________________________ Agrofirma Witkowo -2 Q __________ 12,0 7.3 713 9.0 2.2 __________  183 __________ 92 0.006 __________ 8.00 0.25 __________ __________ 0.16  0.45 __________ 0.10  
+59 1987 12 21 Żalęcino _________________________ SM Bratek-2A Q __________ 22 7.5 462 5.3 2.6 __________  53 __________ 30 0.001 __________ 0.07 0.25 __________ __________ 0.34  1.40 __________ 0.30  
+60 1980 11 12 Szemielino _________________________ SM Bratek -2 Q __________ 30,0 7.2  6.9 3.6 __________  __________ 13 0.006 __________ 0.10  __________ 0.30  1.40 __________ 0.15  
+62 1975 01 02 Morzyca _________________________ Agrofirma Witkowo Q __________ 5,5 7.4  5.6 3.2 __________  __________ 57 0.005 __________ 0.00  __________ 0.02  0.10 __________ 0.10  
+63 1972 05 08 
+Cieszysław 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -2 
+Q 
+__________ 
+10,0 7.2  7.2 2.1 __________  __________ 44 0.001 __________ 0.00  __________ 0.70  2.00 __________ 0.10  
+64 1985 01 29 
+Lubiatowo 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -1A 
+Q 
+__________ 
+20,0 7.4 497 9.0 2.5 __________  27 __________ 30 0.025 __________ 0.00 0.40 __________ __________ 0.20  2.00 __________ 0.15  
+65 1971 02 02 Moskorzyn _________________________ Gosp.  Rolne (dawny PGR)-2 Tr __________ 39,0 7.0  6.7 1.6 __________  __________ 25 0.001 __________ 0.00  __________ 0.70  2.40 __________ 0.30  
+=== PAGE 73
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+66 1979 02 28 
+Dolice 
+_________________________ 
+Wodociągi 
+Zachodnio-
+pomorskie 
+Goleniów -1A 
+Q 
+__________ 
+46.0 7.4  4.8 4.2 __________  __________ 14 0.030 __________ 0.00  __________ 0.34  1.50 __________  
+67 1988 10 03 Dolice _________________________ GS Q __________ 33.0 7.7 560 6.7 4.7 __________  14 __________ 76 0.000 __________ 0.16 0.25 __________ __________ 0.55  2.70 __________ 0.30  
+   * wartości podano jako N-NO2, N-NO3 i N-NH4 
+ 
+=== PAGE 74
+Tabela C5. Wyniki analiz chemicznych wód podziemnych - materiały archiwalne - otwory studzienne pominięte na planszy głównej 
+Numer 
+zgodny 
+z mapą 
+Data 
+analizy 
+Miejscowość 
+______________________________ 
+Użytkownik 
+Wiek piętra 
+wodonośnego 
+_________________________ 
+Głębokość 
+stropu w-wy 
+wodonośnej 
+pH 
+ 
+ 
+Sucha 
+pozost. 
+ 
+ 
+ 
+ 
+Zasadowość 
+ogólna 
+ 
+Utlenialność 
+_________________________ 
+TOC 
+ 
+ 
+SO4 
+__________
+ 
+Cl 
+NO2* 
+__________ 
+NO3* 
+F 
+__________ 
+HPO4 
+SiO2 
+___________ 
+NH4* 
+Ca 
+___________ 
+Mg 
+Fe 
+__________ 
+Mn 
+Uwagi 
+   [m] [-] [mg/dm3] [mval/dm3] [mg/dm3] 
+ 
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+106 1958 09 24 Stargard Szczeciński _________________________ MPGKIM-4A Q __________ 9,0 7.2  6.4 5.7 __________  __________ 27 0.001 __________  ___________ 0.80  3.00 __________  
+108 1975 01 31 Stargard Szczeciński _________________________ MPGKIM-6 Q __________ 16,0 7.2  7.2 3.4 __________  __________ 55 0.000 __________ 0.00  ___________ 0.04  0.70 __________ 0.20  
+110 1975 02 13 Stargard Szczeciński _________________________ MPGKIM--4 Q __________ 12,0 7.2  6.6 2.2 __________  __________ 29 0.003 __________ 0.00  ___________ 0.08  0.50 __________ 0.10  
+113 1975 03 05 Stargard Szczeciński _________________________ MPGKIM-3 Q __________ 14,0 7.2  7.0 2.2 __________  __________ 35 0.000 __________ 0.01  ___________ 0.80  1.50 __________ 0.10  
+121 1975 03 19 Stargard Szczeciński _________________________ MPGKIM-2 Q __________ 14.0 7.0  8.0 8.0 __________  __________ 31 0.000 __________ 0.00  ___________ 0.40  4.00 __________ 0.20  
+122 1975 04 22 Stargard Szczeciński _________________________ MPGKIM-1 Q __________ 13.0 7.0  7.0 7.2 __________  __________ 35 0.000 __________ 0.00  ___________ 1.00  5.00 __________ 0.40  
+123 1981 11 23 Stargard Szczeciński _________________________ MPGKIM-23 Q __________ 30,0   9.0   0.001 __________ 0.10  ___________ 0.55  2.00 __________ 0.20  
+124 1987 05 12 Stargard Szczeciński _________________________ MPGKIM-21A Q __________ 15,0 7.2 630 9.0 3.7 __________  141 __________ 28 0.005 __________ 5.00  ___________ 0.60  4.00 __________ 0.30  
+127 1973 06 99 Stargard Szczeciński _________________________ MPGKIM--5 Q __________ 13.0 7.3  9.0       1.70 __________ 0.18  
+127 1973 99 99 Stargard Szczeciński _________________________ MPGKIM--5 Q __________ 13.6 7.2  9.0  __________ 39     2.00 __________ 0.40  
+128 1971 06 01 Stargard Szczeciński _________________________ MPGKIM--1 Q __________ 14.3 7.2  9.0 1.6 __________  __________ 23 0.003 __________ 0.00  ___________ 0.02  1.20 __________  
+=== PAGE 75
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+129 1971 06 01 Stargard Szczeciński _________________________ MPGKIM-2 Q __________ 13,7 7.2  9.0 2.0 __________  __________ 0.003 __________ 0.00  ___________ 0.04  1.50 __________  
+130 1971 06 01 Stargard Szczeciński _________________________ MPGKIM-3 Q __________ 10,0   9.0 2.0 __________  __________ 18 0.001 __________ 0.00  ___________ 0.08  1.50 __________  
+132 1971 06 01 Stargard Szczeciński _________________________ MPGKIM-4 Q __________ 12,0 7.2  9.0 1.2 __________  __________ 12 0.003 __________ 0.00  ___________ 0.04  1.50 __________  
+133 1982 10 11 Stargard Szczeciński _________________________ MPGKIM-8B Q __________ 23.4 7.6  9.0 2.3 __________  __________ 32 0.003 __________ 0.00  ___________ 0.08  5.00 __________  
+134 1985 06 25 Stargard Szczeciński _________________________ MPGKIM-H10 Q __________ 15,0 7.6 613 5.0 5.7 __________  135 __________ 27 0.015 __________ 0.00 0.20 __________ ___________ 0.40 136.0 __________ 19.0 4.00 __________ 0.20  
+135 1982 10 26 Stargard Szczeciński _________________________ MPGKIM-H-2 Q __________ 15,5 7.4  9.0 3.5 __________  __________ 30 0.000 __________ 0.00  ___________ 0.34  3.50 __________  
+136 1985 08 13 Stargard Szczeciński _________________________ MPGKIM-H8 Q __________ 13,0 7.4 494 5.0 2.5 __________  74 __________ 24 0.001 __________ 0.00 0.25 __________ ___________ 0.28 __________ 2.80 __________ 0.20  
+137 1985 07 23 Stargard Szczeciński _________________________ MPGKIM-H9 Q __________ 15,0 7.6 590 5.3 5.7 __________  143 __________ 30 0.035 __________ 0.00 0.25 __________ ___________ 0.65 133.0 __________ 20.0 3.60 __________ 0.10  
+139 1985 06 03 Stargard Szczeciński _________________________ MPGKIM-H11 Q __________ 19,0 7.6 515 4.6 2.4 __________  107 __________ 24 0.025 __________ 0.00 0.20 __________ ___________ 0.45 144.0 __________ 24.0 3.00 __________ 0.20  
+140 1985 08 27 Stargard Szczeciński _________________________ MPGKIM-H7 Q __________ 13,0 7.4 494 4.8 2.7 __________  102 __________ 27 0.015 __________ 0.00 0.20 __________ ___________ 0.50 128.0 __________ 3.00 __________ 0.20  
+141 1985 05 22 Stargard Szczeciński _________________________ MPGKIM-H12 Q __________ 11,5 7.2 749 4.9 4.8 __________  192 __________ 30 0.018 __________ 0.00 0.20 __________ ___________ 0.90 165.0 __________ 30.0 8.00 __________ 0.40  
+142 1982 09 21 Stargard Szczeciński _________________________ MPGKIM-H-1 Q __________ 12,0 7.8  5.4 3.9 __________  __________ 29 0.001 __________ 0.00  ___________ 3.40  3.80 __________  
+143 1982 11 24 Stargard Szczeciński _________________________ MPGKIM-H-4 Q __________ 13,0 7.2  6.7 4.0 __________  __________ 30 0.003 __________ 0.00  ___________ 0.50 __________ 23.0 5.00 __________  
+144 1982 08 17 Stargard Szczeciński _________________________ MPGKIM-H-5 Q __________ 3,0 7.5  5.0 5.7 __________  __________ 31 0.003 __________ 0.10  ___________ 0.50 __________ 3.50 __________  
+=== PAGE 76
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+145 1982 09 06 Stargard Szczeciński _________________________ MPGKIM-H-3 Q __________ 29,0 7.9  5.0 4.5 __________  __________ 16 0.002 __________ 0.00  ___________ 0.14  2.20 __________  
+146 1982 11 03 Strachocin _________________________ MPGKIM -19 Q __________ 9,5 7.6  3.7 1.1 __________  47 __________ 28 0.003 __________ 0.20 __________ ___________ 0.00 __________ 3.50 __________ 0.18  
+147 1971 06 16 
+Strachocin 
+_________________________ 
+Spółdzielna 
+Usługowo-
+Handlowa 
+Q 
+__________ 
+23,0 7.4  4.0 2.0 __________  __________ 66 0.001 __________ 0.00  ___________ 0.02  0.20 __________ 0.00  
+148 1965 01 05 Sułkowo _________________________ Gosp. Rolne -1 Q __________ 47,0 7.2  5.3 2.8 __________  __________ 18 0.001 __________ 0.00  ___________ 0.60  1.50 __________ 0.04  
+149 1964 03 18 Trzebiatów _________________________ Gosp. Rolne -1 Q __________ 46.5 7.0  5.0 4.7 __________  __________ 33 0.010 __________ 0.00  ___________ 0.20  2.00 __________  
+149 1972 03 07 Trzebiatów _________________________ Gosp. Rolne -1 Q __________ 46.5 7.2  5.6 5.0 __________  __________ 13 0.001 __________ 0.00  ___________ 0.04  4.00 __________ 0.00  
+150 1986 06 09 
+Brudzewice 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -2 
+Q 
+__________ 
+85,0 7.3 211 3.1 2.7 __________  10 __________ 6 0.002 __________ 0.30 0.20 __________ ___________ 0.20 53.0 __________ 11.0 1.20 __________ 0.10  
+151 1969 10 13 Kluczewo _________________________ SM Kluczewia- 1 Q __________ 31,0 7.0  6.6 5.2 __________  __________ 13 0.000 __________ 0.00  ___________ 0.34  2.00 __________ 0.20  
+152 1988 06 08 Kluczewo _________________________ TES-2 Q __________ 29,0 7.4 1008 6.8 2.4 __________  225 __________ 83 0.000 __________ 0.17 0.25 __________ ___________ 0.20  4.40 __________ 0.25  
+153 1978 02 24 Kluczewo _________________________ D. PBRol Q __________ 22,5 7.2 392 5.1 2.3 __________  50 __________ 23 0.000 __________ 0.00  ___________ 0.20  2.90 __________ 0.15  
+154 1970 08 21 Kluczewo _________________________ Studnia- publiczna Q __________ 38,0   9.0 3.0 __________  __________ 3     4.80 __________ 0.30  
+156 1982 08 23 Kluczewo _________________________ cukrownia- Q __________ 80,0  456 8.5 3.2 __________  15 __________ 0 0.000 __________ 0.00 0.20 __________  126.0 __________ 18.0 4.60 __________ 0.30  
+157 1961 02 28 Kluczewo _________________________ Młyn-1 Q __________ 19,5 7.0  6.8 3.0 __________  __________ 15 0.001 __________  ___________ 0.02  3.00 __________  
+158 1986 01 27 Kluczewo _________________________ WODOCIĄG- S-1 Q __________ 26,0 7.0 562 5.6 5.3 __________  95 __________ 38 0.050 __________ 15.00 0.20 __________ ___________ 0.45 144.0 __________ 19.0 4.00 __________ 0.40  
+158 1986 02 24 Kluczewo _________________________ WODOCIĄG- S-1 Q __________ 26,0 7.4 519 5.2 2.4 __________  73 __________ 30 0.025 __________ 0.00 0.20 __________ ___________ 0.40 134.0 __________ 19.0 2.50 __________ 0.40  
+=== PAGE 77
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+159 1986 01 06 Kluczewo _________________________ WOD-S-2 Q __________ 27,0 7.7 383 5.5 3.2 __________  49 __________ 22 0.020 __________ 0.00 0.40 __________ ___________ 5.60 120.0 __________ 23.0 3.00 __________ 0.30  
+160 1986 02 05 Kluczewo _________________________ WOD-S-4 Q __________ 35,0 7.2 333 5.5 5.7 __________  12 __________ 9 0.030 __________ 0.20 0.35 __________ ___________ 0.45 96.0 __________ 12.0 2.20 __________ 0.20  
+160 1986 02 24 Kluczewo _________________________ WOD-S-4 Q __________ 35,0 7.0 353 5.3 2.5 __________  12 __________ 12 0.030 __________ 7.00 0.20 __________ ___________ 0.40 99.0 __________ 13.0 2.00 __________ 0.30  
+161 1968 01 20 Witkowo _________________________ Agrofirma Witkowo -2 Q __________ 22,0 7.3  4.0 2.4 __________  __________ 13 0.001 __________ 0.00  ___________ 0.06  1.50 __________ 0.10  
+162 1968 03 04 Witkowo _________________________ Agrofirma Witkowo-3 Q __________ 40,0 7.0  6.8 5.2 __________  __________ 7 0.000 __________ 0.00  ___________ 0.20  4.40 __________ 0.25  
+163 1980 09 10 
+Tychowo 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 2 
+Q 
+__________ 
+38,0 7.3  4.2 3.2 __________  __________ 25 0.000 __________ 0.00 0.10 __________ ___________ 0.30  1.40 __________  
+164 1967 02 23 Krąpiel _________________________ PGR Q __________ 42,5 7.2  9.0   __________    2.00 __________ 0.15  
+165 1969 10 23 Krąpiel _________________________ PGR-1 Q __________ 96,0 7.5  5.4 4.0 __________  __________ 11 0.000 __________ 0.00  ___________ 0.50  1.50 __________ 0.10  
+166 1974 03 05 
+Krąpiel 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -2 
+Q 
+__________ 
+157,5 7.4  4.6 3.4 __________  __________ 8 0.001 __________ 0.00  ___________ 0.20  0.50 __________ 0.10  
+167 1974 04 10 
+Żukowo 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+Q 
+__________ 
+73,5 7.4  7.6 2.2 __________  __________ 17 0.001 __________ 0.00  ___________ 0.80  3.00 __________ 0.10  
+168 1965 09 11 Strzyżno _________________________ Gosp. Rolne -1 Q __________ 21,0 7.0  7.2 4.5 __________  __________ 13 0.000 __________ 0.00  ___________ 0.50  3.00 __________ 0.15  
+169 1970 09 30 Strzyżno _________________________ Gosp. Rolne -2 Q __________ 25,0 7.0  7.0 3.3 __________  __________ 3 0.003 __________ 0.00  ___________ 1.00  3.00 __________ 0.00  
+170 1971 01 25 Strzyżno _________________________ Gosp. Rolne -3 Q __________ 36,0 7.0  0.7  __________ 11 0.000 __________ 0.00  ___________ 0.40  2.00 __________ 2.40  
+171 1980 07 07 
+Strzyżno 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 1A 
+Tr 
+__________ 
+102,0 7.7  6.7 4.3 __________  __________ 19   ___________ 0.45  3.00 __________  
+=== PAGE 78
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+171 1985 07 08 
+Strzyżno 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów 1A 
+Tr 
+__________ 
+102,0 7.1 304 6.0 3.0 __________  0 __________ 23 0.000 __________ 0.00 0.30 __________ 0.10 ___________ 0.30 80.0 __________ 13.0 4.70 __________ 0.25  
+172 1983 05 09 Radziszewo _________________________ Budka- dróżnika Q __________ 4,6 7.2 517 4.7 1.5 __________  103 __________ 53 0.012 __________ 7.00 0.25 __________ ___________ 0.16 158.0 __________ 10.0 0.70 __________ 0.10  
+173 1970 02 20 Krępcewo _________________________ SM Promyk -1 Q __________ 31,0 7.6  7.4 2.5 __________  __________ 11 0.000 __________ 0.00  ___________ 1.60  2.00 __________ 0.05  
+174 1980 06 03 Krępcewo _________________________ Jednostka wojskowa Q __________ 6,0 7.3  3.5 3.3 __________   10.000 __________  ___________ 0.04  0.50 __________  
+175 1966 07 27 Rzeplino _________________________ SM Promyk -1 Q __________ 50,8 7.3  5.8 4.8 __________  __________ 13 0.002 __________ 0.00  ___________ 1.00  2.00 __________ 0.25  
+178 1970 03 25 Barnim _________________________ Gosp. Rolne-3 Q __________ 10,5 7.2  0.0 3.0 __________  __________ 24 0.005 __________ 0.50  ___________ 0.40  2.00 __________ 0.10  
+179 1974 07 08 Barnim _________________________ Gosp. Rolne-4 Q __________ 11,0 7.2  8.8 2.2 __________  __________ 11 0.010 __________ 0.70  ___________ 0.04  1.50 __________ 0.10  
+180 1966 11 07 
+Wójcin 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+Q 
+__________ 
+15.0 7.3  5.1 1.2 __________  __________ 42 0.700 __________ 0.02  ___________ 0.04  1.00 __________ 0.10  
+181 1961 08 11 Wójcin _________________________ Gospodarstwo Rolne-1 Q __________ 7,3 7.4  5.7 2.5 __________  __________ 10 0.020 __________ 0.10  ___________ 0.08  0.70 __________  
+183 1965 10 07 Przewłoki _________________________ Agrofirma Witkowo -1 Q __________ 10,2 7.1  6.2 2.1 __________  __________ 65 0.007 __________ 2.00  ___________ 0.12  1.10 __________ 0.15  
+184 1978 02 07 Przewłoki _________________________ Agrofirma Witkowo -1A Q __________ 14,0 7.0  5.0 3.8 __________  __________ 42 0.000 __________ 0.00  ___________ 0.08  4.00 __________ 0.60  
+185 1968 10 25 
+Kolin 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+Q 
+__________ 
+7,5 7.0  8.6 9.9 __________  __________ 34 0.001 __________ 0.00  ___________ 1.20  8.00 __________ 1.00  
+=== PAGE 79
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+186 1980 01 10 
+Kolin 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -2 
+Q 
+__________ 
+46,0 7.3  4.2 3.1 __________  __________ 18 0.000 __________ 0.00  ___________ 0.24  0.60 __________ 0.00  
+187 1968 03 29 Trzebień _________________________ SM Promyk -2 Q __________ 26 7.6  3.6 2.6 __________  __________ 16 0.000 __________ 0.00  ___________ 0.30  0.80 __________ 0.15  
+188 1974 12 22 Bralęcin _________________________ Agrofirma Witkowo  Q __________ 9,0 6.9 1160 9.0 4.8 __________  90 __________ 14 0.010 __________ 7.20  ___________ 0.20  0.20 __________ 0.30  
+189 1975 08 25 Bralęcin _________________________ Agrofirma Witkowo -1 Q __________ 12,0 6.9 1240 7.3 2.4 __________  200 __________ 140 0.007 __________ 16.00  ___________ 0.04  0.60 __________ 0.20  
+190 1983 10 03 Bralęcin _________________________ Agrofirma Witkowo -1 Q __________ 9,5  1350 9.0  250 __________ 14 __________ 2.00    __________  
+191 1979 04 25 Bralęcin _________________________ Agrofirma Witkowo -1A Q __________ 87,0 7.4  5.1 3.3 __________  __________ 30 0.001 __________ 0.00  ___________ 0.14  1.00 __________  
+193 1976 12 15 Kłęby _________________________ Plebania Q __________ 17.9 7.4  9.0  __________ 7 __________    0.80 __________ 0.00  
+194 1970 12 01 Żalęcino _________________________ PGR-1 Q __________ 4,0 7.0  6.5 0.7 __________  __________ 37 0.020 __________ 1.00  ___________ 0.26  0.20 __________ 0.00  
+195 1964 06 30 Żalęcino _________________________ Szkoła podstawowa Q __________ 6,5 7.2  6.3 1.6 __________  __________ 54 0.001 __________ 0.00  ___________ 0.08  0.80 __________  
+196 1970 12 19 Żalęcino _________________________ PGR-2 Q __________ 3,0 7.2  6.0 1.7 __________  __________ 18 0.000 __________ 0.00  ___________ 0.40  2.40 __________ 0.20  
+197 1987 09 28 Żalęcino _________________________ SM Bratek -1A Q __________ 23.2 7.4 587 5.6 3.3 __________  76 __________ 37 0.012 __________ 0.25 0.35 __________ ___________ 0.90  1.70 __________ 0.25  
+198 1968 05 24 Szemielino _________________________ PGR-1 Q __________ 14.8 7.5  4.8 2.7 __________  __________ 41 0.001 __________ 0.00  ___________ 0.08  1.50 __________ 0.30  
+199 1965 07 02 
+Cieszysław 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+Q 
+__________ 
+9,0 7.2  7.3 2.7 __________  __________ 1 0.005 __________ 0.00  ___________ 0.90  5.00 __________ 0.25  
+200 1972 12 18 
+Lubiatowo 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+Q 
+__________ 
+22,0 7.3  6.0 2.2 __________  __________ 54 0.003 __________ 0.00  ___________ 0.00  0.70 __________ 0.05  
+=== PAGE 80
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 
+201 1974 10 22 
+Lubiatowo 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -2 
+Q 
+__________ 
+13,0 7.0  5.6 3.0 __________  __________ 56 0.000 __________ 0.00  ___________ 0.08  1.20 __________ 0.00  
+202 1965 08 13 Moskorzyn _________________________ PGR-1 Tr __________ 38,5 7.2  7.6 3.4 __________  __________ 28 0.001 __________ 0.00  ___________ 0.16  3.00 __________ 0.20  
+203 1966 05 03 
+Dolice 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -1 
+Q 
+__________ 
+45,0 7.2  4.6 1.9 __________  __________ 18 0.000 __________ 0.01  ___________ 0.08  1.50 __________ 0.15  
+204 1973 12 27 
+Dolice 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -2 
+Q 
+__________ 
+45,0 7.2  4.6 4.2 __________  __________ 12 0.001 __________ 10.00  ___________ 0.16  2.00 __________ 0.25  
+205 1984 01 09 
+Dolice 
+_________________________ 
+Wodociągi 
+Zachodniopom
+orskie 
+Goleniów -3 
+Q 
+__________ 
+36,0 7.1 318 3.8 2.1 __________  36 __________ 18 0.002 __________ 0.00 0.40 __________ ___________ 0.16  2.80 __________ 0.10  
+   * wartości podano jako N-NO2, N-NO3 i N-NH4 
+ 
+ 

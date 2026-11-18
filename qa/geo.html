@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA geo</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; height: 100%; background: #111317; color: #ddd; font: 13px/1.4 system-ui, sans-serif; overflow: hidden; }
+  #ui { position: fixed; left: 12px; top: 12px; background: rgba(17,19,23,.9); padding: 10px 12px; border-radius: 8px; width: 300px; }
+  #ui select, #ui input[type=range] { width: 100%; accent-color: #d9ad57; }
+  #ui button { background: #2a2d33; color: #ddd; border: 1px solid #3a3d44; border-radius: 5px; padding: 3px 8px; cursor: pointer; }
+  #info { white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 11px; margin-top: 6px; }
+  #attr { position: fixed; right: 8px; bottom: 6px; font-size: 11px; color: #e8e0d0; background: rgba(17,19,23,.75); padding: 2px 8px; border-radius: 4px; }
+  label { display: block; margin-top: 6px; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="ui">
+  <b style="color:#d9ad57">geo.js</b>
+  <label>site <select id="site">
+    <option value="witkowo">Witkowo (default, offline images)</option>
+    <option value="kaszuby">Kaszuby 54.33, 18.17 (hilly)</option>
+    <option value="kazimierz">Kazimierz Dolny 51.32, 21.95 (valley)</option>
+  </select></label>
+  <label>year <select id="year"></select></label>
+  <label>layer <select id="layer"></select></label>
+  <label>overlay opacity <input id="op" type="range" min="0" max="1" step="0.01" value="0.75"></label>
+  <label><input id="blend" type="checkbox" checked> soil edge fade</label>
+  <label><input id="outl" type="checkbox" checked> plot outline</label>
+  <label>winter <input id="winter" type="range" min="0" max="1" step="0.01" value="0"></label>
+  <div style="margin-top:6px">
+    <button data-v="close">close</button> <button data-v="top">top 120 m</button>
+    <button data-v="m500">500 m</button> <button data-v="km15">1.5 km</button>
+  </div>
+  <div id="info">loading…</div>
+</div>
+<div id="attr"></div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import * as geoMod from '../lib/geo.js';
+// terrain.js (agent TERRAIN) if present, else a synthetic stub with a levelled pad + 1:2 cut/fill slopes
+let terrainMod = null;
+try { terrainMod = await import('../lib/terrain.js'); } catch (e) { console.warn('terrain.js missing, using stub'); }
+function stubTerrain() {
+  const PAD = { x0: -18, x1: 18, z0: -36, z1: 6 };
+  let amp = 0, kind = 'flat', P = 0;
+  const nat = (x, z) => kind === 'hills' ? amp * (Math.sin(x / 70) * Math.cos(z / 90) + 0.5 * Math.sin((x + z) / 37))
+    : kind === 'valley' ? amp * Math.tanh(x / 160) + 0.02 * z : 0.2 * Math.sin(x / 40);
+  const pd = (x, z) => Math.hypot(Math.max(PAD.x0 - x, 0, x - PAD.x1), Math.max(PAD.z0 - z, 0, z - PAD.z1));
+  const t = { padRect: PAD, ready: Promise.resolve(),
+    setSite(s) { kind = s.stub || 'flat'; amp = kind === 'hills' ? 12 : kind === 'valley' ? 40 : 0; P = nat(0, -15); t.ready = Promise.resolve(); return t.ready; },
+    naturalHeightAt: (x, z) => nat(x, z) - P,
+    heightAt(x, z) { const d = pd(x, z), n = nat(x, z); return Math.min(P + d / 2, Math.max(P - d / 2, n)) - P; },
+    info: () => ({ source: 'stub' }) };
+  return t;
+}
+const terrain = terrainMod ? terrainMod.init({ THREE }) : stubTerrain();
+window.__terrain = terrain;
+const SITES = {
+  witkowo: null, // filled from data/geo/site.json
+  kaszuby: { lat: 54.33, lon: 18.17, rotDeg: 0, name: 'Kaszuby', stub: 'hills' },
+  kazimierz: { lat: 51.32, lon: 21.95, rotDeg: 0, name: 'Kazimierz Dolny', stub: 'valley' },
+};
+{ const s = await (await fetch('../data/geo/site.json')).json(); SITES.witkowo = { lat: s.lat, lon: s.lon, rotDeg: s.rotDeg, name: 'Witkowo' }; }
+terrain.setSite(SITES.witkowo);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xa9c4e0);
+// values geo.js recommends for the big zoom-out (info().recommended)
+scene.fog = new THREE.Fog(0xa9c4e0, 1400, 7000);
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.2, 9000);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; controls.maxPolarAngle = 1.5; controls.maxDistance = 1800;
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+
+scene.add(new THREE.HemisphereLight(0xdfe9f5, 0x55503f, 1.1));
+const sun = new THREE.DirectionalLight(0xfff1dc, 2.4);
+sun.position.set(-40, 70, 30); sun.castShadow = true;
+Object.assign(sun.shadow.camera, { left: -45, right: 45, top: 45, bottom: -45, near: 1, far: 300 });
+sun.shadow.mapSize.set(2048, 2048); sun.target.position.set(0, 0, -15);
+scene.add(sun, sun.target);
+
+const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+const gltf = await loader.loadAsync('../model/witkowo.glb');
+const root = gltf.scene;
+root.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+scene.add(root);
+const byName = new Map(); root.traverse(o => { if (o.name) byName.set(o.name, o); });
+
+const geo = geoMod.init({ THREE, scene, root, node: n => byName.get(n), renderer, getCamera: () => camera, terrain });
+function fillYears() {
+  $('year').innerHTML = '';
+  for (const y of geo.years) $('year').insertAdjacentHTML('beforeend', `<option value="${y.id}">${y.label_en}</option>`);
+}
+window.__setSite = async (key) => {
+  const s = SITES[key]; terrain.setSite(s);
+  root.position.y = 0;
+  await geo.setSite(s, { terrain }); fillYears();
+};
+window.__geo = geo; window.__geoMod = geoMod;
+const $ = id => document.getElementById(id);
+for (const l of geo.layers) $('layer').insertAdjacentHTML('beforeend', `<option value="${l.id}">${l.label_en}</option>`);
+$('site').onchange = e => window.__setSite(e.target.value);
+$('year').onchange = e => geo.setYear(/^\d+$/.test(e.target.value) ? +e.target.value : e.target.value);
+$('layer').onchange = e => { const L = geo.layers.find(l => l.id === e.target.value); $('op').value = L.opacity; geo.setLayer(L.id); };
+$('op').oninput = e => geo.setOpacity(+e.target.value);
+$('blend').onchange = e => geo.setSoilBlend(e.target.checked);
+$('outl').onchange = e => geo.setOutline(e.target.checked);
+const state = { winter: 0 };
+$('winter').oninput = e => { state.winter = +e.target.value; };
+
+const VIEWS = {
+  close: [[34, 22, 26], [0, 1, -15]],
+  top: [[0.01, 120, -15], [0, 0, -15]],
+  m500: [[-260, 330, 260], [20, 0, -60]],
+  km15: [[-700, 1150, 900], [40, 0, -80]],
+};
+function view(k) { const [p, t] = VIEWS[k]; camera.position.set(...p); controls.target.set(...t); controls.update(); }
+window.__view = view;
+window.__setCam = (p, t) => { camera.position.set(...p); controls.target.set(...t); controls.update(); };
+document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => view(b.dataset.v));
+view('close');
+
+await geo.ready; fillYears();
+window.__fillYears = fillYears;
+let fps = 0, frames = 0, fpsT = performance.now(), last = fpsT;
+function frame(now) {
+  const dt = Math.min(0.1, (now - last) / 1000); last = now;
+  geo.update(dt, state);
+  controls.update();
+  renderer.render(scene, camera);
+  frames++;
+  if (now - fpsT > 500) {
+    fps = frames * 1000 / (now - fpsT); frames = 0; fpsT = now;
+    const i = geo.info();
+    $('info').textContent = `fps ${fps.toFixed(0)}  cam ${camera.position.toArray().map(v => v.toFixed(0)).join(',')}\n`
+      + `lat ${i.lat.toFixed(6)} lon ${i.lon.toFixed(6)} rot ${i.rotDeg}\nyear ${i.year} (${i.yearLabel}) layer ${i.layer}`
+      + `${i.loading ? ' LOADING' : ''}\n${i.site?.name} ${i.crs} default=${i.isDefault} probe=${i.probe} years=${i.years.length}\n`
+      + `loaded far=${i.loaded.far} mid=${i.loaded.mid} near=${i.loaded.near} over=${i.loaded.overlay}\n`
+      + `terrain ${i.terrain?.source} y ${i.terrain?.minY?.toFixed(1)}..${i.terrain?.maxY?.toFixed(1)} cut ${i.terrain?.cutMax?.toFixed(2)}\n${i.overlay ? 'at site: ' + i.overlay.en + '\n' : ''}${i.errors.length ? 'errors: ' + i.errors.join(' | ') : ''}`;
+    if ($('year').options.length !== i.years.length) fillYears();
+    $('attr').textContent = i.attribution;
+    if (document.activeElement !== $('year')) $('year').value = String(i.year);
+    if (document.activeElement !== $('layer')) $('layer').value = i.layer;
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

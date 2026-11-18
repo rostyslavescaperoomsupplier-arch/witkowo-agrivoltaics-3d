@@ -1,0 +1,6 @@
+mhp_no,cbdh_no,locality,owner,well_name,year,depth_m,aquifer_age,ground_elev_m_asl,aquifer_top_m_bgl,aquifer_bottom_m_bgl,aquifer_thickness_m,static_water_level_m_bgl,screen_m_bgl,test_Q_m3h,test_drawdown_m,k_m_per_day,T_m2_per_day,approved_Q_m3h,approved_drawdown_m,note
+40,2680086,Witkowo,Spółdzielcza Agrofirma Witkowo,Witkowo-4,1975,96.0,Q,35.2,79.5,>96.0,>16.5,10.6,85.0-93.5,51.6,17.7,7.5,>124,,,"regional resources for Stargard area; water quality class IIb, EC 612 uS/cm, pH 7.3, Fe ~1.89 mg/l, Mn ~0.13 mg/l, NO3 ~0.1 mg/l (sample 2003-02-06)"
+41,2680151,Witkowo,Spółdzielcza Agrofirma Witkowo,Witkowo-1A,1982,127.0,Tr (Miocene),34.8,98.0,125.0,27.0,7.4,115.7-125.0,34.5,25.3,3.0,82,,,"Tertiary (Miocene) aquifer; EC 610 uS/cm, pH 7.3"
+46,2680067,Radziszewo,Spółdzielcza Agrofirma Witkowo,,1973,34.0,Q,30.0,23.0,33.0,9.2,5.2,26.7-32.7,36.9,13.7,8.9,82,32.0,11.9,
+53,2680076,Przewłoki,Spółdzielcza Agrofirma Witkowo,Witkowo-2,1974,30.0,Q,34.5,10.0,>30.0,>20.0,7.4,20.0-28.0,55.8,8.6,12.3,>245,55.0,8.6,
+62,2680079,Morzyca,Spółdzielcza Agrofirma Witkowo,,1975,19.0,Q,39.1,5.5,16.0,10.5,5.5,12.0-16.0,36.9,5.5,36.5,383,34.0,5.1,

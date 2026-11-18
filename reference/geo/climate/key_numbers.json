@@ -1,0 +1,68 @@
+{
+ "era5_gridpoint": {
+  "latitude": 53.25,
+  "longitude": 15.0,
+  "elevation": 38.0
+ },
+ "last_full_year": 2025,
+ "tmean_1961_1990": 8.28,
+ "tmean_1991_2020": 9.32,
+ "tmean_2016_2025": 10.17,
+ "warming_2016_2025_vs_1961_1990": 1.9,
+ "trends_C_per_decade": {
+  "era5_1940_2025": 0.283,
+  "era5_1961_2025": 0.37,
+  "era5_1981_2025": 0.455,
+  "era5_1991_2025": 0.518,
+  "imgw_szczecin_1961_2025": 0.381
+ },
+ "warmest_years": {
+  "2024": 11.16,
+  "2019": 10.7,
+  "2020": 10.49,
+  "2014": 10.36,
+  "2018": 10.35
+ },
+ "coldest_years": {
+  "1940": 5.85,
+  "1941": 6.67,
+  "1956": 6.69,
+  "1942": 6.75,
+  "1996": 7.0
+ },
+ "frost_days_1961_1990": 87.8,
+ "frost_days_1991_2020": 76.7,
+ "frost_days_2016_2025": 64.1,
+ "hot30_1961_1990": 1.8,
+ "hot30_1991_2020": 4.8,
+ "hot30_2016_2025": 7.0,
+ "gsl_1961_1990": 235.0,
+ "gsl_1991_2020": 251.0,
+ "gsl_2016_2025": 266.0,
+ "precip_1961_1990": 667.0,
+ "precip_1991_2020": 633.0,
+ "precip_2016_2025": 645.0,
+ "imgw_szczecin_precip_1991_2020": 567.0,
+ "sunshine_h_1991_2020": 2781.0,
+ "imgw_szczecin_frost_days_1991_2020": 75.7,
+ "imgw_szczecin_hot30_1991_2020": 7.6,
+ "imgw_szczecin_hot30_2016_2025": 9.8,
+ "imgw_szczecin_snow_days_1991_2020": 24.0,
+ "imgw_szczecin_sunshine_h_1991_2020": 1739.0,
+ "ghi_kWh_m2_1991_2020": 1065.0,
+ "ghi_kWh_m2_2016_2025": 1091.0,
+ "ghi_kWh_m2_1961_1990": 1006.0,
+ "era5_minus_imgw_szczecin_tmean_1991_2020": -0.17,
+ "imgw_szczecin_tmean_1961_1990": 8.45,
+ "imgw_szczecin_tmean_1991_2020": 9.49,
+ "snow_cover_days_1961_1990": 81.0,
+ "snow_cover_days_1991_2020": 63.0,
+ "snow_cover_days_2016_2025": 44.0,
+ "pv_hourly_1991_2020": {
+  "ghi_kWh_m2": 1065.0,
+  "bhi_kWh_m2": 592.0,
+  "dhi_kWh_m2": 473.0,
+  "dni_kWh_m2": 1171.0
+ },
+ "diffuse_fraction_1991_2020": 0.444
+}

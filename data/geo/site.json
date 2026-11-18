@@ -1,0 +1,124 @@
+{
+ "lat": 53.2886348,
+ "lon": 15.068703,
+ "x2180": 238069.31,
+ "y2180": 609816.14,
+ "x2176": 5504581.36,
+ "y2176": 5906289.63,
+ "rotDeg": 313.0,
+ "rotDef": "true bearing (deg clockwise from north) of the scene -z axis (canopy rows, 'back' of the farm). Scene +x points to rotDeg+90 = 43 deg (NE). Front of the farm (+z, entrance, inverters) faces 133 deg (SE, toward the Agrofirma parking).",
+ "sceneOrigin": {
+  "x": 0,
+  "y": 0,
+  "z": 0,
+  "note": "lat/lon/x2180/y2180/x2176/y2176 above are the geodetic position of scene (0,0,0); y=0 = ground, ~38 m a.s.l. (phone GPS altitude 36-43 m)"
+ },
+ "centre": {
+  "scene": [
+   0,
+   0,
+   -15
+  ],
+  "lat": 53.2887267,
+  "lon": 15.0685385,
+  "x2180": 238058.91,
+  "y2180": 609826.96,
+  "x2176": 5504570.38,
+  "y2176": 5906299.85
+ },
+ "anchor": {
+  "scene": [
+   -10.85,
+   0,
+   0.85
+  ],
+  "what": "centre of the Electrical rack (inverters)",
+  "lat": 53.2885583,
+  "lon": 15.0686014,
+  "source": "EXIF GPS of photos IMG_9403 (heading 142.9 deg, at the inverters) and IMG_9406 (heading 71.2 deg), 2026-11-03, horizontal accuracy 3.5 m; the 13 trip videos (QuickTime ISO6709, 4 decimals) agree within ~10 m"
+ },
+ "plotOutline": {
+  "source": "reference/geo/satellite/agripv_plot_outline.geojson (Sentinel-2 2026-08-27 convex hull, +/-10-20 m)",
+  "lonlat": [
+   [
+    15.066102,
+    53.29022
+   ],
+   [
+    15.067601,
+    53.28932
+   ],
+   [
+    15.06865,
+    53.28878
+   ],
+   [
+    15.0691,
+    53.28878
+   ],
+   [
+    15.069551,
+    53.289049
+   ],
+   [
+    15.069701,
+    53.289229
+   ],
+   [
+    15.069702,
+    53.289588
+   ],
+   [
+    15.069252,
+    53.290038
+   ],
+   [
+    15.069102,
+    53.290128
+   ],
+   [
+    15.067003,
+    53.290758
+   ],
+   [
+    15.066703,
+    53.290759
+   ],
+   [
+    15.066253,
+    53.290579
+   ],
+   [
+    15.066103,
+    53.290399
+   ],
+   [
+    15.066102,
+    53.29022
+   ]
+  ]
+ },
+ "plotCentroid": {
+  "lat": 53.28976,
+  "lon": 15.06804,
+  "x2180": 238032.0,
+  "y2180": 609943.6
+ },
+ "crs": {
+  "EPSG:2176": "PL-2000 zone 5, TM lon0=15 k=0.999923 FE=5500000 (grid north = true north +0.055 deg here)",
+  "EPSG:2180": "PL-1992, TM lon0=19 k=0.9993 FE=500000 FN=-5300000 (grid convergence -3.15 deg here)"
+ },
+ "mapping": "scene(x,z) -> true-north metres: dE = x*cos(b) - z*sin(b), dN = -x*sin(b) - z*cos(b), b = rotDeg; inverse x = dE*cos(b) - dN*sin(b), z = -dE*sin(b) - dN*cos(b). lib/geo.js implements the exact TM projections (sceneToLatLon / latLonToScene / sceneTo2180 / sceneTo2176).",
+ "confidence": {
+  "position": "high, +/-5 m (photo GPS 3.5 m at the inverters + the camera stood ~1-2 m away)",
+  "rotation": "medium, +/-6 deg: rows assumed parallel to the road, the field tramlines and the SW edge of the Sentinel-2 plot outline (133-134 deg); the coordinator's S2 long-axis estimate is ~129 deg; rows were not seen from above",
+  "section": "assumption: the modelled 36x42 m patch is the south (entrance/inverter) corner of the ~250x95 m plot; the real plot continues ~250 m NW (-z) and ~100 m NE (+x)",
+  "overall": "medium"
+ },
+ "notes": [
+  "The canopies are NOT visible on any available orthophoto: the newest Geoportal flight is 2025-04-13, before construction (Sentinel-2 shows the plot from 2025-11-08). Placement uses the on-site photo GPS + heading, not image matching.",
+  "The S2 hull lies ~10 m NE of the modelled canopy 1 (hull SW edge at scene x ~6-10); within the hull's +/-10-20 m error.",
+  "Photo IMG_9406 looking 71 deg shows the canopies to the NE/N-NE of the inverters and the overhead line toward the pole at the teardrop track loop, consistent with this placement.",
+  "Measured on the 2025 ortho: road bearing 133.8 deg; field tramlines 132-134 deg."
+ ]
+}

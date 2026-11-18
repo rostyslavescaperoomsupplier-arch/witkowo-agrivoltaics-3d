@@ -1,0 +1,103 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "Witkowo agri-PV plot (approx. outline)",
+    "source": "Sentinel-2 L2A S2A_33UWV_20260827_1, 10 m pixels, vegetation-contrast mask + convex hull",
+    "pixel_area_m2": 22900,
+    "accuracy": "+/- 10-20 m; includes plot margins; not a survey"
+   },
+   "geometry": {
+    "type": "Polygon",
+    "coordinates": [
+     [
+      [
+       15.066102,
+       53.29022
+      ],
+      [
+       15.067601,
+       53.28932
+      ],
+      [
+       15.06865,
+       53.28878
+      ],
+      [
+       15.0691,
+       53.28878
+      ],
+      [
+       15.069551,
+       53.289049
+      ],
+      [
+       15.069701,
+       53.289229
+      ],
+      [
+       15.069702,
+       53.289588
+      ],
+      [
+       15.069252,
+       53.290038
+      ],
+      [
+       15.069102,
+       53.290128
+      ],
+      [
+       15.067003,
+       53.290758
+      ],
+      [
+       15.066703,
+       53.290759
+      ],
+      [
+       15.066253,
+       53.290579
+      ],
+      [
+       15.066103,
+       53.290399
+      ],
+      [
+       15.066102,
+       53.29022
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "phone GPS of on-site photos/videos 2026-11-03 (south corner, by Agrofirma parking)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     15.0688,
+     53.2886
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "name": "plot centroid"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     15.06804,
+     53.28976
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,1387 @@
+year,period,crop,share_area_drought_risk_pct
+2020,1,Zboża ozime,3.12
+2020,2,Zboża ozime,6.02
+2020,3,Zboża ozime,13.51
+2020,4,Zboża ozime,6.25
+2020,5,Zboża ozime,13.39
+2020,6,Zboża ozime,4.25
+2020,7,Zboża ozime,1.28
+2020,8,Zboża ozime,0.0
+2020,9,Zboża ozime,0.0
+2020,10,Zboża ozime,0.0
+2020,11,Zboża ozime,x
+2020,12,Zboża ozime,x
+2020,13,Zboża ozime,x
+2020,14,Zboża ozime,x
+2020,1,Zboża jare,5.71
+2020,2,Zboża jare,9.46
+2020,3,Zboża jare,20.87
+2020,4,Zboża jare,13.57
+2020,5,Zboża jare,45.34
+2020,6,Zboża jare,13.57
+2020,7,Zboża jare,8.47
+2020,8,Zboża jare,6.49
+2020,9,Zboża jare,0.0
+2020,10,Zboża jare,0.0
+2020,11,Zboża jare,x
+2020,12,Zboża jare,x
+2020,13,Zboża jare,x
+2020,14,Zboża jare,x
+2020,1,Kukurydza na ziarno,0.0
+2020,2,Kukurydza na ziarno,0.0
+2020,3,Kukurydza na ziarno,0.0
+2020,4,Kukurydza na ziarno,0.0
+2020,5,Kukurydza na ziarno,7.5
+2020,6,Kukurydza na ziarno,13.51
+2020,7,Kukurydza na ziarno,12.68
+2020,8,Kukurydza na ziarno,56.85
+2020,9,Kukurydza na ziarno,47.49
+2020,10,Kukurydza na ziarno,40.57
+2020,11,Kukurydza na ziarno,0.6
+2020,12,Kukurydza na ziarno,0.0
+2020,13,Kukurydza na ziarno,0.0
+2020,14,Kukurydza na ziarno,0.0
+2020,1,Kukurydza na kiszonkę,0.0
+2020,2,Kukurydza na kiszonkę,0.0
+2020,3,Kukurydza na kiszonkę,0.0
+2020,4,Kukurydza na kiszonkę,0.0
+2020,5,Kukurydza na kiszonkę,7.5
+2020,6,Kukurydza na kiszonkę,13.51
+2020,7,Kukurydza na kiszonkę,12.68
+2020,8,Kukurydza na kiszonkę,56.85
+2020,9,Kukurydza na kiszonkę,49.26
+2020,10,Kukurydza na kiszonkę,45.9
+2020,11,Kukurydza na kiszonkę,1.4
+2020,12,Kukurydza na kiszonkę,0.0
+2020,13,Kukurydza na kiszonkę,0.0
+2020,14,Kukurydza na kiszonkę,0.0
+2020,1,Rzepak i rzepik,0.0
+2020,2,Rzepak i rzepik,0.0
+2020,3,Rzepak i rzepik,0.0
+2020,4,Rzepak i rzepik,0.0
+2020,5,Rzepak i rzepik,18.04
+2020,6,Rzepak i rzepik,81.15
+2020,7,Rzepak i rzepik,0.0
+2020,8,Rzepak i rzepik,0.0
+2020,9,Rzepak i rzepik,0.0
+2020,10,Rzepak i rzepik,0.0
+2020,11,Rzepak i rzepik,x
+2020,12,Rzepak i rzepik,x
+2020,13,Rzepak i rzepik,1.58
+2020,14,Rzepak i rzepik,0.0
+2020,1,Ziemniak,0.0
+2020,2,Ziemniak,0.0
+2020,3,Ziemniak,0.0
+2020,4,Ziemniak,0.0
+2020,5,Ziemniak,0.0
+2020,6,Ziemniak,0.0
+2020,7,Ziemniak,0.0
+2020,8,Ziemniak,0.0
+2020,9,Ziemniak,4.81
+2020,10,Ziemniak,11.66
+2020,11,Ziemniak,0.0
+2020,12,Ziemniak,0.0
+2020,13,Ziemniak,0.31
+2020,14,Ziemniak,x
+2020,1,Burak cukrowy,0.0
+2020,2,Burak cukrowy,0.0
+2020,3,Burak cukrowy,0.0
+2020,4,Burak cukrowy,0.0
+2020,5,Burak cukrowy,0.0
+2020,6,Burak cukrowy,0.0
+2020,7,Burak cukrowy,0.0
+2020,8,Burak cukrowy,0.0
+2020,9,Burak cukrowy,0.0
+2020,10,Burak cukrowy,1.01
+2020,11,Burak cukrowy,0.0
+2020,12,Burak cukrowy,0.0
+2020,13,Burak cukrowy,0.0
+2020,14,Burak cukrowy,0.0
+2020,1,Chmiel,0.0
+2020,2,Chmiel,0.0
+2020,3,Chmiel,0.0
+2020,4,Chmiel,0.0
+2020,5,Chmiel,0.0
+2020,6,Chmiel,0.0
+2020,7,Chmiel,0.0
+2020,8,Chmiel,0.0
+2020,9,Chmiel,1.73
+2020,10,Chmiel,3.25
+2020,11,Chmiel,0.0
+2020,12,Chmiel,0.0
+2020,13,Chmiel,x
+2020,14,Chmiel,x
+2020,1,Tytoń,0.0
+2020,2,Tytoń,0.0
+2020,3,Tytoń,0.0
+2020,4,Tytoń,0.0
+2020,5,Tytoń,0.0
+2020,6,Tytoń,0.0
+2020,7,Tytoń,0.0
+2020,8,Tytoń,6.49
+2020,9,Tytoń,6.38
+2020,10,Tytoń,3.95
+2020,11,Tytoń,0.0
+2020,12,Tytoń,0.0
+2020,13,Tytoń,x
+2020,14,Tytoń,x
+2020,1,Warzywa gruntowe,0.0
+2020,2,Warzywa gruntowe,0.0
+2020,3,Warzywa gruntowe,0.0
+2020,4,Warzywa gruntowe,0.0
+2020,5,Warzywa gruntowe,0.0
+2020,6,Warzywa gruntowe,0.0
+2020,7,Warzywa gruntowe,0.0
+2020,8,Warzywa gruntowe,7.66
+2020,9,Warzywa gruntowe,7.13
+2020,10,Warzywa gruntowe,6.86
+2020,11,Warzywa gruntowe,0.0
+2020,12,Warzywa gruntowe,0.0
+2020,13,Warzywa gruntowe,x
+2020,14,Warzywa gruntowe,x
+2020,1,Krzewy owocowe,0.0
+2020,2,Krzewy owocowe,0.0
+2020,3,Krzewy owocowe,2.88
+2020,4,Krzewy owocowe,4.63
+2020,5,Krzewy owocowe,17.21
+2020,6,Krzewy owocowe,13.72
+2020,7,Krzewy owocowe,39.62
+2020,8,Krzewy owocowe,68.25
+2020,9,Krzewy owocowe,53.39
+2020,10,Krzewy owocowe,54.3
+2020,11,Krzewy owocowe,0.24
+2020,12,Krzewy owocowe,0.0
+2020,13,Krzewy owocowe,x
+2020,14,Krzewy owocowe,x
+2020,1,Drzewa owocowe,0.0
+2020,2,Drzewa owocowe,0.0
+2020,3,Drzewa owocowe,0.0
+2020,4,Drzewa owocowe,0.0
+2020,5,Drzewa owocowe,0.0
+2020,6,Drzewa owocowe,0.0
+2020,7,Drzewa owocowe,0.0
+2020,8,Drzewa owocowe,0.0
+2020,9,Drzewa owocowe,0.0
+2020,10,Drzewa owocowe,0.0
+2020,11,Drzewa owocowe,0.0
+2020,12,Drzewa owocowe,0.0
+2020,13,Drzewa owocowe,x
+2020,14,Drzewa owocowe,x
+2020,1,Truskawki,1.77
+2020,2,Truskawki,3.07
+2020,3,Truskawki,8.4
+2020,4,Truskawki,0.26
+2020,5,Truskawki,4.41
+2020,6,Truskawki,0.0
+2020,7,Truskawki,0.0
+2020,8,Truskawki,0.0
+2020,9,Truskawki,0.0
+2020,10,Truskawki,0.0
+2020,11,Truskawki,x
+2020,12,Truskawki,x
+2020,13,Truskawki,x
+2020,14,Truskawki,x
+2020,1,Rośliny strączkowe,0.0
+2020,2,Rośliny strączkowe,0.0
+2020,3,Rośliny strączkowe,0.0
+2020,4,Rośliny strączkowe,0.0
+2020,5,Rośliny strączkowe,7.5
+2020,6,Rośliny strączkowe,7.2
+2020,7,Rośliny strączkowe,9.84
+2020,8,Rośliny strączkowe,47.5
+2020,9,Rośliny strączkowe,37.92
+2020,10,Rośliny strączkowe,29.13
+2020,11,Rośliny strączkowe,0.0
+2020,12,Rośliny strączkowe,0.0
+2020,13,Rośliny strączkowe,0.0
+2020,14,Rośliny strączkowe,0.0
+2020,1,Drzewa i krzewy owocowe,x
+2020,2,Drzewa i krzewy owocowe,0.0
+2020,3,Drzewa i krzewy owocowe,0.0
+2020,4,Drzewa i krzewy owocowe,0.0
+2020,5,Drzewa i krzewy owocowe,0.0
+2020,6,Drzewa i krzewy owocowe,0.0
+2020,7,Drzewa i krzewy owocowe,0.0
+2020,8,Drzewa i krzewy owocowe,0.0
+2020,9,Drzewa i krzewy owocowe,0.0
+2020,10,Drzewa i krzewy owocowe,0.0
+2020,11,Drzewa i krzewy owocowe,x
+2020,12,Drzewa i krzewy owocowe,x
+2020,13,Drzewa i krzewy owocowe,x
+2020,14,Drzewa i krzewy owocowe,x
+2021,1,Zboża ozime,0.0
+2021,2,Zboża ozime,0.0
+2021,3,Zboża ozime,2.02
+2021,4,Zboża ozime,40.31
+2021,5,Zboża ozime,2.83
+2021,6,Zboża ozime,0.0
+2021,7,Zboża ozime,0.0
+2021,8,Zboża ozime,0.0
+2021,9,Zboża ozime,0.0
+2021,10,Zboża ozime,x
+2021,11,Zboża ozime,x
+2021,12,Zboża ozime,x
+2021,13,Zboża ozime,x
+2021,14,Zboża ozime,x
+2021,1,Zboża jare,0.0
+2021,2,Zboża jare,0.0
+2021,3,Zboża jare,3.83
+2021,4,Zboża jare,63.49
+2021,5,Zboża jare,11.2
+2021,6,Zboża jare,0.0
+2021,7,Zboża jare,0.04
+2021,8,Zboża jare,0.22
+2021,9,Zboża jare,0.0
+2021,10,Zboża jare,x
+2021,11,Zboża jare,x
+2021,12,Zboża jare,x
+2021,13,Zboża jare,x
+2021,14,Zboża jare,x
+2021,1,Kukurydza na ziarno,x
+2021,2,Kukurydza na ziarno,x
+2021,3,Kukurydza na ziarno,x
+2021,4,Kukurydza na ziarno,6.21
+2021,5,Kukurydza na ziarno,0.21
+2021,6,Kukurydza na ziarno,0.0
+2021,7,Kukurydza na ziarno,3.68
+2021,8,Kukurydza na ziarno,9.26
+2021,9,Kukurydza na ziarno,0.0
+2021,10,Kukurydza na ziarno,0.0
+2021,11,Kukurydza na ziarno,0.0
+2021,12,Kukurydza na ziarno,0.0
+2021,13,Kukurydza na ziarno,0.0
+2021,14,Kukurydza na ziarno,0.0
+2021,1,Kukurydza na kiszonkę,x
+2021,2,Kukurydza na kiszonkę,x
+2021,3,Kukurydza na kiszonkę,x
+2021,4,Kukurydza na kiszonkę,6.21
+2021,5,Kukurydza na kiszonkę,0.21
+2021,6,Kukurydza na kiszonkę,0.0
+2021,7,Kukurydza na kiszonkę,3.68
+2021,8,Kukurydza na kiszonkę,9.26
+2021,9,Kukurydza na kiszonkę,0.0
+2021,10,Kukurydza na kiszonkę,0.0
+2021,11,Kukurydza na kiszonkę,0.0
+2021,12,Kukurydza na kiszonkę,0.0
+2021,13,Kukurydza na kiszonkę,0.0
+2021,14,Kukurydza na kiszonkę,0.0
+2021,1,Rzepak i rzepik,0.0
+2021,2,Rzepak i rzepik,0.0
+2021,3,Rzepak i rzepik,0.0
+2021,4,Rzepak i rzepik,15.79
+2021,5,Rzepak i rzepik,10.83
+2021,6,Rzepak i rzepik,0.94
+2021,7,Rzepak i rzepik,x
+2021,8,Rzepak i rzepik,x
+2021,9,Rzepak i rzepik,x
+2021,10,Rzepak i rzepik,x
+2021,11,Rzepak i rzepik,x
+2021,12,Rzepak i rzepik,x
+2021,13,Rzepak i rzepik,0.0
+2021,14,Rzepak i rzepik,0.0
+2021,1,Ziemniak,x
+2021,2,Ziemniak,x
+2021,3,Ziemniak,0.0
+2021,4,Ziemniak,0.0
+2021,5,Ziemniak,0.0
+2021,6,Ziemniak,0.0
+2021,7,Ziemniak,0.0
+2021,8,Ziemniak,0.0
+2021,9,Ziemniak,0.0
+2021,10,Ziemniak,0.0
+2021,11,Ziemniak,0.0
+2021,12,Ziemniak,0.0
+2021,13,Ziemniak,0.0
+2021,14,Ziemniak,x
+2021,1,Burak cukrowy,0.0
+2021,2,Burak cukrowy,0.0
+2021,3,Burak cukrowy,0.0
+2021,4,Burak cukrowy,0.0
+2021,5,Burak cukrowy,0.0
+2021,6,Burak cukrowy,0.0
+2021,7,Burak cukrowy,0.0
+2021,8,Burak cukrowy,0.0
+2021,9,Burak cukrowy,0.0
+2021,10,Burak cukrowy,0.0
+2021,11,Burak cukrowy,0.0
+2021,12,Burak cukrowy,0.0
+2021,13,Burak cukrowy,0.0
+2021,14,Burak cukrowy,0.0
+2021,1,Chmiel,x
+2021,2,Chmiel,x
+2021,3,Chmiel,x
+2021,4,Chmiel,0.0
+2021,5,Chmiel,0.0
+2021,6,Chmiel,0.0
+2021,7,Chmiel,0.0
+2021,8,Chmiel,0.0
+2021,9,Chmiel,0.0
+2021,10,Chmiel,0.0
+2021,11,Chmiel,0.0
+2021,12,Chmiel,0.0
+2021,13,Chmiel,x
+2021,14,Chmiel,x
+2021,1,Tytoń,x
+2021,2,Tytoń,x
+2021,3,Tytoń,x
+2021,4,Tytoń,0.0
+2021,5,Tytoń,0.0
+2021,6,Tytoń,0.0
+2021,7,Tytoń,0.0
+2021,8,Tytoń,0.22
+2021,9,Tytoń,0.0
+2021,10,Tytoń,0.0
+2021,11,Tytoń,0.0
+2021,12,Tytoń,0.0
+2021,13,Tytoń,x
+2021,14,Tytoń,x
+2021,1,Warzywa gruntowe,x
+2021,2,Warzywa gruntowe,x
+2021,3,Warzywa gruntowe,x
+2021,4,Warzywa gruntowe,0.0
+2021,5,Warzywa gruntowe,0.0
+2021,6,Warzywa gruntowe,0.0
+2021,7,Warzywa gruntowe,0.0
+2021,8,Warzywa gruntowe,0.62
+2021,9,Warzywa gruntowe,0.0
+2021,10,Warzywa gruntowe,0.0
+2021,11,Warzywa gruntowe,0.0
+2021,12,Warzywa gruntowe,0.0
+2021,13,Warzywa gruntowe,x
+2021,14,Warzywa gruntowe,x
+2021,1,Krzewy owocowe,0.0
+2021,2,Krzewy owocowe,0.0
+2021,3,Krzewy owocowe,0.0
+2021,4,Krzewy owocowe,46.74
+2021,5,Krzewy owocowe,7.08
+2021,6,Krzewy owocowe,0.0
+2021,7,Krzewy owocowe,2.14
+2021,8,Krzewy owocowe,11.56
+2021,9,Krzewy owocowe,0.0
+2021,10,Krzewy owocowe,0.0
+2021,11,Krzewy owocowe,0.0
+2021,12,Krzewy owocowe,0.0
+2021,13,Krzewy owocowe,x
+2021,14,Krzewy owocowe,x
+2021,1,Drzewa owocowe,0.0
+2021,2,Drzewa owocowe,0.0
+2021,3,Drzewa owocowe,0.0
+2021,4,Drzewa owocowe,0.56
+2021,5,Drzewa owocowe,0.0
+2021,6,Drzewa owocowe,0.0
+2021,7,Drzewa owocowe,0.0
+2021,8,Drzewa owocowe,0.0
+2021,9,Drzewa owocowe,0.0
+2021,10,Drzewa owocowe,0.0
+2021,11,Drzewa owocowe,0.0
+2021,12,Drzewa owocowe,0.0
+2021,13,Drzewa owocowe,x
+2021,14,Drzewa owocowe,x
+2021,1,Truskawki,0.0
+2021,2,Truskawki,0.0
+2021,3,Truskawki,0.0
+2021,4,Truskawki,23.53
+2021,5,Truskawki,0.02
+2021,6,Truskawki,0.0
+2021,7,Truskawki,0.0
+2021,8,Truskawki,0.0
+2021,9,Truskawki,0.0
+2021,10,Truskawki,x
+2021,11,Truskawki,x
+2021,12,Truskawki,x
+2021,13,Truskawki,x
+2021,14,Truskawki,x
+2021,1,Rośliny strączkowe,x
+2021,2,Rośliny strączkowe,x
+2021,3,Rośliny strączkowe,x
+2021,4,Rośliny strączkowe,10.26
+2021,5,Rośliny strączkowe,0.21
+2021,6,Rośliny strączkowe,0.0
+2021,7,Rośliny strączkowe,0.39
+2021,8,Rośliny strączkowe,6.31
+2021,9,Rośliny strączkowe,0.0
+2021,10,Rośliny strączkowe,0.0
+2021,11,Rośliny strączkowe,0.0
+2021,12,Rośliny strączkowe,0.0
+2021,13,Rośliny strączkowe,0.0
+2021,14,Rośliny strączkowe,0.0
+2022,1,Zboża ozime,16.83
+2022,2,Zboża ozime,0.0
+2022,3,Zboża ozime,13.15
+2022,4,Zboża ozime,0.0
+2022,5,Zboża ozime,0.0
+2022,6,Zboża ozime,0.0
+2022,7,Zboża ozime,0.0
+2022,8,Zboża ozime,0.0
+2022,9,Zboża ozime,0.0
+2022,10,Zboża ozime,x
+2022,11,Zboża ozime,x
+2022,12,Zboża ozime,x
+2022,13,Zboża ozime,x
+2022,14,Zboża ozime,x
+2022,1,Zboża jare,73.44
+2022,2,Zboża jare,0.0
+2022,3,Zboża jare,13.92
+2022,4,Zboża jare,0.0
+2022,5,Zboża jare,0.4
+2022,6,Zboża jare,0.0
+2022,7,Zboża jare,0.0
+2022,8,Zboża jare,0.0
+2022,9,Zboża jare,0.0
+2022,10,Zboża jare,x
+2022,11,Zboża jare,x
+2022,12,Zboża jare,x
+2022,13,Zboża jare,x
+2022,14,Zboża jare,x
+2022,1,Kukurydza na ziarno,x
+2022,2,Kukurydza na ziarno,x
+2022,3,Kukurydza na ziarno,x
+2022,4,Kukurydza na ziarno,0.0
+2022,5,Kukurydza na ziarno,0.0
+2022,6,Kukurydza na ziarno,0.0
+2022,7,Kukurydza na ziarno,0.0
+2022,8,Kukurydza na ziarno,6.36
+2022,9,Kukurydza na ziarno,18.46
+2022,10,Kukurydza na ziarno,0.06
+2022,11,Kukurydza na ziarno,0.0
+2022,12,Kukurydza na ziarno,0.0
+2022,13,Kukurydza na ziarno,0.0
+2022,14,Kukurydza na ziarno,0.0
+2022,1,Kukurydza na kiszonkę,x
+2022,2,Kukurydza na kiszonkę,x
+2022,3,Kukurydza na kiszonkę,x
+2022,4,Kukurydza na kiszonkę,0.0
+2022,5,Kukurydza na kiszonkę,0.0
+2022,6,Kukurydza na kiszonkę,0.0
+2022,7,Kukurydza na kiszonkę,0.0
+2022,8,Kukurydza na kiszonkę,6.36
+2022,9,Kukurydza na kiszonkę,19.01
+2022,10,Kukurydza na kiszonkę,0.11
+2022,11,Kukurydza na kiszonkę,0.0
+2022,12,Kukurydza na kiszonkę,0.0
+2022,13,Kukurydza na kiszonkę,0.0
+2022,14,Kukurydza na kiszonkę,0.0
+2022,1,Rzepak i rzepik,0.0
+2022,2,Rzepak i rzepik,0.0
+2022,3,Rzepak i rzepik,0.0
+2022,4,Rzepak i rzepik,0.0
+2022,5,Rzepak i rzepik,0.4
+2022,6,Rzepak i rzepik,0.05
+2022,7,Rzepak i rzepik,x
+2022,8,Rzepak i rzepik,x
+2022,9,Rzepak i rzepik,x
+2022,10,Rzepak i rzepik,x
+2022,11,Rzepak i rzepik,x
+2022,12,Rzepak i rzepik,x
+2022,13,Rzepak i rzepik,0.0
+2022,14,Rzepak i rzepik,0.0
+2022,1,Ziemniak,x
+2022,2,Ziemniak,x
+2022,3,Ziemniak,0.0
+2022,4,Ziemniak,0.0
+2022,5,Ziemniak,0.0
+2022,6,Ziemniak,0.0
+2022,7,Ziemniak,0.0
+2022,8,Ziemniak,0.0
+2022,9,Ziemniak,0.18
+2022,10,Ziemniak,0.0
+2022,11,Ziemniak,0.0
+2022,12,Ziemniak,0.0
+2022,13,Ziemniak,0.0
+2022,14,Ziemniak,x
+2022,1,Burak cukrowy,0.0
+2022,2,Burak cukrowy,0.0
+2022,3,Burak cukrowy,0.0
+2022,4,Burak cukrowy,0.0
+2022,5,Burak cukrowy,0.0
+2022,6,Burak cukrowy,0.0
+2022,7,Burak cukrowy,0.0
+2022,8,Burak cukrowy,0.0
+2022,9,Burak cukrowy,0.0
+2022,10,Burak cukrowy,0.0
+2022,11,Burak cukrowy,0.0
+2022,12,Burak cukrowy,0.0
+2022,13,Burak cukrowy,0.0
+2022,14,Burak cukrowy,0.0
+2022,1,Chmiel,x
+2022,2,Chmiel,x
+2022,3,Chmiel,x
+2022,4,Chmiel,0.0
+2022,5,Chmiel,0.0
+2022,6,Chmiel,0.0
+2022,7,Chmiel,0.0
+2022,8,Chmiel,0.0
+2022,9,Chmiel,0.0
+2022,10,Chmiel,0.0
+2022,11,Chmiel,0.0
+2022,12,Chmiel,0.0
+2022,13,Chmiel,x
+2022,14,Chmiel,x
+2022,1,Tytoń,x
+2022,2,Tytoń,x
+2022,3,Tytoń,x
+2022,4,Tytoń,0.0
+2022,5,Tytoń,0.0
+2022,6,Tytoń,0.0
+2022,7,Tytoń,0.0
+2022,8,Tytoń,0.0
+2022,9,Tytoń,0.24
+2022,10,Tytoń,0.0
+2022,11,Tytoń,0.0
+2022,12,Tytoń,0.0
+2022,13,Tytoń,x
+2022,14,Tytoń,x
+2022,1,Warzywa gruntowe,x
+2022,2,Warzywa gruntowe,x
+2022,3,Warzywa gruntowe,x
+2022,4,Warzywa gruntowe,0.0
+2022,5,Warzywa gruntowe,0.0
+2022,6,Warzywa gruntowe,0.0
+2022,7,Warzywa gruntowe,0.0
+2022,8,Warzywa gruntowe,0.0
+2022,9,Warzywa gruntowe,0.57
+2022,10,Warzywa gruntowe,0.0
+2022,11,Warzywa gruntowe,0.0
+2022,12,Warzywa gruntowe,0.0
+2022,13,Warzywa gruntowe,x
+2022,14,Warzywa gruntowe,x
+2022,1,Krzewy owocowe,2.64
+2022,2,Krzewy owocowe,0.0
+2022,3,Krzewy owocowe,0.0
+2022,4,Krzewy owocowe,0.0
+2022,5,Krzewy owocowe,0.05
+2022,6,Krzewy owocowe,0.0
+2022,7,Krzewy owocowe,0.0
+2022,8,Krzewy owocowe,1.78
+2022,9,Krzewy owocowe,15.3
+2022,10,Krzewy owocowe,0.0
+2022,11,Krzewy owocowe,0.0
+2022,12,Krzewy owocowe,0.0
+2022,13,Krzewy owocowe,x
+2022,14,Krzewy owocowe,x
+2022,1,Drzewa owocowe,0.0
+2022,2,Drzewa owocowe,0.0
+2022,3,Drzewa owocowe,0.0
+2022,4,Drzewa owocowe,0.0
+2022,5,Drzewa owocowe,0.0
+2022,6,Drzewa owocowe,0.0
+2022,7,Drzewa owocowe,0.0
+2022,8,Drzewa owocowe,0.0
+2022,9,Drzewa owocowe,0.0
+2022,10,Drzewa owocowe,0.0
+2022,11,Drzewa owocowe,0.0
+2022,12,Drzewa owocowe,0.0
+2022,13,Drzewa owocowe,x
+2022,14,Drzewa owocowe,x
+2022,1,Truskawki,16.83
+2022,2,Truskawki,0.0
+2022,3,Truskawki,0.01
+2022,4,Truskawki,0.0
+2022,5,Truskawki,0.0
+2022,6,Truskawki,0.0
+2022,7,Truskawki,0.0
+2022,8,Truskawki,0.0
+2022,9,Truskawki,0.0
+2022,10,Truskawki,x
+2022,11,Truskawki,x
+2022,12,Truskawki,x
+2022,13,Truskawki,x
+2022,14,Truskawki,x
+2022,1,Rośliny strączkowe,x
+2022,2,Rośliny strączkowe,x
+2022,3,Rośliny strączkowe,x
+2022,4,Rośliny strączkowe,0.0
+2022,5,Rośliny strączkowe,0.0
+2022,6,Rośliny strączkowe,0.0
+2022,7,Rośliny strączkowe,0.0
+2022,8,Rośliny strączkowe,1.09
+2022,9,Rośliny strączkowe,7.24
+2022,10,Rośliny strączkowe,0.0
+2022,11,Rośliny strączkowe,0.0
+2022,12,Rośliny strączkowe,0.0
+2022,13,Rośliny strączkowe,0.0
+2022,14,Rośliny strączkowe,0.0
+2023,1,Zboża ozime,0.0
+2023,2,Zboża ozime,13.58
+2023,3,Zboża ozime,79.57
+2023,4,Zboża ozime,91.95
+2023,5,Zboża ozime,70.37
+2023,6,Zboża ozime,70.05
+2023,7,Zboża ozime,56.06
+2023,8,Zboża ozime,0.0
+2023,9,Zboża ozime,0.0
+2023,10,Zboża ozime,x
+2023,11,Zboża ozime,x
+2023,12,Zboża ozime,x
+2023,13,Zboża ozime,x
+2023,14,Zboża ozime,x
+2023,1,Zboża jare,0.0
+2023,2,Zboża jare,13.96
+2023,3,Zboża jare,83.42
+2023,4,Zboża jare,99.58
+2023,5,Zboża jare,88.72
+2023,6,Zboża jare,90.06
+2023,7,Zboża jare,76.46
+2023,8,Zboża jare,0.0
+2023,9,Zboża jare,0.0
+2023,10,Zboża jare,x
+2023,11,Zboża jare,x
+2023,12,Zboża jare,x
+2023,13,Zboża jare,x
+2023,14,Zboża jare,x
+2023,1,Kukurydza na ziarno,x
+2023,2,Kukurydza na ziarno,x
+2023,3,Kukurydza na ziarno,x
+2023,4,Kukurydza na ziarno,56.56
+2023,5,Kukurydza na ziarno,39.44
+2023,6,Kukurydza na ziarno,69.54
+2023,7,Kukurydza na ziarno,74.6
+2023,8,Kukurydza na ziarno,7.88
+2023,9,Kukurydza na ziarno,0.0
+2023,10,Kukurydza na ziarno,0.0
+2023,11,Kukurydza na ziarno,0.0
+2023,12,Kukurydza na ziarno,0.0
+2023,13,Kukurydza na ziarno,0.0
+2023,14,Kukurydza na ziarno,0.0
+2023,1,Kukurydza na kiszonkę,x
+2023,2,Kukurydza na kiszonkę,x
+2023,3,Kukurydza na kiszonkę,x
+2023,4,Kukurydza na kiszonkę,56.56
+2023,5,Kukurydza na kiszonkę,39.44
+2023,6,Kukurydza na kiszonkę,69.54
+2023,7,Kukurydza na kiszonkę,74.6
+2023,8,Kukurydza na kiszonkę,7.88
+2023,9,Kukurydza na kiszonkę,0.0
+2023,10,Kukurydza na kiszonkę,0.0
+2023,11,Kukurydza na kiszonkę,0.0
+2023,12,Kukurydza na kiszonkę,0.0
+2023,13,Kukurydza na kiszonkę,0.0
+2023,14,Kukurydza na kiszonkę,0.0
+2023,1,Rzepak i rzepik,0.0
+2023,2,Rzepak i rzepik,0.0
+2023,3,Rzepak i rzepik,13.4
+2023,4,Rzepak i rzepik,78.2
+2023,5,Rzepak i rzepik,76.54
+2023,6,Rzepak i rzepik,95.91
+2023,7,Rzepak i rzepik,x
+2023,8,Rzepak i rzepik,x
+2023,9,Rzepak i rzepik,x
+2023,10,Rzepak i rzepik,x
+2023,11,Rzepak i rzepik,x
+2023,12,Rzepak i rzepik,x
+2023,13,Rzepak i rzepik,0.0
+2023,14,Rzepak i rzepik,0.0
+2023,1,Ziemniak,x
+2023,2,Ziemniak,x
+2023,3,Ziemniak,0.0
+2023,4,Ziemniak,0.0
+2023,5,Ziemniak,0.0
+2023,6,Ziemniak,0.12
+2023,7,Ziemniak,2.27
+2023,8,Ziemniak,0.0
+2023,9,Ziemniak,0.0
+2023,10,Ziemniak,0.0
+2023,11,Ziemniak,0.0
+2023,12,Ziemniak,0.0
+2023,13,Ziemniak,0.0
+2023,14,Ziemniak,x
+2023,1,Burak cukrowy,0.0
+2023,2,Burak cukrowy,0.0
+2023,3,Burak cukrowy,0.0
+2023,4,Burak cukrowy,0.0
+2023,5,Burak cukrowy,0.0
+2023,6,Burak cukrowy,0.0
+2023,7,Burak cukrowy,0.0
+2023,8,Burak cukrowy,0.0
+2023,9,Burak cukrowy,0.0
+2023,10,Burak cukrowy,0.0
+2023,11,Burak cukrowy,0.0
+2023,12,Burak cukrowy,0.0
+2023,13,Burak cukrowy,0.0
+2023,14,Burak cukrowy,0.0
+2023,1,Chmiel,x
+2023,2,Chmiel,x
+2023,3,Chmiel,x
+2023,4,Chmiel,0.0
+2023,5,Chmiel,0.0
+2023,6,Chmiel,0.91
+2023,7,Chmiel,4.42
+2023,8,Chmiel,0.0
+2023,9,Chmiel,0.0
+2023,10,Chmiel,0.0
+2023,11,Chmiel,0.0
+2023,12,Chmiel,0.0
+2023,13,Chmiel,x
+2023,14,Chmiel,x
+2023,1,Tytoń,x
+2023,2,Tytoń,x
+2023,3,Tytoń,x
+2023,4,Tytoń,51.23
+2023,5,Tytoń,18.11
+2023,6,Tytoń,53.22
+2023,7,Tytoń,60.56
+2023,8,Tytoń,0.0
+2023,9,Tytoń,0.0
+2023,10,Tytoń,0.0
+2023,11,Tytoń,0.0
+2023,12,Tytoń,0.0
+2023,13,Tytoń,x
+2023,14,Tytoń,x
+2023,1,Warzywa gruntowe,x
+2023,2,Warzywa gruntowe,x
+2023,3,Warzywa gruntowe,x
+2023,4,Warzywa gruntowe,42.06
+2023,5,Warzywa gruntowe,9.41
+2023,6,Warzywa gruntowe,38.06
+2023,7,Warzywa gruntowe,52.96
+2023,8,Warzywa gruntowe,0.04
+2023,9,Warzywa gruntowe,0.0
+2023,10,Warzywa gruntowe,0.0
+2023,11,Warzywa gruntowe,0.0
+2023,12,Warzywa gruntowe,0.0
+2023,13,Warzywa gruntowe,x
+2023,14,Warzywa gruntowe,x
+2023,1,Krzewy owocowe,0.0
+2023,2,Krzewy owocowe,0.0
+2023,3,Krzewy owocowe,78.33
+2023,4,Krzewy owocowe,95.82
+2023,5,Krzewy owocowe,85.08
+2023,6,Krzewy owocowe,89.87
+2023,7,Krzewy owocowe,87.26
+2023,8,Krzewy owocowe,4.37
+2023,9,Krzewy owocowe,0.0
+2023,10,Krzewy owocowe,0.0
+2023,11,Krzewy owocowe,0.0
+2023,12,Krzewy owocowe,0.0
+2023,13,Krzewy owocowe,x
+2023,14,Krzewy owocowe,x
+2023,1,Drzewa owocowe,0.0
+2023,2,Drzewa owocowe,0.0
+2023,3,Drzewa owocowe,12.7
+2023,4,Drzewa owocowe,52.04
+2023,5,Drzewa owocowe,6.89
+2023,6,Drzewa owocowe,11.53
+2023,7,Drzewa owocowe,8.8
+2023,8,Drzewa owocowe,0.0
+2023,9,Drzewa owocowe,0.0
+2023,10,Drzewa owocowe,0.0
+2023,11,Drzewa owocowe,0.0
+2023,12,Drzewa owocowe,0.0
+2023,13,Drzewa owocowe,x
+2023,14,Drzewa owocowe,x
+2023,1,Truskawki,0.0
+2023,2,Truskawki,11.49
+2023,3,Truskawki,79.17
+2023,4,Truskawki,91.86
+2023,5,Truskawki,65.34
+2023,6,Truskawki,59.4
+2023,7,Truskawki,36.21
+2023,8,Truskawki,0.0
+2023,9,Truskawki,0.0
+2023,10,Truskawki,x
+2023,11,Truskawki,x
+2023,12,Truskawki,x
+2023,13,Truskawki,x
+2023,14,Truskawki,x
+2023,1,Rośliny strączkowe,x
+2023,2,Rośliny strączkowe,x
+2023,3,Rośliny strączkowe,x
+2023,4,Rośliny strączkowe,85.56
+2023,5,Rośliny strączkowe,63.77
+2023,6,Rośliny strączkowe,79.72
+2023,7,Rośliny strączkowe,80.22
+2023,8,Rośliny strączkowe,2.19
+2023,9,Rośliny strączkowe,0.0
+2023,10,Rośliny strączkowe,0.0
+2023,11,Rośliny strączkowe,0.0
+2023,12,Rośliny strączkowe,0.0
+2023,13,Rośliny strączkowe,0.0
+2023,14,Rośliny strączkowe,0.0
+2024,1,Zboża ozime,0.0
+2024,2,Zboża ozime,0.0
+2024,3,Zboża ozime,0.0
+2024,4,Zboża ozime,0.0
+2024,5,Zboża ozime,0.0
+2024,6,Zboża ozime,0.0
+2024,7,Zboża ozime,0.0
+2024,8,Zboża ozime,0.0
+2024,9,Zboża ozime,0.0
+2024,10,Zboża ozime,x
+2024,11,Zboża ozime,x
+2024,12,Zboża ozime,x
+2024,13,Zboża ozime,x
+2024,14,Zboża ozime,x
+2024,1,Zboża jare,0.0
+2024,2,Zboża jare,0.0
+2024,3,Zboża jare,0.0
+2024,4,Zboża jare,3.51
+2024,5,Zboża jare,0.0
+2024,6,Zboża jare,0.0
+2024,7,Zboża jare,0.0
+2024,8,Zboża jare,0.0
+2024,9,Zboża jare,0.0
+2024,10,Zboża jare,x
+2024,11,Zboża jare,x
+2024,12,Zboża jare,x
+2024,13,Zboża jare,x
+2024,14,Zboża jare,x
+2024,1,Kukurydza na ziarno,x
+2024,2,Kukurydza na ziarno,x
+2024,3,Kukurydza na ziarno,x
+2024,4,Kukurydza na ziarno,0.0
+2024,5,Kukurydza na ziarno,0.0
+2024,6,Kukurydza na ziarno,0.0
+2024,7,Kukurydza na ziarno,0.0
+2024,8,Kukurydza na ziarno,0.0
+2024,9,Kukurydza na ziarno,0.0
+2024,10,Kukurydza na ziarno,0.0
+2024,11,Kukurydza na ziarno,0.0
+2024,12,Kukurydza na ziarno,0.19
+2024,13,Kukurydza na ziarno,0.0
+2024,14,Kukurydza na ziarno,0.0
+2024,1,Kukurydza na kiszonkę,x
+2024,2,Kukurydza na kiszonkę,x
+2024,3,Kukurydza na kiszonkę,x
+2024,4,Kukurydza na kiszonkę,0.0
+2024,5,Kukurydza na kiszonkę,0.0
+2024,6,Kukurydza na kiszonkę,0.0
+2024,7,Kukurydza na kiszonkę,0.0
+2024,8,Kukurydza na kiszonkę,0.0
+2024,9,Kukurydza na kiszonkę,0.0
+2024,10,Kukurydza na kiszonkę,0.0
+2024,11,Kukurydza na kiszonkę,0.0
+2024,12,Kukurydza na kiszonkę,0.58
+2024,13,Kukurydza na kiszonkę,0.0
+2024,14,Kukurydza na kiszonkę,0.0
+2024,1,Rzepak i rzepik,0.0
+2024,2,Rzepak i rzepik,0.0
+2024,3,Rzepak i rzepik,0.0
+2024,4,Rzepak i rzepik,0.0
+2024,5,Rzepak i rzepik,0.0
+2024,6,Rzepak i rzepik,0.0
+2024,7,Rzepak i rzepik,x
+2024,8,Rzepak i rzepik,x
+2024,9,Rzepak i rzepik,x
+2024,10,Rzepak i rzepik,x
+2024,11,Rzepak i rzepik,x
+2024,12,Rzepak i rzepik,x
+2024,13,Rzepak i rzepik,12.86
+2024,14,Rzepak i rzepik,7.43
+2024,1,Ziemniak,x
+2024,2,Ziemniak,x
+2024,3,Ziemniak,0.0
+2024,4,Ziemniak,0.0
+2024,5,Ziemniak,0.0
+2024,6,Ziemniak,0.0
+2024,7,Ziemniak,0.0
+2024,8,Ziemniak,0.0
+2024,9,Ziemniak,0.0
+2024,10,Ziemniak,0.0
+2024,11,Ziemniak,0.0
+2024,12,Ziemniak,0.37
+2024,13,Ziemniak,4.01
+2024,14,Ziemniak,x
+2024,1,Burak cukrowy,0.0
+2024,2,Burak cukrowy,0.0
+2024,3,Burak cukrowy,0.0
+2024,4,Burak cukrowy,0.0
+2024,5,Burak cukrowy,0.0
+2024,6,Burak cukrowy,0.0
+2024,7,Burak cukrowy,0.0
+2024,8,Burak cukrowy,0.0
+2024,9,Burak cukrowy,0.0
+2024,10,Burak cukrowy,0.0
+2024,11,Burak cukrowy,0.0
+2024,12,Burak cukrowy,0.0
+2024,13,Burak cukrowy,0.0
+2024,14,Burak cukrowy,0.0
+2024,1,Chmiel,x
+2024,2,Chmiel,x
+2024,3,Chmiel,x
+2024,4,Chmiel,0.0
+2024,5,Chmiel,0.0
+2024,6,Chmiel,0.0
+2024,7,Chmiel,0.0
+2024,8,Chmiel,0.0
+2024,9,Chmiel,0.0
+2024,10,Chmiel,0.0
+2024,11,Chmiel,0.0
+2024,12,Chmiel,0.0
+2024,13,Chmiel,x
+2024,14,Chmiel,x
+2024,1,Tytoń,x
+2024,2,Tytoń,x
+2024,3,Tytoń,x
+2024,4,Tytoń,0.0
+2024,5,Tytoń,0.0
+2024,6,Tytoń,0.0
+2024,7,Tytoń,0.0
+2024,8,Tytoń,0.0
+2024,9,Tytoń,0.0
+2024,10,Tytoń,0.0
+2024,11,Tytoń,0.0
+2024,12,Tytoń,0.0
+2024,13,Tytoń,x
+2024,14,Tytoń,x
+2024,1,Warzywa gruntowe,x
+2024,2,Warzywa gruntowe,x
+2024,3,Warzywa gruntowe,x
+2024,4,Warzywa gruntowe,0.0
+2024,5,Warzywa gruntowe,0.0
+2024,6,Warzywa gruntowe,0.0
+2024,7,Warzywa gruntowe,0.0
+2024,8,Warzywa gruntowe,0.0
+2024,9,Warzywa gruntowe,0.0
+2024,10,Warzywa gruntowe,0.0
+2024,11,Warzywa gruntowe,0.0
+2024,12,Warzywa gruntowe,0.0
+2024,13,Warzywa gruntowe,x
+2024,14,Warzywa gruntowe,x
+2024,1,Krzewy owocowe,0.0
+2024,2,Krzewy owocowe,0.0
+2024,3,Krzewy owocowe,0.0
+2024,4,Krzewy owocowe,0.0
+2024,5,Krzewy owocowe,0.0
+2024,6,Krzewy owocowe,0.0
+2024,7,Krzewy owocowe,0.0
+2024,8,Krzewy owocowe,0.0
+2024,9,Krzewy owocowe,0.0
+2024,10,Krzewy owocowe,0.0
+2024,11,Krzewy owocowe,0.0
+2024,12,Krzewy owocowe,0.37
+2024,13,Krzewy owocowe,x
+2024,14,Krzewy owocowe,x
+2024,1,Drzewa owocowe,0.0
+2024,2,Drzewa owocowe,0.0
+2024,3,Drzewa owocowe,0.0
+2024,4,Drzewa owocowe,0.0
+2024,5,Drzewa owocowe,0.0
+2024,6,Drzewa owocowe,0.0
+2024,7,Drzewa owocowe,0.0
+2024,8,Drzewa owocowe,0.0
+2024,9,Drzewa owocowe,0.0
+2024,10,Drzewa owocowe,0.0
+2024,11,Drzewa owocowe,0.0
+2024,12,Drzewa owocowe,0.0
+2024,13,Drzewa owocowe,x
+2024,14,Drzewa owocowe,x
+2024,1,Truskawki,0.0
+2024,2,Truskawki,0.0
+2024,3,Truskawki,0.0
+2024,4,Truskawki,0.0
+2024,5,Truskawki,0.0
+2024,6,Truskawki,0.0
+2024,7,Truskawki,0.0
+2024,8,Truskawki,0.0
+2024,9,Truskawki,0.0
+2024,10,Truskawki,x
+2024,11,Truskawki,x
+2024,12,Truskawki,x
+2024,13,Truskawki,x
+2024,14,Truskawki,x
+2024,1,Rośliny strączkowe,x
+2024,2,Rośliny strączkowe,x
+2024,3,Rośliny strączkowe,x
+2024,4,Rośliny strączkowe,0.0
+2024,5,Rośliny strączkowe,0.0
+2024,6,Rośliny strączkowe,0.0
+2024,7,Rośliny strączkowe,0.0
+2024,8,Rośliny strączkowe,0.0
+2024,9,Rośliny strączkowe,0.0
+2024,10,Rośliny strączkowe,0.0
+2024,11,Rośliny strączkowe,0.0
+2024,12,Rośliny strączkowe,0.0
+2024,13,Rośliny strączkowe,0.0
+2024,14,Rośliny strączkowe,0.0
+2025,1,Zboża ozime,13.92
+2025,2,Zboża ozime,13.92
+2025,3,Zboża ozime,0.0
+2025,4,Zboża ozime,1.57
+2025,5,Zboża ozime,0.05
+2025,6,Zboża ozime,0.0
+2025,7,Zboża ozime,0.0
+2025,8,Zboża ozime,0.0
+2025,9,Zboża ozime,0.0
+2025,10,Zboża ozime,x
+2025,11,Zboża ozime,x
+2025,12,Zboża ozime,x
+2025,13,Zboża ozime,x
+2025,14,Zboża ozime,x
+2025,1,Zboża jare,17.67
+2025,2,Zboża jare,21.98
+2025,3,Zboża jare,0.05
+2025,4,Zboża jare,9.65
+2025,5,Zboża jare,2.84
+2025,6,Zboża jare,0.0
+2025,7,Zboża jare,0.0
+2025,8,Zboża jare,0.0
+2025,9,Zboża jare,0.0
+2025,10,Zboża jare,x
+2025,11,Zboża jare,x
+2025,12,Zboża jare,x
+2025,13,Zboża jare,x
+2025,14,Zboża jare,x
+2025,1,Kukurydza na ziarno,x
+2025,2,Kukurydza na ziarno,x
+2025,3,Kukurydza na ziarno,x
+2025,4,Kukurydza na ziarno,0.0
+2025,5,Kukurydza na ziarno,0.0
+2025,6,Kukurydza na ziarno,0.0
+2025,7,Kukurydza na ziarno,0.0
+2025,8,Kukurydza na ziarno,0.0
+2025,9,Kukurydza na ziarno,0.0
+2025,10,Kukurydza na ziarno,0.0
+2025,11,Kukurydza na ziarno,0.0
+2025,12,Kukurydza na ziarno,0.0
+2025,13,Kukurydza na ziarno,0.0
+2025,14,Kukurydza na ziarno,0.0
+2025,1,Kukurydza na kiszonkę,x
+2025,2,Kukurydza na kiszonkę,x
+2025,3,Kukurydza na kiszonkę,x
+2025,4,Kukurydza na kiszonkę,0.0
+2025,5,Kukurydza na kiszonkę,0.0
+2025,6,Kukurydza na kiszonkę,0.0
+2025,7,Kukurydza na kiszonkę,0.0
+2025,8,Kukurydza na kiszonkę,0.0
+2025,9,Kukurydza na kiszonkę,0.0
+2025,10,Kukurydza na kiszonkę,0.0
+2025,11,Kukurydza na kiszonkę,0.0
+2025,12,Kukurydza na kiszonkę,0.0
+2025,13,Kukurydza na kiszonkę,0.0
+2025,14,Kukurydza na kiszonkę,0.0
+2025,1,Rzepak i rzepik,0.0
+2025,2,Rzepak i rzepik,0.0
+2025,3,Rzepak i rzepik,0.0
+2025,4,Rzepak i rzepik,0.05
+2025,5,Rzepak i rzepik,2.84
+2025,6,Rzepak i rzepik,0.08
+2025,7,Rzepak i rzepik,x
+2025,8,Rzepak i rzepik,x
+2025,9,Rzepak i rzepik,x
+2025,10,Rzepak i rzepik,x
+2025,11,Rzepak i rzepik,x
+2025,12,Rzepak i rzepik,x
+2025,13,Rzepak i rzepik,0.0
+2025,14,Rzepak i rzepik,0.0
+2025,1,Ziemniak,x
+2025,2,Ziemniak,x
+2025,3,Ziemniak,0.0
+2025,4,Ziemniak,0.0
+2025,5,Ziemniak,0.0
+2025,6,Ziemniak,0.0
+2025,7,Ziemniak,0.0
+2025,8,Ziemniak,0.0
+2025,9,Ziemniak,0.0
+2025,10,Ziemniak,0.0
+2025,11,Ziemniak,0.0
+2025,12,Ziemniak,0.0
+2025,13,Ziemniak,0.0
+2025,14,Ziemniak,x
+2025,1,Burak cukrowy,0.0
+2025,2,Burak cukrowy,0.0
+2025,3,Burak cukrowy,0.0
+2025,4,Burak cukrowy,0.0
+2025,5,Burak cukrowy,0.0
+2025,6,Burak cukrowy,0.0
+2025,7,Burak cukrowy,0.0
+2025,8,Burak cukrowy,0.0
+2025,9,Burak cukrowy,0.0
+2025,10,Burak cukrowy,0.0
+2025,11,Burak cukrowy,0.0
+2025,12,Burak cukrowy,0.0
+2025,13,Burak cukrowy,0.0
+2025,14,Burak cukrowy,0.0
+2025,1,Chmiel,x
+2025,2,Chmiel,x
+2025,3,Chmiel,x
+2025,4,Chmiel,0.0
+2025,5,Chmiel,0.0
+2025,6,Chmiel,0.0
+2025,7,Chmiel,0.0
+2025,8,Chmiel,0.0
+2025,9,Chmiel,0.0
+2025,10,Chmiel,0.0
+2025,11,Chmiel,0.0
+2025,12,Chmiel,0.0
+2025,13,Chmiel,x
+2025,14,Chmiel,x
+2025,1,Tytoń,x
+2025,2,Tytoń,x
+2025,3,Tytoń,x
+2025,4,Tytoń,0.0
+2025,5,Tytoń,0.0
+2025,6,Tytoń,0.0
+2025,7,Tytoń,0.0
+2025,8,Tytoń,0.0
+2025,9,Tytoń,0.0
+2025,10,Tytoń,0.0
+2025,11,Tytoń,0.0
+2025,12,Tytoń,0.0
+2025,13,Tytoń,x
+2025,14,Tytoń,x
+2025,1,Warzywa gruntowe,x
+2025,2,Warzywa gruntowe,x
+2025,3,Warzywa gruntowe,x
+2025,4,Warzywa gruntowe,0.0
+2025,5,Warzywa gruntowe,0.0
+2025,6,Warzywa gruntowe,0.0
+2025,7,Warzywa gruntowe,0.0
+2025,8,Warzywa gruntowe,0.0
+2025,9,Warzywa gruntowe,0.0
+2025,10,Warzywa gruntowe,0.0
+2025,11,Warzywa gruntowe,0.0
+2025,12,Warzywa gruntowe,0.0
+2025,13,Warzywa gruntowe,x
+2025,14,Warzywa gruntowe,x
+2025,1,Krzewy owocowe,0.0
+2025,2,Krzewy owocowe,0.16
+2025,3,Krzewy owocowe,0.0
+2025,4,Krzewy owocowe,1.09
+2025,5,Krzewy owocowe,0.32
+2025,6,Krzewy owocowe,0.0
+2025,7,Krzewy owocowe,0.0
+2025,8,Krzewy owocowe,0.0
+2025,9,Krzewy owocowe,0.0
+2025,10,Krzewy owocowe,0.0
+2025,11,Krzewy owocowe,0.0
+2025,12,Krzewy owocowe,0.0
+2025,13,Krzewy owocowe,x
+2025,14,Krzewy owocowe,x
+2025,1,Drzewa owocowe,0.0
+2025,2,Drzewa owocowe,0.0
+2025,3,Drzewa owocowe,0.0
+2025,4,Drzewa owocowe,0.0
+2025,5,Drzewa owocowe,0.0
+2025,6,Drzewa owocowe,0.0
+2025,7,Drzewa owocowe,0.0
+2025,8,Drzewa owocowe,0.0
+2025,9,Drzewa owocowe,0.0
+2025,10,Drzewa owocowe,0.0
+2025,11,Drzewa owocowe,0.0
+2025,12,Drzewa owocowe,0.0
+2025,13,Drzewa owocowe,x
+2025,14,Drzewa owocowe,x
+2025,1,Truskawki,13.92
+2025,2,Truskawki,13.82
+2025,3,Truskawki,0.0
+2025,4,Truskawki,0.08
+2025,5,Truskawki,0.0
+2025,6,Truskawki,0.0
+2025,7,Truskawki,0.0
+2025,8,Truskawki,0.0
+2025,9,Truskawki,0.0
+2025,10,Truskawki,x
+2025,11,Truskawki,x
+2025,12,Truskawki,x
+2025,13,Truskawki,x
+2025,14,Truskawki,x
+2025,1,Rośliny strączkowe,x
+2025,2,Rośliny strączkowe,x
+2025,3,Rośliny strączkowe,x
+2025,4,Rośliny strączkowe,0.0
+2025,5,Rośliny strączkowe,0.0
+2025,6,Rośliny strączkowe,0.0
+2025,7,Rośliny strączkowe,0.0
+2025,8,Rośliny strączkowe,0.0
+2025,9,Rośliny strączkowe,0.0
+2025,10,Rośliny strączkowe,0.0
+2025,11,Rośliny strączkowe,0.0
+2025,12,Rośliny strączkowe,0.0
+2025,13,Rośliny strączkowe,0.0
+2025,14,Rośliny strączkowe,0.0
+2026,1,Zboża ozime,0.0
+2026,2,Zboża ozime,0.2
+2026,3,Zboża ozime,0.0
+2026,4,Zboża ozime,0.0
+2026,5,Zboża ozime,0.0
+2026,6,Zboża ozime,0.0
+2026,7,Zboża ozime,0.0
+2026,8,Zboża ozime,0.0
+2026,9,Zboża ozime,0.0
+2026,10,Zboża ozime,x
+2026,11,Zboża ozime,x
+2026,12,Zboża ozime,x
+2026,13,Zboża ozime,x
+2026,14,Zboża ozime,x
+2026,1,Zboża jare,0.0
+2026,2,Zboża jare,3.84
+2026,3,Zboża jare,0.0
+2026,4,Zboża jare,0.0
+2026,5,Zboża jare,0.0
+2026,6,Zboża jare,0.0
+2026,7,Zboża jare,0.0
+2026,8,Zboża jare,0.0
+2026,9,Zboża jare,0.0
+2026,10,Zboża jare,x
+2026,11,Zboża jare,x
+2026,12,Zboża jare,x
+2026,13,Zboża jare,x
+2026,14,Zboża jare,x
+2026,1,Kukurydza na ziarno,x
+2026,2,Kukurydza na ziarno,x
+2026,3,Kukurydza na ziarno,x
+2026,4,Kukurydza na ziarno,0.0
+2026,5,Kukurydza na ziarno,0.0
+2026,6,Kukurydza na ziarno,0.0
+2026,7,Kukurydza na ziarno,0.0
+2026,8,Kukurydza na ziarno,0.0
+2026,9,Kukurydza na ziarno,0.0
+2026,10,Kukurydza na ziarno,2.79
+2026,11,Kukurydza na ziarno,0.0
+2026,12,Kukurydza na ziarno,0.0
+2026,13,Kukurydza na ziarno,0.0
+2026,14,Kukurydza na ziarno,0.0
+2026,1,Kukurydza na kiszonkę,x
+2026,2,Kukurydza na kiszonkę,x
+2026,3,Kukurydza na kiszonkę,x
+2026,4,Kukurydza na kiszonkę,0.0
+2026,5,Kukurydza na kiszonkę,0.0
+2026,6,Kukurydza na kiszonkę,0.0
+2026,7,Kukurydza na kiszonkę,0.0
+2026,8,Kukurydza na kiszonkę,0.0
+2026,9,Kukurydza na kiszonkę,0.0
+2026,10,Kukurydza na kiszonkę,4.2
+2026,11,Kukurydza na kiszonkę,0.02
+2026,12,Kukurydza na kiszonkę,0.0
+2026,13,Kukurydza na kiszonkę,0.0
+2026,14,Kukurydza na kiszonkę,0.0
+2026,1,Rzepak i rzepik,0.0
+2026,2,Rzepak i rzepik,0.0
+2026,3,Rzepak i rzepik,0.0
+2026,4,Rzepak i rzepik,0.0
+2026,5,Rzepak i rzepik,0.0
+2026,6,Rzepak i rzepik,0.0
+2026,7,Rzepak i rzepik,x
+2026,8,Rzepak i rzepik,x
+2026,9,Rzepak i rzepik,x
+2026,10,Rzepak i rzepik,x
+2026,11,Rzepak i rzepik,x
+2026,12,Rzepak i rzepik,x
+2026,13,Rzepak i rzepik,0.0
+2026,14,Rzepak i rzepik,0.0
+2026,1,Ziemniak,x
+2026,2,Ziemniak,x
+2026,3,Ziemniak,0.0
+2026,4,Ziemniak,0.0
+2026,5,Ziemniak,0.0
+2026,6,Ziemniak,0.0
+2026,7,Ziemniak,0.0
+2026,8,Ziemniak,0.0
+2026,9,Ziemniak,0.0
+2026,10,Ziemniak,0.0
+2026,11,Ziemniak,0.0
+2026,12,Ziemniak,0.0
+2026,13,Ziemniak,0.0
+2026,14,Ziemniak,x
+2026,1,Burak cukrowy,0.0
+2026,2,Burak cukrowy,0.0
+2026,3,Burak cukrowy,0.0
+2026,4,Burak cukrowy,0.0
+2026,5,Burak cukrowy,0.0
+2026,6,Burak cukrowy,0.0
+2026,7,Burak cukrowy,0.0
+2026,8,Burak cukrowy,0.0
+2026,9,Burak cukrowy,0.0
+2026,10,Burak cukrowy,0.0
+2026,11,Burak cukrowy,0.0
+2026,12,Burak cukrowy,0.0
+2026,13,Burak cukrowy,0.0
+2026,14,Burak cukrowy,0.0
+2026,1,Chmiel,x
+2026,2,Chmiel,x
+2026,3,Chmiel,x
+2026,4,Chmiel,0.0
+2026,5,Chmiel,0.0
+2026,6,Chmiel,0.0
+2026,7,Chmiel,0.0
+2026,8,Chmiel,0.0
+2026,9,Chmiel,0.0
+2026,10,Chmiel,0.0
+2026,11,Chmiel,0.0
+2026,12,Chmiel,0.0
+2026,13,Chmiel,x
+2026,14,Chmiel,x
+2026,1,Tytoń,x
+2026,2,Tytoń,x
+2026,3,Tytoń,x
+2026,4,Tytoń,0.0
+2026,5,Tytoń,0.0
+2026,6,Tytoń,0.0
+2026,7,Tytoń,0.0
+2026,8,Tytoń,0.0
+2026,9,Tytoń,0.0
+2026,10,Tytoń,0.0
+2026,11,Tytoń,0.0
+2026,12,Tytoń,0.0
+2026,13,Tytoń,x
+2026,14,Tytoń,x
+2026,1,Warzywa gruntowe,x
+2026,2,Warzywa gruntowe,x
+2026,3,Warzywa gruntowe,x
+2026,4,Warzywa gruntowe,0.0
+2026,5,Warzywa gruntowe,0.0
+2026,6,Warzywa gruntowe,0.0
+2026,7,Warzywa gruntowe,0.0
+2026,8,Warzywa gruntowe,0.0
+2026,9,Warzywa gruntowe,0.0
+2026,10,Warzywa gruntowe,0.0
+2026,11,Warzywa gruntowe,0.0
+2026,12,Warzywa gruntowe,0.0
+2026,13,Warzywa gruntowe,x
+2026,14,Warzywa gruntowe,x
+2026,1,Krzewy owocowe,0.0
+2026,2,Krzewy owocowe,0.0
+2026,3,Krzewy owocowe,0.0
+2026,4,Krzewy owocowe,0.0
+2026,5,Krzewy owocowe,0.0
+2026,6,Krzewy owocowe,0.0
+2026,7,Krzewy owocowe,0.0
+2026,8,Krzewy owocowe,0.0
+2026,9,Krzewy owocowe,0.0
+2026,10,Krzewy owocowe,0.0
+2026,11,Krzewy owocowe,0.0
+2026,12,Krzewy owocowe,0.0
+2026,13,Krzewy owocowe,x
+2026,14,Krzewy owocowe,x
+2026,1,Drzewa owocowe,0.0
+2026,2,Drzewa owocowe,0.0
+2026,3,Drzewa owocowe,0.0
+2026,4,Drzewa owocowe,0.0
+2026,5,Drzewa owocowe,0.0
+2026,6,Drzewa owocowe,0.0
+2026,7,Drzewa owocowe,0.0
+2026,8,Drzewa owocowe,0.0
+2026,9,Drzewa owocowe,0.0
+2026,10,Drzewa owocowe,0.0
+2026,11,Drzewa owocowe,0.0
+2026,12,Drzewa owocowe,0.0
+2026,13,Drzewa owocowe,x
+2026,14,Drzewa owocowe,x
+2026,1,Truskawki,0.0
+2026,2,Truskawki,0.0
+2026,3,Truskawki,0.0
+2026,4,Truskawki,0.0
+2026,5,Truskawki,0.0
+2026,6,Truskawki,0.0
+2026,7,Truskawki,0.0
+2026,8,Truskawki,0.0
+2026,9,Truskawki,0.0
+2026,10,Truskawki,x
+2026,11,Truskawki,x
+2026,12,Truskawki,x
+2026,13,Truskawki,x
+2026,14,Truskawki,x
+2026,1,Rośliny strączkowe,x
+2026,2,Rośliny strączkowe,x
+2026,3,Rośliny strączkowe,x
+2026,4,Rośliny strączkowe,0.0
+2026,5,Rośliny strączkowe,0.0
+2026,6,Rośliny strączkowe,0.0
+2026,7,Rośliny strączkowe,0.0
+2026,8,Rośliny strączkowe,0.0
+2026,9,Rośliny strączkowe,0.0
+2026,10,Rośliny strączkowe,0.0
+2026,11,Rośliny strączkowe,0.0
+2026,12,Rośliny strączkowe,0.0
+2026,13,Rośliny strączkowe,0.0
+2026,14,Rośliny strączkowe,0.0

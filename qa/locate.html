@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA locate</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; height: 100%; background: #111317; color: #e8e4da; font: 13px/1.4 ui-sans-serif, system-ui, sans-serif; }
+  main { padding: 16px; }
+  button { background: #1c1f25; color: #e8e4da; border: 1px solid #262a31; border-radius: 8px; padding: 8px 12px; cursor: pointer; font: inherit; }
+  pre { background: rgba(17,19,23,.92); border: 1px solid #262a31; border-radius: 8px; padding: 10px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<main>
+  <b style="color:#d9ad57">locate.js</b>
+  <p><button id="open">Otwórz wybór lokalizacji (PL)</button> <button id="openEn">Open picker (EN)</button></p>
+  <pre id="out">-</pre>
+</main>
+<script type="module">
+  import { openPicker } from '../lib/locate.js';
+  let site = { lat: 53.2886348, lon: 15.0687030, rotDeg: 313, name: 'Witkowo, gm. Stargard', source: 'default' };
+  const out = document.getElementById('out');
+  async function go(lang) {
+    const r = await openPicker(site, lang);
+    window.__lastResult = r;
+    out.textContent = JSON.stringify(r, null, 2);
+    if (r) site = r;
+  }
+  document.getElementById('open').onclick = () => go('pl');
+  document.getElementById('openEn').onclick = () => go('en');
+  window.__openPicker = openPicker;
+</script>
+</body>
+</html>

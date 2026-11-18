@@ -25,6 +25,7 @@
   <label><input id="play" type="checkbox"> play (1 h/s)</label>
   <label><input id="low" type="checkbox"> quality low</label>
   <label><input id="shadows" type="checkbox" checked> shadows</label>
+  <label><input id="rays" type="checkbox" checked> rays</label>
   <div id="info">loading…</div>
 </div>
 <script type="module">
@@ -51,11 +52,12 @@ controls.enableDamping = true;
 controls.update();
 addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
 
-const state = { hour: 13, winter: 0, season: 'summer', sun: 0, dayOfSeason: 50, water: 0, speed: 1, quality: 'high', show: { power: true, water: true, labels: true } };
+const state = { hour: 13, winter: 0, season: 'summer', sun: 0, dayOfSeason: 50, water: 0, speed: 1, quality: 'high', show: { power: true, water: true, labels: true, rays: true } };
 const $ = id => document.getElementById(id);
 const fmt = h => `${String(Math.floor(h)).padStart(2, '0')}:${String(Math.floor((h % 1) * 60)).padStart(2, '0')}`;
 $('hour').oninput = e => { state.hour = +e.target.value; };
 $('winter').oninput = e => { state.winter = +e.target.value; $('wv').textContent = state.winter.toFixed(2); };
+$('rays').onchange = e => { state.show.rays = e.target.checked; };
 $('low').onchange = e => { state.quality = e.target.checked ? 'low' : 'high'; };
 $('shadows').onchange = e => {
   renderer.shadowMap.enabled = e.target.checked;
@@ -82,7 +84,7 @@ function frame(now) {
   frames++; if (now - fpsT > 1000) { fps = frames * 1000 / (now - fpsT); frames = 0; fpsT = now; }
   const i = mod.info();
   $('hv').textContent = fmt(state.hour);
-  $('info').textContent = `alt ${i.sunAltDeg.toFixed(1)}  az ${i.sunAzDeg.toFixed(1)}\nphase ${i.phase}  sun ${state.sun.toFixed(3)}\nsunrise ${i.sunrise}  sunset ${i.sunset}  winterDay ${i.winterDay}\nfps ${fps.toFixed(0)}`;
+  $('info').textContent = `alt ${i.sunAltDeg.toFixed(1)}  az ${i.sunAzDeg.toFixed(1)}\nphase ${i.phase}  sun ${state.sun.toFixed(3)}\nsunrise ${i.sunrise}  sunset ${i.sunset}  winterDay ${i.winterDay}\nrays panel ${i.raysToPanels} crop ${i.raysToCrops} soil ${i.raysToSoil}\nfps ${fps.toFixed(0)}`;
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
@@ -91,7 +93,7 @@ requestAnimationFrame(frame);
 window.__qa = {
   setWinter(v) { state.winter = v; $('winter').value = v; $('wv').textContent = v.toFixed(2); },
   setHour(h) { state.hour = h; $('hour').value = h; mod.update(0, state); renderer.render(scene, camera); return mod.info(); },
-  state, info: () => mod.info(),
+  state, info: () => mod.info(), camera, controls,
 };
 window.__ready = true;
 </script>

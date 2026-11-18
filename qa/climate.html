@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA climate</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; background: #0b0d10; color: #e8e4da; font: 13px system-ui, sans-serif; }
+  main { max-width: 1260px; margin: 0 auto; padding: 16px; display: grid; grid-template-columns: 620px 1fr; gap: 16px; }
+  .charts { display: grid; gap: 10px; align-content: start; }
+  .panel { background: rgba(17,19,23,.9); border-radius: 8px; padding: 10px 12px; display: grid; gap: 8px; align-content: start; }
+  label { display: flex; gap: 8px; align-items: center; }
+  input[type=range] { flex: 1; accent-color: #d9ad57; }
+  #big { font-size: 34px; color: #d9ad57; font-variant-numeric: tabular-nums; }
+  pre { margin: 0; color: #cfc9bb; font-size: 11.5px; white-space: pre-wrap; }
+  button { background: #2a2e36; color: #ddd; border: 1px solid #444; border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+  .small { display: flex; gap: 8px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<main>
+  <div class="charts" id="charts"></div>
+  <div class="panel">
+    <div class="small"><button data-l="pl">PL</button><button data-l="en">EN</button>
+      <label><input type="checkbox" id="real" checked> state.realClimate</label></div>
+    <div class="small" id="sites"><button data-s="53.2886,15.0687,Witkowo">Witkowo</button><button data-s="49.30,19.95,Zakopane">Zakopane</button>
+      <button data-s="54.60,18.80,Hel">Hel</button><button data-s="54.10,22.93,Suwałki">Suwałki</button><span id="sitest"></span></div>
+    <label>winter <input type="range" id="winter" min="0" max="1" step="0.01" value="0"><span id="wv">0.00</span></label>
+    <label>hour <input type="range" id="hour" min="0" max="24" step="0.25" value="14"><span id="hv">14.00</span></label>
+    <div id="big">--</div>
+    <pre id="state"></pre>
+    <pre id="info">loading...</pre>
+    <div class="small" id="smallcharts"></div>
+  </div>
+</main>
+<script type="module">
+import { init } from '../lib/climate.js';
+const climate = init({});
+const state = { hour: 14, winter: 0, sun: 0, realClimate: true };
+let lang = new URLSearchParams(location.search).get('lang') || 'pl';
+const $ = (id) => document.getElementById(id);
+function charts() {
+  $('charts').replaceChildren(...['stripes', 'annual', 'monthly'].map((k) => climate.chartCanvas(k, lang)));
+  $('smallcharts').replaceChildren(...['stripes', 'annual', 'monthly'].map((k) => climate.chartCanvas(k, lang, { width: 300, height: 110 })));
+}
+function tick() {
+  state.winter = +$('winter').value; state.hour = +$('hour').value; state.realClimate = $('real').checked;
+  $('wv').textContent = state.winter.toFixed(2); $('hv').textContent = state.hour.toFixed(2);
+  climate.update(0.016, state);
+  const i = climate.info(lang);
+  $('big').textContent = state.tempOutsideC == null ? 'null (model)' : state.tempOutsideC.toFixed(1) + ' °C';
+  $('state').textContent = `state.tempOutsideC = ${state.tempOutsideC == null ? 'null' : state.tempOutsideC.toFixed(2)}\nstate.sunScale = ${state.sunScale.toFixed(3)}`;
+  $('info').textContent = 'info() = ' + JSON.stringify(i, null, 1);
+}
+for (const b of document.querySelectorAll('[data-l]')) b.onclick = () => { lang = b.dataset.l; charts(); tick(); };
+for (const id of ['winter', 'hour', 'real']) $(id).oninput = tick;
+async function site(spec) {
+  const [lat, lon, name] = spec.split(','); $('sitest').textContent = name + ': loading…';
+  const t0 = performance.now(); await climate.setSite({ lat: +lat, lon: +lon, rotDeg: 0, name });
+  const i = climate.info(lang); $('sitest').textContent = `${name}: ${i.site.status} ${Math.round(performance.now() - t0)} ms`;
+  tick(); return i;
+}
+for (const b of document.querySelectorAll('[data-s]')) b.onclick = () => site(b.dataset.s);
+window.__site = site;
+charts();
+climate.ready.then(() => { tick(); window.__climate = climate; window.__set = (o) => { for (const k in o) $(k).value = o[k]; tick(); return climate.info(lang); }; });
+</script>
+</body>
+</html>

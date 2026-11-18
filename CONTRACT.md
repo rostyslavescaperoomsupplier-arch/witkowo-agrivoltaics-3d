@@ -103,3 +103,76 @@ Module owners:
 - `main.js` / `index.html` / `lib/i18n.js` (CORE): season toggle, easing state.winter, HUD temps from winter.info(),
   object "Плёнка теплицы", walk colliders from winter.colliders, irrigation auto schedule in winter 10:00–11:00 only.
 Module order each frame: sky -> power -> water -> growth -> winter.
+
+## REAL MAP + DATA OVERLAY — added 2026-11-18 (LOCAL ONLY, do not commit/push)
+User: overlay the farm on the real map with all collected data (satellite, geology, water, climate).
+Research data lands in `reference/geo/{satellite,geology,water,climate}/` (README.md in each; agents still
+writing some of them). Builders read them, never edit them. Copy what the site needs into `data/geo/`
+(small web-ready files: JPG <= 2 MB each, JSON) — `reference/` is not loaded by the site.
+New modules / owners:
+- `lib/geo.js` (agent MAP): georeference the 3D farm (site origin lat/lon, EPSG:2180 x/y, rotation of the
+  canopies vs north, measured on the orthophoto) -> exports `GEO = {lat, lon, x2180, y2180, rotDeg}` in
+  `data/geo/site.json`; real-map ground: orthophoto texture under/around the farm (default), year switcher
+  (2012/2014/2020/2023/2025 ortho = before/after), optional live WMS/WMTS tiles (Geoportal ORTO, geology,
+  soil, hydrogeology) for a large "Mapa" zoom-out (~2 km) with the 3D farm in place; layer opacity.
+  init(ctx) -> { update, info, setLayer(id), setYear(y), layers:[{id,label,legend?}] }.
+- `lib/underground.js` (agent SUBSURFACE): cut-away cross-section under the site from geology profile
+  (layers with depths, lithology colours, labels) + groundwater table / aquifer from water research; toggle;
+  camera can look below ground (main allows it when on).
+  init(ctx) -> { update, info, setVisible }.
+- `lib/climate.js` + `data/geo/climate.json` (agent CLIMATE): real climate drives the sim when
+  state.realClimate: hourly temperature profile per season for winter.js/HUD, real irradiation scaling for
+  power (state.sunScale), warming stripes / annual-mean chart rendered to a canvas for the info panel.
+  init(ctx) -> { update, info, chartCanvas(kind) }.
+- CORE (main.js/index.html/i18n.js): new side-panel section "Mapa i dane" (PL/EN): layer switcher, year,
+  opacity, underground toggle, real-climate toggle, data cards with sources/attribution (IMGW-PIB,
+  Open-Meteo CC BY 4.0, GUGiK/Geoportal, PIG-PIB, Copernicus). Module order: sky, power, water, growth,
+  winter, geo, underground, climate. Attribution line always visible when a real-map layer is on.
+
+## RAIN + TANK WATER LEVEL — added 2026-11-18 (LOCAL ONLY)
+User: "добавь дождь, уровень воды в баках и т.п."
+- `lib/rain.js` (agent RAIN, new): rain, runoff from the roof into the 18 `molded water tanks` (they are water-
+  filled ballast), visible water level inside each tank, puddles / wet look, rain->snow handled by winter.js
+  (rain.js fades out as state.winter -> 1, or shows sleet). Reads: state.rain 0..1 (main sets: Auto from climate
+  normals / On / Off), state.irrigationLpm (main copies water.info().lpm), state.hour, state.speed, state.winter.
+  Writes: state.tankLevel 0..1 (shared level, persists across the day), state.rainMmH.
+  info(): { rainMmH, rainTodayMm, tankLevel, tankLitres, tankCapacityL, inflowLpm, outflowLpm }.
+  Model: roof catchment = PV + roof area of the 3 canopies, gutters to the tanks; irrigation draws from tanks
+  (state.irrigationLpm) when level > 5%; overflow above 100% shown as spill.
+
+## ANY LOCATION IN POLAND — added 2026-11-18 (LOCAL ONLY)
+User: "place the farm at ANY point in Poland, taking geology, elevation differences etc. into account".
+Site object (main owns): `state.site = { lat, lon, rotDeg, name, source }`; default = Witkowo from
+data/geo/site.json. URL: `?lat=..&lon=..&rot=..`. When it changes, main calls `await mod.setSite?.(site)` on every
+module (in module order) and shows a loading note; modules must cope with a site change at any time (dispose old
+textures/meshes, no leaks) and must work offline-ish: if a live service fails, fall back gracefully + report it
+in info().errors. Scene origin (0,0,0) = the site point at ground level after levelling (see terrain).
+Owners:
+- `lib/locate.js` (agent LOCATE, new): self-contained location picker (modal 2D map: Leaflet 1.9.4 from cdnjs/unpkg
+  with GUGiK Geoportal ORTO WMTS + OSM base, Poland bounds), place search (GUGiK UUG geocoder or Nominatim with
+  proper usage: debounce, 1 req/s, no bulk), click/drag a farm footprint (36x42 m, rotatable handle), "use
+  Witkowo" preset, returns a site object. API: `openPicker(currentSite, lang) -> Promise<site|null>`. Injects its
+  own CSS matching the UI (dark panel, accent #d9ad57), PL/EN strings inside the module.
+- `lib/terrain.js` (agent TERRAIN, new): elevation around the site (GUGiK NMT WCS/WMS 1 m or 5 m grid if CORS
+  allows; fallback Open-Meteo elevation API / Copernicus DEM), ~1.6 km x 1.6 km grid (fine near the farm, coarse
+  far). API: `setSite(site)`, `heightAt(x,z)` in scene metres relative to the pad, `grid` {w,h,sizeM,heights},
+  info(): { elevationM (a.s.l.), slopePct, aspectDeg, reliefM (max-min within 200 m), padLevelM, cutM3, fillM3,
+  source }. Farm pad: levelled platform under the 36x42 m patch with cut/fill computed; terrain mesh itself is
+  built by geo.js using heightAt (terrain.js does not own the ground mesh).
+- `lib/geo.js` (agent MAP): becomes location-agnostic: live ortho (GUGiK WMS GetMap for any point, current +
+  archival years where available), live overlays (geology PIG SMGP, hydro MHP, GZWP), draped on a terrain mesh
+  displaced by terrain.heightAt; pad edges with cut/fill slopes; Witkowo pre-downloaded images stay as offline
+  fallback for the default site.
+- `lib/sitedata.js` (agent SITEDATA, new): point queries for the site: geology at point (PIG-PIB identify),
+  hydrogeology (MHP: GUPW depth, thickness, yield, quality), GZWP / JCWPd membership, soil if any service exists,
+  nearest IMGW station, land cover (CORINE/BDOT if CORS), protected areas (Natura 2000, GDOŚ WMS), flood risk
+  (ISOK / Wody Polskie hazard maps) — whatever has a CORS-friendly API. API: setSite(site), info() -> report
+  object with fields {value, unit, source, confidence}, and `suitability()` -> short agrivoltaics suitability
+  notes (slope, flood, protected area, groundwater depth, soil class).
+- `lib/climate.js` (agent CLIMATE): add `setSite(site)`: fetch Open-Meteo archive (ERA5) for the new point live
+  (1991–2020 daily + hourly profile days), compute the same JSON schema as data/geo/climate.json in the browser
+  (cache in sessionStorage), charts update; default site keeps the static JSON.
+- `lib/sky.js` (agent SKY): sun from state.site lat/lon (and scene rotation rotDeg: scene -z bearing) instead of
+  the hard-coded Witkowo.
+- CORE (later, after PERF): "Lokalizacja" UI (button opens locate.openPicker, URL param, loading state, site
+  report card from sitedata + terrain + climate), wire setSite across modules, camera/fog for terrain.
