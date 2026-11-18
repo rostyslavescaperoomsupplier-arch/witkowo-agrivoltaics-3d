@@ -14,6 +14,8 @@ const shot = (page, n) => page.screenshot({ path: path.join(OUT, `core-${TAG}${n
   const logs = [];
   const run = async (name, viewport, fn, extra = {}) => {
     const ctx = await browser.newContext({ viewport, deviceScaleFactor: 1, ...extra });
+    // the first-visit intro card (lib/tour.js) would cover the controls: mark it seen (qa/tour_shots.cjs tests it)
+    await ctx.addInitScript(() => { try { localStorage.setItem('witkowo3d:introSeen', '1'); } catch (e) { /* */ } });
     const page = await ctx.newPage();
     page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') logs.push(`[${name}] ${m.type()}: ${m.text()}`); });
     page.on('pageerror', (e) => logs.push(`[${name}] pageerror: ${e.message}`));

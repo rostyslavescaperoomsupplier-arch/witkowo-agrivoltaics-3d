@@ -10,7 +10,8 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611182127';
+import { initTour, parseSceneFromUrl } from './lib/tour.js?v=202611182204';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611182204';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -73,12 +74,15 @@ renderer.domElement.addEventListener('webglcontextlost', (e) => {
   setTimeout(() => {
     const el = $('#glLost'); if (!glLost || !el) return;
     el.innerHTML = `${esc(t('gl.stopped'))} <a href="#" style="color:#d9ad57">${esc(t('gl.reloadLow'))}</a>`;
-    el.querySelector('a').onclick = (ev) => { ev.preventDefault(); markAutoLow(); location.reload(); };
+    el.querySelector('a').onclick = (ev) => { ev.preventDefault(); markAutoLow(); saveSceneForReload(); location.reload(); };
   }, 12000);
 });
 const GL_KEY = 'q3dGlLost:' + location.pathname;
+// scene (season, layers, camera, clock) survives the reload after a GPU reset
+const RESTORE_KEY = 'witkowo3d:restore:' + location.pathname;
+const saveSceneForReload = () => { try { if (typeof getScene === 'function' && window.__witkowo) ssSet(RESTORE_KEY, JSON.stringify(getScene())); } catch (e) { /* ignore */ } };
 renderer.domElement.addEventListener('webglcontextrestored', () => {
-  const now = Date.now(), last = +ssGet(GL_KEY) || 0; ssSet(GL_KEY, now);
+  const now = Date.now(), last = +ssGet(GL_KEY) || 0; ssSet(GL_KEY, now); saveSceneForReload();
   if (now - last < 60000 && !QUALITY.low) markAutoLow();
   location.reload();
 });
@@ -250,10 +254,35 @@ const QS = new URLSearchParams(location.search);
 const DEFAULT_SITE = await fetch('./data/geo/site.json').then((r) => r.json())
   .then((j) => ({ lat: +j.lat, lon: +j.lon, rotDeg: +j.rotDeg, name: 'Witkowo', source: 'default' }))
   .catch(() => ({ lat: 53.2886348, lon: 15.068703, rotDeg: 313, name: 'Witkowo', source: 'default' }));
-const inPoland = (lat, lon) => lat > 48.9 && lat < 55 && lon > 14 && lon < 24.3;
+// Poland: data/geo/poland_border.json (Natural Earth, simplified, +-700 m) with its tolerance band; the bounding box is
+// only the fallback when the file cannot be loaded. lib/locate.js's isInPoland is used when it exports one.
+const PL_BORDER = await fetch('./data/geo/poland_border.json').then((r) => r.json()).catch(() => null);
+let locateInPoland = null;
+function inPoland(lat, lon) {
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return false;
+  if (locateInPoland) { try { return !!locateInPoland(lat, lon); } catch (e) { /* fall through */ } }
+  const ring = PL_BORDER?.lonlat;
+  if (!Array.isArray(ring) || ring.length < 4) return lat > 48.9 && lat < 55 && lon > 14 && lon < 24.3;
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i], [xj, yj] = ring[j];
+    if ((yi > lat) !== (yj > lat) && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) inside = !inside;
+  }
+  if (inside) return true;
+  // within the tolerance of the simplified border counts as inside
+  const tol = (PL_BORDER.tolM || 700) + 300, kx = 111320 * Math.cos((lat * Math.PI) / 180), ky = 110540;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const ax = (ring[j][0] - lon) * kx, ay = (ring[j][1] - lat) * ky, bx = (ring[i][0] - lon) * kx, by = (ring[i][1] - lat) * ky;
+    const dx = bx - ax, dy = by - ay, L2 = dx * dx + dy * dy || 1, u = Math.max(0, Math.min(1, -(ax * dx + ay * dy) / L2));
+    if (Math.hypot(ax + u * dx, ay + u * dy) < tol) return true;
+  }
+  return false;
+}
+let urlOutside = false;
 function siteFromUrl() {
   const lat = parseFloat(QS.get('lat')), lon = parseFloat(QS.get('lon')), rot = parseFloat(QS.get('rot'));
-  if (!Number.isFinite(lat) || !Number.isFinite(lon) || !inPoland(lat, lon)) return null;
+  if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+  if (!inPoland(lat, lon)) { urlOutside = true; return null; }
   return { lat, lon, rotDeg: Number.isFinite(rot) ? ((rot % 360) + 360) % 360 : DEFAULT_SITE.rotDeg, name: QS.get('name') || '', source: 'url' };
 }
 state.site = siteFromUrl() || DEFAULT_SITE;
@@ -480,8 +509,9 @@ function flyHome() {
   tween = { k: 0, d: 0.9, from: orbitP.target.clone(), to: p.target, p0: persp.position.clone(), p1: p.pos };
   camTouched = false;
 }
+const REDUCED_MOTION = matchMedia('(prefers-reduced-motion: reduce)').matches;
 function stepTween(dt) {
-  if (!tween) return; tween.k = Math.min(1, tween.k + dt / tween.d); const k = ease(tween.k);
+  if (!tween) return; tween.k = REDUCED_MOTION ? 1 : Math.min(1, tween.k + dt / tween.d); const k = ease(tween.k);
   if (tween.top) { const p = tween.from.clone().lerp(tween.to, k); orbitO.target.copy(p); ortho.position.set(p.x, 60, p.z + 0.01); ortho.zoom = tween.z0 + (tween.z1 - tween.z0) * k; ortho.updateProjectionMatrix(); }
   else { orbitP.target.copy(tween.from).lerp(tween.to, k); persp.position.copy(tween.p0).lerp(tween.p1, k); }
   if (tween.k >= 1) tween = null;
@@ -1025,6 +1055,9 @@ function updateHud() {
     vR.textContent = sim.rain === 'auto' ? t('status.auto', { v: rv }) : ri.rainMmH > 0.05 ? rv : t('irr.off'); vR.classList.toggle('muted', sim.rain === 'auto');
   }
   renderYears(); syncAttr(); syncMapView(); syncHudCompact(); syncShowRow();
+  $('#rainWinter').hidden = !(state.winter > 0.5);
+  if (state.realClimate && climateStale()) { state.realClimate = false; $('#tClimate').checked = false; notice(esc(t('climate.staleOff')), 8000); }
+  for (const b of $$('.seg button, .showrow button')) { const on = b.classList.contains('on'); if (b.getAttribute('aria-pressed') !== String(on)) b.setAttribute('aria-pressed', on); }
   if (!smallMQ.matches) document.documentElement.style.setProperty('--hudh', hud.offsetHeight + 'px'); // info panel stops above the HUD
   if (info.geo) { const g = info.geo; $('#mapStatus').textContent = g.loading ? t('map.loading') : g.error || ''; }
   { const n = siteName(); if ($('#locName').textContent !== n) renderLoc(); }
@@ -1124,6 +1157,8 @@ $('#bMapView').addEventListener('click', () => {
 function syncMapView() { const b = $('#bMapView'), far = mapFar(); b.textContent = t(far ? 'map.home' : 'map.view'); }
 
 // ---------------- location (any point in Poland) ----------------
+let climateFor = state.site; // the site the climate module's data belongs to (null = failed)
+const climateStale = () => !mods.climate || climateFor !== state.site;
 const SITE_GAP_MS = 60000; // Open-Meteo: ~6-7 new sites an hour; one new site per minute at most
 let lastSiteAt = 0, siteBusy = false;
 const STEP_IDS = ['terrain', 'geo', 'sky', 'climate', 'sitedata', 'underground'];
@@ -1140,11 +1175,11 @@ function renderLoc() {
   const note = $('#locNote'), list = STEP_IDS.filter((k) => steps[k]);
   if (!list.length) { note.hidden = true; return; }
   note.hidden = false;
-  const bad = list.filter((k) => steps[k].st === 'err');
+  const bad = list.filter((k) => steps[k].st === 'err' || steps[k].st === 'part');
   const head = siteBusy ? t('loc.loading') : bad.length ? t('loc.partial', { list: bad.map((k) => t('mod.' + k)).join(', ') }) : t('loc.done');
   note.innerHTML = `<div>${esc(head)}</div><ul>${list.map((k) => {
-    const s = steps[k], cls = { wait: 'st-wait', run: 'st-run', ok: 'st-ok', err: 'st-err', skip: 'st-skip' }[s.st];
-    const txt = { wait: t('loc.pending'), run: t('loc.running'), ok: t('loc.ok'), err: t('loc.err'), skip: t('loc.skip') }[s.st];
+    const s = steps[k], cls = { wait: 'st-wait', run: 'st-run', ok: 'st-ok', part: 'st-part', err: 'st-err', skip: 'st-skip' }[s.st];
+    const txt = { wait: t('loc.pending'), run: t('loc.running'), ok: t('loc.ok'), part: t('loc.part'), err: t('loc.err'), skip: t('loc.skip') }[s.st];
     return `<li><span>${esc(t('mod.' + k))}</span><span class="${cls}" title="${esc(s.msg || '')}">${esc(txt)}</span></li>`;
   }).join('')}</ul>`;
 }
@@ -1153,12 +1188,20 @@ function onReport() { const now = performance.now(); if (panelKind() === 'report
 async function runStep(k, fn) {
   if (!mods[k]) { steps[k] = { st: 'skip' }; renderLoc(); return; }
   steps[k] = { st: 'run' }; renderLoc();
-  try {
-    const r = await fn();
-    const errs = (() => { try { return mods[k]?.info?.()?.errors || []; } catch (e) { return []; } })();
-    steps[k] = { st: 'ok', msg: Array.isArray(errs) ? errs.slice(-2).join('; ') : '' }; void r;
-  } catch (e) { console.warn(`[${k}] setSite failed:`, e); steps[k] = { st: 'err', msg: e?.message || String(e) }; }
+  try { await fn(); steps[k] = stepVerdict(k); }
+  catch (e) { console.warn(`[${k}] setSite failed:`, e); steps[k] = { st: 'err', msg: e?.message || String(e) }; }
+  if (k === 'climate') climateFor = steps[k].st === 'err' ? null : state.site;
   renderLoc();
+}
+// a step that did not throw can still have failed inside: read the module's own report
+function stepVerdict(k) {
+  let i = null; try { i = mods[k]?.info?.(L2()) || null; } catch (e) { return { st: 'err', msg: e.message }; }
+  const errs = Array.isArray(i?.errors) ? i.errors.filter(Boolean) : [], last = errs.slice(-2).join('; ');
+  if (k === 'terrain' && i?.outsidePoland) return { st: 'err', msg: t('loc.outsidePl') };
+  if (k === 'climate') { const st = i?.site?.status; if (st === 'error' || st === 'stale') return { st: 'err', msg: last || st }; }
+  if (k === 'geo') { if (i?.status === 'error') return { st: 'err', msg: last || i.error || '' }; if (i?.status === 'partial') return { st: 'part', msg: last || i.error || '' }; }
+  if (k === 'sitedata' && (i?.errors?.length || 0) > 0) return { st: 'part', msg: last };
+  return errs.length ? { st: 'part', msg: last } : { st: 'ok', msg: '' };
 }
 // order: terrain first (geo drapes the ground on it), then geo, sky; climate + site report in parallel; underground
 // last (it reads the site report for the surface geology)
@@ -1185,7 +1228,7 @@ async function applySite(site, { initial = false } = {}) {
   ctx.invalidateShadows();
   if (panelKind() === 'report') renderReport();
   if (panelKind() === 'climate') renderClimate();
-  setTimeout(() => { if (!siteBusy && !STEP_IDS.some((k) => steps[k]?.st === 'err')) { for (const k of STEP_IDS) delete steps[k]; renderLoc(); } }, 8000);
+  setTimeout(() => { if (!siteBusy && !STEP_IDS.some((k) => steps[k]?.st === 'err' || steps[k]?.st === 'part')) { for (const k of STEP_IDS) delete steps[k]; renderLoc(); } }, 8000);
 }
 function setSiteUrl(site) {
   const u = new URL(location.href);
@@ -1195,7 +1238,7 @@ function setSiteUrl(site) {
 }
 $('#bLoc').addEventListener('click', async () => {
   const wait = SITE_GAP_MS - (Date.now() - lastSiteAt);
-  if (siteBusy || wait > 0) { notice(esc(t('loc.throttle', { s: Math.max(1, Math.ceil(wait / 1000)) })), 9000); return; }
+  if (wait > 0) { notice(esc(t('loc.throttle', { s: Math.max(1, Math.ceil(wait / 1000)) })), 9000); return; }
   let site = null;
   try { const m = await import(`./lib/locate.js${new URL(import.meta.url).search}`); site = await m.openPicker({ ...state.site }, L2()); }
   catch (e) { console.warn('locate', e); notice(esc(t('loc.pickerFail', { m: e?.message || e })), 9000); return; }
@@ -1276,6 +1319,7 @@ function renderClimate() {
   let html = panelHead(t('sec.data'), t('climate.title'), `${siteName()} · ${fmtCoord(state.site)}`);
   if (!c) { p.innerHTML = html + `<p class="est">${esc(t('climate.none'))}</p>`; bindClose(); return; }
   const sgn = (v) => (v > 0 ? '+' : '') + num(v);
+  if (climateStale()) { p.innerHTML = html + `<p class="est">${esc(t('climate.stale'))}</p>`; bindClose(); return; }
   html += `<dl class="kv">
     <dt>${esc(t('climate.annual'))}${ci?.annualMeanPeriod ? ` (${esc(ci.annualMeanPeriod)})` : ''}</dt><dd>${num(ci?.annualMean)} °C</dd>
     <dt>${esc(t('climate.base'))}</dt><dd>${num(ci?.baselineMean)} °C</dd>
@@ -1361,7 +1405,10 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
   state.speed = 60; $$('#speeds button').forEach((x) => x.classList.toggle('on', x.dataset.s === '60'));
   state.show.rays = false; $('#tRays').checked = false; callMod('sky', 'setRaysVisible', false);
 }
-$('#tClimate').addEventListener('change', (e) => { state.realClimate = e.target.checked; });
+$('#tClimate').addEventListener('change', (e) => {
+  if (e.target.checked && climateStale()) { e.target.checked = false; notice(esc(t('climate.staleOff')), 8000); }
+  state.realClimate = e.target.checked;
+});
 if (!mods.climate) $('#lClimate').style.display = 'none';
 $('#tRays').addEventListener('change', (e) => { state.show.rays = e.target.checked; callMod('sky', 'setRaysVisible', e.target.checked); });
 if (!mods.sky?.setRaysVisible) $('#lRays').style.display = 'none';
@@ -1417,6 +1464,7 @@ function getScene() {
   const c = cam === persp ? { pos: persp.position.toArray().map((v) => +v.toFixed(2)), target: orbitP.target.toArray().map((v) => +v.toFixed(2)) } : null;
   return {
     mode, hour: +state.hour.toFixed(2), season: state.season, speed: state.speed, playing: sim.playing,
+    growth: +state.dayOfSeason.toFixed(1), rain: sim.rain === 'auto' ? 'auto' : sim.rain === 'on' ? sim.rainLevel : 0, rainLevel: sim.rainLevel,
     layers: { power: state.show.power, water: state.show.water, labels: state.show.labels, xray: XRAY.on, rays: state.show.rays !== false,
       shadows: renderer.shadowMap.enabled, underground: !!state.show.underground, map: geoOn, rain: sim.rain },
     camera: c, site: { lat: state.site.lat, lon: state.site.lon, rotDeg: state.site.rotDeg, name: state.site.name || '' },
@@ -1424,12 +1472,16 @@ function getScene() {
 }
 const setTog = (sel, v) => { const c = $(sel); if (c && !c.disabled && c.checked !== !!v) { c.checked = !!v; c.dispatchEvent(new Event('change')); } };
 function applyScene(sc = {}) {
-  if (sc.site && Number.isFinite(+sc.site.lat) && Number.isFinite(+sc.site.lon) && (Math.abs(sc.site.lat - state.site.lat) > 1e-6 || Math.abs(sc.site.lon - state.site.lon) > 1e-6)) {
+  if (sc.site && Number.isFinite(+sc.site.lat) && Number.isFinite(+sc.site.lon) && inPoland(+sc.site.lat, +sc.site.lon) && (Math.abs(sc.site.lat - state.site.lat) > 1e-6 || Math.abs(sc.site.lon - state.site.lon) > 1e-6)) {
     const site = { lat: +sc.site.lat, lon: +sc.site.lon, rotDeg: Number.isFinite(+sc.site.rotDeg) ? +sc.site.rotDeg : state.site.rotDeg, name: sc.site.name || '', source: 'scene' };
     lastSiteAt = Date.now(); setSiteUrl(site); applySite(site);
   }
   if (sc.season === 'summer' || sc.season === 'winter') { state.season = sc.season; syncSeason(); }
-  if (Number.isFinite(+sc.hour)) { state.hour = ((+sc.hour % 24) + 24) % 24; syncClock(); }
+  if (Number.isFinite(+sc.hour)) { state.hour = ((+sc.hour % 24) + 24) % 24; syncClock(); if (typeof sc.playing !== 'boolean') { sim.playing = false; syncPlay(); } }
+  if (Number.isFinite(+sc.growth)) { state.dayOfSeason = clamp(+sc.growth, 0, 100); syncGrowth(); }
+  if (sc.rain === 'auto') sim.rain = 'auto';
+  else if (Number.isFinite(+sc.rain) && sc.rain !== null) { if (+sc.rain > 0) { sim.rain = 'on'; sim.rainLevel = clamp(+sc.rain, 0.05, 1); rRain.value = sim.rainLevel; } else sim.rain = 'off'; }
+  if (sc.rain != null) syncRainUi();
   if (Number.isFinite(+sc.speed)) { state.speed = +sc.speed; $$('#speeds button').forEach((x) => x.classList.toggle('on', +x.dataset.s === state.speed)); }
   if (typeof sc.playing === 'boolean') { sim.playing = sc.playing; syncPlay(); }
   const L = sc.layers || {};
@@ -1500,7 +1552,7 @@ function goLow(fps) {
   if (composer) { composer.setPixelRatio(renderer.getPixelRatio()); composer.setSize(innerWidth, innerHeight); }
   if ($('#tShadow').checked) applyShadows(false); hideShadowToggle();
   const u = new URL(location.href); u.searchParams.set('q', 'high'); // keep site / season parameters, change only q
-  notice(`${esc(t('slow.notice', { fps }))} <a href="${esc(u.pathname + u.search)}" style="color:var(--accent)">${esc(t('slow.full'))}</a>`);
+  if (!introOpen()) notice(`${esc(t('slow.notice', { fps }))} <a href="${esc(u.pathname + u.search)}" style="color:var(--accent)">${esc(t('slow.full'))}</a>`);
 }
 function probeFrame(raw) {
   if (probe.done) return;
@@ -1603,5 +1655,48 @@ if (!isDefaultSite(state.site)) applySite(state.site, { initial: true });
 else if (mods.geo) Promise.resolve(mods.geo.ready).catch(() => {}).then(() => { ctx.invalidateShadows(); renderYears(true); });
 frame();
 requestAnimationFrame(() => boot?.done());
-if (QUALITY.software && !QUALITY.forced) notice(esc(t('slow.notice', { fps: '<10' })), 15000);
-window.__witkowo = { applyScene, getScene, flyHome, applySite, openPanel, libs, colliders, setXray, flyToFlow, state, sim, mods, ctx, info, setMode, select, ITEMS, walk, persp, orbitP, ortho, pickAt, QUALITY, get mode() { return mode; }, get cam() { return cam; } };
+const introOpen = () => !!document.querySelector('.tour-root .tour-card');
+window.__witkowo = { climateStale: () => climateStale(), applyScene, getScene, flyHome, applySite, openPanel, libs, colliders, setXray, flyToFlow, state, sim, mods, ctx, info, setMode, select, ITEMS, walk, persp, orbitP, ortho, pickAt, QUALITY, get mode() { return mode; }, get cam() { return cam; } };
+
+// PNG of the current view including the object labels (lib/tour.js «Zapisz PNG»)
+function captureFrame() {
+  return new Promise((resolve) => {
+    try {
+      if (composer) composer.render(); else renderer.render(scene, cam); // fresh frame, copied before it is presented
+      const src = renderer.domElement, c = document.createElement('canvas'); c.width = src.width; c.height = src.height;
+      const g = c.getContext('2d'); g.drawImage(src, 0, 0);
+      const k = c.width / innerWidth;
+      if (labelsG.visible) for (const el of Object.values(labelEls)) {
+        if (!el.isConnected || el.style.display === 'none' || el.style.visibility === 'hidden') continue;
+        const r = el.getBoundingClientRect(); if (!r.width || r.right < 0 || r.left > innerWidth || r.bottom < 0 || r.top > innerHeight) continue;
+        g.fillStyle = 'rgba(12,13,16,0.82)'; g.strokeStyle = 'rgba(217,173,87,0.55)'; g.lineWidth = k;
+        g.beginPath(); g.roundRect(r.left * k, r.top * k, r.width * k, r.height * k, 5 * k); g.fill(); g.stroke();
+        g.fillStyle = '#d9ad57'; g.font = `600 ${11 * k}px ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif`; g.textBaseline = 'middle';
+        g.fillText(el.textContent, (r.left + 7) * k, (r.top + r.height / 2) * k);
+      }
+      c.toBlob((b) => resolve(b), 'image/png');
+    } catch (e) { console.warn('captureFrame', e); resolve(null); }
+  });
+}
+window.__witkowo.captureFrame = captureFrame;
+
+// ---------------- tour (lib/tour.js): intro card, guided tour, share link, PNG ----------------
+let tour = null;
+try { tour = initTour(window.__witkowo); } catch (e) { console.warn('[tour] init failed:', e); }
+window.__witkowo.tour = tour; window.__tour = tour; window.__tourMod = { initTour, parseSceneFromUrl }; // QA (qa/tour_shots.cjs)
+{
+  let restore = null; try { const v = ssGet(RESTORE_KEY); if (v) { sessionStorage.removeItem(RESTORE_KEY); restore = JSON.parse(v); } } catch (e) { restore = null; }
+  let urlScene = null; try { urlScene = parseSceneFromUrl(); } catch (e) { urlScene = null; }
+  if (restore) applyScene(restore); // after a GPU reset reload: same season, layers, camera, clock
+  else if (urlScene) applyScene(urlScene);
+  else tour?.showIntro();
+}
+if (urlOutside) { // ?lat/lon outside Poland: ignored, the default site stays; say so and clean the URL
+  const u = new URL(location.href); for (const k of ['lat', 'lon', 'rot', 'name']) u.searchParams.delete(k); history.replaceState(history.state, '', u.href);
+  notice(esc(t('loc.outsideNote')), 12000);
+} else if (QUALITY.software && !QUALITY.forced && !introOpen()) notice(esc(t('slow.notice', { fps: '<10' })), 15000);
+$('#bHelp').addEventListener('click', () => tour?.showIntro(true));
+$('#bTour').addEventListener('click', () => { if (smallMQ.matches) setDrawer(false); tour?.startTour(); });
+$('#bShare').addEventListener('click', () => tour?.shareLink());
+$('#bPng').addEventListener('click', () => tour?.savePng());
+if (!tour) for (const id of ['#bHelp', '#bTour', '#bShare', '#bPng']) $(id).disabled = true;

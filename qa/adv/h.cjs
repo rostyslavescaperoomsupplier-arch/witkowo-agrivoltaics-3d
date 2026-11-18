@@ -7,6 +7,8 @@ const OUT = path.join(__dirname, '..', 'out');
 async function open(browser, q = '', opts = {}, ctxOpts = {}) {
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1, ...ctxOpts });
   const page = await ctx.newPage();
+  // skip the first-visit intro card (lib/tour.js) so scripted clicks are not blocked
+  await page.addInitScript(() => { try { localStorage.setItem('witkowo3d:introSeen', '1'); } catch (e) {} });
   const logs = [];
   page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') logs.push(`${m.type()}: ${m.text().slice(0, 300)}`); });
   page.on('pageerror', (e) => logs.push(`pageerror: ${e.message} ${(e.stack || '').split('\n').slice(1, 3).join(' | ')}`));

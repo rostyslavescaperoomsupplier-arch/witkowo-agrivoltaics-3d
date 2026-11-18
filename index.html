@@ -228,6 +228,12 @@
     .sub, .eyebrow, h2, .lab.sub, .loccoord, .rep, .suit li, .locnote, #hud dt, .showrow button, small.concept, #attr, .glayers li { font-size: 12px; }
   }
   @media (prefers-reduced-motion: reduce) { .flyic { transition: none; } }
+  .hbtns { display: flex; align-items: center; gap: 6px; }
+  .helpbtn { all: unset; cursor: pointer; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--line2); color: var(--muted); font-size: 11px; font-weight: 700; text-align: center; line-height: 20px; }
+  .helpbtn:hover { color: var(--accent); border-color: var(--accent); }
+  .helpbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .tourrow { margin: 8px 0 0; }
+  .locnote .st-part { color: #e8b04a; }
   /* ---------- mobile / touch ---------- */
   html, body { height: 100dvh; overscroll-behavior: none; }
   #menuBtn, #joy, .grab { display: none; }
@@ -289,6 +295,7 @@
     .sel { min-height: 40px; font-size: 13px; }
     #panel.wide { width: auto; }
     #bLoc .long { display: none; } #bLoc .short { display: inline; }
+    #side header .hbtns { display: none; }
     #note { left: 8px; right: 8px; transform: none; max-width: none; z-index: 15; }
     #hint { bottom: calc(var(--sab) + 24px); }
     #bHome { right: calc(var(--sar) + 8px); top: calc(var(--sat) + var(--bar) + 66px); bottom: auto; }
@@ -353,17 +360,18 @@
 <aside id="side" class="panel">
   <header>
     <div class="hrow"><span class="eyebrow" data-i18n="app.eyebrow">ZUT · Witkowo</span>
-      <div class="langs" role="group" aria-label="Language"><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div></div>
+      <div class="hbtns"><button type="button" class="helpbtn" id="bHelp" data-i18n-aria="tour.help" data-i18n-title="tour.help" aria-label="Jak korzystać">?</button><div class="langs" role="group" aria-label="Language"><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div></div></div>
     <h1><span class="long" data-i18n="app.title">Agrowoltaika Witkowo</span><span class="short">Witkowo</span></h1>
   </header>
   <section class="viewsec"><h2 data-i18n="sec.view">Widok</h2>
-    <div class="seg" id="modes" role="group"><button type="button" data-mode="iso" class="on" aria-pressed="true" data-i18n="mode.iso">Przegląd</button><button type="button" data-mode="top" aria-pressed="false" data-i18n="mode.top">Plan</button><button type="button" data-mode="walk" aria-pressed="false" data-i18n="mode.walk">Spacer</button></div>
+    <div class="seg" id="modes" role="group" data-i18n-aria="sec.view" aria-label="Widok"><button type="button" data-mode="iso" class="on" aria-pressed="true" data-i18n="mode.iso">Przegląd</button><button type="button" data-mode="top" aria-pressed="false" data-i18n="mode.top">Plan</button><button type="button" data-mode="walk" aria-pressed="false" data-i18n="mode.walk">Spacer</button></div>
   </section>
   <button id="menuBtn" type="button" data-i18n-aria="menu" aria-label="Menu" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
   <div id="drawer">
     <div class="grab" aria-hidden="true"></div>
     <section class="showsec"><h2 data-i18n="sec.show">Pokaż</h2>
       <div class="showrow" id="showRow"><button type="button" data-show="xray" aria-pressed="false" data-i18n="show.xray">Rentgen</button><button type="button" data-show="winter" aria-pressed="false" data-i18n="show.winter">Zima</button><button type="button" data-show="under" aria-pressed="false" data-i18n="show.under">Pod ziemią</button><button type="button" data-show="map" aria-pressed="false" data-i18n="show.map">Mapa</button></div>
+      <div class="btnrow tourrow"><button type="button" class="q3d-btn sm" id="bTour" data-i18n="tour.start">Wycieczka</button><button type="button" class="q3d-btn sm" id="bShare" data-i18n="tour.share">Udostępnij</button><button type="button" class="q3d-btn sm" id="bPng" data-i18n="tour.png">Zapisz PNG</button></div>
     </section>
     <section class="locbar">
       <div class="locrow">
@@ -403,6 +411,7 @@
         <div class="seg" id="rainMode" role="group" data-i18n-aria="rain.label"><button type="button" data-rain="auto" class="on" data-i18n="rain.auto">Auto</button><button type="button" data-rain="on" data-i18n="rain.on">Wł.</button><button type="button" data-rain="off" data-i18n="rain.off">Wył.</button></div>
         <div id="rainInt" hidden><div class="lab sub"><span data-i18n="rain.intensity">Natężenie</span></div><input type="range" id="rRain" min="0.05" max="1" step="0.01" value="0.5" data-i18n-aria="rain.intensity"></div>
         <div class="sub" id="rainHint" data-i18n="rain.autoHint">Auto</div>
+        <div class="sub" id="rainWinter" data-i18n="rain.winterNote" hidden></div>
       </div>
       <label class="tog" id="lClimate"><span class="lk"><i class="nm" style="background:#f0a35e"></i><span data-i18n="climate.real">Realny klimat (ERA5)</span></span><input type="checkbox" id="tClimate"><span class="sw"></span></label>
       <div class="sub" data-i18n="climate.realHint"></div>
@@ -482,16 +491,25 @@
     (buttons || []).forEach(function (b) { btn(b[0], b[1], b[2]); });
     var first = act.querySelector('button'); if (isErr && first) first.focus();
   }
-  boot.progress = function (text) { if (!boot.started && !el.classList.contains('err')) msg.textContent = text; };
-  var slow = setTimeout(function () {
+  // "slow server" only after 20 s WITHOUT progress (a slow but moving download, e.g. 3G at 42 %, is not stuck)
+  var lastProgress = Date.now(), slowShown = false;
+  boot.progress = function (text) {
+    if (boot.started || el.classList.contains('err')) return;
+    if (text !== msg.textContent) lastProgress = Date.now();
+    if (slowShown) { slowShown = false; el.classList.remove('err'); h.textContent = L.load; act.textContent = ''; }
+    msg.textContent = text;
+  };
+  var slow = setInterval(function () {
+    if (boot.started || slowShown || el.classList.contains('err') || Date.now() - lastProgress < 20000) return;
+    slowShown = true;
     state(L.slow, L.slowMsg, cdn === 'jsdelivr' ? [[L.retry, true, retry], [L.backup, false, backup]] : [[L.retry, true, retry], [L.main, false, primary]]);
-  }, 30000);
+  }, 2000);
   boot.done = function () {
-    if (boot.started) return; boot.started = true; clearTimeout(slow);
+    if (boot.started) return; boot.started = true; clearInterval(slow);
     el.classList.add('hide'); setTimeout(function () { el.remove(); }, 400);
   };
   boot.fail = function (text) {
-    clearTimeout(slow);
+    clearInterval(slow);
     state(L.fail, text, cdn === 'jsdelivr' ? [[L.retry, true, retry], [L.backup, false, backup]] : [[L.retry, true, primary], [L.backup, false, retry]], true);
   };
   window.addEventListener('error', function (e) { if (!boot.started && e.message) boot.fail(e.message); });
@@ -503,9 +521,9 @@
       fetch(url, { cache: 'no-store', mode: 'cors' }).then(function (r) { clearTimeout(t); ok(r.ok); }, function () { clearTimeout(t); ok(false); });
     });
   }
-  import('./main.js?v=202611182127').catch(function (e) {
+  import('./main.js?v=202611182204').catch(function (e) {
     var m = (e && e.message) || String(e);
-    if (m === 'WebGL unavailable') { boot.started = true; clearTimeout(slow); el.remove(); return; }
+    if (m === 'WebGL unavailable') { boot.started = true; clearInterval(slow); el.remove(); return; }
     console.error(e);
     state(L.load, L.check);
     reachable(base() + 'package.json', 6000).then(function (ok) {
