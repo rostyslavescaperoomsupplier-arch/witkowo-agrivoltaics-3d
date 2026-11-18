@@ -1,0 +1,66 @@
+cbdg_id,name,collar_m_npm,from_m,to_m,from_m_npm,to_m_npm,description_pl,chronostratigraphy,source
+3376721,KOLIN,37.5,0,0.4,37.5,37.1,Gleba,czwartorzęd - czwartorzęd,Materiały autorskie
+3376721,KOLIN,37.5,0.4,4,37.1,33.5,"Piaski gliniaste, rdzawe ze żwirem i otoczakami skał północnych, HCL-",czwartorzęd - czwartorzęd,Materiały autorskie
+3376721,KOLIN,37.5,4,4.5,33.5,33.0,Glina zwałowa rdzawo-szara z otoczakami w spągu,czwartorzęd - czwartorzęd,Materiały autorskie
+3376721,KOLIN,37.5,4.5,32,33.0,5.5,"Piaski drobnoziarniste/średnioziarniste, rdzawożółte, z drobnym żwirem, skaleniami, HCL-",czwartorzęd - czwartorzęd,Materiały autorskie
+3376721,KOLIN,37.5,32,34.8,5.5,2.7,koryto,czwartorzęd - czwartorzęd,Materiały autorskie
+3376721,KOLIN,37.5,34.8,44.5,2.7,-7.0,Piaski średnioziarniste,czwartorzęd - czwartorzęd,Materiały autorskie
+3376721,KOLIN,37.5,44.5,86.5,-7.0,-49.0,Glina zwałowa,czwartorzęd - czwartorzęd,Materiały autorskie
+3376721,KOLIN,37.5,86.5,98,-49.0,-60.5,Węgiel brunatny,czwartorzęd - miocen,Materiały autorskie
+3376723,SUŁKOWO,43,0,0.5,43,42.5,Gleba brunatna,czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,0.5,2,42.5,41,"Piaski gliniaste, rdzawe ze żwirem i otoczakami skał północnych",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,2,8,41,35,Glina zwałowa ze żwirem i otoczakami skał północnych,czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,8,8.5,35,34.5,otoczaki skał północnych,czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,8.5,20,34.5,23,"Glina zwałowa, szara, bardzo liczne otoczaki skał północnych",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,20,28,23,15,"otoczaki, żwir skał północnych",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,28,31.8,15,11.2,"Glina zwałowa, szara",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,31.8,39,11.2,4,"Iły pylaste, szare, plastyczne, jednorodne, tłuste",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,39,42,4,1,"Iły piaszczyste na pograniczu piasków pylastych, szare",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,42,44,1,-1,"Iły pylaste, szare, jednorodne",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,44,45,-1,-2,Piaski gruboziarniste z drobnym żwirem,czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,45,49,-2,-6,"Piaski pylaste, iły piaszczyste; na gł. 48,0-48,2 m nagromadzenie substancji organicznej, kawałów drewna, węgla ciemno szare",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,49,51,-6,-8,"Iły pylaste, szare",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,51,53,-8,-10,"Piaski pylaste, szare",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,53,77.5,-10,-34.5,"Piaski drobnoziarniste/piaski pylaste, ciemno szare ze skaleniami, nieliczne przewarstwienia piasku średnioziarnistego, HCL+; widoczne ziarna skał północnych",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,77.5,82.5,-34.5,-39.5,Otoczaki skał północnych,czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,82.5,86.5,-39.5,-43.5,"Piaski drobnoziarniste, szare, HCL+, widoczne ziarna skał  północnych",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,86.5,91.2,-43.5,-48.2,"Iły brunatne, plastyczne, na przełamie tłuste",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,91.2,92.2,-48.2,-49.2,"Pyły piaszczyste, zielonkawe, twardoplastyczne",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,92.2,107,-49.2,-64,Iły brunatne z przewarstwieniami piasków glaukonitowych,czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,107,112.7,-64,-69.7,"Glina zwałowa, szara",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,112.7,113.3,-69.7,-70.3,"Piaski średnioziarniste, szare",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,113.3,113.7,-70.3,-70.7,Glina zwałowa,czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,113.7,114.7,-70.7,-71.7,"Piaski drobnoziarniste, szare z ziarnami skał północnych; gradacja ziarn wzrasta w górę warstwy",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,114.7,139.5,-71.7,-96.5,"Glina zwałowa, szara",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,139.5,141,-96.5,-98,"Piaski pylaste, szare",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,141,150.2,-98,-107.2,"Glina zwałowa, szara",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,150.2,151.5,-107.2,-108.5,"Piaski średnioziarniste, szare, ze żwirem i otoczakami skał północnych",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,151.5,154,-108.5,-111,"Glina zwałowa, szara",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,154,154.4,-111,-111.4,Ił brunatny ze smugami jasnego piasku,czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,154.4,156,-111.4,-113,Piasek drobnoziarnisty ze żwirem i okruchami skał północnych,czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,156,162.8,-113,-119.8,"Glina zwałowa, szara",czwartorzęd - czwartorzęd,Materiały autorskie
+3376723,SUŁKOWO,43,162.8,169,-119.8,-126,"Ił brunatny, laminowany piaskiem drobnoziarnistym, jasno szarym",czwartorzęd - eocen,Materiały autorskie
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,0,0.3,30.45,30.15,gleba szara piaszczysta,czwartorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,0.3,2.3,30.15,28.15,glina szarożółta piaszczysta,czwartorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,2.3,4.7,28.15,25.75,piasek szarożółty drobnoziarnisty ze żwirem gruboziarnistym ok 20%,czwartorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,4.7,8.3,25.75,22.15,piasek szary drobnoziarnisty z domieszką średnioziarnistego kwarcowy,czwartorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,8.3,8.7,22.15,21.75,piasek szary drobnoziarnisty kwarcowy z małą domieszką frakcji pylastej,czwartorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,8.7,10.2,21.75,20.25,glina zwałowa szara półzwarta z drobnym żwirkiem,czwartorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,10.2,29.6,20.25,0.85,mułek szary pylasto-piaszczysty zailony półzwarty z łyszczykami,czwartorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,29.6,47.5,0.85,-17.05,glina zwałowa szara w spągu ciemnoszara półzwarta ze żwirem w spągu z otoczakami,czwartorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,47.5,51,-17.05,-20.55,"mułek szarobrunatny słabo zawęglony pylastopiaszczysty z łyszczykami z okruchami węgla brunatnego, w spągu silnie zawęglony (0,5)",trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,51,56.6,-20.55,-26.15,piasek szary drobnoziarnisty kwarcowy,trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,56.6,62.8,-26.15,-32.35,"mułek szarobrunatny silnie piaszczysty z łyszczykami laminowany materiałęm jaśniejszym, partiami przechodzi w piasek",trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,62.8,68.9,-32.35,-38.45,mułek brunatny słabo zawęglony półzwarty z łyszczykami w partii środkowej i stropowej zapiaszczony,trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,68.9,69.4,-38.45,-38.95,węgiel brunatny lignitowy,trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,69.4,72.6,-38.95,-42.15,mułek brunatny w stropie ilasty z okruchami lignitu w partii środkowej piaszczysty w spągu słabo zawęglony z łyszczykami półzwarty,trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,72.6,76.3,-42.15,-45.85,"mułek brunatny słabo zawęglony, półzwarty z łyszczykami zapiaszczony",trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,76.3,77.2,-45.85,-46.75,"piasek brunatny pylasty z domieszka drobnoziarnistego, zbity zawęglony zailony",trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,77.2,84.8,-46.75,-54.35,piasek szarobrunatny pylasty z domieszk a drobnoziarnistego zawęglony,trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,84.8,87.3,-54.35,-56.85,piasek szarobrunatny pylasty zawęglony zailony z łyszczykami,trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,87.3,91,-56.85,-60.55,"mułek brunatny słabo zawęglony półzwarty w stropie pylasty, w partii środkowej i spągowej silnie zapiaszczony",trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,91,105.7,-60.55,-75.25,piasek szary pylasty zailony z małą domieszką frakcji drobnoziarnistej kwarcowy łyszczykowy,trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,105.7,106.8,-75.25,-76.35,węgiel brunatny twardy,trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,106.8,107.5,-76.35,-77.05,węgiel brunatny zapiaszczony i zamulony,trzeciorzęd,NAG - dokumentacja złożowa
+77154,PYRZYCE-KLUCZEWO 01/06,30.45,107.5,140.5,-77.05,-110.05,"piasek szarobrunatny średnioziarnisty z domieszka gruboziarnistego, kwarcowy w partii stropowej i środkowej słabozawęglony",trzeciorzęd,NAG - dokumentacja złożowa
+77185,WITKOWO I,36.88,0,47.5,36.88,-10.62,(stratigraphy only),czwartorzęd,NAG - karta otworu

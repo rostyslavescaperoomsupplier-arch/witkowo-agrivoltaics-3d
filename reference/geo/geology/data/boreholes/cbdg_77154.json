@@ -1,0 +1,336 @@
+{
+ "id": "77154",
+ "borehole": {
+  "borehole": {
+   "name": "PYRZYCE-KLUCZEWO 01/06",
+   "depth": 140.5,
+   "verticalDepth": null,
+   "height": 30.45,
+   "locality": "Kluczewo",
+   "commune": "Stargard (gm. miejska)",
+   "county": "stargardzki",
+   "voivodeship": "zachodniopomorskie",
+   "mapSheet50": "Dolice [268] [N-33-103-A]",
+   "mapSheet100": "Stargard Szczeciński [84] [35-20]",
+   "locationBasis": "szkic lokalizacyjny, mapa",
+   "b1992": "53°17′29,29″",
+   "l1992": "15°01′02,31″",
+   "x1992": 610320.95,
+   "y1992": 234664.25,
+   "drillingPurpose": "złożowy",
+   "chronoBottomFrom": "trzeciorzęd",
+   "drillingYear": 1965,
+   "drillingEffect": "Węgiel brunatny",
+   "drillingEffectDesc": "3 WARSTEWKI WĘGLA BRUNATNEGO",
+   "customer": "ZPG, Wrocław",
+   "contractor": "Przeds. Geol., Wrocław",
+   "comments": "wysokość otworu n.p.m. określona na podstawie numerycznego modelu terenu",
+   "sourceDatabase": "OTWORY_1997",
+   "gzwId": null,
+   "cbdhId": null,
+   "bdgiName": null,
+   "bwmId": null,
+   "geophysicalSurveysInDatabase": false,
+   "geophysicalSurveysInDeveloping": false,
+   "core": false,
+   "locationDesc": null,
+   "kind": null,
+   "underground": false,
+   "analyses": false,
+   "states": [
+    {
+     "date": "1965-05-27T00:00:00",
+     "name": "Rozpoczęcie wiercenia"
+    },
+    {
+     "date": "1965-06-11T00:00:00",
+     "name": "Zakończenie wiercenia"
+    }
+   ],
+   "parent": null,
+   "subordinate": [],
+   "id": 77154
+  },
+  "features": {
+   "stratigraphy": true,
+   "lithology": true,
+   "cores": false,
+   "observations": false,
+   "drillingFluids": false,
+   "curvatures": false,
+   "coresInArchives": false,
+   "protectedCores": false,
+   "coreSamples": false,
+   "logging": false,
+   "velocity": false,
+   "intervals": false,
+   "lasFiles": false,
+   "otherFiles": false
+  },
+  "powers": [
+   8,
+   9,
+   10,
+   1,
+   2,
+   3,
+   4,
+   15
+  ]
+ },
+ "stratigraphicprofiles": [
+  {
+   "name": "Profil otworu PYRZYCE-KLUCZEWO 01/06",
+   "category": "Podstawowy",
+   "informationSource": "NAG - dokumentacja złożowa",
+   "informationSourceShort": "Dok. złożowa",
+   "createDate": "1999-10-14T10:34:43",
+   "id": 75254,
+   "_types": [
+    {
+     "name": "Chronostratygrafia",
+     "id": "C"
+    }
+   ],
+   "_layers": {
+    "C": [
+     {
+      "from": 0,
+      "to": 47.5,
+      "description": "czwartorzęd",
+      "author": "Zarzycki J.",
+      "comments": null,
+      "id": 139714
+     },
+     {
+      "from": 47.5,
+      "to": 140.5,
+      "description": "trzeciorzęd",
+      "author": "Zarzycki J.",
+      "comments": null,
+      "id": 139715
+     }
+    ]
+   }
+  }
+ ],
+ "lithologicalprofiles": [
+  {
+   "name": "Profil otworu PYRZYCE-KLUCZEWO 01/06",
+   "category": "Podstawowy",
+   "informationSource": "NAG - dokumentacja złożowa",
+   "informationSourceShort": "Dok. złożowa",
+   "createDate": "1999-10-14T10:34:43",
+   "id": 75254,
+   "_units": [
+    {
+     "from": 0,
+     "to": 0.3,
+     "description": "gleba szara piaszczysta",
+     "descriptionBasis": "okruchowe",
+     "chronostratigraphy": "czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 961914
+    },
+    {
+     "from": 0.3,
+     "to": 2.3,
+     "description": "glina szarożółta piaszczysta",
+     "descriptionBasis": "okruchowe",
+     "chronostratigraphy": "czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 961915
+    },
+    {
+     "from": 2.3,
+     "to": 4.7,
+     "description": "piasek szarożółty drobnoziarnisty ze żwirem gruboziarnistym ok 20%",
+     "descriptionBasis": "okruchowe",
+     "chronostratigraphy": "czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 961916
+    },
+    {
+     "from": 4.7,
+     "to": 8.3,
+     "description": "piasek szary drobnoziarnisty z domieszką średnioziarnistego kwarcowy",
+     "descriptionBasis": "okruchowe",
+     "chronostratigraphy": "czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 961917
+    },
+    {
+     "from": 8.3,
+     "to": 8.7,
+     "description": "piasek szary drobnoziarnisty kwarcowy z małą domieszką frakcji pylastej",
+     "descriptionBasis": "okruchowe",
+     "chronostratigraphy": "czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 961918
+    },
+    {
+     "from": 8.7,
+     "to": 10.2,
+     "description": "glina zwałowa szara półzwarta z drobnym żwirkiem",
+     "descriptionBasis": "brak",
+     "chronostratigraphy": "czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 961919
+    },
+    {
+     "from": 10.2,
+     "to": 29.6,
+     "description": "mułek szary pylasto-piaszczysty zailony półzwarty z łyszczykami",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 961920
+    },
+    {
+     "from": 29.6,
+     "to": 47.5,
+     "description": "glina zwałowa szara w spągu ciemnoszara półzwarta ze żwirem w spągu z otoczakami",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 961921
+    },
+    {
+     "from": 47.5,
+     "to": 51,
+     "description": "mułek szarobrunatny słabo zawęglony pylastopiaszczysty z łyszczykami z okruchami węgla brunatnego, w spągu silnie zawęglony (0,5)",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961922
+    },
+    {
+     "from": 51,
+     "to": 56.6,
+     "description": "piasek szary drobnoziarnisty kwarcowy",
+     "descriptionBasis": "okruchowe",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961923
+    },
+    {
+     "from": 56.6,
+     "to": 62.8,
+     "description": "mułek szarobrunatny silnie piaszczysty z łyszczykami laminowany materiałęm jaśniejszym, partiami przechodzi w piasek",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961924
+    },
+    {
+     "from": 62.8,
+     "to": 68.9,
+     "description": "mułek brunatny słabo zawęglony półzwarty z łyszczykami w partii środkowej i stropowej zapiaszczony",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961925
+    },
+    {
+     "from": 68.9,
+     "to": 69.4,
+     "description": "węgiel brunatny lignitowy",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961926
+    },
+    {
+     "from": 69.4,
+     "to": 72.6,
+     "description": "mułek brunatny w stropie ilasty z okruchami lignitu w partii środkowej piaszczysty w spągu słabo zawęglony z łyszczykami półzwarty",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961927
+    },
+    {
+     "from": 72.6,
+     "to": 76.3,
+     "description": "mułek brunatny słabo zawęglony, półzwarty z łyszczykami zapiaszczony",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961928
+    },
+    {
+     "from": 76.3,
+     "to": 77.2,
+     "description": "piasek brunatny pylasty z domieszka drobnoziarnistego, zbity zawęglony zailony",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961929
+    },
+    {
+     "from": 77.2,
+     "to": 84.8,
+     "description": "piasek szarobrunatny pylasty z domieszk a drobnoziarnistego zawęglony",
+     "descriptionBasis": "okruchowe",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961930
+    },
+    {
+     "from": 84.8,
+     "to": 87.3,
+     "description": "piasek szarobrunatny pylasty zawęglony zailony z łyszczykami",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961931
+    },
+    {
+     "from": 87.3,
+     "to": 91,
+     "description": "mułek brunatny słabo zawęglony półzwarty w stropie pylasty, w partii środkowej i spągowej silnie zapiaszczony",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961932
+    },
+    {
+     "from": 91,
+     "to": 105.7,
+     "description": "piasek szary pylasty zailony z małą domieszką frakcji drobnoziarnistej kwarcowy łyszczykowy",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961933
+    },
+    {
+     "from": 105.7,
+     "to": 106.8,
+     "description": "węgiel brunatny twardy",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961934
+    },
+    {
+     "from": 106.8,
+     "to": 107.5,
+     "description": "węgiel brunatny zapiaszczony i zamulony",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961935
+    },
+    {
+     "from": 107.5,
+     "to": 140.5,
+     "description": "piasek szarobrunatny średnioziarnisty z domieszka gruboziarnistego, kwarcowy w partii stropowej i środkowej słabozawęglony",
+     "descriptionBasis": "okruchowe",
+     "chronostratigraphy": "trzeciorzęd",
+     "lithostratigraphy": null,
+     "id": 961936
+    }
+   ]
+  }
+ ]
+}

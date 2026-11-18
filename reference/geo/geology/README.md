@@ -60,14 +60,14 @@ variation. "Model" is a single value to draw. Elevations use model depth and gro
 | 1 | 0 - 0.3 | 0.25-0.4 | 35.7 to 35.4 | Brown-earth topsoil (plough layer) | Gleba brunatna (poziom orny) | Holocene | high |
 | 2 | 0.3 - 2 | 1-5 | 35.4 to 33.7 | Silty-gravelly glacial (ablation) sand | Piaski pyłowato-żwirowe lodowcowe (ablacyjne) | Pleistocene, Vistulian, Pomeranian phase (~17-16 ka) | high |
 | 3 | 2 - 10 | 4-20 | 33.7 to 25.7 | Upper glacial till (boulder clay) | Glina zwałowa górna | Pleistocene, Vistulian, Pomeranian phase | high |
-| 4 | 10 - 30 | 15-45 | 25.7 to 5.7 | Meltwater sand and gravel (upper inter-till aquifer) (aquifer) | Piaski i żwiry wodnolodowcowe (górny poziom międzyglinowy) | Pleistocene, Vistulian | medium |
+| 4 | 10 - 30 | 15-45 | 25.7 to 5.7 | Meltwater sand and gravel (upper inter-till aquifer) | Piaski i żwiry wodnolodowcowe (górny poziom międzyglinowy) | Pleistocene, Vistulian | medium |
 | 5 | 30 - 50 | 40-60 | 5.7 to -14.3 | Older till and ice-dammed lake silt | Glina zwałowa i mułki zastoiskowe (zlodowacenia Wisły / Warty) | Pleistocene, Vistulian middle stadial to Saalian (Warta) | medium |
-| 6 | 50 - 62 | 55-75 | -14.3 to -26.3 | Meltwater sand (lower inter-till aquifer) (aquifer) | Piaski wodnolodowcowe (dolny poziom międzyglinowy) | Pleistocene, Saalian | low |
+| 6 | 50 - 62 | 55-75 | -14.3 to -26.3 | Meltwater sand (lower inter-till aquifer) | Piaski wodnolodowcowe (dolny poziom międzyglinowy) | Pleistocene, Saalian | low |
 | 7 | 62 - 82 | 50-100 | -26.3 to -46.3 | Grey basal till (Odra/Saalian) | Glina zwałowa szara (zlodowacenie Odry) | Pleistocene, Saalian (Odra) | low |
 | 8 | 82 - 140 | top 48-100 | -46.3 to -104.3 | Miocene sands and silts with lignite seams (aquifer) | Piaski, mułki i węgiel brunatny (miocen) | Neogene, Miocene (~20-12 Ma) | medium |
 | 9 | 140 - 175 | few-30 m thick, may be absent | -104.3 to -139.3 | Glauconitic marine clays and sands (Eocene, Oligocene) | Iły i piaski glaukonitowe (eocen, oligocen) | Paleogene (~50-28 Ma) | low |
 | 10 | 175 - 1100 | top 150-200, base ~1000-1500 | -139.3 to -1064.3 | Late Cretaceous marl, marly limestone and chalk | Margle, wapienie margliste i kreda pisząca (kreda górna) | Cretaceous, Cenomanian-Maastrichtian (~100-70 Ma) | low |
-| 11 | 1100 - 2700 | regional | -1064.3 to -2664.3 | Jurassic mudstones and sandstones; Lower Jurassic sandstone = Stargard geothermal aquifer (~2.5 km) | Mułowce i piaskowce (jura); piaskowce jury dolnej = zbiornik geotermalny Stargardu (~2,5 km) | Jurassic (~200-160 Ma) | low |
+| 11 | 1100 - 2700 | regional | -1064.3 to -2664.3 | Jurassic mudstones and sandstones; Lower Jurassic sandstone = Stargard geothermal aquifer (~2.5 km) | Mułowce i piaskowce (jura); piaskowce jury dolnej = zbiornik geotermalny Stargardu (~2,5 km) | Jurassic (~200-145 Ma) | low |
 | 12 | 2700 - 4500 | regional | -2664.3 to -4464.3 | Triassic, Zechstein salt at the base | Trias (retyk i starsze), u spągu sole cechsztynu | Triassic-Permian (~260-200 Ma) | low |
 
 Same data with colours: `data/profile_layers.json`.
@@ -142,7 +142,27 @@ GUGiK NMT point service, 41 x 41 grid at 50 m (2 x 2 km) centred on the referenc
 
 ## Boreholes (CBDG)
 
-BOREHOLE_PLACEHOLDER
+Inventory: `data/cbdg_boreholes_within_10km.csv` (252 boreholes within 10 km). Profiles
+downloaded for the key ones: `data/boreholes/cbdg_<id>.json`, flattened in
+`data/boreholes_lithology.csv` (depth + elevation per layer, Polish descriptions as in CBDG).
+
+| CBDG id | Name | Dist. | Collar m n.p.m. | Depth | What it shows |
+|---|---|---|---|---|---|
+| 77185 | WITKOWO I (1968, water well) | 0.1 km | 36.88 | 47.5 m | Quaternary all the way to 47.5 m (only stratigraphy is public, no lithology) |
+| 77184 | WITKOWO I (1968) | 0.2 km | 33.37 | 33 m | Quaternary to bottom |
+| 77154 | PYRZYCE-KLUCZEWO 01/06 (1965, lignite survey) | 4 km W | 30.45 | 140.5 m | soil 0.3; sandy till to 2.3; sands to 8.7; grey till 8.7-10.2; grey ice-dammed lake silt 10.2-29.6; grey till 29.6-**47.5**; then Miocene: carbonaceous silts, fine quartz sands, lignite seams at 68.9-69.4 and 105.7-107.5 m, medium sand to 140.5 |
+| 3376721 | KOLIN (1993, PIG mapping hole, sheet text no. 66) | 5.5 km S | 37.5 | 98 m | soil 0.4; loamy sand 0.4-4; till 4-4.5; meltwater sands 4.5-44.5; till 44.5-**86.5**; Miocene lignite 86.5-98 |
+| 3376723 | SULKOWO (1993, PIG mapping hole no. 23) | 7 km NE | 43 | 169 m | inside the deep Maszewo-Barlinek trough: Quaternary **162.8 m** (alternating tills, sands, lake clays, an Oligocene clay raft 86.5-107), Eocene brown clay laminated with sand below |
+| 3208623 | STARGARD GT-1 (2001, geothermal) | 9 km NW | 31.15 | 2670 m | bottom in Rhaetian (Upper Triassic). Profile is restricted (HTTP 403); public literature: Lower Jurassic sandstone aquifer at ~2.5 km |
+
+Reading for Witkowo: the Quaternary base sits between the Kluczewo value (47.5 m deep,
+-17 m n.p.m.) and Kolin (86.5 m, -49 m n.p.m.). The SMGP sub-Quaternary sketch has a
+spot height of -45.4 m n.p.m. by Witkowo. The MGSP text puts the Miocene aquifer at
+98 m depth in Witkowo. Model value used: Quaternary base ~82 m (about -46 m n.p.m.),
+range 50-100 m. Directly under the Quaternary: Miocene sands/silts with lignite (1:500 000
+map, Kluczewo, Kolin). Eocene clays crop out under the Quaternary in patches around
+Witkowo (MGSP text lists Witkowo among the Eocene localities), so the Paleogene layer may
+come up right under the till in places.
 
 ## Files
 
@@ -157,7 +177,8 @@ BOREHOLE_PLACEHOLDER
 | `data/dem_grid_2km_50m.json/.csv` | elevation grid + slope stats |
 | `data/soil_agri_map_grid_7x7_400m.json` | soil complex/type/texture per grid point |
 | `data/cbdg_boreholes_within_10km.csv` | 252 CBDG boreholes within 10 km (id, depth, collar height, bottom age, coords, card URL) |
-| `data/boreholes/*.json` | CBDG stratigraphic/lithologic profiles of the key boreholes |
+| `data/boreholes/cbdg_<id>.json` | CBDG stratigraphic/lithologic profiles of the key boreholes (raw API JSON) |
+| `data/boreholes_lithology.csv` | the same flattened: from/to depth and elevation, description, age |
 | `data/profile_layers.json` | the profile table above as JSON for the 3D code |
 | `docs/SMGP_268_Dolice_objasnienia_2004.pdf` | SMGP sheet explanation text (Sochan, Piotrowski 2004) |
 | `docs/MGSP_268_Dolice_objasnienia_2009.pdf` | Geoenvironmental map sheet text (Madry et al. 2009) |
@@ -215,4 +236,17 @@ https://cbdgmapa.pgi.gov.pl/arcgis/services/kartografia/smgp50k/MapServer/WMSSer
 
 ## Confidence
 
-CONFIDENCE_PLACEHOLDER
+- **High**: surface geology (SMGP polygons: silty-gravelly glacial sand on till, Vistulian
+  upper stadial), soil types/complexes (MGR grid), elevation and slope (NMT), regional
+  setting and glacial history (two PIG sheet texts agree).
+- **Medium**: Quaternary thickness ~50-100 m and Miocene directly below it (three boreholes
+  4-6 km away + sheet text, but no deep hole at Witkowo itself; Witkowo I stops at 47.5 m
+  still in Quaternary). Order of layers in the top 100 m is typical for the sheet, but
+  thicknesses of individual tills/sands are interpolated, not measured at the site.
+- **Low**: everything below ~150 m (Paleogene thickness, Cretaceous base ~1-1.5 km,
+  Jurassic/Triassic depths). Taken from the regional description, Dolice borehole 82
+  (14 km SE) and Stargard geothermal wells (9 km NW, profile not public).
+- Site point: the farmyard is used, not the PV rows (not visible on the orthophoto). Geology
+  is uniform over the farm, so this matters little. Soil complex can change within
+  100-200 m (complex 2 on loam vs 4-5 on loamy sand, peat in hollows), so for a
+  field-specific soil label, re-query the MGR WMS at the final coordinates.

@@ -64,7 +64,7 @@ function stubTerrain() {
     info: () => ({ source: 'stub' }) };
   return t;
 }
-const terrain = terrainMod ? terrainMod.init({ THREE }) : stubTerrain();
+const terrain = terrainMod ? terrainMod.init({ THREE, autoSite: false }) : stubTerrain();
 window.__terrain = terrain;
 const SITES = {
   witkowo: null, // filled from data/geo/site.json

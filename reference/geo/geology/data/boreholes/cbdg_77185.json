@@ -1,0 +1,106 @@
+{
+ "id": "77185",
+ "borehole": {
+  "borehole": {
+   "name": "WITKOWO I",
+   "depth": 47.5,
+   "verticalDepth": null,
+   "height": 36.88,
+   "locality": "Witkowo Drugie",
+   "commune": "Stargard (gm. wiejska)",
+   "county": "stargardzki",
+   "voivodeship": "zachodniopomorskie",
+   "mapSheet50": "Dolice [268] [N-33-103-A]",
+   "mapSheet100": "Stargard Szczeciński [84] [35-20]",
+   "locationBasis": "dokumentacja hydrogeologiczna",
+   "b1992": "53°16′52,72″",
+   "l1992": "15°04′29,21″",
+   "x1992": 608979.86,
+   "y1992": 238429.37,
+   "drillingPurpose": "hydrogeologiczny",
+   "chronoBottomFrom": "czwartorzęd",
+   "drillingYear": 1968,
+   "drillingEffect": null,
+   "drillingEffectDesc": null,
+   "customer": null,
+   "contractor": null,
+   "comments": null,
+   "sourceDatabase": "OTWORY_1997",
+   "gzwId": null,
+   "cbdhId": 2680037,
+   "bdgiName": null,
+   "bwmId": null,
+   "geophysicalSurveysInDatabase": false,
+   "geophysicalSurveysInDeveloping": false,
+   "core": false,
+   "locationDesc": null,
+   "kind": null,
+   "underground": false,
+   "analyses": false,
+   "states": [
+    {
+     "date": "1968-12-31T00:00:00",
+     "name": "Zakończenie wiercenia"
+    }
+   ],
+   "parent": null,
+   "subordinate": [],
+   "id": 77185
+  },
+  "features": {
+   "stratigraphy": true,
+   "lithology": false,
+   "cores": false,
+   "observations": false,
+   "drillingFluids": false,
+   "curvatures": false,
+   "coresInArchives": false,
+   "protectedCores": false,
+   "coreSamples": false,
+   "logging": false,
+   "velocity": false,
+   "intervals": false,
+   "lasFiles": false,
+   "otherFiles": false
+  },
+  "powers": [
+   8,
+   9,
+   10,
+   1,
+   2,
+   3,
+   4,
+   15
+  ]
+ },
+ "stratigraphicprofiles": [
+  {
+   "name": "Profil otworu WITKOWO I",
+   "category": "Podstawowy",
+   "informationSource": "NAG - karta otworu",
+   "informationSourceShort": "Karta otworu",
+   "createDate": "1999-10-14T10:34:43",
+   "id": 75285,
+   "_types": [
+    {
+     "name": "Chronostratygrafia",
+     "id": "C"
+    }
+   ],
+   "_layers": {
+    "C": [
+     {
+      "from": 0,
+      "to": 47.5,
+      "description": "czwartorzęd",
+      "author": "Antoszewska J.",
+      "comments": null,
+      "id": 139757
+     }
+    ]
+   }
+  }
+ ],
+ "lithologicalprofiles": []
+}

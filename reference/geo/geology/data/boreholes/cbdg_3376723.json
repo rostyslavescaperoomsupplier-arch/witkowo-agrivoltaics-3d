@@ -1,0 +1,417 @@
+{
+ "id": "3376723",
+ "borehole": {
+  "borehole": {
+   "name": "SUŁKOWO",
+   "depth": 169,
+   "verticalDepth": null,
+   "height": 43,
+   "locality": "Sułkowo",
+   "commune": "Stargard (gm. wiejska)",
+   "county": "stargardzki",
+   "voivodeship": "zachodniopomorskie",
+   "mapSheet50": "Dolice [268] [N-33-103-A]",
+   "mapSheet100": "Stargard Szczeciński [84] [35-20]",
+   "locationBasis": "szkic lokalizacyjny, mapa",
+   "b1992": "53°19′47,58″",
+   "l1992": "15°08′28,51″",
+   "x1992": 614136.75,
+   "y1992": 243148.98,
+   "drillingPurpose": "kartograficzny",
+   "chronoBottomFrom": null,
+   "drillingYear": 1993,
+   "drillingEffect": "SMGP",
+   "drillingEffectDesc": "SMGP 1:50 000 ark. Dolice (268)",
+   "customer": "Państw. Inst. Geol., Warszawa",
+   "contractor": "Przeds. Bad. Geofiz. Geofizyka, Toruń",
+   "comments": null,
+   "sourceDatabase": "SMGP",
+   "gzwId": null,
+   "cbdhId": null,
+   "bdgiName": null,
+   "bwmId": null,
+   "geophysicalSurveysInDatabase": false,
+   "geophysicalSurveysInDeveloping": false,
+   "core": false,
+   "locationDesc": null,
+   "kind": "Pionowy",
+   "underground": false,
+   "analyses": false,
+   "states": [],
+   "parent": null,
+   "subordinate": [],
+   "id": 3376723
+  },
+  "features": {
+   "stratigraphy": true,
+   "lithology": true,
+   "cores": false,
+   "observations": false,
+   "drillingFluids": false,
+   "curvatures": false,
+   "coresInArchives": false,
+   "protectedCores": false,
+   "coreSamples": false,
+   "logging": false,
+   "velocity": false,
+   "intervals": false,
+   "lasFiles": false,
+   "otherFiles": false
+  },
+  "powers": [
+   8,
+   9,
+   10,
+   1,
+   2,
+   3,
+   4,
+   15
+  ]
+ },
+ "stratigraphicprofiles": [
+  {
+   "name": "Profil otworu SUŁKOWO",
+   "category": "Podstawowy",
+   "informationSource": "Materiały autorskie",
+   "informationSourceShort": "Mat. autorskie",
+   "createDate": "2025-06-17T00:00:00",
+   "id": 445399,
+   "_types": [
+    {
+     "name": "Chronostratygrafia",
+     "id": "C"
+    }
+   ],
+   "_layers": {
+    "C": [
+     {
+      "from": 0,
+      "to": 162.8,
+      "description": "czwartorzęd - czwartorzęd",
+      "author": "Sochan A., Piotrowski A., 2000",
+      "comments": null,
+      "id": 918153
+     },
+     {
+      "from": 162.8,
+      "to": 169,
+      "description": "czwartorzęd - eocen",
+      "author": "Sochan A., Piotrowski A., 2000",
+      "comments": null,
+      "id": 918154
+     }
+    ]
+   }
+  }
+ ],
+ "lithologicalprofiles": [
+  {
+   "name": "Profil otworu SUŁKOWO",
+   "category": "Podstawowy",
+   "informationSource": "Materiały autorskie",
+   "informationSourceShort": "Mat. autorskie",
+   "createDate": "2025-06-17T00:00:00",
+   "id": 445399,
+   "_units": [
+    {
+     "from": 2,
+     "to": 8,
+     "description": "Glina zwałowa ze żwirem i otoczakami skał północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298368
+    },
+    {
+     "from": 20,
+     "to": 28,
+     "description": "otoczaki, żwir skał północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298377
+    },
+    {
+     "from": 53,
+     "to": 77.5,
+     "description": "Piaski drobnoziarniste/piaski pylaste, ciemno szare ze skaleniami, nieliczne przewarstwienia piasku średnioziarnistego, HCL+; widoczne ziarna skał północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299030
+    },
+    {
+     "from": 8,
+     "to": 8.5,
+     "description": "otoczaki skał północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298372
+    },
+    {
+     "from": 45,
+     "to": 49,
+     "description": "Piaski pylaste, iły piaszczyste; na gł. 48,0-48,2 m nagromadzenie substancji organicznej, kawałów drewna, węgla ciemno szare",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299013
+    },
+    {
+     "from": 92.2,
+     "to": 107,
+     "description": "Iły brunatne z przewarstwieniami piasków glaukonitowych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299070
+    },
+    {
+     "from": 107,
+     "to": 112.7,
+     "description": "Glina zwałowa, szara",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299076
+    },
+    {
+     "from": 112.7,
+     "to": 113.3,
+     "description": "Piaski średnioziarniste, szare",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299077
+    },
+    {
+     "from": 113.7,
+     "to": 114.7,
+     "description": "Piaski drobnoziarniste, szare z ziarnami skał północnych; gradacja ziarn wzrasta w górę warstwy",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299079
+    },
+    {
+     "from": 114.7,
+     "to": 139.5,
+     "description": "Glina zwałowa, szara",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299091
+    },
+    {
+     "from": 141,
+     "to": 150.2,
+     "description": "Glina zwałowa, szara",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299093
+    },
+    {
+     "from": 151.5,
+     "to": 154,
+     "description": "Glina zwałowa, szara",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299099
+    },
+    {
+     "from": 154,
+     "to": 154.4,
+     "description": "Ił brunatny ze smugami jasnego piasku",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299100
+    },
+    {
+     "from": 31.8,
+     "to": 39,
+     "description": "Iły pylaste, szare, plastyczne, jednorodne, tłuste",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298395
+    },
+    {
+     "from": 0,
+     "to": 0.5,
+     "description": "Gleba brunatna",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298337
+    },
+    {
+     "from": 156,
+     "to": 162.8,
+     "description": "Glina zwałowa, szara",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299113
+    },
+    {
+     "from": 0.5,
+     "to": 2,
+     "description": "Piaski gliniaste, rdzawe ze żwirem i otoczakami skał północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298340
+    },
+    {
+     "from": 49,
+     "to": 51,
+     "description": "Iły pylaste, szare",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299014
+    },
+    {
+     "from": 139.5,
+     "to": 141,
+     "description": "Piaski pylaste, szare",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299092
+    },
+    {
+     "from": 150.2,
+     "to": 151.5,
+     "description": "Piaski średnioziarniste, szare, ze żwirem i otoczakami skał północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299098
+    },
+    {
+     "from": 154.4,
+     "to": 156,
+     "description": "Piasek drobnoziarnisty ze żwirem i okruchami skał północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299107
+    },
+    {
+     "from": 162.8,
+     "to": 169,
+     "description": "Ił brunatny, laminowany piaskiem drobnoziarnistym, jasno szarym",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - eocen",
+     "lithostratigraphy": null,
+     "id": 3299114
+    },
+    {
+     "from": 8.5,
+     "to": 20,
+     "description": "Glina zwałowa, szara, bardzo liczne otoczaki skał północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298376
+    },
+    {
+     "from": 39,
+     "to": 42,
+     "description": "Iły piaszczyste na pograniczu piasków pylastych, szare",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298396
+    },
+    {
+     "from": 42,
+     "to": 44,
+     "description": "Iły pylaste, szare, jednorodne",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298398
+    },
+    {
+     "from": 44,
+     "to": 45,
+     "description": "Piaski gruboziarniste z drobnym żwirem",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298401
+    },
+    {
+     "from": 28,
+     "to": 31.8,
+     "description": "Glina zwałowa, szara",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3298378
+    },
+    {
+     "from": 113.3,
+     "to": 113.7,
+     "description": "Glina zwałowa",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299078
+    },
+    {
+     "from": 51,
+     "to": 53,
+     "description": "Piaski pylaste, szare",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299020
+    },
+    {
+     "from": 77.5,
+     "to": 82.5,
+     "description": "Otoczaki skał północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299031
+    },
+    {
+     "from": 82.5,
+     "to": 86.5,
+     "description": "Piaski drobnoziarniste, szare, HCL+, widoczne ziarna skał  północnych",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299038
+    },
+    {
+     "from": 86.5,
+     "to": 91.2,
+     "description": "Iły brunatne, plastyczne, na przełamie tłuste",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299039
+    },
+    {
+     "from": 91.2,
+     "to": 92.2,
+     "description": "Pyły piaszczyste, zielonkawe, twardoplastyczne",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299040
+    }
+   ]
+  }
+ ]
+}

@@ -66,7 +66,7 @@ const fixPose = (page, pose) => page.evaluate(async (pose) => {
       { id: 'winter', q: '?q=high&season=winter', setup: async () => {} },
       { id: 'flows', q: '?q=high', setup: (p) => p.evaluate(() => { const w = window.__witkowo; w.setXray(true); w.flyToFlow('power'); }) },
     ];
-    for (const sc of scen) {
+    for (const sc of scen.filter((x) => !process.env.PERF_SCEN || process.env.PERF_SCEN.split(',').includes(x.id))) {
       const ctx = await browser.newContext(prof.ctx);
       const page = await ctx.newPage();
       page.on('console', (m) => { if (m.type() === 'error') errors.push(`[${prof.name}/${sc.id}] ${m.text()}`); });
@@ -100,7 +100,7 @@ const fixPose = (page, pose) => page.evaluate(async (pose) => {
       console.log(prof.name.padEnd(10), sc.id.padEnd(9), `frame med ${rec.frameMs?.median} p95 ${rec.frameMs?.p95} | cpu med ${rec.cpuMs?.median} p95 ${rec.cpuMs?.p95} | calls ${rec.drawCalls} tris ${rec.triangles} prog ${rec.programs} | firstFrame ${load.firstFrameMs} ms | long ${rec.longTasks.n}/${rec.longTasks.totalMs}ms | q ${rec.quality} pr ${rec.pixelRatio}`);
       // screenshot at a fixed pose (unthrottled for speed)
       if (prof.cpu > 1) await cdp.send('Emulation.setCPUThrottlingRate', { rate: 1 });
-      if (prof.name !== 'laptop-4x') {
+      if (prof.name !== 'laptop-4x' && !process.env.PERF_NOSHOT) {
         const poses = {
           overview: { mode: 'iso', cam: prof.name === 'desktop' ? { p: [30, 22, 22], t: [0, 1, -15] } : { p: [40, 35, 35], t: [0, 1, -14] } },
           walk: { mode: 'walk', walk: { x: -5, z: 2, yaw: 0, pitch: -0.1 } },
@@ -114,7 +114,7 @@ const fixPose = (page, pose) => page.evaluate(async (pose) => {
     }
   }
   // GLB size + decode time (desktop, unthrottled and 4x)
-  {
+  if (!process.env.PERF_NOSHOT) {
     const ctx = await browser.newContext({ viewport: { width: 800, height: 600 } });
     const page = await ctx.newPage(); await page.goto(BASE + '?q=high');
     await page.waitForFunction(() => window.__witkowo, null, { timeout: 180000 });

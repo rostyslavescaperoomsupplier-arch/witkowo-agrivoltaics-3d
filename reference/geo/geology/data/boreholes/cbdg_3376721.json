@@ -1,0 +1,192 @@
+{
+ "id": "3376721",
+ "borehole": {
+  "borehole": {
+   "name": "KOLIN",
+   "depth": 98,
+   "verticalDepth": null,
+   "height": 37.5,
+   "locality": "Przewłoki",
+   "commune": "Dolice (gm. wiejska)",
+   "county": "stargardzki",
+   "voivodeship": "zachodniopomorskie",
+   "mapSheet50": "Dolice [268] [N-33-103-A]",
+   "mapSheet100": "Pyrzyce [104] [36-20]",
+   "locationBasis": "szkic lokalizacyjny, mapa",
+   "b1992": "53°13′59,08″",
+   "l1992": "15°05′07,37″",
+   "x1992": 603580.53,
+   "y1992": 238841.38,
+   "drillingPurpose": "kartograficzny",
+   "chronoBottomFrom": null,
+   "drillingYear": 1993,
+   "drillingEffect": "SMGP",
+   "drillingEffectDesc": "SMGP 1:50 000 ark. Dolice (268)",
+   "customer": "Państw. Inst. Geol., Warszawa",
+   "contractor": "Przeds. Bad. Geofiz. Geofizyka, Toruń",
+   "comments": null,
+   "sourceDatabase": "SMGP",
+   "gzwId": null,
+   "cbdhId": null,
+   "bdgiName": null,
+   "bwmId": null,
+   "geophysicalSurveysInDatabase": false,
+   "geophysicalSurveysInDeveloping": false,
+   "core": false,
+   "locationDesc": null,
+   "kind": "Pionowy",
+   "underground": false,
+   "analyses": false,
+   "states": [],
+   "parent": null,
+   "subordinate": [],
+   "id": 3376721
+  },
+  "features": {
+   "stratigraphy": true,
+   "lithology": true,
+   "cores": false,
+   "observations": false,
+   "drillingFluids": false,
+   "curvatures": false,
+   "coresInArchives": false,
+   "protectedCores": false,
+   "coreSamples": false,
+   "logging": false,
+   "velocity": false,
+   "intervals": false,
+   "lasFiles": false,
+   "otherFiles": false
+  },
+  "powers": [
+   8,
+   9,
+   10,
+   1,
+   2,
+   3,
+   4,
+   15
+  ]
+ },
+ "stratigraphicprofiles": [
+  {
+   "name": "Profil otworu KOLIN",
+   "category": "Podstawowy",
+   "informationSource": "Materiały autorskie",
+   "informationSourceShort": "Mat. autorskie",
+   "createDate": "2025-06-18T00:00:00",
+   "id": 445467,
+   "_types": [
+    {
+     "name": "Chronostratygrafia",
+     "id": "C"
+    }
+   ],
+   "_layers": {
+    "C": [
+     {
+      "from": 0,
+      "to": 86.5,
+      "description": "czwartorzęd - czwartorzęd",
+      "author": "Sochan A., Piotrowski A., 2000",
+      "comments": null,
+      "id": 918172
+     },
+     {
+      "from": 86.5,
+      "to": 98,
+      "description": "czwartorzęd - miocen",
+      "author": "Sochan A., Piotrowski A., 2000",
+      "comments": null,
+      "id": 918173
+     }
+    ]
+   }
+  }
+ ],
+ "lithologicalprofiles": [
+  {
+   "name": "Profil otworu KOLIN",
+   "category": "Podstawowy",
+   "informationSource": "Materiały autorskie",
+   "informationSourceShort": "Mat. autorskie",
+   "createDate": "2025-06-18T00:00:00",
+   "id": 445467,
+   "_units": [
+    {
+     "from": 0,
+     "to": 0.4,
+     "description": "Gleba",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299195
+    },
+    {
+     "from": 86.5,
+     "to": 98,
+     "description": "Węgiel brunatny",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - miocen",
+     "lithostratigraphy": null,
+     "id": 3299231
+    },
+    {
+     "from": 0.4,
+     "to": 4,
+     "description": "Piaski gliniaste, rdzawe ze żwirem i otoczakami skał północnych, HCL-",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299201
+    },
+    {
+     "from": 4,
+     "to": 4.5,
+     "description": "Glina zwałowa rdzawo-szara z otoczakami w spągu",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299202
+    },
+    {
+     "from": 4.5,
+     "to": 32,
+     "description": "Piaski drobnoziarniste/średnioziarniste, rdzawożółte, z drobnym żwirem, skaleniami, HCL-",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299205
+    },
+    {
+     "from": 32,
+     "to": 34.8,
+     "description": "koryto",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299207
+    },
+    {
+     "from": 34.8,
+     "to": 44.5,
+     "description": "Piaski średnioziarniste",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299216
+    },
+    {
+     "from": 44.5,
+     "to": 86.5,
+     "description": "Glina zwałowa",
+     "descriptionBasis": "rdzeń",
+     "chronostratigraphy": "czwartorzęd - czwartorzęd",
+     "lithostratigraphy": null,
+     "id": 3299220
+    }
+   ]
+  }
+ ]
+}

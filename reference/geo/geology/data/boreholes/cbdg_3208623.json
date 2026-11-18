@@ -1,0 +1,78 @@
+{
+ "id": "3208623",
+ "borehole": {
+  "borehole": {
+   "name": "STARGARD GT-1",
+   "depth": 2670,
+   "verticalDepth": null,
+   "height": 31.15,
+   "locality": "Stargard",
+   "commune": "Stargard (gm. miejska)",
+   "county": "stargardzki",
+   "voivodeship": "zachodniopomorskie",
+   "mapSheet50": "Stargard Szczeciński [230] [N-33-91-C]",
+   "mapSheet100": "Stargard Szczeciński [84] [35-20]",
+   "locationBasis": "operat geodezyjny",
+   "b1992": "53°20′58,73″",
+   "l1992": "15°00′09,81″",
+   "x1992": 616841.04,
+   "y1992": 234055.35,
+   "drillingPurpose": "hydrogeologiczny",
+   "chronoBottomFrom": "retyk [alpejski]",
+   "drillingYear": 2001,
+   "drillingEffect": "Wody termalne",
+   "drillingEffectDesc": null,
+   "customer": "Przeds. Usł. Ciepłown. Geotermia, Stargard Szczeciński",
+   "contractor": "Posz. Nafty i Gazu Jasło Sp. z o.o, Oddz. NaftaGaz, Wołomin",
+   "comments": null,
+   "sourceDatabase": null,
+   "gzwId": null,
+   "cbdhId": null,
+   "bdgiName": null,
+   "bwmId": 2302001,
+   "geophysicalSurveysInDatabase": false,
+   "geophysicalSurveysInDeveloping": true,
+   "core": false,
+   "locationDesc": "STARGARD GEOTERMIA",
+   "kind": null,
+   "underground": false,
+   "analyses": false,
+   "states": [
+    {
+     "date": "2001-09-26T00:00:00",
+     "name": "Rozpoczęcie wiercenia"
+    },
+    {
+     "date": "2001-12-22T00:00:00",
+     "name": "Zakończenie wiercenia"
+    }
+   ],
+   "parent": null,
+   "subordinate": [],
+   "id": 3208623
+  },
+  "features": {
+   "stratigraphy": true,
+   "lithology": true,
+   "cores": false,
+   "observations": false,
+   "drillingFluids": true,
+   "curvatures": false,
+   "coresInArchives": false,
+   "protectedCores": false,
+   "coreSamples": false,
+   "logging": true,
+   "velocity": false,
+   "intervals": true,
+   "lasFiles": false,
+   "otherFiles": false
+  },
+  "powers": []
+ },
+ "stratigraphicprofiles": {
+  "error": 403
+ },
+ "lithologicalprofiles": {
+  "error": 403
+ }
+}
