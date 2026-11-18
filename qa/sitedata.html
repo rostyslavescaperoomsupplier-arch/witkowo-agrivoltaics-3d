@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA sitedata</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; background: #0b0d10; color: #e8e4da; font: 13px system-ui, sans-serif; }
+  main { max-width: 1400px; margin: 0 auto; padding: 14px; display: grid; grid-template-columns: 1fr 380px; gap: 14px; }
+  .panel { background: rgba(17,19,23,.9); border-radius: 8px; padding: 10px 12px; }
+  .bar { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 10px; grid-column: 1 / -1; }
+  button { background: #2a2e36; color: #ddd; border: 1px solid #444; border-radius: 4px; padding: 4px 10px; cursor: pointer; font: inherit; }
+  button.on { border-color: #d9ad57; color: #d9ad57; }
+  input { background: #1a1d23; color: #ddd; border: 1px solid #444; border-radius: 4px; padding: 3px 6px; width: 70px; font: inherit; }
+  h1 { font-size: 16px; margin: 0 0 4px; color: #d9ad57; font-weight: 600; }
+  h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: #d9ad57; margin: 12px 0 4px; font-weight: 600; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 3px 6px; border-top: 1px solid #22262d; vertical-align: top; }
+  td.k { color: #9a958a; width: 30%; }
+  td.v { color: #f1ede3; }
+  td.v small, .src { color: #7d786e; font-size: 11px; display: block; }
+  .err { color: #e07a5f; }
+  .pend { color: #6a665e; font-style: italic; }
+  .c-high { color: #8fbf7f; } .c-medium { color: #d9ad57; } .c-low { color: #c98a5a; }
+  .note { display: flex; gap: 8px; align-items: flex-start; padding: 4px 0; border-top: 1px solid #22262d; }
+  .dot { width: 11px; height: 11px; border-radius: 50%; flex: 0 0 11px; margin-top: 2px; }
+  .green { background: #5fae5a; } .amber { background: #d9ad57; } .red { background: #d0503c; } .grey { background: #555; }
+  .overall { font-size: 15px; font-weight: 600; padding: 6px 0 8px; border: 0; }
+  .overall .dot { width: 18px; height: 18px; flex-basis: 18px; }
+  #timing td { font-variant-numeric: tabular-nums; font-size: 12px; }
+  a { color: #b9a37a; }
+  #status { color: #9a958a; }
+</style>
+</head>
+<body>
+<main>
+  <div class="bar" id="bar">
+    <span id="sites"></span>
+    <button data-l="pl" class="on">PL</button><button data-l="en">EN</button>
+    <label>fake slope % <input id="slope" type="number" step="0.5" placeholder="-"></label>
+    <button id="force">reload (no cache)</button>
+    <span id="status"></span>
+  </div>
+  <div class="panel"><h1 id="title">-</h1><div id="report"></div></div>
+  <div>
+    <div class="panel"><h1>Agri-PV</h1><div id="suit"></div></div>
+    <div class="panel" style="margin-top:14px"><h1>Usługi / timing</h1><table id="timing"></table><h2>Link only</h2><div id="links"></div></div>
+  </div>
+</main>
+<script type="module">
+import { init } from '../lib/sitedata.js';
+let fakeSlope = null;
+const terrain = { info: () => (fakeSlope == null ? null : { slopePct: fakeSlope, source: 'fake (QA)' }) };
+const sd = init({ terrain });
+window.__sd = sd;
+let lang = 'pl', current = null;
+const site0 = await fetch('../data/geo/site.json').then((r) => r.json());
+const SITES = [
+  { id: 'witkowo', name: 'Witkowo', lat: site0.lat, lon: site0.lon },
+  { id: 'zulawy', name: 'Żuławy', lat: 54.20, lon: 19.10 },
+  { id: 'kampinos', name: 'Kampinos NP', lat: 52.33, lon: 20.55 },
+  { id: 'lublin', name: 'Wyżyna Lubelska', lat: 51.10, lon: 22.70 },
+  { id: 'tatry', name: 'Podhale', lat: 49.35, lon: 20.00 },
+];
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c]);
+$('#sites').innerHTML = SITES.map((s) => `<button data-s="${s.id}">${esc(s.name)}</button>`).join(' ');
+
+function render() {
+  const r = sd.info();
+  if (!r.site) return;
+  $('#title').textContent = `${current?.name || ''}  ${r.site.lat.toFixed(5)}, ${r.site.lon.toFixed(5)}`;
+  let h = '';
+  for (const g of r.groups) {
+    h += `<h2>${esc(lang === 'en' ? g.label_en : g.label_pl)}</h2><table>`;
+    for (const k of g.keys) {
+      const f = r.fields[k];
+      const val = lang === 'en' && f.value_en != null ? f.value_en : f.value;
+      const det = lang === 'en' && f.detail_en ? f.detail_en : f.detail;
+      let cell;
+      if (f.pending) cell = '<span class="pend">...</span>';
+      else if (f.error) cell = `<span class="err">${esc(f.error)}</span>`;
+      else if (val == null) cell = `<span class="pend">${lang === 'en' ? 'no data' : 'brak danych'}${f.note ? ' — ' + esc(f.note) : ''}</span>`;
+      else cell = `${esc(val)}${f.unit && typeof val === 'number' ? ' ' + esc(f.unit) : ''}`;
+      if (det) cell += `<small>${esc(det)}</small>`;
+      if (f.source) cell += `<span class="src">${esc(f.source)}${f.confidence ? ` · <span class="c-${f.confidence}">${f.confidence}</span>` : ''}${f.link ? ` · <a href="${esc(f.link)}" target="_blank" rel="noopener">link</a>` : ''}</span>`;
+      h += `<tr><td class="k">${esc(lang === 'en' ? f.label_en : f.label_pl)}</td><td class="v">${cell}</td></tr>`;
+    }
+    h += '</table>';
+  }
+  $('#report').innerHTML = h;
+  const s = sd.suitability(lang);
+  $('#suit').innerHTML = s.map((n) => `<div class="note ${n.key === 'overall' ? 'overall' : ''}"><span class="dot ${n.level}"></span><span>${esc(n.text)}</span></div>`).join('');
+  $('#timing').innerHTML = sd.services.map((sv) => { const t = r.timing[sv.id];
+    return `<tr><td>${esc(sv.label)}</td><td style="text-align:right">${t ? t.ms + ' ms' : (r.cached ? 'cache' : '...')}</td><td class="${t && !t.ok ? 'err' : 'c-high'}">${t ? (t.ok ? 'OK' : esc(t.error)) : ''}</td></tr>`; }).join('');
+  $('#status').textContent = `${r.status}${r.ms ? ' · ' + r.ms + ' ms' : ''}${r.cached ? ' · cached' : ''}${r.errors.length ? ' · errors: ' + r.errors.length : ''}`;
+}
+$('#links').innerHTML = sd.linkOnly.map((l) => `<div class="note"><span class="dot grey"></span><span><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(lang === 'en' ? l.label_en : l.label_pl)}</a><span class="src">${esc(l.why)}</span></span></div>`).join('');
+
+async function go(site, force = false) {
+  current = site;
+  document.querySelectorAll('[data-s]').forEach((b) => b.classList.toggle('on', b.dataset.s === site.id));
+  window.__done = false;
+  await sd.setSite(site, { onProgress: render, force });
+  render();
+  window.__done = sd.info().status === 'ready';
+}
+window.__go = (id, force) => go(SITES.find((s) => s.id === id), force);
+document.querySelectorAll('[data-s]').forEach((b) => (b.onclick = () => go(SITES.find((s) => s.id === b.dataset.s))));
+document.querySelectorAll('[data-l]').forEach((b) => (b.onclick = () => { lang = b.dataset.l; document.documentElement.lang = lang;
+  document.querySelectorAll('[data-l]').forEach((x) => x.classList.toggle('on', x === b)); render(); }));
+$('#slope').oninput = (e) => { const v = parseFloat(e.target.value); fakeSlope = isFinite(v) ? v : null; render(); };
+$('#force').onclick = () => current && go(current, true);
+const q = new URLSearchParams(location.search);
+go(SITES.find((s) => s.id === q.get('site')) || SITES[0]);
+</script>
+</body>
+</html>

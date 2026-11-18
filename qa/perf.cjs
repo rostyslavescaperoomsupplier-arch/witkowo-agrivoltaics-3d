@@ -1,4 +1,4 @@
-// Performance measurement: node qa/perf.cjs <label> [baseUrl]   -> qa/perf_<label>.json + qa/out/perf_<label>_*.png
+// Performance measurement: node qa/perf.cjs <label> [baseUrl]   -> qa/perf_<label>.json + qa/out/perfrun_<label>_*.png
 // Profiles: desktop 1440x900 (no throttle), laptop-4x (1440x900, CPU 4x), phone-4x (390x844, DPR 3, touch, CPU 4x).
 // Scenarios (~10 s each, sim playing at default speed): overview, walk, winter (?season=winter), flows (x-ray on).
 // Frame time = rAF-to-rAF interval; cpu = time spent inside the page's rAF callbacks (JS main thread per frame).
@@ -108,7 +108,7 @@ const fixPose = (page, pose) => page.evaluate(async (pose) => {
           flows: { mode: 'iso', cam: { p: [-23, 11, 13], t: [-8, 2.6, -5] } },
         };
         await fixPose(page, poses[sc.id]);
-        await page.screenshot({ path: path.join(OUT, `perf_${LABEL}_${prof.name}_${sc.id}.png`) });
+        await page.screenshot({ path: path.join(OUT, `perfrun_${LABEL}_${prof.name}_${sc.id}.png`) });
       }
       await ctx.close();
     }

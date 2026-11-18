@@ -1,0 +1,248 @@
+{
+ "site": {
+  "lat": 53.2819,
+  "lon": 15.0762,
+  "epsg2180_NE": [
+   609037,
+   238527
+  ],
+  "ground_m_npm": 35.7,
+  "note": "Generalised profile for Witkowo (gm. Stargard). Upper 100 m from SMGP sheet 268 Dolice text + CBDG boreholes Witkowo I (0.1 km), Pyrzyce-Kluczewo 01/06 (4 km W), Kolin (5.5 km S); deep part regional (SMGP text, Dolice borehole 82, Stargard GT wells 9 km NW)."
+ },
+ "layers": [
+  {
+   "id": "soil",
+   "top_m": 0,
+   "base_m": 0.3,
+   "range_base_m": "0.25-0.4",
+   "name_pl": "Gleba brunatna (poziom orny)",
+   "name_en": "Brown-earth topsoil (plough layer)",
+   "lithology": "light loam / loamy sand, humus",
+   "age": "Holocene",
+   "color": "#5b4632",
+   "confidence": "high",
+   "pattern": "soil",
+   "age_pl": "holocen",
+   "short_pl": "Gleba brunatna",
+   "short_en": "Brown-earth topsoil"
+  },
+  {
+   "id": "cover_sand",
+   "top_m": 0.3,
+   "base_m": 2,
+   "range_base_m": "1-5",
+   "name_pl": "Piaski pylasto-żwirowe lodowcowe (ablacyjne)",
+   "name_en": "Silty-gravelly glacial (ablation) sand",
+   "lithology": "yellow silty sand with gravel",
+   "age": "Pleistocene, Vistulian, Pomeranian phase (~17-16 ka)",
+   "color": "#d9c27a",
+   "confidence": "high",
+   "pattern": "gravel_sand",
+   "age_pl": "plejstocen, zlodowacenie Wisły, faza pomorska (~17-16 tys. lat)",
+   "short_pl": "Piaski pylasto-żwirowe",
+   "short_en": "Silty-gravelly sand"
+  },
+  {
+   "id": "upper_till",
+   "top_m": 2,
+   "base_m": 10,
+   "range_base_m": "4-20",
+   "name_pl": "Glina zwałowa górna",
+   "name_en": "Upper glacial till (boulder clay)",
+   "lithology": "yellow-brown to grey sandy-silty till with pebbles, decalcified to ~1 m",
+   "age": "Pleistocene, Vistulian, Pomeranian phase",
+   "color": "#a8794e",
+   "confidence": "high",
+   "pattern": "till",
+   "age_pl": "plejstocen, zlodowacenie Wisły, faza pomorska",
+   "short_pl": "Glina zwałowa górna",
+   "short_en": "Upper glacial till"
+  },
+  {
+   "id": "fg_sand_upper",
+   "top_m": 10,
+   "base_m": 30,
+   "range_base_m": "15-45",
+   "name_pl": "Piaski i żwiry wodnolodowcowe (górny poziom międzyglinowy)",
+   "name_en": "Meltwater sand and gravel (upper inter-till aquifer)",
+   "lithology": "fine to medium sand with gravel",
+   "age": "Pleistocene, Vistulian",
+   "color": "#e6d49a",
+   "aquifer": true,
+   "confidence": "medium",
+   "pattern": "gravel_sand",
+   "age_pl": "plejstocen, zlodowacenie Wisły",
+   "short_pl": "Piaski i żwiry wodnolodowcowe",
+   "short_en": "Meltwater sand and gravel"
+  },
+  {
+   "id": "lower_till_silt",
+   "top_m": 30,
+   "base_m": 50,
+   "range_base_m": "40-60",
+   "name_pl": "Glina zwałowa i mułki zastoiskowe (zlodowacenia Wisły / Warty)",
+   "name_en": "Older till and ice-dammed lake silt",
+   "lithology": "grey compact till; grey silty-clayey silt with mica",
+   "age": "Pleistocene, Vistulian middle stadial to Saalian (Warta)",
+   "color": "#7d7468",
+   "confidence": "medium",
+   "pattern": "till_silt",
+   "age_pl": "plejstocen, stadiał środkowy Wisły - zlodowacenie Warty",
+   "short_pl": "Glina zwałowa i mułki zastoiskowe",
+   "short_en": "Older till and lake silt"
+  },
+  {
+   "id": "fg_sand_lower",
+   "top_m": 50,
+   "base_m": 62,
+   "range_base_m": "55-75",
+   "name_pl": "Piaski wodnolodowcowe (dolny poziom międzyglinowy)",
+   "name_en": "Meltwater sand (lower inter-till aquifer)",
+   "lithology": "medium sand with gravel",
+   "age": "Pleistocene, Saalian",
+   "color": "#d8c58a",
+   "aquifer": true,
+   "confidence": "low",
+   "pattern": "sand",
+   "age_pl": "plejstocen, zlodowacenia środkowopolskie",
+   "short_pl": "Piaski wodnolodowcowe (dolne)",
+   "short_en": "Lower meltwater sand"
+  },
+  {
+   "id": "saalian_till",
+   "top_m": 62,
+   "base_m": 82,
+   "range_base_m": "50-100",
+   "name_pl": "Glina zwałowa szara (zlodowacenie Odry)",
+   "name_en": "Grey basal till (Odra/Saalian)",
+   "lithology": "dark grey till with pebbles and gravel at base",
+   "age": "Pleistocene, Saalian (Odra)",
+   "color": "#5f5a55",
+   "confidence": "low",
+   "pattern": "till",
+   "age_pl": "plejstocen, zlodowacenie Odry",
+   "short_pl": "Glina zwałowa szara (Odra)",
+   "short_en": "Grey basal till (Odra)"
+  },
+  {
+   "id": "miocene",
+   "top_m": 82,
+   "base_m": 140,
+   "range_base_m": "top 48-100",
+   "name_pl": "Piaski, mułki i węgiel brunatny (miocen)",
+   "name_en": "Miocene sands and silts with lignite seams",
+   "lithology": "grey-brown fine quartz sand, micaceous carbonaceous silt, lignite 0.5-1 m seams",
+   "age": "Neogene, Miocene (~20-12 Ma)",
+   "color": "#6b5137",
+   "aquifer": true,
+   "confidence": "medium",
+   "pattern": "lignite",
+   "age_pl": "neogen, miocen (~20-12 mln lat)",
+   "short_pl": "Piaski, mułki, węgiel brunatny",
+   "short_en": "Miocene sand, silt, lignite"
+  },
+  {
+   "id": "eocene_oligocene",
+   "top_m": 140,
+   "base_m": 175,
+   "range_base_m": "few-30 m thick, may be absent",
+   "name_pl": "Iły i piaski glaukonitowe (eocen, oligocen)",
+   "name_en": "Glauconitic marine clays and sands (Eocene, Oligocene)",
+   "lithology": "brown/green clay with glauconitic sand",
+   "age": "Paleogene (~50-28 Ma)",
+   "color": "#5e7a5a",
+   "confidence": "low",
+   "pattern": "glauconite",
+   "age_pl": "paleogen (~50-28 mln lat)",
+   "short_pl": "Iły i piaski glaukonitowe",
+   "short_en": "Glauconitic clays and sands"
+  },
+  {
+   "id": "upper_cretaceous",
+   "top_m": 175,
+   "base_m": 1100,
+   "range_base_m": "top 150-200, base ~1000-1500",
+   "name_pl": "Margle, wapienie margliste i kreda pisząca (kreda górna)",
+   "name_en": "Late Cretaceous marl, marly limestone and chalk",
+   "lithology": "white/grey marl, marly limestone with inocerams",
+   "age": "Cretaceous, Cenomanian-Maastrichtian (~100-70 Ma)",
+   "color": "#e8e6d8",
+   "confidence": "low",
+   "pattern": "marl",
+   "age_pl": "kreda górna, cenoman-mastrycht (~100-70 mln lat)",
+   "short_pl": "Margle i kreda pisząca",
+   "short_en": "Marl and chalk"
+  },
+  {
+   "id": "jurassic",
+   "top_m": 1100,
+   "base_m": 2700,
+   "range_base_m": "regional",
+   "name_pl": "Mułowce i piaskowce (jura); piaskowce jury dolnej = zbiornik geotermalny Stargardu (~2,5 km)",
+   "name_en": "Jurassic mudstones and sandstones; Lower Jurassic sandstone = Stargard geothermal aquifer (~2.5 km)",
+   "lithology": "marly mudstone, sandstone",
+   "age": "Jurassic (~200-145 Ma)",
+   "color": "#8fa3b8",
+   "confidence": "low",
+   "pattern": "mudstone",
+   "age_pl": "jura (~200-145 mln lat)",
+   "short_pl": "Mułowce i piaskowce jury",
+   "short_en": "Jurassic mudstone, sandstone"
+  },
+  {
+   "id": "triassic_permian",
+   "top_m": 2700,
+   "base_m": 4500,
+   "range_base_m": "regional",
+   "name_pl": "Trias (retyk i starsze), u spągu sole cechsztynu",
+   "name_en": "Triassic, Zechstein salt at the base",
+   "lithology": "claystone, sandstone, evaporites",
+   "age": "Triassic-Permian (~260-200 Ma)",
+   "color": "#b87d6b",
+   "confidence": "low",
+   "pattern": "evaporite",
+   "age_pl": "trias-perm (~260-200 mln lat)",
+   "short_pl": "Trias, sole cechsztynu",
+   "short_en": "Triassic, Zechstein salt"
+  }
+ ],
+ "groundwater": {
+  "main_aquifer": "Quaternary inter-till sands (GZWP 123 Stargard-Goleniow), confined; mean thickness upper 14 m, lower 16 m (MGSP 268)",
+  "miocene_aquifer_depth_witkowo_m": 98,
+  "aquifer_top_m": 10,
+  "aquifer_base_m": 30,
+  "confined": true,
+  "piezometric_level_m": {
+   "model": 6,
+   "range": [
+    1.2,
+    14.5
+   ],
+   "source": "MHP 1:50 000 ark. 268 Dolice (PIG 2004), units 3 QIIb/Q and 1 QIIab/Tr: static level 1.2-14.5 m bgl"
+  },
+  "aquifer_thickness_m": {
+   "range": [
+    11,
+    16
+   ],
+   "source": "MHP 268: mean 11.2 m (unit 3), 15.6 m (unit 1)"
+  },
+  "well_yield_m3h": "50-120 (MHP potential yield classes at the village)",
+  "quality": "IIb (Fe, Mn elevated, simple treatment)",
+  "gzwp": "GZWP 123 Stargard-Goleniow (Quaternary, 15-58 m), village ~1.1 km outside its southern tip",
+  "flow": "NW, toward the Ina",
+  "hypothetical_well": {
+   "depth_m": 28,
+   "screen_m": [
+    20,
+    27
+   ],
+   "note": "hypothetical irrigation well from the field control cabinet into the upper inter-till aquifer; real Agrofirma wells: Witkowo-4 96 m (Q 79.5-96), Witkowo-1A 127 m (Miocene)"
+  }
+ },
+ "sources": [
+  "PIG-PIB: SMGP 1:50 000 ark. 268 Dolice (Sochan, Piotrowski 2004), MGSP 268 (Madry et al. 2009), CBDG boreholes",
+  "PIG-PIB: MHP 1:50 000 ark. 268 Dolice (Fuszara, Prazak 2004)"
+ ],
+ "attribution": "Dane geologiczne: PIG-PIB (SMGP 1:50 000, CBDG, MHP)"
+}

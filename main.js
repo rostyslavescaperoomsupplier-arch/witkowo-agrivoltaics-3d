@@ -10,7 +10,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181737';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181744';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -358,6 +358,12 @@ function buildBatches() {
     for (const m of src) m.layers.disable(0);
     batches.push(b);
   }
+}
+// x-ray (translucent, sorted per object back to front): draw the original nodes again so the blend order and
+// layering stay exactly as they were; the batches are for the opaque look
+function setBatchesActive(on) {
+  for (const b of batches) { b.visible = on; for (const m of b.userData.batchOf) { if (on) m.layers.disable(0); else m.layers.enable(0); } }
+  ctx.invalidateShadows?.();
 }
 function dissolveBatch(b) {
   for (const m of b.userData.batchOf) m.layers.enable(0);
@@ -751,6 +757,7 @@ function xrayMaterials() {
 }
 function setXray(on) {
   if (on === XRAY.on) return; XRAY.on = on;
+  setBatchesActive(!on);
   if (on) {
     for (const m of xrayMaterials()) {
       XRAY.saved.set(m, { color: m.color?.clone(), emissive: m.emissive?.clone(), ei: m.emissiveIntensity, opacity: m.opacity, transparent: m.transparent, depthWrite: m.depthWrite, fsp: m.forceSinglePass });
