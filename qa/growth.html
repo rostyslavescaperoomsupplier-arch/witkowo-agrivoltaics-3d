@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QA growth</title>
+<style>
+  html,body{margin:0;height:100%;background:#111317;color:#ddd;font:13px system-ui,sans-serif;overflow:hidden}
+  #ui{position:fixed;left:10px;top:10px;background:rgba(17,19,23,.9);padding:10px 12px;border-radius:8px;z-index:2;min-width:240px}
+  #ui label{display:block;margin:4px 0}
+  #ui input[type=range]{width:180px;accent-color:#d9ad57;vertical-align:middle}
+  #ui button{background:#22262d;color:#ddd;border:1px solid #444;border-radius:4px;padding:3px 7px;margin:2px;cursor:pointer}
+  #info{white-space:pre;color:#d9ad57;margin-top:6px}
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="ui">
+  <label>day <input id="day" type="range" min="0" max="100" step="1" value="30"> <span id="dayv">30</span></label>
+  <label>sun <input id="sun" type="range" min="0" max="1" step="0.01" value="1"> <span id="sunv">1</span></label>
+  <label>speed <input id="speed" type="range" min="0" max="20" step="0.5" value="4"> <span id="speedv">4</span></label>
+  <button data-v="bed">bed</button><button data-v="robot">robot</button><button data-v="top">top</button>
+  <div id="info">loading...</div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import * as growth from '../lib/growth.js';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x9fb4c8);
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.05, 400);
+camera.position.set(-6, 2.2, 1.5);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(-10, 0.2, -4);
+scene.add(new THREE.HemisphereLight(0xdfe8f0, 0x4a3a28, 1.1));
+const sunL = new THREE.DirectionalLight(0xfff2dc, 2.4);
+sunL.position.set(15, 30, 12);
+sunL.castShadow = true;
+sunL.shadow.mapSize.set(4096, 4096);
+Object.assign(sunL.shadow.camera, { left: -25, right: 25, top: 25, bottom: -25, near: 1, far: 90 });
+sunL.target.position.set(0, 0, -15);
+scene.add(sunL, sunL.target);
+
+const state = { hour: 12, sun: 1, dayOfSeason: 30, water: 0, speed: 4, quality: 'high', show: { power: false, water: false, labels: false } };
+const $ = (id) => document.getElementById(id);
+for (const k of ['day', 'sun', 'speed']) $(k).oninput = () => { sync(); };
+function sync() {
+  state.dayOfSeason = +$('day').value; state.sun = +$('sun').value; state.speed = +$('speed').value;
+  $('dayv').textContent = state.dayOfSeason; $('sunv').textContent = state.sun; $('speedv').textContent = state.speed;
+  sunL.intensity = 0.3 + 2.4 * state.sun;
+}
+const views = {
+  bed: [[0.0, 1.8, -3.6], [-4.4, 0.05, -6.2]],
+  top: [[6, 18, 10], [0, 0, -10]],
+  robot: null,
+};
+let mod = null, follow = false;
+document.querySelectorAll('button[data-v]').forEach((b) => b.onclick = () => view(b.dataset.v));
+function view(name) {
+  follow = name === 'robot';
+  if (!follow) { camera.position.set(...views[name][0]); controls.target.set(...views[name][1]); }
+}
+
+new GLTFLoader().setMeshoptDecoder(MeshoptDecoder).load('../model/witkowo.glb', (gltf) => {
+  const root = gltf.scene;
+  root.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+  scene.add(root);
+  const t0 = performance.now();
+  mod = growth.init({ THREE, scene, root, renderer, getCamera: () => camera,
+    node: (n) => { let r; root.traverse((o) => { if (!r && (o.userData.name === n || o.name === n)) r = o; }); return r; } });
+  window.initMs = performance.now() - t0;
+  window.qaReady = true;
+  sync(); view('bed');
+}, undefined, (e) => { $('info').textContent = 'load error ' + e; });
+
+const clock = new THREE.Clock();
+const tmp = new THREE.Vector3();
+let infoT = 0;
+function frame() {
+  const dt = clock.getDelta();
+  if (mod) {
+    mod.update(dt, state);
+    if (follow) {
+      mod.robot.getWorldPosition(tmp);
+      controls.target.lerp(tmp.setY(0.8), 0.2);
+      camera.position.set(controls.target.x + 5, 3.2, controls.target.z + 5);
+    }
+    if ((infoT += dt) > 0.25) { infoT = 0; $('info').textContent = JSON.stringify(mod.info(), null, 1) + '\ninit ' + (window.initMs | 0) + ' ms'; }
+  }
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+frame();
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+window.qa = { step(n, dt) { for (let i = 0; i < n; i++) mod.update(dt, state); }, state, view, sync, set(k, v) { $(k).value = v; sync(); }, get mod() { return mod; }, camera, controls };
+</script>
+</body>
+</html>

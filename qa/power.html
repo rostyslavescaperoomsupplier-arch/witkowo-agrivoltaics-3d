@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>QA power</title>
+<link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  html,body{margin:0;height:100%;background:#111317;color:#ddd;font:13px system-ui,sans-serif;overflow:hidden}
+  #ui{position:fixed;left:10px;top:10px;background:rgba(17,19,23,.9);padding:10px 12px;border-radius:8px;z-index:2}
+  #ui label{display:block;margin:4px 0} #info{white-space:pre;color:#d9ad57;margin-top:6px}
+</style>
+<script type="importmap">{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+</head><body>
+<div id="ui">
+  <label>sun <input id="sun" type="range" min="0" max="1" step="0.01" value="1"> <span id="sunv">1</span></label>
+  <label>hour <input id="hour" type="range" min="0" max="24" step="0.05" value="12"> <span id="hourv">12</span></label>
+  <label><input id="run" type="checkbox"> advance hour (x600)</label>
+  <label><input id="show" type="checkbox" checked> show.power</label>
+  <div id="info"></div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
+import { init as initPower } from '../lib/power.js';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(2, devicePixelRatio)); renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color(0x8fa6bd);
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.05, 500);
+camera.position.set(25, 22, 30);
+const controls = new OrbitControls(camera, renderer.domElement); controls.target.set(0, 2, -14);
+scene.add(new THREE.HemisphereLight(0xdfe8ff, 0x3a3020, 1.6));
+const sunL = new THREE.DirectionalLight(0xffffff, 2.2); sunL.position.set(20, 40, 15); scene.add(sunL);
+
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.6, 0.4, 0.9));
+composer.addPass(new OutputPass());
+
+const state = { hour: 12, sun: 1, dayOfSeason: 50, water: 0, speed: 1, quality: 'high',
+  show: { power: true, water: true, labels: false } };
+const $ = id => document.getElementById(id);
+$('sun').oninput = e => { state.sun = +e.target.value; $('sunv').textContent = state.sun; };
+$('hour').oninput = e => { state.hour = +e.target.value; $('hourv').textContent = state.hour; };
+$('show').onchange = e => { state.show.power = e.target.checked; };
+
+const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
+const gltf = await loader.loadAsync('../model/witkowo.glb');
+const root = gltf.scene; scene.add(root);
+const byName = new Map(); root.traverse(o => { if (o.name) byName.set(o.name, o); });
+const power = initPower({ THREE, scene, root, node: n => byName.get(n), renderer, getCamera: () => camera });
+
+const views = {
+  overview: [[25, 22, 30], [0, 2, -14]],
+  roof: [[-5.8, 6.8, 3.5], [-10, 4.8, -3]],
+  roofUnder: [[-11.5, 3.2, 2.0], [-11.5, 4.6, -6]],
+  roofFront: [[-9.0, 4.3, 2.2], [-10.3, 4.4, -0.3]],
+  conduit: [[-7.6, 2.4, 3.0], [-9.8, 1.6, 0]],
+  inverters: [[-9.5, 2.0, 5.0], [-11.5, 1.0, 0.8]],
+  front: [[-4, 5, 12], [-6, 2, 0]],
+};
+window.qa = { state, power, setView(k) { const v = views[k]; camera.position.set(...v[0]); controls.target.set(...v[1]); controls.update(); } };
+
+const clock = new THREE.Clock();
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(0.1, clock.getDelta());
+  if ($('run').checked) { state.hour += dt * 600 / 3600; if (state.hour >= 24) state.hour -= 24; $('hour').value = state.hour; $('hourv').textContent = state.hour.toFixed(2); }
+  power.update(dt, state);
+  const i = power.info();
+  $('info').textContent = `kW ${i.kW.toFixed(1)} / peak ${i.peakKW.toFixed(1)}\nkWh today ${i.kWhToday.toFixed(2)}\nper canopy ${i.perCanopyKW.map(v => v.toFixed(1)).join(' / ')}`;
+  controls.update(); composer.render();
+});
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight); composer.setSize(innerWidth, innerHeight); });
+</script>
+</body></html>

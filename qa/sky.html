@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA sky</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; height: 100%; background: #111317; color: #ddd; font: 13px/1.4 system-ui, sans-serif; overflow: hidden; }
+  #ui { position: fixed; left: 12px; top: 12px; background: rgba(17,19,23,.9); padding: 10px 12px; border-radius: 8px; min-width: 260px; }
+  #ui input[type=range] { width: 240px; accent-color: #d9ad57; }
+  #info { white-space: pre; font-family: ui-monospace, monospace; font-size: 12px; margin-top: 6px; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="ui">
+  <label>hour <b id="hv">13:00</b><br><input id="hour" type="range" min="0" max="24" step="0.01" value="13"></label><br>
+  <label><input id="play" type="checkbox"> play (1 h/s)</label>
+  <label><input id="low" type="checkbox"> quality low</label>
+  <label><input id="shadows" type="checkbox" checked> shadows</label>
+  <div id="info">loading…</div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import * as sky from '../lib/sky.js';
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 800);
+camera.position.set(26, 14, 20);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 2, -14);
+controls.enableDamping = true;
+controls.update();
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+
+const state = { hour: 13, sun: 0, dayOfSeason: 50, water: 0, speed: 1, quality: 'high', show: { power: true, water: true, labels: true } };
+const $ = id => document.getElementById(id);
+const fmt = h => `${String(Math.floor(h)).padStart(2, '0')}:${String(Math.floor((h % 1) * 60)).padStart(2, '0')}`;
+$('hour').oninput = e => { state.hour = +e.target.value; };
+$('low').onchange = e => { state.quality = e.target.checked ? 'low' : 'high'; };
+$('shadows').onchange = e => {
+  renderer.shadowMap.enabled = e.target.checked;
+  scene.traverse(o => { if (o.material) [].concat(o.material).forEach(m => m.needsUpdate = true); });
+};
+
+const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+const gltf = await loader.loadAsync('../model/witkowo.glb');
+const root = gltf.scene;
+root.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+scene.add(root);
+const byName = new Map();
+root.traverse(o => { if (o.name) byName.set(o.name, o); });
+
+const mod = sky.init({ THREE, scene, root, node: n => byName.get(n), renderer, getCamera: () => camera });
+
+let last = performance.now(), frames = 0, fpsT = last, fps = 0;
+function frame(now) {
+  const dt = Math.min(0.1, (now - last) / 1000); last = now;
+  if ($('play').checked) { state.hour = (state.hour + dt) % 24; $('hour').value = state.hour; }
+  mod.update(dt, state);
+  controls.update();
+  renderer.render(scene, camera);
+  frames++; if (now - fpsT > 1000) { fps = frames * 1000 / (now - fpsT); frames = 0; fpsT = now; }
+  const i = mod.info();
+  $('hv').textContent = fmt(state.hour);
+  $('info').textContent = `alt ${i.sunAltDeg.toFixed(1)}  az ${i.sunAzDeg.toFixed(1)}\nphase ${i.phase}  sun ${state.sun.toFixed(3)}\nsunrise ${i.sunrise}  sunset ${i.sunset}\nfps ${fps.toFixed(0)}`;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+// QA hooks
+window.__qa = {
+  setHour(h) { state.hour = h; $('hour').value = h; mod.update(0, state); renderer.render(scene, camera); return mod.info(); },
+  state, info: () => mod.info(),
+};
+window.__ready = true;
+</script>
+</body>
+</html>
