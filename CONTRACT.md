@@ -6,7 +6,8 @@ Serve locally with `python3 serve.py 8765` (no-store; ES modules cache hard othe
 
 Model: `model/witkowo.glb` (meshopt-compressed, needs `MeshoptDecoder` from
 `three/addons/libs/meshopt_decoder.module.js`). Units = metres, Y up. Original uncompressed: `model/src.glb`.
-Geometry is NOT indexed (flat triangle soup); every node is one mesh, names below are exact `node.name`.
+Geometry is indexed since the perf pass (welded, see PERFORMANCE below) except the FarmDroid wheel parts and
+`Drip irrigation` (still triangle soup); every node is one mesh, names below are exact `node.name`.
 
 ## Scene facts (bounds = [min x,y,z] .. [max x,y,z])
 - Site soil: x -18..18, z -36..6, y 0. Grass margins / "Cultivated rows" (dark earth strips) on the ground.
@@ -176,3 +177,20 @@ Owners:
   the hard-coded Witkowo.
 - CORE (later, after PERF): "Lokalizacja" UI (button opens locate.openPicker, URL param, loading state, site
   report card from sitedata + terrain + climate), wire setSite across modules, camera/fog for terrain.
+
+## PERFORMANCE (2026-11-18) — read before adding geometry
+- `model/witkowo.glb` is rebuilt from `model/src.glb` by `node tools/optimize_glb.cjs` (weld = index identical
+  position+normal corners, then meshopt 'medium', same quantisation as before). Code that reads geometry must handle
+  `geometry.index` (all current modules do). Node names / tree / materials unchanged.
+- Shadow map is NOT re-rendered every frame (`renderer.shadowMap.autoUpdate = false`). main.js refreshes it when
+  the sun turns, a visible shadow caster's world matrix / visibility changes, `state.dayOfSeason` / `state.winter`
+  change, and once a second. If your module changes a caster's SHAPE without moving it (vertex shader, geometry
+  edit), call `ctx.invalidateShadows()`.
+- Draw batching: static structure nodes (canopy steel/bolts/tanks/cables/PV frames/busbars, FarmDroid body parts)
+  are drawn through merged meshes named `Batch / ...`; the original nodes stay in the scene (node(), boxes, picking)
+  but are off camera layer 0. Hiding an original or swapping its material dissolves its batch automatically.
+- Static model meshes have `matrixAutoUpdate = false`: to move one, call `obj.updateMatrix()` after changing it
+  (or set matrixAutoUpdate back to true).
+- Additive, depthWrite:false, DoubleSide transparent materials get `forceSinglePass = true` at start (same image).
+- Measurement: `node qa/perf.cjs <label> [url]`, `zsh qa/perf_ab.sh <beforeUrl> <afterUrl>`, profiles with
+  `qa/perf_profile.cjs` / `qa/perf_boot.cjs`, same-pose screenshots with `qa/perf_shots.cjs`.

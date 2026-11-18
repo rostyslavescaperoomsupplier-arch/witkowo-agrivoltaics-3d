@@ -114,7 +114,7 @@ const fixPose = (page, pose) => page.evaluate(async (pose) => {
     }
   }
   // GLB size + decode time (desktop, unthrottled and 4x)
-  if (!process.env.PERF_NOSHOT) {
+  if (!process.env.PERF_NOSHOT && !process.env.PERF_NOGLB) {
     const ctx = await browser.newContext({ viewport: { width: 800, height: 600 } });
     const page = await ctx.newPage(); await page.goto(BASE + '?q=high');
     await page.waitForFunction(() => window.__witkowo, null, { timeout: 180000 });
@@ -134,7 +134,14 @@ const fixPose = (page, pose) => page.evaluate(async (pose) => {
     await ctx.close();
   }
   result.consoleErrors = errors;
-  fs.writeFileSync(path.join(__dirname, `perf_${LABEL}.json`), JSON.stringify(result, null, 1));
+  // PERF_MERGE=1: add these profiles / GLB numbers to an existing qa/perf_<label>.json (interleaved before/after runs)
+  const file = path.join(__dirname, `perf_${LABEL}.json`);
+  if (process.env.PERF_MERGE && fs.existsSync(file)) {
+    const old = JSON.parse(fs.readFileSync(file, 'utf8'));
+    Object.assign(old.profiles, result.profiles); Object.assign(old.glb, result.glb);
+    old.consoleErrors = [...(old.consoleErrors || []), ...errors]; old.date = result.date; old.gpu = old.gpu || result.gpu;
+    fs.writeFileSync(file, JSON.stringify(old, null, 1));
+  } else fs.writeFileSync(file, JSON.stringify(result, null, 1));
   console.log('GLB', JSON.stringify(result.glb));
   console.log('errors', errors.length ? errors.join('\n') : '(none)');
   await browser.close();

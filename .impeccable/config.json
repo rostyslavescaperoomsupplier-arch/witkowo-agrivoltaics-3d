@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "qa/sitedata.html"
+        ],
+        "createdAt": "2026-11-18T16:44:34.902Z",
+        "reason": "Claude: qa/sitedata.html is an internal QA test harness for lib/sitedata.js, not visitor-facing UI"
+      }
+    ]
+  }
+}

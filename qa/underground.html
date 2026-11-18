@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QA underground</title>
+<link rel="icon" href="data:,">
+<style>
+  html, body { margin: 0; height: 100%; background: #111317; color: #ddd; font: 13px/1.4 system-ui, sans-serif; overflow: hidden; }
+  #ui { position: fixed; left: 10px; top: 10px; background: rgba(17,19,23,.9); padding: 10px 12px; border-radius: 8px; width: 270px; z-index: 2; }
+  #ui button { background: #2a2d33; color: #ddd; border: 1px solid #3a3d44; border-radius: 5px; padding: 3px 8px; cursor: pointer; margin: 2px 0; }
+  #ui button.on { border-color: #d9ad57; color: #d9ad57; }
+  #ui label { display: flex; gap: 6px; align-items: center; margin-top: 4px; }
+  #ui input[type=range] { flex: 1; accent-color: #d9ad57; }
+  #info { white-space: pre-wrap; font-family: ui-monospace, monospace; font-size: 10.5px; margin-top: 6px; color: #d9ad57; max-height: 40vh; overflow: auto; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<div id="ui">
+  <b style="color:#d9ad57">underground.js</b>
+  <label><input type="checkbox" id="vis" checked> show.underground</label>
+  <label><input type="checkbox" id="labels" checked> labels</label>
+  <label><input type="checkbox" id="model" checked> model</label>
+  <div>scale: <button id="sFull" class="on">full column</button> <button id="sTrue">true 0-100 m</button></div>
+  <label>rain mm/h <input type="range" id="rain" min="0" max="10" step="0.5" value="0"><span id="rainv">0</span></label>
+  <div>lang: <button data-lang="pl" class="on">PL</button> <button data-lang="en">EN</button></div>
+  <div>site: <button data-site="witkowo" class="on">Witkowo</button> <button data-site="generic">generic (stub sitedata)</button></div>
+  <div>view: <button data-v="oblique">oblique</button> <button data-v="shallow">top 30 m</button> <button data-v="column">column</button> <button data-v="below">below</button></div>
+  <div id="info">loading…</div>
+</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
+import * as geoMod from '../lib/geo.js';
+import { init as initUnderground } from '../lib/underground.js';
+const $ = (id) => document.getElementById(id);
+const Q = new URLSearchParams(location.search);
+
+// flat / hilly stub terrain (levelled 36 x 42 m pad + 1:2 slopes), same shape as terrain.js API
+function stubTerrain(kind) {
+  const PAD = { x0: -18, x1: 18, z0: -36, z1: 6 };
+  const nat = (x, z) => kind === 'hills' ? 3 * Math.sin(x / 25) + 2 * Math.cos(z / 30) : 0;
+  const P = nat(0, -15);
+  const pd = (x, z) => Math.hypot(Math.max(PAD.x0 - x, 0, x - PAD.x1), Math.max(PAD.z0 - z, 0, z - PAD.z1));
+  return { ready: Promise.resolve(), padRect: PAD, setSite() { return this.ready; },
+    naturalHeightAt: (x, z) => nat(x, z) - P,
+    heightAt(x, z) { const d = pd(x, z), n = nat(x, z); return Math.min(P + d / 2, Math.max(P - d / 2, n)) - P; },
+    info: () => ({ source: 'stub-' + kind, padLevelM: 0 }) };
+}
+const terrain = stubTerrain(Q.get('terrain') || 'flat');
+// stub sitedata for the generic-site test (format unknown yet: underground.js scans it tolerant)
+let sdRep = null;
+const sitedata = { ready: Promise.resolve(), info: () => sdRep };
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x9fb6cc);
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.3, 6000);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; controls.maxPolarAngle = Math.PI - 0.05; controls.maxDistance = 600;
+addEventListener('resize', () => { camera.aspect = innerWidth / innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
+scene.add(new THREE.HemisphereLight(0xdfe9f5, 0x55503f, 1.1));
+const sun = new THREE.DirectionalLight(0xfff1dc, 2.2); sun.position.set(-40, 70, 30); scene.add(sun);
+
+const loader = new GLTFLoader().setMeshoptDecoder(MeshoptDecoder);
+const gltf = await loader.loadAsync('../model/witkowo.glb');
+const root = gltf.scene; scene.add(root);
+const byName = new Map(); root.traverse(o => { if (o.name) byName.set(o.name, o); });
+
+const geo = geoMod.init({ THREE, scene, root, node: n => byName.get(n), renderer, getCamera: () => camera, terrain });
+const ug = initUnderground({ THREE, scene, renderer, getCamera: () => camera, terrain, sitedata });
+window.__ug = ug;
+
+const state = { hour: 13, sun: 1, dayOfSeason: 60, water: 0, speed: 1, quality: 'high', rainMmH: 0,
+  show: { power: false, water: false, labels: true, underground: true } };
+window.__state = state;
+
+const views = {
+  oblique: [[70, 38, 70], [0, -18, -15]],
+  shallow: [[50, 4, 44], [6, -14, -4]],
+  column: [[210, 20, 190], [0, -58, -15]],
+  below: [[60, -45, 60], [0, -20, -15]],
+};
+const setView = (k) => { const v = views[k]; camera.position.set(...v[0]); controls.target.set(...v[1]); controls.update(); };
+window.__view = setView;
+setView(Q.get('view') || 'oblique');
+
+$('vis').onchange = (e) => { state.show.underground = e.target.checked; };
+$('labels').onchange = (e) => ug.setLabels(e.target.checked);
+$('model').onchange = (e) => { root.visible = e.target.checked; };
+$('sFull').onclick = () => { ug.setDepthScale('full'); $('sFull').classList.add('on'); $('sTrue').classList.remove('on'); };
+$('sTrue').onclick = () => { ug.setDepthScale('true'); $('sTrue').classList.add('on'); $('sFull').classList.remove('on'); };
+$('rain').oninput = (e) => { state.rainMmH = +e.target.value; $('rainv').textContent = e.target.value; };
+document.querySelectorAll('[data-lang]').forEach(b => b.onclick = () => { document.documentElement.lang = b.dataset.lang; document.querySelectorAll('[data-lang]').forEach(x => x.classList.toggle('on', x === b)); });
+document.querySelectorAll('[data-v]').forEach(b => b.onclick = () => setView(b.dataset.v));
+window.__site = async (k) => {
+  if (k === 'generic') {
+    sdRep = { geology: { value: 'Gliny zwałowe, piaski i żwiry lodowcowe', unit: '', source: 'PIG-PIB SMGP (stub)', confidence: 'medium' },
+      hydro: { gupwDepth: { value: '5-15', unit: 'm', source: 'PIG-PIB MHP (stub)', confidence: 'low' }, thickness: { value: 12, unit: 'm' } } };
+    await ug.setSite({ lat: 52.05, lon: 20.60, rotDeg: 0, name: 'Mazowsze (test)' });
+  } else await ug.setSite(null);
+  document.querySelectorAll('[data-site]').forEach(x => x.classList.toggle('on', x.dataset.site === k));
+};
+document.querySelectorAll('[data-site]').forEach(b => b.onclick = () => window.__site(b.dataset.site));
+
+await ug.ready;
+let last = performance.now(), fT = last, frames = 0;
+function frame(now) {
+  const dt = Math.min(0.1, (now - last) / 1000); last = now;
+  geo.update(dt, state);
+  ug.update(dt, state);
+  controls.update();
+  renderer.render(scene, camera);
+  frames++;
+  if (now - fT > 600) {
+    const fps = frames * 1000 / (now - fT); frames = 0; fT = now;
+    const i = ug.info();
+    $('info').textContent = `fps ${fps.toFixed(0)}  ${i.site} [${i.profile}] scale ${i.depthScale} (${i.depthScaleMix})\n`
+      + `bottom y ${i.drawnBottomY}  water ${i.water ? i.water.tableM + ' m @y ' + i.water.y : '-'}  infil ${i.infiltration}\n`
+      + i.layers.map(l => `${l.topM}-${l.baseM} ${l.id} y ${l.yTop}..${l.yBase}`).join('\n')
+      + (i.errors.length ? '\nerrors: ' + i.errors.join(' | ') : '');
+  }
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+window.__ready = true;
+</script>
+</body>
+</html>

@@ -10,7 +10,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181744';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181749';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -827,13 +827,16 @@ function applyShadows(on) {
   SHADOW.force = true;
 }
 // The sun's shadow map is re-rendered only when it would change (it was a full extra pass over the ~1 M-vertex
-// model on every frame, ~1/3 of the frame's CPU): when a shadow light turned by > 0.25 deg (shadows move < 1 shadow
-// texel), when the crops grew (growth.js scales them in the depth shader) or the winter transition runs, when a
+// model on every frame, ~1/3 of the frame's CPU): when a shadow light turned far enough to move the tip of the
+// shadow of the 5 m roof by ~3 cm (= one shadow texel; 0.25 deg at midday, a fraction of that for the long low-sun
+// shadows, where it means every frame at 600x), when the crops grew (growth.js scales them in the depth shader) or the winter transition runs, when a
 // visible caster moved / appeared / hid (FarmDroid driving: at most every 30 ms, i.e. the robot's shadow trails it by
 // < 5 cm), and at least once a second as a safety net. Nothing while the sun is down (the map is not used then).
 // Other code can force a refresh with ctx.invalidateShadows().
 const SHADOW = { dirs: new Map(), sig: NaN, t: 0, force: true, lights: [] };
-const COS_SUN_STEP = Math.cos(THREE.MathUtils.degToRad(0.25));
+// allowed turn (rad) for a light at altitude a: shadow length of height h is h / tan(a), its tip moves by
+// h * da / sin^2(a) (altitude) or h * da / sin(a) (azimuth); keep that under 3 cm for h = 5 m, at most 0.25 deg
+const sunStepCos = (sinAlt) => Math.cos(Math.min(THREE.MathUtils.degToRad(0.25), (0.03 / 5) * Math.max(sinAlt, 0.02) ** 2));
 const _ld = new THREE.Vector3();
 renderer.shadowMap.autoUpdate = false;
 ctx.invalidateShadows = () => { SHADOW.force = true; };
@@ -856,7 +859,7 @@ function updateShadowsIfNeeded(now) {
     if (o.intensity > 0) lit = true;
     _ld.subVectors(o.position, o.target.position).normalize();
     const d = SHADOW.dirs.get(o);
-    if (!d || d.dot(_ld) < COS_SUN_STEP) need = true;
+    if (!d || d.dot(_ld) < sunStepCos(_ld.y)) need = true;
   }
   if (!lit) { SHADOW.force ||= need; return; }
   scene.updateMatrixWorld(); // the renderer does this again; cheap, static meshes are skipped
