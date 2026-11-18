@@ -10,7 +10,7 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181736';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611181737';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -761,11 +761,12 @@ function setXray(on) {
       // twice (back, then front) and flags the material for a program lookup before each of the two draws, which
       // made x-ray cost ~4x the CPU of the normal view. Grey at 22 % opacity looks the same in either order.
       m.forceSinglePass = true;
+      m.needsUpdate = true; // 'transparent' is part of the program (OPAQUE define): re-resolve the program once
     }
   } else {
     for (const [m, v] of XRAY.saved) {
       if (v.color) m.color.copy(v.color); if (v.emissive) m.emissive.copy(v.emissive);
-      m.emissiveIntensity = v.ei; m.opacity = v.opacity; m.transparent = v.transparent; m.depthWrite = v.depthWrite; m.forceSinglePass = v.fsp;
+      m.emissiveIntensity = v.ei; m.opacity = v.opacity; m.transparent = v.transparent; m.depthWrite = v.depthWrite; m.forceSinglePass = v.fsp; m.needsUpdate = true;
     }
     XRAY.saved.clear();
   }

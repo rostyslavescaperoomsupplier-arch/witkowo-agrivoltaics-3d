@@ -345,7 +345,7 @@
       fetch(url, { cache: 'no-store', mode: 'cors' }).then(function (r) { clearTimeout(t); ok(r.ok); }, function () { clearTimeout(t); ok(false); });
     });
   }
-  import('./main.js?v=202611181736').catch(function (e) {
+  import('./main.js?v=202611181737').catch(function (e) {
     var m = (e && e.message) || String(e);
     if (m === 'WebGL unavailable') { boot.started = true; clearTimeout(slow); el.remove(); return; }
     console.error(e);
