@@ -353,6 +353,27 @@
     .tog .fly { display: inline-flex; align-items: center; min-height: 44px; }
     .sub, .eyebrow, h2, li.grp, li.item .sub2, .foot, #hud dt, #hud dd small, #hint, small.concept, .seg button .concept, .locnote, .loccoord, .rep, .suit li, #attr, .glayers li, .lab.sub, details.acc > summary, .showrow button, .label { font-size: 12px; }
   }
+  /* season toggle label: «Zima (koncepcja)» keeps its space inside the flex button */
+  .seg button .concept { margin-left: 4px; }
+  /* attribution: desktop line; on touch a button + list (44 px rows) */
+  #attr .attrbtn, #attr .attrlist { display: none; }
+  @media (pointer: coarse) {
+    #attr { right: auto; width: auto; max-width: calc(100% - 16px); text-align: left; overflow: visible; white-space: normal; pointer-events: none; bottom: calc(var(--sab, 0px) + 4px); }
+    #attr .attrline { display: none; }
+    #attr .attrbtn { all: unset; pointer-events: auto; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line); color: #cfcbc2; font-size: 12px; cursor: pointer; text-shadow: none; }
+    #attr .attrbtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    #attr.open { background: none; border: 0; padding: 0; }
+    #attr.open .attrlist { display: block; pointer-events: auto; list-style: none; margin: 0 0 6px; padding: 4px 0; max-height: 50dvh; overflow-y: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; text-shadow: none; }
+    #attr .attrlist li { border-top: 1px solid var(--line); } #attr .attrlist li:first-child { border-top: 0; }
+    #attr .attrlist a, #attr .attrlist span { display: flex; align-items: center; min-height: 44px; padding: 0 14px; font-size: 12px; color: #cfcbc2; }
+    #attr .attrlist a { color: var(--accent); }
+    #attr.open { display: flex; flex-direction: column-reverse; align-items: flex-start; }
+  }
+  /* phone top bar: one surface; the mode segment has no box of its own inside it */
+  @media (max-width: 759px), (max-height: 500px) {
+    .viewsec .seg { background: transparent; border-color: transparent; }
+  }
+  @media (max-height: 500px) and (orientation: landscape) and (pointer: coarse) { :root { --bar: 52px; } }
 </style>
 </head>
 <body>
@@ -521,7 +542,7 @@
       fetch(url, { cache: 'no-store', mode: 'cors' }).then(function (r) { clearTimeout(t); ok(r.ok); }, function () { clearTimeout(t); ok(false); });
     });
   }
-  import('./main.js?v=202611182204').catch(function (e) {
+  import('./main.js?v=202611190114').catch(function (e) {
     var m = (e && e.message) || String(e);
     if (m === 'WebGL unavailable') { boot.started = true; clearInterval(slow); el.remove(); return; }
     console.error(e);

@@ -10,8 +10,8 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
-import { initTour, parseSceneFromUrl } from './lib/tour.js?v=202611182204';
-import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611182204';
+import { initTour, parseSceneFromUrl } from './lib/tour.js?v=202611190114';
+import { t, setLang, onLang, applyDom } from './lib/i18n.js?v=202611190114';
 
 const $ = (s) => document.querySelector(s);
 const $$ = (s) => document.querySelectorAll(s);
@@ -1434,10 +1434,15 @@ function syncAttr() {
   for (const f of Object.values(info.sitedata?.fields || {})) if (f?.source && f.value != null && !/^lib\//.test(f.source) && seen.size < 14) add(f.source, f.link);
   const sig = L2() + parts.map((x) => x.text + x.url).join('|'); if (sig === attrSig) return; attrSig = sig;
   const el = $('#attr');
-  el.innerHTML = parts.length ? `${esc(t('attr.label'))}: ${parts.map((x) => (/^https:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.text)}</a>` : esc(x.text))).join(' · ')}` : '';
+  const link = (x) => (/^https:\/\//.test(x.url) ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.text)}</a>` : `<span>${esc(x.text)}</span>`);
+  // desktop: one line of links; touch: a «Źródła danych» button that opens a list with finger-sized rows
+  el.innerHTML = parts.length ? `<span class="attrline">${esc(t('attr.label'))}: ${parts.map(link).join(' · ')}</span><button type="button" class="attrbtn" aria-expanded="${el.classList.contains('open')}">${esc(t('attr.label'))}</button><ul class="attrlist">${parts.map((x) => `<li>${link(x)}</li>`).join('')}</ul>` : '';
   el.title = parts.map((x) => x.text).join(' · ');
 }
-$('#attr').addEventListener('click', (e) => { if (!e.target.closest('a')) $('#attr').classList.toggle('open'); });
+$('#attr').addEventListener('click', (e) => {
+  if (e.target.closest('a')) return;
+  const el = $('#attr'), open = el.classList.toggle('open'); el.querySelector('.attrbtn')?.setAttribute('aria-expanded', open);
+});
 
 // ---------------- «Pokaż» quick toggles: x-ray, winter (concept), underground, map ----------------
 function syncShowRow() {
